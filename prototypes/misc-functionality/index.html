@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Conf prototype</title>
+	<link rel="stylesheet" href="css/topcoat-mobile-light.min.css">
+	<script src="js/jquery-2.0.0.min.js"></script>
+	<script src="js/moment.min.js"></script>
+	<script src="js/lodash.min.js"></script>
+	<script src="js/backbone-min.js"></script>
+	<style>
+	/* temporary CSS */
+	.session-list,
+	.session-page {
+	    position: absolute;
+	    top: 0;
+	    left: 0;
+	    width: 100%;
+	    height: 100%;
+	    background: #DDD;
+	}
+	
+	.js-page-transition-in {
+	    -webkit-transition: all 0.3s;
+	    -webkit-transform: none;
+	}
+
+	.js-page-transition-out {
+	    -webkit-transition: all 0.3s;
+	    -webkit-transform: translateY(-100vh) translateZ(0);
+	}
+	</style>
+</head>
+<body>
+
+<script type="text/template" id="session-entry-template">
+<div class="session-entry">
+    <header>
+        <h1 class="session-entry__times"><%- times %></h1>
+    </header>
+    <div class="session-entry__content">
+        <a href="#" class="js-session-details-link">
+            <h1 class="session-entry__title"><%- title %></h1>
+            <p class="session-entry__subtitle"><%- subtitle %></p>
+        </a>
+        <div class="session-entry__star"></div>
+    </div>
+</div>
+</script>
+
+<script type="text/template" id="session-details-template">
+<div class="session-details">
+    <header>
+        <h1 class="session-details__times"><%- times %></h1>
+    </header>
+    <div class="session-details__content">
+        <h1 class="session-details__title"><%- title %></h1>
+        <p class="session-details__subtitle"><%- subtitle %></p>
+
+        <div class="session-details__details"><%- details %></div>
+    </div>
+    <h2>Presented by:</h2>
+    <div class="session-details__speakers">
+        <ul>
+        <% _.each(speakers, function(data) { %> 
+            <li><%= data.name %><br>
+                @<%= data.twitter %></li> 
+        <% }); %>
+        </ul>
+    </div>
+</div>
+</script>
+
+</script>
+<script src="js/app.js"></script>
+</body>
+</html>
