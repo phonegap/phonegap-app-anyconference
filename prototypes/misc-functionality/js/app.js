@@ -110,10 +110,6 @@ limitations under the License.
 		transitionIn: function(callback) {
 			var _this = this;
 			var onTransitionEnd = function(evt) {
-				if( evt.target !== _this.el) {
-					throw Error('no match!');
-				}
-
 				_this.el.classList.remove('js-page-transition-in');
 				evt.target.removeEventListener('webkitTransitionEnd', onTransitionEnd);
 				callback(evt);
@@ -126,9 +122,6 @@ limitations under the License.
 		transitionOut: function(callback) {
 			var _this = this;
 			var onTransitionEnd = function(evt) {
-				if( evt.target !== _this.el) {
-					throw Error('no match!');
-				}
 				_this.el.classList.remove('js-page-transition-out');
 				evt.target.removeEventListener('webkitTransitionEnd', onTransitionEnd);
 				callback(evt);
@@ -163,8 +156,13 @@ limitations under the License.
 		prevPage: null,
 		currentPage: null,
 		nextPage: null,
+
+		pageOverlay: null,
 		
 		setCurrentPage: function(sessionPage) {
+			if( this.animating ) {
+				return;
+			}
 			this.currentPage = sessionPage;
 			this.nextPage = null;
 			this.prevPage = null;
@@ -189,7 +187,25 @@ limitations under the License.
 			}
 			if( this.nextPage ) {
 				this.nextPage.render();
+				this.updateOverlay();
+			} else {
+				this.updateOverlay();
 			}
+		},
+		
+		updateOverlay: function() {
+			var _this = this;
+			_this.animating = true;
+			
+			var onTransitionEnd = function(evt) {
+				_this.animating = false;
+				_this.pageOverlay.classList.remove('js-page-overlay-removed');
+				evt.target.removeEventListener('webkitTransitionEnd', onTransitionEnd);
+				_this.el.insertBefore(_this.pageOverlay, _this.currentPage.el);
+			};
+
+			this.pageOverlay.classList.add('js-page-overlay-removed');
+			this.pageOverlay.addEventListener('webkitTransitionEnd', onTransitionEnd);
 		},
 		
 		addToNewPage: function() {
@@ -221,39 +237,51 @@ limitations under the License.
 		
 		transitionToNext: function() {
 			var _this = this;
+			this.animating = true;
 			// animate current page up
 			this.currentPage.transitionOut(function() {
+				_this.animating = false;
 				_this.setCurrentPage(_this.nextPage);
 			});
 		},
 		
 		transitionToPrevious: function() {
 			var _this = this;
+			this.animating = true;
 			// pull previous from top
 			this.prevPage.transitionIn(function() {
+				_this.animating = false;
 				_this.setCurrentPage(_this.prevPage);
 			});
 		},
 		
 		transitionNextAway: function() {
 			var _this = this;
+			this.animating = true;
 			this.nextPage.transitionOut(function() {
+				_this.animating = false;
 				_this.setCurrentPage(_this.currentPage);
 			});
 		},
 		
 		transitionCurrentBack: function() {
 			var _this = this;
+			this.animating = true;
 			this.currentPage.transitionIn(function() {
+				_this.animating = false;
 				_this.setCurrentPage(_this.currentPage);
 			});
 		},
 		
 		touchStart: function(evt) {
+			var _this = sessionListView;
+		
 			console.log('touchstart');
+			if( _this.animating ) {
+				return;
+			}
 			// evt.preventDefault();
 			// evt.stopPropagation();
-			var _this = sessionListView;
 			_this.startPoint = {
 				x: evt.touches[0].pageX,
 				y: evt.touches[0].pageY
@@ -306,14 +334,18 @@ limitations under the License.
 			var targetEl = _this.currentPage.el;
 			if( _this.lastDiff.y > 0 ) {
 				evt.preventDefault();
-				if( _this.pendingPage === _this.prevPage ) {
+				if( !_this.prevPage ) {
+					// do nothing?
+				} else if( _this.pendingPage === _this.prevPage ) {
 					_this.transitionToPrevious();
 				} else {
 					_this.transitionCurrentBack();
 				}
 			} else if( _this.lastDiff.y < 0 ) {
 				evt.preventDefault();
-				if( _this.pendingPage === _this.nextPage ) {
+				if( !_this.nextPage ) {
+					_this.transitionCurrentBack();
+				} else if( _this.pendingPage === _this.nextPage ) {
 					_this.transitionToNext();
 				} else if(_this.nextPage) {
 					_this.transitionNextAway();
@@ -326,6 +358,9 @@ limitations under the License.
 		
 		render: function() {
 			this.setCurrentPage( this.pages[0] );
+			this.pageOverlay.classList.remove('js-page-overlay-removed');
+			this.el.insertBefore(this.pageOverlay, this.currentPage.el);
+			this.animating = false;
 			window.addEventListener('touchstart', this.touchStart);
 		},
 		
@@ -336,6 +371,8 @@ limitations under the License.
 		
 		initialize: function() {
 			this.pageHeight = window.innerHeight;
+			this.pageOverlay = document.createElement('div');
+			this.pageOverlay.className = 'js-page-overlay';
 		}
 	});
 	
