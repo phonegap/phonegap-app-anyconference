@@ -1,0 +1,624 @@
+THello_World
+v5
+r1
+cCheck dependencies
+cProcessInfoPlistFile "/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello World.app/Info.plist" Hello_World/Hello_World-Info.plist
+cPhaseScriptExecution "Copy www directory" /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello_World.build/Debug-iphonesimulator/Hello_World.build/Script-304B58A110DAC018002A0835.sh
+cCpResource Hello_World/config.xml "build/Hello World.app/config.xml"
+cCpResource Hello_World/Resources/icons/icon-72.png "build/Hello World.app/icon-72.png"
+cCpResource Hello_World/Resources/icons/icon.png "build/Hello World.app/icon.png"
+cCpResource Hello_World/Resources/Capture.bundle "build/Hello World.app/Capture.bundle"
+cCpResource Hello_World/Resources/icons/icon@2x.png "build/Hello World.app/icon@2x.png"
+cCopyStringsFile "/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello World.app/en.lproj/Localizable.strings" Hello_World/Resources/en.lproj/Localizable.strings
+cCopyStringsFile "/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello World.app/es.lproj/Localizable.strings" Hello_World/Resources/es.lproj/Localizable.strings
+cCompileXIB /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/Hello_World/Classes/MainViewController.xib
+cCopyStringsFile "/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello World.app/de.lproj/Localizable.strings" Hello_World/Resources/de.lproj/Localizable.strings
+cCopyStringsFile "/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello World.app/se.lproj/Localizable.strings" Hello_World/Resources/se.lproj/Localizable.strings
+cCpResource Hello_World/Resources/splash/Default-Landscape~ipad.png "build/Hello World.app/Default-Landscape~ipad.png"
+cCpResource Hello_World/Resources/splash/Default-Landscape@2x~ipad.png "build/Hello World.app/Default-Landscape@2x~ipad.png"
+cCpResource Hello_World/Resources/splash/Default-Portrait@2x~ipad.png "build/Hello World.app/Default-Portrait@2x~ipad.png"
+cCpResource Hello_World/Resources/splash/Default-Portrait~ipad.png "build/Hello World.app/Default-Portrait~ipad.png"
+cCpResource Hello_World/Resources/splash/Default@2x~iphone.png "build/Hello World.app/Default@2x~iphone.png"
+cCpResource Hello_World/Resources/splash/Default-568h@2x~iphone.png "build/Hello World.app/Default-568h@2x~iphone.png"
+cCpResource Hello_World/Resources/splash/Default~iphone.png "build/Hello World.app/Default~iphone.png"
+cCpResource Hello_World/Resources/icons/icon-72@2x.png "build/Hello World.app/icon-72@2x.png"
+cProcessPCH /var/folders/pk/zsrwhch925nd010tf2jkltsh0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/Hello_World-Prefix-aljnoqbciytwhlcmhenagsoajgur/Hello_World-Prefix.pch.pth Hello_World/Hello_World-Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/Hello_World.build/Debug-iphonesimulator/Hello_World.build/Objects-normal/i386/AppDelegate.o /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/Hello_World/Classes/AppDelegate.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/Hello_World.build/Debug-iphonesimulator/Hello_World.build/Objects-normal/i386/main.o /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/Hello_World/main.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/Hello_World.build/Debug-iphonesimulator/Hello_World.build/Objects-normal/i386/MainViewController.o /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/Hello_World/Classes/MainViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cLd "/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello World.app/Hello World" normal i386
+cGenerateDSYMFile "/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello World.app.dSYM" "/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello World.app/Hello World"
+cTouch "/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello World.app"
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk
+c00000000516F218E0000000000000110
+t1366237582
+s272
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk/System/Library/Frameworks/AVFoundation.framework/AVFoundation
+c000000005107492000000000001EB540
+t1359431968
+s2012480
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk/System/Library/Frameworks/AddressBook.framework/AddressBook
+c000000005107491F00000000000C1030
+t1359431967
+s790576
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk/System/Library/Frameworks/AddressBookUI.framework/AddressBookUI
+c00000000510749200000000000193640
+t1359431968
+s1652288
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk/System/Library/Frameworks/AssetsLibrary.framework/AssetsLibrary
+c000000005107491F00000000000226E0
+t1359431967
+s141024
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk/System/Library/Frameworks/AudioToolbox.framework/AudioToolbox
+c000000005107492000000000003D4DF0
+t1359431968
+s4017648
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk/System/Library/Frameworks/CFNetwork.framework/CFNetwork
+c00000000510749200000000000215DB0
+t1359431968
+s2186672
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics
+c00000000510749200000000000228FE0
+t1359431968
+s2265056
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk/System/Library/Frameworks/CoreLocation.framework/CoreLocation
+c0000000051074920000000000009C590
+t1359431968
+s640400
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk/System/Library/Frameworks/CoreMedia.framework/CoreMedia
+c00000000510749200000000000085620
+t1359431968
+s546336
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk/System/Library/Frameworks/Foundation.framework/Foundation
+c000000005107492100000000003DDFA0
+t1359431969
+s4054944
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk/System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
+c000000005107492200000000002DBA50
+t1359431970
+s2996816
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk/System/Library/Frameworks/MobileCoreServices.framework/MobileCoreServices
+c000000005107492200000000000BCC20
+t1359431970
+s773152
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk/System/Library/Frameworks/QuartzCore.framework/QuartzCore
+c000000005107492300000000001D5750
+t1359431971
+s1922896
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk/System/Library/Frameworks/SystemConfiguration.framework/SystemConfiguration
+c0000000051074923000000000006CC50
+t1359431971
+s445520
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk/System/Library/Frameworks/UIKit.framework/UIKit
+c00000000510749240000000000AB6230
+t1359431972
+s11231792
+
+N/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/Hello_World/Classes/AppDelegate.m
+c00000000519C48F200000000000013DC
+t1369196786
+s5084
+
+N/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/Hello_World/Classes/MainViewController.m
+c00000000519C48F2000000000000126C
+t1369196786
+s4716
+
+N/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/Hello_World/Classes/MainViewController.xib
+c00000000519C48F20000000000001759
+t1369196786
+s5977
+
+N/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/Hello_World/Hello_World-Prefix.pch
+c00000000519C48F200000000000003C7
+t1369196786
+s967
+
+N/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/Hello_World/Resources/Capture.bundle
+c00000000519C48F2000000000000030E
+t1369196786
+s782
+
+N/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/Hello_World/Resources/de.lproj/Localizable.strings
+c00000000519C48F20000000000000485
+t1369196786
+s1157
+
+N/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/Hello_World/Resources/en.lproj/Localizable.strings
+c00000000519C48F20000000000000470
+t1369196786
+s1136
+
+N/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/Hello_World/Resources/es.lproj/Localizable.strings
+c00000000519C48F2000000000000047D
+t1369196786
+s1149
+
+N/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/Hello_World/Resources/icons/icon-72.png
+c00000000519C48F20000000000001350
+t1369196786
+s4944
+
+N/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/Hello_World/Resources/icons/icon-72@2x.png
+c00000000519C48F20000000000002DBA
+t1369196786
+s11706
+
+N/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/Hello_World/Resources/icons/icon.png
+c00000000519C48F20000000000000F3E
+t1369196786
+s3902
+
+N/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/Hello_World/Resources/icons/icon@2x.png
+c00000000519C48F20000000000001EBD
+t1369196786
+s7869
+
+N/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/Hello_World/Resources/se.lproj/Localizable.strings
+c00000000519C48F20000000000000471
+t1369196786
+s1137
+
+N/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/Hello_World/Resources/splash/Default-568h@2x~iphone.png
+c00000000519C48F200000000000085B1
+t1369196786
+s34225
+
+N/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/Hello_World/Resources/splash/Default-Landscape@2x~ipad.png
+c00000000519C48F20000000000012DF4
+t1369196786
+s77300
+
+N/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/Hello_World/Resources/splash/Default-Landscape~ipad.png
+c00000000519C48F20000000000008877
+t1369196786
+s34935
+
+N/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/Hello_World/Resources/splash/Default-Portrait@2x~ipad.png
+c00000000519C48F20000000000012B02
+t1369196786
+s76546
+
+N/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/Hello_World/Resources/splash/Default-Portrait~ipad.png
+c00000000519C48F200000000000085E6
+t1369196786
+s34278
+
+N/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/Hello_World/Resources/splash/Default@2x~iphone.png
+c00000000519C48F20000000000007323
+t1369196786
+s29475
+
+N/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/Hello_World/Resources/splash/Default~iphone.png
+c00000000519C48F2000000000000289A
+t1369196786
+s10394
+
+N/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/Hello_World/config.xml
+c00000000519C48F40000000000000842
+t1369196788
+s2114
+
+N/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/Hello_World/main.m
+c00000000519C48F2000000000000045D
+t1369196786
+s1117
+
+N/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello World.app
+t2
+s0
+
+N/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello World.app.dSYM
+t2
+s0
+
+N/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello World.app/Capture.bundle
+t2
+s0
+
+N/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello World.app/Default-568h@2x~iphone.png
+t2
+s0
+
+N/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello World.app/Default-Landscape@2x~ipad.png
+t2
+s0
+
+N/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello World.app/Default-Landscape~ipad.png
+t2
+s0
+
+N/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello World.app/Default-Portrait@2x~ipad.png
+t2
+s0
+
+N/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello World.app/Default-Portrait~ipad.png
+t2
+s0
+
+N/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello World.app/Default@2x~iphone.png
+t2
+s0
+
+N/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello World.app/Default~iphone.png
+t2
+s0
+
+N/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello World.app/Hello World
+t2
+s0
+
+N/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello World.app/Info.plist
+t2
+s0
+
+N/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello World.app/MainViewController.nib
+t2
+s0
+
+N/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello World.app/PkgInfo
+t2
+s0
+
+N/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello World.app/config.xml
+t2
+s0
+
+N/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello World.app/de.lproj/Localizable.strings
+t2
+s0
+
+N/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello World.app/en.lproj/Localizable.strings
+t2
+s0
+
+N/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello World.app/es.lproj/Localizable.strings
+t2
+s0
+
+N/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello World.app/icon-72.png
+t2
+s0
+
+N/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello World.app/icon-72@2x.png
+t2
+s0
+
+N/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello World.app/icon.png
+t2
+s0
+
+N/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello World.app/icon@2x.png
+t2
+s0
+
+N/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello World.app/se.lproj/Localizable.strings
+t2
+s0
+
+N/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello_World.build/Debug-iphonesimulator/Hello_World.build/Objects-normal/i386/AppDelegate.o
+t2
+s0
+
+N/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello_World.build/Debug-iphonesimulator/Hello_World.build/Objects-normal/i386/Hello World.LinkFileList
+c00000000519C48F60000000000000219
+t1369196790
+s537
+
+N/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello_World.build/Debug-iphonesimulator/Hello_World.build/Objects-normal/i386/MainViewController.o
+t2
+s0
+
+N/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello_World.build/Debug-iphonesimulator/Hello_World.build/Objects-normal/i386/main.o
+t2
+s0
+
+N/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello_World.build/Debug-iphonesimulator/Hello_World.build/Script-304B58A110DAC018002A0835.sh
+c00000000519C48F6000000000000051A
+t1369196790
+s1306
+
+N/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/libCordova.a
+c00000000519C48F60000000000362CE0
+t1369196790
+s3550432
+
+N/var/folders/pk/zsrwhch925nd010tf2jkltsh0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/Hello_World-Prefix-aljnoqbciytwhlcmhenagsoajgur/Hello_World-Prefix.pch.pth
+t2
+s0
+
+NHello_World/Hello_World-Info.plist
+c00000000519C48F40000000000000745
+t1369196788
+s1861
+
+CCheck dependencies
+r0
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependenciese5d4ee76804cb741^541cf776804cb741^---0#1#0#--18"Check dependencies36"F2EA203B-4C7B-43AF-B687-F4E1F1923B7F-
+
+CCompileC build/Hello_World.build/Debug-iphonesimulator/Hello_World.build/Objects-normal/i386/AppDelegate.o /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/Hello_World/Classes/AppDelegate.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s390889592.141248
+e390889592.208796
+r1
+xCompileC
+xbuild/Hello_World.build/Debug-iphonesimulator/Hello_World.build/Objects-normal/i386/AppDelegate.o
+x/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/Hello_World/Classes/AppDelegate.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+o/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/Hello_World/Classes/AppDelegate.m:80:25: warning: 'useSplashScreen' is deprecated: Deprecated in Cordova 2.5. Add/Remove the SplashScreen plugin instead of setting this property. [-Wdeprecated-declarations]
+o    self.viewController.useSplashScreen = YES;
+o                        ^
+o/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/include/Cordova/CDVViewController.h:46:47: note: 'useSplashScreen' declared here
+o@property (nonatomic, readwrite, assign) BOOL useSplashScreen CDV_DEPRECATED(2.5, "Add/Remove the SplashScreen plugin instead of setting this property.");
+o                                              ^
+o1 warning generated.
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection122"Compile /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/Hello_World/Classes/AppDelegate.m6f472478804cb741^2e743578804cb741^-753"/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/Hello_World/Classes/AppDelegate.m:80:25: warning: 'useSplashScreen' is deprecated: Deprecated in Cordova 2.5. Add/Remove the SplashScreen plugin instead of setting this property. [-Wdeprecated-declarations]    self.viewController.useSplashScreen = YES;                        ^/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/include/Cordova/CDVViewController.h:46:47: note: 'useSplashScreen' declared here@property (nonatomic, readwrite, assign) BOOL useSplashScreen CDV_DEPRECATED(2.5, "Add/Remove the SplashScreen plugin instead of setting this property.");                                              ^1 warning generated.1(36%IDEClangDiagnosticActivityLogMessage2@128"'useSplashScreen' is deprecated: Deprecated in Cordova 2.5. Add/Remove the SplashScreen plugin instead of setting this property.-390889592#18446744073709551615#0#1(2@31"'useSplashScreen' declared here-390889592#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic23%DVTTextDocumentLocation3@135"file://localhost/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/CordovaLib/Classes/CDVViewController.h0000000000000000^45#46#45#46#1826#0#14"Semantic Issue--1#27"com.apple.dt.IDE.diagnostic3@130"file://localhost/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/Hello_World/Classes/AppDelegate.m0000000000000000^79#24#79#24#2696#0#12"Deprecations--0#0#0#-19%DVTDocumentLocation4@130"file://localhost/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/Hello_World/Classes/AppDelegate.m0000000000000000^4426"CompileC build/Hello_World.build/Debug-iphonesimulator/Hello_World.build/Objects-normal/i386/AppDelegate.o Hello_World/Classes/AppDelegate.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/krjoseph/Documents/Development/android/sdk/platform-tools:/Users/krjoseph/Documents/Development/android/sdk/tools/:/Users/krjoseph/Documents/Web/Chromium/depot_tools:/usr/local/git/bin:/usr/local/bin/src:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/Users/krjoseph/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wduplicate-method-match -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-empty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wenum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -fvisibility=hidden -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=5.0 -iquote "/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello_World.build/Debug-iphonesimulator/Hello_World.build/Hello World-generated-files.hmap" "-I/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello_World.build/Debug-iphonesimulator/Hello_World.build/Hello World-own-target-headers.hmap" "-I/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello_World.build/Debug-iphonesimulator/Hello_World.build/Hello World-all-target-headers.hmap" -iquote "/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello_World.build/Debug-iphonesimulator/Hello_World.build/Hello World-project-headers.hmap" -I/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/include -I/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/usr/local/lib/include -I/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/UninstalledProducts/include -I/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build -I/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello_World.build/Debug-iphonesimulator/Hello_World.build/DerivedSources/i386 -I/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello_World.build/Debug-iphonesimulator/Hello_World.build/DerivedSources -F/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build -include /var/folders/pk/zsrwhch925nd010tf2jkltsh0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/Hello_World-Prefix-aljnoqbciytwhlcmhenagsoajgur/Hello_World-Prefix.pch -MMD -MT dependencies -MF /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello_World.build/Debug-iphonesimulator/Hello_World.build/Objects-normal/i386/AppDelegate.d --serialize-diagnostics /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello_World.build/Debug-iphonesimulator/Hello_World.build/Objects-normal/i386/AppDelegate.dia -c /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/Hello_World/Classes/AppDelegate.m -o /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello_World.build/Debug-iphonesimulator/Hello_World.build/Objects-normal/i386/AppDelegate.o36"302B0BCD-9EA7-47A6-831B-5EDDEEBA151F-
+
+CCompileC build/Hello_World.build/Debug-iphonesimulator/Hello_World.build/Objects-normal/i386/MainViewController.o /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/Hello_World/Classes/MainViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s390889592.141254
+e390889592.199297
+r1
+xCompileC
+xbuild/Hello_World.build/Debug-iphonesimulator/Hello_World.build/Objects-normal/i386/MainViewController.o
+x/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/Hello_World/Classes/MainViewController.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection129"Compile /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/Hello_World/Classes/MainViewController.mfc512478804cb741^cd043378804cb741^---0#0#0#-19%DVTDocumentLocation2@137"file://localhost/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/Hello_World/Classes/MainViewController.m0000000000000000^4468"CompileC build/Hello_World.build/Debug-iphonesimulator/Hello_World.build/Objects-normal/i386/MainViewController.o Hello_World/Classes/MainViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/krjoseph/Documents/Development/android/sdk/platform-tools:/Users/krjoseph/Documents/Development/android/sdk/tools/:/Users/krjoseph/Documents/Web/Chromium/depot_tools:/usr/local/git/bin:/usr/local/bin/src:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/Users/krjoseph/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wduplicate-method-match -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-empty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wenum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -fvisibility=hidden -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=5.0 -iquote "/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello_World.build/Debug-iphonesimulator/Hello_World.build/Hello World-generated-files.hmap" "-I/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello_World.build/Debug-iphonesimulator/Hello_World.build/Hello World-own-target-headers.hmap" "-I/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello_World.build/Debug-iphonesimulator/Hello_World.build/Hello World-all-target-headers.hmap" -iquote "/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello_World.build/Debug-iphonesimulator/Hello_World.build/Hello World-project-headers.hmap" -I/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/include -I/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/usr/local/lib/include -I/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/UninstalledProducts/include -I/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build -I/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello_World.build/Debug-iphonesimulator/Hello_World.build/DerivedSources/i386 -I/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello_World.build/Debug-iphonesimulator/Hello_World.build/DerivedSources -F/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build -include /var/folders/pk/zsrwhch925nd010tf2jkltsh0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/Hello_World-Prefix-aljnoqbciytwhlcmhenagsoajgur/Hello_World-Prefix.pch -MMD -MT dependencies -MF /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello_World.build/Debug-iphonesimulator/Hello_World.build/Objects-normal/i386/MainViewController.d --serialize-diagnostics /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello_World.build/Debug-iphonesimulator/Hello_World.build/Objects-normal/i386/MainViewController.dia -c /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/Hello_World/Classes/MainViewController.m -o /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello_World.build/Debug-iphonesimulator/Hello_World.build/Objects-normal/i386/MainViewController.o36"88C8B2F1-8E6F-412D-9CD1-074936090B5F-
+
+CCompileC build/Hello_World.build/Debug-iphonesimulator/Hello_World.build/Objects-normal/i386/main.o /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/Hello_World/main.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s390889592.141250
+e390889592.170261
+r1
+xCompileC
+xbuild/Hello_World.build/Debug-iphonesimulator/Hello_World.build/Objects-normal/i386/main.o
+x/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/Hello_World/main.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection107"Compile /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/Hello_World/main.mca512478804cb741^81952b78804cb741^---0#0#0#-19%DVTDocumentLocation2@115"file://localhost/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/Hello_World/main.m0000000000000000^4368"CompileC build/Hello_World.build/Debug-iphonesimulator/Hello_World.build/Objects-normal/i386/main.o Hello_World/main.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/krjoseph/Documents/Development/android/sdk/platform-tools:/Users/krjoseph/Documents/Development/android/sdk/tools/:/Users/krjoseph/Documents/Web/Chromium/depot_tools:/usr/local/git/bin:/usr/local/bin/src:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/Users/krjoseph/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wduplicate-method-match -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-empty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wenum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -fvisibility=hidden -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=5.0 -iquote "/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello_World.build/Debug-iphonesimulator/Hello_World.build/Hello World-generated-files.hmap" "-I/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello_World.build/Debug-iphonesimulator/Hello_World.build/Hello World-own-target-headers.hmap" "-I/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello_World.build/Debug-iphonesimulator/Hello_World.build/Hello World-all-target-headers.hmap" -iquote "/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello_World.build/Debug-iphonesimulator/Hello_World.build/Hello World-project-headers.hmap" -I/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/include -I/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/usr/local/lib/include -I/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/UninstalledProducts/include -I/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build -I/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello_World.build/Debug-iphonesimulator/Hello_World.build/DerivedSources/i386 -I/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello_World.build/Debug-iphonesimulator/Hello_World.build/DerivedSources -F/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build -include /var/folders/pk/zsrwhch925nd010tf2jkltsh0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/Hello_World-Prefix-aljnoqbciytwhlcmhenagsoajgur/Hello_World-Prefix.pch -MMD -MT dependencies -MF /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello_World.build/Debug-iphonesimulator/Hello_World.build/Objects-normal/i386/main.d --serialize-diagnostics /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello_World.build/Debug-iphonesimulator/Hello_World.build/Objects-normal/i386/main.dia -c /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/Hello_World/main.m -o /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello_World.build/Debug-iphonesimulator/Hello_World.build/Objects-normal/i386/main.o36"C3D5AAAF-25FF-4300-8E36-E292444F5BF1-
+
+CCompileXIB /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/Hello_World/Classes/MainViewController.xib
+s390889591.155843
+e390889591.921303
+r1
+xCompileXIB
+x/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/Hello_World/Classes/MainViewController.xib
+o2013-05-21 21:26:31.615 Interface Builder Cocoa Touch Tool[18164:f07] CFPreferences: user home directory at file://localhost/Users/krjoseph/Library/Application%20Support/iPhone%20Simulator/User/ is unavailable. User domains will be volatile.
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection133"Compiling /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/Hello_World/Classes/MainViewController.xibb1fa2777804cb741^6edbeb77804cb741^-241"2013-05-21 21:26:31.615 Interface Builder Cocoa Touch Tool[18164:f07] CFPreferences: user home directory at file://localhost/Users/krjoseph/Library/Application%20Support/iPhone%20Simulator/User/ is unavailable. User domains will be volatile.-0#0#0#-19%DVTDocumentLocation2@139"file://localhost/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/Hello_World/Classes/MainViewController.xib0000000000000000^1350"CompileXIB Hello_World/Classes/MainViewController.xib    cd /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 5.0    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/krjoseph/Documents/Development/android/sdk/platform-tools:/Users/krjoseph/Documents/Development/android/sdk/tools/:/Users/krjoseph/Documents/Web/Chromium/depot_tools:/usr/local/git/bin:/usr/local/bin/src:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/Users/krjoseph/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin"    setenv XCODE_DEVELOPER_USR_PATH /Applications/Xcode.app/Contents/Developer/usr/bin/..    /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile "/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello World.app/MainViewController.nib" /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/Hello_World/Classes/MainViewController.xib --sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk36"1AFFB8F0-0AA9-4B3D-86B7-16B23A42074F-
+
+CCopyStringsFile "/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello World.app/de.lproj/Localizable.strings" Hello_World/Resources/de.lproj/Localizable.strings
+s390889591.161013
+e390889591.249696
+r1
+xCopyStringsFile
+x/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello World.app/de.lproj/Localizable.strings
+xHello_World/Resources/de.lproj/Localizable.strings
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection55"Copy Hello_World/Resources/de.lproj/Localizable.strings8c4b2977804cb741^52ed3f77804cb741^---0#0#0#-19%DVTDocumentLocation2@147"file://localhost/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/Hello_World/Resources/de.lproj/Localizable.strings0000000000000000^978"CopyStringsFile "build/Hello World.app/de.lproj/Localizable.strings" Hello_World/Resources/de.lproj/Localizable.strings    cd /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/krjoseph/Documents/Development/android/sdk/platform-tools:/Users/krjoseph/Documents/Development/android/sdk/tools/:/Users/krjoseph/Documents/Web/Chromium/depot_tools:/usr/local/git/bin:/usr/local/bin/src:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/Users/krjoseph/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin"    builtin-copyStrings --validate --inputencoding utf-8 --outputencoding binary --outdir "/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello World.app/de.lproj" -- Hello_World/Resources/de.lproj/Localizable.strings36"885498B7-6DC1-4836-9109-A9AE695342A7-
+
+CCopyStringsFile "/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello World.app/en.lproj/Localizable.strings" Hello_World/Resources/en.lproj/Localizable.strings
+s390889591.155610
+e390889591.249149
+r1
+xCopyStringsFile
+x/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello World.app/en.lproj/Localizable.strings
+xHello_World/Resources/en.lproj/Localizable.strings
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection55"Copy Hello_World/Resources/en.lproj/Localizable.stringsedf42777804cb741^08c83f77804cb741^---0#0#0#-19%DVTDocumentLocation2@147"file://localhost/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/Hello_World/Resources/en.lproj/Localizable.strings0000000000000000^978"CopyStringsFile "build/Hello World.app/en.lproj/Localizable.strings" Hello_World/Resources/en.lproj/Localizable.strings    cd /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/krjoseph/Documents/Development/android/sdk/platform-tools:/Users/krjoseph/Documents/Development/android/sdk/tools/:/Users/krjoseph/Documents/Web/Chromium/depot_tools:/usr/local/git/bin:/usr/local/bin/src:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/Users/krjoseph/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin"    builtin-copyStrings --validate --inputencoding utf-8 --outputencoding binary --outdir "/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello World.app/en.lproj" -- Hello_World/Resources/en.lproj/Localizable.strings36"B97D90A2-6F23-43B8-AAD6-9BA526D1CE1E-
+
+CCopyStringsFile "/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello World.app/es.lproj/Localizable.strings" Hello_World/Resources/es.lproj/Localizable.strings
+s390889591.155624
+e390889591.249649
+r1
+xCopyStringsFile
+x/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello World.app/es.lproj/Localizable.strings
+xHello_World/Resources/es.lproj/Localizable.strings
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection55"Copy Hello_World/Resources/es.lproj/Localizable.strings5ef62777804cb741^32e93f77804cb741^---0#0#0#-19%DVTDocumentLocation2@147"file://localhost/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/Hello_World/Resources/es.lproj/Localizable.strings0000000000000000^978"CopyStringsFile "build/Hello World.app/es.lproj/Localizable.strings" Hello_World/Resources/es.lproj/Localizable.strings    cd /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/krjoseph/Documents/Development/android/sdk/platform-tools:/Users/krjoseph/Documents/Development/android/sdk/tools/:/Users/krjoseph/Documents/Web/Chromium/depot_tools:/usr/local/git/bin:/usr/local/bin/src:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/Users/krjoseph/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin"    builtin-copyStrings --validate --inputencoding utf-8 --outputencoding binary --outdir "/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello World.app/es.lproj" -- Hello_World/Resources/es.lproj/Localizable.strings36"C4F0988E-CB24-4A64-A416-C347CE9BC737-
+
+CCopyStringsFile "/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello World.app/se.lproj/Localizable.strings" Hello_World/Resources/se.lproj/Localizable.strings
+s390889591.161019
+e390889591.252636
+r1
+xCopyStringsFile
+x/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello World.app/se.lproj/Localizable.strings
+xHello_World/Resources/se.lproj/Localizable.strings
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection55"Copy Hello_World/Resources/se.lproj/Localizable.strings8f522977804cb741^6dac4077804cb741^---0#0#0#-19%DVTDocumentLocation2@147"file://localhost/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/Hello_World/Resources/se.lproj/Localizable.strings0000000000000000^978"CopyStringsFile "build/Hello World.app/se.lproj/Localizable.strings" Hello_World/Resources/se.lproj/Localizable.strings    cd /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/krjoseph/Documents/Development/android/sdk/platform-tools:/Users/krjoseph/Documents/Development/android/sdk/tools/:/Users/krjoseph/Documents/Web/Chromium/depot_tools:/usr/local/git/bin:/usr/local/bin/src:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/Users/krjoseph/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin"    builtin-copyStrings --validate --inputencoding utf-8 --outputencoding binary --outdir "/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello World.app/se.lproj" -- Hello_World/Resources/se.lproj/Localizable.strings36"DF92AB34-FDB0-448E-BE02-FCD1DE42DA1E-
+
+CCpResource Hello_World/Resources/Capture.bundle "build/Hello World.app/Capture.bundle"
+s390889591.155581
+e390889591.269913
+r1
+xCpResource
+xHello_World/Resources/Capture.bundle
+xbuild/Hello World.app/Capture.bundle
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection41"Copy build/Hello World.app/Capture.bundle70ee2777804cb741^e3184577804cb741^---0#0#0#-19%DVTDocumentLocation2@135"file://localhost/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello%20World.app/Capture.bundle000000000080d041^1022"CpResource Hello_World/Resources/Capture.bundle "build/Hello World.app/Capture.bundle"    cd /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/krjoseph/Documents/Development/android/sdk/platform-tools:/Users/krjoseph/Documents/Development/android/sdk/tools/:/Users/krjoseph/Documents/Web/Chromium/depot_tools:/usr/local/git/bin:/usr/local/bin/src:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/Users/krjoseph/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/Hello_World/Resources/Capture.bundle "/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello World.app"36"AC043FF8-A510-4A1A-BEA6-0F4E1B218EF0-
+
+CCpResource Hello_World/Resources/icons/icon-72.png "build/Hello World.app/icon-72.png"
+s390889591.155525
+e390889591.160911
+r1
+xCpResource
+xHello_World/Resources/icons/icon-72.png
+xbuild/Hello World.app/icon-72.png
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection38"Copy build/Hello World.app/icon-72.png79e82777804cb741^55312977804cb741^---0#0#0#-19%DVTDocumentLocation2@132"file://localhost/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello%20World.app/icon-72.png000000000080d041^1025"CpResource Hello_World/Resources/icons/icon-72.png "build/Hello World.app/icon-72.png"    cd /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/krjoseph/Documents/Development/android/sdk/platform-tools:/Users/krjoseph/Documents/Development/android/sdk/tools/:/Users/krjoseph/Documents/Web/Chromium/depot_tools:/usr/local/git/bin:/usr/local/bin/src:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/Users/krjoseph/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/Hello_World/Resources/icons/icon-72.png "/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello World.app"36"4FB92126-4CB4-4F9E-B01C-41B3FB6E2F2D-
+
+CCpResource Hello_World/Resources/icons/icon-72@2x.png "build/Hello World.app/icon-72@2x.png"
+s390889591.253816
+e390889591.260717
+r1
+xCpResource
+xHello_World/Resources/icons/icon-72@2x.png
+xbuild/Hello World.app/icon-72@2x.png
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection41"Copy build/Hello World.app/icon-72@2x.pngee0a4177804cb741^adc24277804cb741^---0#0#0#-19%DVTDocumentLocation2@135"file://localhost/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello%20World.app/icon-72@2x.png000000000080d041^1038"CpResource "Hello_World/Resources/icons/icon-72@2x.png" "build/Hello World.app/icon-72@2x.png"    cd /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/krjoseph/Documents/Development/android/sdk/platform-tools:/Users/krjoseph/Documents/Development/android/sdk/tools/:/Users/krjoseph/Documents/Web/Chromium/depot_tools:/usr/local/git/bin:/usr/local/bin/src:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/Users/krjoseph/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks "/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/Hello_World/Resources/icons/icon-72@2x.png" "/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello World.app"36"9F21CD7D-C9CA-450A-A725-E1CA00BD8FA2-
+
+CCpResource Hello_World/Resources/icons/icon.png "build/Hello World.app/icon.png"
+s390889591.155543
+e390889591.159815
+r1
+xCpResource
+xHello_World/Resources/icons/icon.png
+xbuild/Hello World.app/icon.png
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection35"Copy build/Hello World.app/icon.png60ea2777804cb741^14eb2877804cb741^---0#0#0#-19%DVTDocumentLocation2@129"file://localhost/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello%20World.app/icon.png000000000080d041^1016"CpResource Hello_World/Resources/icons/icon.png "build/Hello World.app/icon.png"    cd /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/krjoseph/Documents/Development/android/sdk/platform-tools:/Users/krjoseph/Documents/Development/android/sdk/tools/:/Users/krjoseph/Documents/Web/Chromium/depot_tools:/usr/local/git/bin:/usr/local/bin/src:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/Users/krjoseph/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/Hello_World/Resources/icons/icon.png "/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello World.app"36"FC9288CB-972A-4EDD-A4E7-C476DAE29A8E-
+
+CCpResource Hello_World/Resources/icons/icon@2x.png "build/Hello World.app/icon@2x.png"
+s390889591.155601
+e390889591.246012
+r1
+xCpResource
+xHello_World/Resources/icons/icon@2x.png
+xbuild/Hello World.app/icon@2x.png
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection38"Copy build/Hello World.app/icon@2x.pnge9ed2777804cb741^25043f77804cb741^---0#0#0#-19%DVTDocumentLocation2@132"file://localhost/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello%20World.app/icon@2x.png000000000080d041^1029"CpResource "Hello_World/Resources/icons/icon@2x.png" "build/Hello World.app/icon@2x.png"    cd /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/krjoseph/Documents/Development/android/sdk/platform-tools:/Users/krjoseph/Documents/Development/android/sdk/tools/:/Users/krjoseph/Documents/Web/Chromium/depot_tools:/usr/local/git/bin:/usr/local/bin/src:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/Users/krjoseph/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks "/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/Hello_World/Resources/icons/icon@2x.png" "/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello World.app"36"1CFF75ED-CD80-454B-B56E-F4C679217498-
+
+CCpResource Hello_World/Resources/splash/Default-568h@2x~iphone.png "build/Hello World.app/Default-568h@2x~iphone.png"
+s390889591.251485
+e390889591.256363
+r1
+xCpResource
+xHello_World/Resources/splash/Default-568h@2x~iphone.png
+xbuild/Hello World.app/Default-568h@2x~iphone.png
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection53"Copy build/Hello World.app/Default-568h@2x~iphone.png97704077804cb741^22a54177804cb741^---0#0#0#-19%DVTDocumentLocation2@147"file://localhost/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello%20World.app/Default-568h@2x~iphone.png000000000080d041^1076"CpResource "Hello_World/Resources/splash/Default-568h@2x~iphone.png" "build/Hello World.app/Default-568h@2x~iphone.png"    cd /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/krjoseph/Documents/Development/android/sdk/platform-tools:/Users/krjoseph/Documents/Development/android/sdk/tools/:/Users/krjoseph/Documents/Web/Chromium/depot_tools:/usr/local/git/bin:/usr/local/bin/src:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/Users/krjoseph/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks "/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/Hello_World/Resources/splash/Default-568h@2x~iphone.png" "/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello World.app"36"13F3A34A-C191-45D3-9B4A-0BB6318C1889-
+
+CCpResource Hello_World/Resources/splash/Default-Landscape@2x~ipad.png "build/Hello World.app/Default-Landscape@2x~ipad.png"
+s390889591.247302
+e390889591.250364
+r1
+xCpResource
+xHello_World/Resources/splash/Default-Landscape@2x~ipad.png
+xbuild/Hello World.app/Default-Landscape@2x~ipad.png
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection56"Copy build/Hello World.app/Default-Landscape@2x~ipad.png726a3f77804cb741^371a4077804cb741^---0#0#0#-19%DVTDocumentLocation2@150"file://localhost/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello%20World.app/Default-Landscape@2x~ipad.png000000000080d041^1085"CpResource "Hello_World/Resources/splash/Default-Landscape@2x~ipad.png" "build/Hello World.app/Default-Landscape@2x~ipad.png"    cd /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/krjoseph/Documents/Development/android/sdk/platform-tools:/Users/krjoseph/Documents/Development/android/sdk/tools/:/Users/krjoseph/Documents/Web/Chromium/depot_tools:/usr/local/git/bin:/usr/local/bin/src:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/Users/krjoseph/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks "/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/Hello_World/Resources/splash/Default-Landscape@2x~ipad.png" "/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello World.app"36"2A531395-24C7-4029-87CA-F1A772B6EF09-
+
+CCpResource Hello_World/Resources/splash/Default-Landscape~ipad.png "build/Hello World.app/Default-Landscape~ipad.png"
+s390889591.247301
+e390889591.251344
+r1
+xCpResource
+xHello_World/Resources/splash/Default-Landscape~ipad.png
+xbuild/Hello World.app/Default-Landscape~ipad.png
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection53"Copy build/Hello World.app/Default-Landscape~ipad.png906b3f77804cb741^e2574077804cb741^---0#0#0#-19%DVTDocumentLocation2@147"file://localhost/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello%20World.app/Default-Landscape~ipad.png000000000080d041^1076"CpResource "Hello_World/Resources/splash/Default-Landscape~ipad.png" "build/Hello World.app/Default-Landscape~ipad.png"    cd /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/krjoseph/Documents/Development/android/sdk/platform-tools:/Users/krjoseph/Documents/Development/android/sdk/tools/:/Users/krjoseph/Documents/Web/Chromium/depot_tools:/usr/local/git/bin:/usr/local/bin/src:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/Users/krjoseph/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks "/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/Hello_World/Resources/splash/Default-Landscape~ipad.png" "/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello World.app"36"E8FC79F9-A5D9-45B8-B790-27A2866449B9-
+
+CCpResource Hello_World/Resources/splash/Default-Portrait@2x~ipad.png "build/Hello World.app/Default-Portrait@2x~ipad.png"
+s390889591.250295
+e390889591.253333
+r1
+xCpResource
+xHello_World/Resources/splash/Default-Portrait@2x~ipad.png
+xbuild/Hello World.app/Default-Portrait@2x~ipad.png
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection55"Copy build/Hello World.app/Default-Portrait@2x~ipad.pngae2d4077804cb741^4dda4077804cb741^---0#0#0#-19%DVTDocumentLocation2@149"file://localhost/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello%20World.app/Default-Portrait@2x~ipad.png000000000080d041^1082"CpResource "Hello_World/Resources/splash/Default-Portrait@2x~ipad.png" "build/Hello World.app/Default-Portrait@2x~ipad.png"    cd /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/krjoseph/Documents/Development/android/sdk/platform-tools:/Users/krjoseph/Documents/Development/android/sdk/tools/:/Users/krjoseph/Documents/Web/Chromium/depot_tools:/usr/local/git/bin:/usr/local/bin/src:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/Users/krjoseph/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks "/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/Hello_World/Resources/splash/Default-Portrait@2x~ipad.png" "/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello World.app"36"93F93CB7-04B0-4146-8960-A77103F15E11-
+
+CCpResource Hello_World/Resources/splash/Default-Portrait~ipad.png "build/Hello World.app/Default-Portrait~ipad.png"
+s390889591.250321
+e390889591.254328
+r1
+xCpResource
+xHello_World/Resources/splash/Default-Portrait~ipad.png
+xbuild/Hello World.app/Default-Portrait~ipad.png
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection52"Copy build/Hello World.app/Default-Portrait~ipad.pngdc2e4077804cb741^711b4177804cb741^---0#0#0#-19%DVTDocumentLocation2@146"file://localhost/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello%20World.app/Default-Portrait~ipad.png000000000080d041^1073"CpResource "Hello_World/Resources/splash/Default-Portrait~ipad.png" "build/Hello World.app/Default-Portrait~ipad.png"    cd /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/krjoseph/Documents/Development/android/sdk/platform-tools:/Users/krjoseph/Documents/Development/android/sdk/tools/:/Users/krjoseph/Documents/Web/Chromium/depot_tools:/usr/local/git/bin:/usr/local/bin/src:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/Users/krjoseph/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks "/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/Hello_World/Resources/splash/Default-Portrait~ipad.png" "/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello World.app"36"EB1470D9-5297-4D50-996A-031EFDBB13DD-
+
+CCpResource Hello_World/Resources/splash/Default@2x~iphone.png "build/Hello World.app/Default@2x~iphone.png"
+s390889591.250334
+e390889591.255190
+r1
+xCpResource
+xHello_World/Resources/splash/Default@2x~iphone.png
+xbuild/Hello World.app/Default@2x~iphone.png
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection48"Copy build/Hello World.app/Default@2x~iphone.pngba2e4077804cb741^33544177804cb741^---0#0#0#-19%DVTDocumentLocation2@142"file://localhost/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello%20World.app/Default@2x~iphone.png000000000080d041^1061"CpResource "Hello_World/Resources/splash/Default@2x~iphone.png" "build/Hello World.app/Default@2x~iphone.png"    cd /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/krjoseph/Documents/Development/android/sdk/platform-tools:/Users/krjoseph/Documents/Development/android/sdk/tools/:/Users/krjoseph/Documents/Web/Chromium/depot_tools:/usr/local/git/bin:/usr/local/bin/src:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/Users/krjoseph/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks "/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/Hello_World/Resources/splash/Default@2x~iphone.png" "/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello World.app"36"5830B330-4DB7-431B-B7A6-468011C1D48C-
+
+CCpResource Hello_World/Resources/splash/Default~iphone.png "build/Hello World.app/Default~iphone.png"
+s390889591.251494
+e390889591.260691
+r1
+xCpResource
+xHello_World/Resources/splash/Default~iphone.png
+xbuild/Hello World.app/Default~iphone.png
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection45"Copy build/Hello World.app/Default~iphone.png3a7a4077804cb741^cbbf4277804cb741^---0#0#0#-19%DVTDocumentLocation2@139"file://localhost/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello%20World.app/Default~iphone.png000000000080d041^1052"CpResource "Hello_World/Resources/splash/Default~iphone.png" "build/Hello World.app/Default~iphone.png"    cd /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/krjoseph/Documents/Development/android/sdk/platform-tools:/Users/krjoseph/Documents/Development/android/sdk/tools/:/Users/krjoseph/Documents/Web/Chromium/depot_tools:/usr/local/git/bin:/usr/local/bin/src:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/Users/krjoseph/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks "/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/Hello_World/Resources/splash/Default~iphone.png" "/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello World.app"36"3B9EDBDF-B8C2-4D23-A78B-4A6CFB7BB7D5-
+
+CCpResource Hello_World/config.xml "build/Hello World.app/config.xml"
+s390889591.155521
+e390889591.246010
+r1
+xCpResource
+xHello_World/config.xml
+xbuild/Hello World.app/config.xml
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection37"Copy build/Hello World.app/config.xml96e92777804cb741^d7fa3e77804cb741^---0#0#0#-19%DVTDocumentLocation2@131"file://localhost/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello%20World.app/config.xml000000000080d041^990"CpResource Hello_World/config.xml "build/Hello World.app/config.xml"    cd /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/krjoseph/Documents/Development/android/sdk/platform-tools:/Users/krjoseph/Documents/Development/android/sdk/tools/:/Users/krjoseph/Documents/Web/Chromium/depot_tools:/usr/local/git/bin:/usr/local/bin/src:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/Users/krjoseph/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/Hello_World/config.xml "/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello World.app"36"DB5C2D46-5B7D-4345-A6CF-7842BFD75DB1-
+
+CGenerateDSYMFile "/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello World.app.dSYM" "/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello World.app/Hello World"
+s390889592.320992
+e390889592.403364
+r1
+xGenerateDSYMFile
+x/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello World.app.dSYM
+x/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello World.app/Hello World
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection116"Generate /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello World.app.dSYM0f445278804cb741^3e406778804cb741^---0#0#0#-19%DVTDocumentLocation2@125"file://localhost/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello%20World.app.dSYM000000000080d041^1012"GenerateDSYMFile "build/Hello World.app.dSYM" "build/Hello World.app/Hello World"    cd /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/krjoseph/Documents/Development/android/sdk/platform-tools:/Users/krjoseph/Documents/Development/android/sdk/tools/:/Users/krjoseph/Documents/Web/Chromium/depot_tools:/usr/local/git/bin:/usr/local/bin/src:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/Users/krjoseph/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/dsymutil "/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello World.app/Hello World" -o "/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello World.app.dSYM"36"FA5B1887-F6E2-4723-B59F-5A42BE4EDC19-
+
+CLd "/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello World.app/Hello World" normal i386
+s390889592.215363
+e390889592.314046
+r1
+xLd
+x/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello World.app/Hello World
+xnormal
+xi386
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection119"Link /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello World.app/Hello Worldb43c3778804cb741^3c665078804cb741^---0#0#0#--2156"Ld "build/Hello World.app/Hello World" normal i386    cd /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios    setenv IPHONEOS_DEPLOYMENT_TARGET 5.0    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/krjoseph/Documents/Development/android/sdk/platform-tools:/Users/krjoseph/Documents/Development/android/sdk/tools/:/Users/krjoseph/Documents/Web/Chromium/depot_tools:/usr/local/git/bin:/usr/local/bin/src:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/Users/krjoseph/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -arch i386 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk -L/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build -F/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build -filelist "/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello_World.build/Debug-iphonesimulator/Hello_World.build/Objects-normal/i386/Hello World.LinkFileList" -Xlinker -objc_abi_version -Xlinker 2 -weak_framework CoreFoundation -weak_framework UIKit -weak_framework AVFoundation -weak_framework CoreMedia -weak-lSystem -all_load -Obj-C -fobjc-link-runtime -Xlinker -no_implicit_dylibs -mios-simulator-version-min=5.0 -framework AssetsLibrary /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/libCordova.a -framework Foundation -weak_framework UIKit -framework CoreGraphics -framework AddressBook -framework AddressBookUI -framework AudioToolbox -weak_framework AVFoundation -framework CFNetwork -framework CoreLocation -framework MediaPlayer -framework QuartzCore -framework SystemConfiguration -framework MobileCoreServices -weak_framework CoreMedia -o "/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello World.app/Hello World"36"B511D42F-EB88-458E-B70D-14F7B59990DF-
+
+CPhaseScriptExecution "Copy www directory" /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello_World.build/Debug-iphonesimulator/Hello_World.build/Script-304B58A110DAC018002A0835.sh
+s390889590.986143
+e390889591.147497
+r1
+xPhaseScriptExecution
+xCopy www directory
+x/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello_World.build/Debug-iphonesimulator/Hello_World.build/Script-304B58A110DAC018002A0835.sh
+o
+oreal	0m0.145s
+ouser	0m0.060s
+osys	0m0.073s
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection44"Run custom shell script 'Copy www directory'5307fd76804cb741^d7c12577804cb741^-42"real	0m0.145suser	0m0.060ssys	0m0.073s3(21%IDEActivityLogMessage2@14"real	0m0.145s-390889591#1#14#-0#-----2@14"user	0m0.060s-390889591#15#14#-0#-----2@13"sys	0m0.073s-390889591#29#13#-0#-----0#0#0#--22689"PhaseScriptExecution "Copy www directory" build/Hello_World.build/Debug-iphonesimulator/Hello_World.build/Script-304B58A110DAC018002A0835.sh    cd /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios    setenv ACTION build    setenv ALTERNATE_GROUP staff    setenv ALTERNATE_MODE u+w,go-w,a+rX    setenv ALTERNATE_OWNER krjoseph    setenv ALWAYS_SEARCH_USER_PATHS NO    setenv APPLE_INTERNAL_DEVELOPER_DIR /AppleInternal/Developer    setenv APPLE_INTERNAL_DIR /AppleInternal    setenv APPLE_INTERNAL_DOCUMENTATION_DIR /AppleInternal/Documentation    setenv APPLE_INTERNAL_LIBRARY_DIR /AppleInternal/Library    setenv APPLE_INTERNAL_TOOLS /AppleInternal/Developer/Tools    setenv APPLY_RULES_IN_COPY_FILES NO    setenv ARCHS i386    setenv ARCHS_STANDARD_32_BIT i386    setenv ARCHS_UNIVERSAL_IPHONE_OS i386    setenv AVAILABLE_PLATFORMS "iphonesimulator macosx iphoneos"    setenv BUILD_COMPONENTS "headers build"    setenv BUILD_DIR /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build    setenv BUILD_ROOT /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build    setenv BUILD_STYLE     setenv BUILD_VARIANTS normal    setenv BUILT_PRODUCTS_DIR /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build    setenv CACHE_ROOT /var/folders/pk/zsrwhch925nd010tf2jkltsh0000gn/C/com.apple.Xcode.501    setenv CCHROOT /var/folders/pk/zsrwhch925nd010tf2jkltsh0000gn/C/com.apple.Xcode.501    setenv CHMOD /bin/chmod    setenv CHOWN /usr/sbin/chown    setenv CLANG_ENABLE_OBJC_ARC NO    setenv CLANG_WARN_CONSTANT_CONVERSION YES    setenv CLANG_WARN_ENUM_CONVERSION YES    setenv CLANG_WARN_INT_CONVERSION YES    setenv CLANG_WARN__DUPLICATE_METHOD_MATCH YES    setenv CLASS_FILE_DIR /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello_World.build/Debug-iphonesimulator/Hello_World.build/JavaClasses    setenv CLEAN_PRECOMPS YES    setenv CLONE_HEADERS NO    setenv CODESIGNING_FOLDER_PATH "/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello World.app"    setenv COMMAND_MODE legacy    setenv COMPOSITE_SDK_DIRS /var/folders/pk/zsrwhch925nd010tf2jkltsh0000gn/C/com.apple.Xcode.501/CompositeSDKs    setenv COMPRESS_PNG_FILES YES    setenv CONFIGURATION Debug    setenv CONFIGURATION_BUILD_DIR /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build    setenv CONFIGURATION_TEMP_DIR /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello_World.build/Debug-iphonesimulator    setenv CONTENTS_FOLDER_PATH "Hello World.app"    setenv COPYING_PRESERVES_HFS_DATA NO    setenv COPY_PHASE_STRIP NO    setenv COPY_RESOURCES_FROM_STATIC_FRAMEWORKS YES    setenv CP /bin/cp    setenv CURRENT_ARCH i386    setenv CURRENT_VARIANT normal    setenv DEAD_CODE_STRIPPING NO    setenv DEBUGGING_SYMBOLS YES    setenv DEBUG_INFORMATION_FORMAT dwarf-with-dsym    setenv DEFAULT_COMPILER com.apple.compilers.llvm.clang.1_0    setenv DEPLOYMENT_LOCATION NO    setenv DEPLOYMENT_POSTPROCESSING NO    setenv DERIVED_FILES_DIR /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello_World.build/Debug-iphonesimulator/Hello_World.build/DerivedSources    setenv DERIVED_FILE_DIR /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello_World.build/Debug-iphonesimulator/Hello_World.build/DerivedSources    setenv DERIVED_SOURCES_DIR /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello_World.build/Debug-iphonesimulator/Hello_World.build/DerivedSources    setenv DEVELOPER_APPLICATIONS_DIR /Applications/Xcode.app/Contents/Developer/Applications    setenv DEVELOPER_BIN_DIR /Applications/Xcode.app/Contents/Developer/usr/bin    setenv DEVELOPER_DIR /Applications/Xcode.app/Contents/Developer    setenv DEVELOPER_FRAMEWORKS_DIR /Applications/Xcode.app/Contents/Developer/Library/Frameworks    setenv DEVELOPER_FRAMEWORKS_DIR_QUOTED "\"/Applications/Xcode.app/Contents/Developer/Library/Frameworks\""    setenv DEVELOPER_LIBRARY_DIR /Applications/Xcode.app/Contents/Developer/Library    setenv DEVELOPER_SDK_DIR /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs    setenv DEVELOPER_TOOLS_DIR /Applications/Xcode.app/Contents/Developer/Tools    setenv DEVELOPER_USR_DIR /Applications/Xcode.app/Contents/Developer/usr    setenv DEVELOPMENT_LANGUAGE English    setenv DOCUMENTATION_FOLDER_PATH "Hello World.app/English.lproj/Documentation"    setenv DO_HEADER_SCANNING_IN_JAM NO    setenv DSTROOT /tmp/Hello_World.dst    setenv DT_TOOLCHAIN_DIR /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain    setenv DWARF_DSYM_FILE_NAME "Hello World.app.dSYM"    setenv DWARF_DSYM_FILE_SHOULD_ACCOMPANY_PRODUCT NO    setenv DWARF_DSYM_FOLDER_PATH /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build    setenv EFFECTIVE_PLATFORM_NAME -iphonesimulator    setenv ENABLE_HEADER_DEPENDENCIES YES    setenv EXCLUDED_INSTALLSRC_SUBDIRECTORY_PATTERNS ".DS_Store .svn .git .hg CVS"    setenv EXCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES "*.nib *.lproj *.framework *.gch (*) .DS_Store CVS .svn .git .hg *.xcodeproj *.xcode *.pbproj *.pbxproj"    setenv EXECUTABLES_FOLDER_PATH "Hello World.app/Executables"    setenv EXECUTABLE_FOLDER_PATH "Hello World.app"    setenv EXECUTABLE_NAME "Hello World"    setenv EXECUTABLE_PATH "Hello World.app/Hello World"    setenv FILE_LIST /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello_World.build/Debug-iphonesimulator/Hello_World.build/Objects/LinkFileList    setenv FIXED_FILES_DIR /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello_World.build/Debug-iphonesimulator/Hello_World.build/FixedFiles    setenv FRAMEWORKS_FOLDER_PATH "Hello World.app/Frameworks"    setenv FRAMEWORK_FLAG_PREFIX -framework    setenv FRAMEWORK_SEARCH_PATHS "\"/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build\" "    setenv FRAMEWORK_VERSION A    setenv FULL_PRODUCT_NAME "Hello World.app"    setenv GCC3_VERSION 3.3    setenv GCC_C_LANGUAGE_STANDARD c99    setenv GCC_DYNAMIC_NO_PIC NO    setenv GCC_INLINES_ARE_PRIVATE_EXTERN YES    setenv GCC_OBJC_LEGACY_DISPATCH YES    setenv GCC_OPTIMIZATION_LEVEL 0    setenv GCC_PFE_FILE_C_DIALECTS "c objective-c c++ objective-c++"    setenv GCC_PRECOMPILE_PREFIX_HEADER YES    setenv GCC_PREFIX_HEADER Hello_World/Hello_World-Prefix.pch    setenv GCC_SYMBOLS_PRIVATE_EXTERN YES    setenv GCC_THUMB_SUPPORT NO    setenv GCC_TREAT_WARNINGS_AS_ERRORS NO    setenv GCC_VERSION com.apple.compilers.llvm.clang.1_0    setenv GCC_VERSION_IDENTIFIER com_apple_compilers_llvm_clang_1_0    setenv GCC_WARN_ABOUT_RETURN_TYPE YES    setenv GCC_WARN_UNINITIALIZED_AUTOS YES    setenv GCC_WARN_UNUSED_VARIABLE YES    setenv GENERATE_MASTER_OBJECT_FILE NO    setenv GENERATE_PKGINFO_FILE YES    setenv GENERATE_PROFILING_CODE NO    setenv GID 20    setenv GROUP staff    setenv HEADERMAP_INCLUDES_FLAT_ENTRIES_FOR_TARGET_BEING_BUILT YES    setenv HEADERMAP_INCLUDES_FRAMEWORK_ENTRIES_FOR_ALL_PRODUCT_TYPES YES    setenv HEADERMAP_INCLUDES_NONPUBLIC_NONPRIVATE_HEADERS YES    setenv HEADERMAP_INCLUDES_PROJECT_HEADERS YES    setenv HEADER_SEARCH_PATHS "\"/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/include\" \"/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/usr/local/lib/include\" \"/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/UninstalledProducts/include\" \"/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build\""    setenv ICONV /usr/bin/iconv    setenv INFOPLIST_EXPAND_BUILD_SETTINGS YES    setenv INFOPLIST_FILE Hello_World/Hello_World-Info.plist    setenv INFOPLIST_OUTPUT_FORMAT binary    setenv INFOPLIST_PATH "Hello World.app/Info.plist"    setenv INFOPLIST_PREPROCESS NO    setenv INFOSTRINGS_PATH "Hello World.app/English.lproj/InfoPlist.strings"    setenv INSTALL_DIR /tmp/Hello_World.dst/Applications    setenv INSTALL_GROUP staff    setenv INSTALL_MODE_FLAG u+w,go-w,a+rX    setenv INSTALL_OWNER krjoseph    setenv INSTALL_PATH /Applications    setenv INSTALL_ROOT /tmp/Hello_World.dst    setenv IPHONEOS_DEPLOYMENT_TARGET 5.0    setenv JAVAC_DEFAULT_FLAGS "-J-Xms64m -J-XX:NewSize=4M -J-Dfile.encoding=UTF8"    setenv JAVA_APP_STUB /System/Library/Frameworks/JavaVM.framework/Resources/MacOS/JavaApplicationStub    setenv JAVA_ARCHIVE_CLASSES YES    setenv JAVA_ARCHIVE_TYPE JAR    setenv JAVA_COMPILER /usr/bin/javac    setenv JAVA_FOLDER_PATH "Hello World.app/Java"    setenv JAVA_FRAMEWORK_RESOURCES_DIRS Resources    setenv JAVA_JAR_FLAGS cv    setenv JAVA_SOURCE_SUBDIR .    setenv JAVA_USE_DEPENDENCIES YES    setenv JAVA_ZIP_FLAGS -urg    setenv JIKES_DEFAULT_FLAGS "+E +OLDCSO"    setenv KEEP_PRIVATE_EXTERNS NO    setenv LD_GENERATE_MAP_FILE NO    setenv LD_MAP_FILE_PATH "/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello_World.build/Debug-iphonesimulator/Hello_World.build/Hello World-LinkMap-normal-i386.txt"    setenv LD_NO_PIE NO    setenv LEGACY_DEVELOPER_DIR /Applications/Xcode.app/Contents/PlugIns/Xcode3Core.ideplugin/Contents/SharedSupport/Developer    setenv LEX lex    setenv LIBRARY_FLAG_NOSPACE YES    setenv LIBRARY_FLAG_PREFIX -l    setenv LIBRARY_SEARCH_PATHS "\"/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build\" "    setenv LINKER_DISPLAYS_MANGLED_NAMES NO    setenv LINK_FILE_LIST_normal_i386 "/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello_World.build/Debug-iphonesimulator/Hello_World.build/Objects-normal/i386/Hello World.LinkFileList"    setenv LINK_WITH_STANDARD_LIBRARIES YES    setenv LOCALIZED_RESOURCES_FOLDER_PATH "Hello World.app/English.lproj"    setenv LOCAL_ADMIN_APPS_DIR /Applications/Utilities    setenv LOCAL_APPS_DIR /Applications    setenv LOCAL_DEVELOPER_DIR /Library/Developer    setenv LOCAL_LIBRARY_DIR /Library    setenv MACH_O_TYPE mh_execute    setenv MACOSX_DEPLOYMENT_TARGET 10.6    setenv MAC_OS_X_PRODUCT_BUILD_VERSION 12D78    setenv MAC_OS_X_VERSION_ACTUAL 1083    setenv MAC_OS_X_VERSION_MAJOR 1080    setenv MAC_OS_X_VERSION_MINOR 0803    setenv NATIVE_ARCH i386    setenv NATIVE_ARCH_32_BIT i386    setenv NATIVE_ARCH_64_BIT x86_64    setenv NATIVE_ARCH_ACTUAL x86_64    setenv NO_COMMON YES    setenv OBJC_ABI_VERSION 2    setenv OBJECT_FILE_DIR /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello_World.build/Debug-iphonesimulator/Hello_World.build/Objects    setenv OBJECT_FILE_DIR_normal /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello_World.build/Debug-iphonesimulator/Hello_World.build/Objects-normal    setenv OBJROOT /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build    setenv ONLY_ACTIVE_ARCH NO    setenv OPTIMIZATION_LEVEL 0    setenv OS MACOS    setenv OSAC /usr/bin/osacompile    setenv OTHER_LDFLAGS "-weak_framework CoreFoundation -weak_framework UIKit -weak_framework AVFoundation -weak_framework CoreMedia -weak-lSystem -all_load -Obj-C"    setenv PACKAGE_TYPE com.apple.package-type.wrapper.application    setenv PASCAL_STRINGS YES    setenv PATH "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin:/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/libexec:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/local/bin:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/usr/bin:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/usr/local/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/local/bin:/Applications/Xcode.app/Contents/Developer/Tools:/Users/krjoseph/Documents/Development/android/sdk/platform-tools:/Users/krjoseph/Documents/Development/android/sdk/tools:/Users/krjoseph/Documents/Web/Chromium/depot_tools:/usr/local/git/bin:/usr/local/bin/src:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/Users/krjoseph/bin:/usr/bin:/bin:/usr/sbin:/sbin"    setenv PATH_PREFIXES_EXCLUDED_FROM_HEADER_DEPENDENCIES "/usr/include /usr/local/include /System/Library/Frameworks /System/Library/PrivateFrameworks /Applications/Xcode.app/Contents/Developer/Headers /Applications/Xcode.app/Contents/Developer/SDKs /Applications/Xcode.app/Contents/Developer/Platforms"    setenv PBDEVELOPMENTPLIST_PATH "Hello World.app/pbdevelopment.plist"    setenv PFE_FILE_C_DIALECTS objective-c    setenv PKGINFO_FILE_PATH /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello_World.build/Debug-iphonesimulator/Hello_World.build/PkgInfo    setenv PKGINFO_PATH "Hello World.app/PkgInfo"    setenv PLATFORM_DEVELOPER_APPLICATIONS_DIR /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Applications    setenv PLATFORM_DEVELOPER_BIN_DIR /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin    setenv PLATFORM_DEVELOPER_LIBRARY_DIR /Applications/Xcode.app/Contents/PlugIns/Xcode3Core.ideplugin/Contents/SharedSupport/Developer/Library    setenv PLATFORM_DEVELOPER_SDK_DIR /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs    setenv PLATFORM_DEVELOPER_TOOLS_DIR /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Tools    setenv PLATFORM_DEVELOPER_USR_DIR /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr    setenv PLATFORM_DIR /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform    setenv PLATFORM_NAME iphonesimulator    setenv PLATFORM_PREFERRED_ARCH i386    setenv PLATFORM_PRODUCT_BUILD_VERSION 10B141    setenv PLATFORM_VERSION_AVAILABILITY_H_FORMAT 60100    setenv PLIST_FILE_OUTPUT_FORMAT binary    setenv PLUGINS_FOLDER_PATH "Hello World.app/PlugIns"    setenv PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR YES    setenv PRECOMP_DESTINATION_DIR /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello_World.build/Debug-iphonesimulator/Hello_World.build/PrefixHeaders    setenv PRESERVE_DEAD_CODE_INITS_AND_TERMS NO    setenv PRIVATE_HEADERS_FOLDER_PATH "Hello World.app/PrivateHeaders"    setenv PRODUCT_NAME "Hello World"    setenv PRODUCT_SETTINGS_PATH /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/Hello_World/Hello_World-Info.plist    setenv PRODUCT_TYPE com.apple.product-type.application    setenv PROFILING_CODE NO    setenv PROJECT Hello_World    setenv PROJECT_DERIVED_FILE_DIR /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello_World.build/DerivedSources    setenv PROJECT_DIR /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios    setenv PROJECT_FILE_PATH /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/Hello_World.xcodeproj    setenv PROJECT_NAME Hello_World    setenv PROJECT_TEMP_DIR /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello_World.build    setenv PROJECT_TEMP_ROOT /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build    setenv PUBLIC_HEADERS_FOLDER_PATH "Hello World.app/Headers"    setenv RECURSIVE_SEARCH_PATHS_FOLLOW_SYMLINKS YES    setenv REMOVE_CVS_FROM_RESOURCES YES    setenv REMOVE_GIT_FROM_RESOURCES YES    setenv REMOVE_HG_FROM_RESOURCES YES    setenv REMOVE_SVN_FROM_RESOURCES YES    setenv REZ_COLLECTOR_DIR /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello_World.build/Debug-iphonesimulator/Hello_World.build/ResourceManagerResources    setenv REZ_OBJECTS_DIR /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello_World.build/Debug-iphonesimulator/Hello_World.build/ResourceManagerResources/Objects    setenv REZ_SEARCH_PATHS "\"/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build\" "    setenv RUN_CLANG_STATIC_ANALYZER NO    setenv SCAN_ALL_SOURCE_FILES_FOR_INCLUDES NO    setenv SCRIPTS_FOLDER_PATH "Hello World.app/Scripts"    setenv SCRIPT_INPUT_FILE_COUNT 0    setenv SCRIPT_OUTPUT_FILE_COUNT 0    setenv SDKROOT /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk    setenv SDK_DIR /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk    setenv SDK_NAME iphonesimulator6.1    setenv SDK_PRODUCT_BUILD_VERSION 10B141    setenv SED /usr/bin/sed    setenv SEPARATE_STRIP NO    setenv SEPARATE_SYMBOL_EDIT NO    setenv SET_DIR_MODE_OWNER_GROUP YES    setenv SET_FILE_MODE_OWNER_GROUP NO    setenv SHALLOW_BUNDLE YES    setenv SHARED_DERIVED_FILE_DIR /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/DerivedSources    setenv SHARED_FRAMEWORKS_FOLDER_PATH "Hello World.app/SharedFrameworks"    setenv SHARED_PRECOMPS_DIR /var/folders/pk/zsrwhch925nd010tf2jkltsh0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders    setenv SHARED_SUPPORT_FOLDER_PATH "Hello World.app/SharedSupport"    setenv SKIP_INSTALL NO    setenv SOURCE_ROOT /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios    setenv SRCROOT /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios    setenv STRINGS_FILE_OUTPUT_ENCODING binary    setenv STRIP_INSTALLED_PRODUCT YES    setenv STRIP_STYLE all    setenv SUPPORTED_DEVICE_FAMILIES "1 2"    setenv SUPPORTED_PLATFORMS "iphonesimulator iphoneos"    setenv SYMROOT /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build    setenv SYSTEM_ADMIN_APPS_DIR /Applications/Utilities    setenv SYSTEM_APPS_DIR /Applications    setenv SYSTEM_CORE_SERVICES_DIR /System/Library/CoreServices    setenv SYSTEM_DEMOS_DIR /Applications/Extras    setenv SYSTEM_DEVELOPER_APPS_DIR /Applications/Xcode.app/Contents/Developer/Applications    setenv SYSTEM_DEVELOPER_BIN_DIR /Applications/Xcode.app/Contents/Developer/usr/bin    setenv SYSTEM_DEVELOPER_DEMOS_DIR "/Applications/Xcode.app/Contents/Developer/Applications/Utilities/Built Examples"    setenv SYSTEM_DEVELOPER_DIR /Applications/Xcode.app/Contents/Developer    setenv SYSTEM_DEVELOPER_DOC_DIR "/Applications/Xcode.app/Contents/Developer/ADC Reference Library"    setenv SYSTEM_DEVELOPER_GRAPHICS_TOOLS_DIR "/Applications/Xcode.app/Contents/Developer/Applications/Graphics Tools"    setenv SYSTEM_DEVELOPER_JAVA_TOOLS_DIR "/Applications/Xcode.app/Contents/Developer/Applications/Java Tools"    setenv SYSTEM_DEVELOPER_PERFORMANCE_TOOLS_DIR "/Applications/Xcode.app/Contents/Developer/Applications/Performance Tools"    setenv SYSTEM_DEVELOPER_RELEASENOTES_DIR "/Applications/Xcode.app/Contents/Developer/ADC Reference Library/releasenotes"    setenv SYSTEM_DEVELOPER_TOOLS /Applications/Xcode.app/Contents/Developer/Tools    setenv SYSTEM_DEVELOPER_TOOLS_DOC_DIR "/Applications/Xcode.app/Contents/Developer/ADC Reference Library/documentation/DeveloperTools"    setenv SYSTEM_DEVELOPER_TOOLS_RELEASENOTES_DIR "/Applications/Xcode.app/Contents/Developer/ADC Reference Library/releasenotes/DeveloperTools"    setenv SYSTEM_DEVELOPER_USR_DIR /Applications/Xcode.app/Contents/Developer/usr    setenv SYSTEM_DEVELOPER_UTILITIES_DIR /Applications/Xcode.app/Contents/Developer/Applications/Utilities    setenv SYSTEM_DOCUMENTATION_DIR /Library/Documentation    setenv SYSTEM_LIBRARY_DIR /System/Library    setenv TARGETED_DEVICE_FAMILY 1,2    setenv TARGETNAME Hello_World    setenv TARGET_BUILD_DIR /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build    setenv TARGET_NAME Hello_World    setenv TARGET_TEMP_DIR /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello_World.build/Debug-iphonesimulator/Hello_World.build    setenv TEMP_DIR /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello_World.build/Debug-iphonesimulator/Hello_World.build    setenv TEMP_FILES_DIR /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello_World.build/Debug-iphonesimulator/Hello_World.build    setenv TEMP_FILE_DIR /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello_World.build/Debug-iphonesimulator/Hello_World.build    setenv TEMP_ROOT /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build    setenv TEST_AFTER_BUILD NO    setenv TOOLCHAINS com.apple.dt.toolchain.XcodeDefault    setenv UID 501    setenv UNLOCALIZED_RESOURCES_FOLDER_PATH "Hello World.app"    setenv UNSTRIPPED_PRODUCT NO    setenv USER krjoseph    setenv USER_APPS_DIR /Users/krjoseph/Applications    setenv USER_LIBRARY_DIR /Users/krjoseph/Library    setenv USE_DYNAMIC_NO_PIC YES    setenv USE_HEADERMAP YES    setenv USE_HEADER_SYMLINKS NO    setenv VALIDATE_PRODUCT NO    setenv VALID_ARCHS i386    setenv VERBOSE_PBXCP NO    setenv VERSIONPLIST_PATH "Hello World.app/version.plist"    setenv VERSION_INFO_BUILDER krjoseph    setenv VERSION_INFO_FILE "Hello World_vers.c"    setenv VERSION_INFO_STRING "\"@(#)PROGRAM:Hello World  PROJECT:Hello_World-\""    setenv WRAPPER_EXTENSION app    setenv WRAPPER_NAME "Hello World.app"    setenv WRAPPER_SUFFIX .app    setenv XCODE_APP_SUPPORT_DIR /Applications/Xcode.app/Contents/Developer/Library/Xcode    setenv XCODE_PRODUCT_BUILD_VERSION 4H1003    setenv XCODE_VERSION_ACTUAL 0462    setenv XCODE_VERSION_MAJOR 0400    setenv XCODE_VERSION_MINOR 0460    setenv YACC yacc    /bin/sh -c /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello_World.build/Debug-iphonesimulator/Hello_World.build/Script-304B58A110DAC018002A0835.sh36"E561150A-1319-45D9-83B4-C1A789EC4A3E-
+
+CProcessInfoPlistFile "/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello World.app/Info.plist" Hello_World/Hello_World-Info.plist
+s390889590.970613
+e390889590.977782
+r1
+xProcessInfoPlistFile
+x/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello World.app/Info.plist
+xHello_World/Hello_World-Info.plist
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection42"Process Hello_World/Hello_World-Info.plist118ff876804cb741^764ffa76804cb741^---0#0#0#-19%DVTDocumentLocation2@131"file://localhost/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/Hello_World/Hello_World-Info.plist0000000000000000^1061"ProcessInfoPlistFile "build/Hello World.app/Info.plist" Hello_World/Hello_World-Info.plist    cd /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/krjoseph/Documents/Development/android/sdk/platform-tools:/Users/krjoseph/Documents/Development/android/sdk/tools/:/Users/krjoseph/Documents/Web/Chromium/depot_tools:/usr/local/git/bin:/usr/local/bin/src:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/Users/krjoseph/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin"    builtin-infoPlistUtility Hello_World/Hello_World-Info.plist -genpkginfo "/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello World.app/PkgInfo" -expandbuildsettings -format binary -platform iphonesimulator -o "/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello World.app/Info.plist"36"FEE725C0-DD83-4488-B8B9-1A61BDFA3EBF-
+
+CProcessPCH /var/folders/pk/zsrwhch925nd010tf2jkltsh0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/Hello_World-Prefix-aljnoqbciytwhlcmhenagsoajgur/Hello_World-Prefix.pch.pth Hello_World/Hello_World-Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s390889591.928994
+e390889592.134244
+r1
+xProcessPCH
+x/var/folders/pk/zsrwhch925nd010tf2jkltsh0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/Hello_World-Prefix-aljnoqbciytwhlcmhenagsoajgur/Hello_World-Prefix.pch.pth
+xHello_World/Hello_World-Prefix.pch
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection45"Precompile Hello_World/Hello_World-Prefix.pch24eeed77804cb741^7d5d2278804cb741^---0#0#0#-19%DVTDocumentLocation2@131"file://localhost/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/Hello_World/Hello_World-Prefix.pch0000000000000000^4300"ProcessPCH /var/folders/pk/zsrwhch925nd010tf2jkltsh0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/Hello_World-Prefix-aljnoqbciytwhlcmhenagsoajgur/Hello_World-Prefix.pch.pth Hello_World/Hello_World-Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/krjoseph/Documents/Development/android/sdk/platform-tools:/Users/krjoseph/Documents/Development/android/sdk/tools/:/Users/krjoseph/Documents/Web/Chromium/depot_tools:/usr/local/git/bin:/usr/local/bin/src:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/Users/krjoseph/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c-header -arch i386 -fmessage-length=0 -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wduplicate-method-match -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-empty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wenum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -fvisibility=hidden -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=5.0 -iquote "/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello_World.build/Debug-iphonesimulator/Hello_World.build/Hello World-generated-files.hmap" "-I/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello_World.build/Debug-iphonesimulator/Hello_World.build/Hello World-own-target-headers.hmap" "-I/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello_World.build/Debug-iphonesimulator/Hello_World.build/Hello World-all-target-headers.hmap" -iquote "/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello_World.build/Debug-iphonesimulator/Hello_World.build/Hello World-project-headers.hmap" -I/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/include -I/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/usr/local/lib/include -I/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/UninstalledProducts/include -I/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build -I/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello_World.build/Debug-iphonesimulator/Hello_World.build/DerivedSources/i386 -I/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello_World.build/Debug-iphonesimulator/Hello_World.build/DerivedSources -F/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build --serialize-diagnostics /var/folders/pk/zsrwhch925nd010tf2jkltsh0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/Hello_World-Prefix-aljnoqbciytwhlcmhenagsoajgur/Hello_World-Prefix.pch.dia -c /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/Hello_World/Hello_World-Prefix.pch -o /var/folders/pk/zsrwhch925nd010tf2jkltsh0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/Hello_World-Prefix-aljnoqbciytwhlcmhenagsoajgur/Hello_World-Prefix.pch.pth -MMD -MT dependencies -MF /var/folders/pk/zsrwhch925nd010tf2jkltsh0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/Hello_World-Prefix-aljnoqbciytwhlcmhenagsoajgur/Hello_World-Prefix.pch.d36"D5B01F25-95C0-4D94-862A-6493D955B2C0-
+
+CTouch "/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello World.app"
+s390889592.411671
+e390889592.416458
+r1
+xTouch
+x/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello World.app
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection108"Touch /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello World.appc9776978804cb741^bb9c6a78804cb741^---0#0#0#--757"Touch "build/Hello World.app"    cd /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/krjoseph/Documents/Development/android/sdk/platform-tools:/Users/krjoseph/Documents/Development/android/sdk/tools/:/Users/krjoseph/Documents/Web/Chromium/depot_tools:/usr/local/git/bin:/usr/local/bin/src:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/Users/krjoseph/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin"    /usr/bin/touch -c "/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/ios/build/Hello World.app"36"C257B8CF-2FE1-4E77-BAEE-147A3AC69CD8-
+

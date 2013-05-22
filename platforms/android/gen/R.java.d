@@ -1,0 +1,23 @@
+/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/android/gen/com/phonegap/anyconference/R.java \
+ : /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/android/res/drawable/icon.png \
+/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/android/res/drawable-hdpi/ic_launcher.png \
+/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/android/res/drawable-hdpi/icon.png \
+/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/android/res/drawable-ldpi/ic_launcher.png \
+/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/android/res/drawable-ldpi/icon.png \
+/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/android/res/drawable-mdpi/ic_launcher.png \
+/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/android/res/drawable-mdpi/icon.png \
+/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/android/res/drawable-xhdpi/ic_launcher.png \
+/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/android/res/drawable-xhdpi/icon.png \
+/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/android/res/layout/main.xml \
+/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/android/res/values/strings.xml \
+/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/android/res/xml/config.xml \
+/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/android/bin/res/drawable/icon.png \
+/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/android/bin/res/drawable-hdpi/ic_launcher.png \
+/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/android/bin/res/drawable-hdpi/icon.png \
+/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/android/bin/res/drawable-ldpi/ic_launcher.png \
+/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/android/bin/res/drawable-ldpi/icon.png \
+/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/android/bin/res/drawable-mdpi/ic_launcher.png \
+/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/android/bin/res/drawable-mdpi/icon.png \
+/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/android/bin/res/drawable-xhdpi/ic_launcher.png \
+/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/android/bin/res/drawable-xhdpi/icon.png \
+/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/android/bin/AndroidManifest.xml \
