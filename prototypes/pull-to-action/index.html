@@ -9,7 +9,6 @@
   body {
     font: 120%/1.6 normal normal Helvetica, Arial, sans-serif;
     margin: 0;
-        -webkit-perspective: 600;
   }
   
   html, body{
@@ -23,7 +22,7 @@
   
   li {
     padding: 1rem 2rem;
-    background: #eee;
+    background: hotpink;
     border-bottom: 1px solid #d7d7d7;
   }
   
@@ -60,6 +59,15 @@
     left: 0;
     bottom: -70px;
   }
+
+  /* .iscroll is added to HTML element when iScroll library is used */
+  .iscroll li{
+    color: lightgreen;
+  }
+  
+  .iscroll .pull-to-action{
+    position: absolute;
+  }
   
   .message{
     display: block;
@@ -92,11 +100,6 @@
   <!-- 'close' class added to 'scrolling' with JS -->
   <div class="scrolling">
     <div class="wrapper">
-      <!-- 'state-release' class added to 'pull-to-action' with JavaScript-->
-      <div class="pull-to-action">
-        <div class="message pull">Pull up to close</div>
-        <div class="message release">Release to close</div>
-      </div>
       <ul>
         <li>Item 1</li>
         <li>Item 2</li>
@@ -108,10 +111,23 @@
         <li>Item 8</li>
         <li>Item 9</li>
         <li>Item 10</li>
+        <li>Item 11</li>
+        <li>Item 12</li>
+        <li>Item 13</li>
+        <li>Item 14</li>
+        <li>Item 15</li>
+        <li>Item 16</li>
+        <li>Item 17</li>
       </ul>
+      <!-- 'state-release' class added to 'pull-to-action' with JavaScript-->
+      <div class="pull-to-action">
+        <div class="message pull">Pull up to close</div>
+        <div class="message release">Release to close</div>
+      </div>
     </div>
   </div>
-
+  
+  <script src="iscroll.js" type="text/javascript"></script>
   <script>
     
     // container with scroll
@@ -126,9 +142,10 @@
     var elHeight, listHeight, ptaHeight, maxScroll
     
     function setup(){
-      elHeight = parseInt(window.getComputedStyle(el, null).height, 10)
-      listHeight = parseInt(window.getComputedStyle(list, null).height, 10)
-      ptaHeight = parseInt(window.getComputedStyle(pta, null).height, 10)
+      elHeight = el.offsetHeight
+      listHeight = list.offsetHeight
+      ptaHeight = pta.offsetHeight
+      console.log(ptaHeight)
       maxScroll = Math.max(listHeight - elHeight, 0)
     }
     
@@ -141,35 +158,59 @@
       el.addEventListener('webkitAnimationEnd', function(e){
           el.classList.remove('close')
       })
+      
     }
+    
+    function useIScroll(){
+      document.querySelector('html').classList.add('iscroll')
+      var scroller = new iScroll(el, {
+        // Android 4+ performs better without tranisition
+        useTransition: false,
+        
+        onScrollMove: function(){
+          handleScrollPosition(-1 * this.y, -1 * this.maxScrollY, ptaHeight)
+        }
+        
+      })
+    }
+    
+    function useNativeScroll(){
+      el.addEventListener('touchstart', function(e){
+        // force a scroll offset if none exists to trick iOS into scrolling this
+        // use existent scroll offset if the content has been scrolled before.
+        el.scrollTop = (el.scrollTop === 0) ? 1 : el.scrollTop
+      })
 
-    el.addEventListener('touchstart', function(e){
-      // force a scroll offset if none exists to trick iOS into scrolling this
-      // use existent scroll offset if the content has been scrolled before.
-      el.scrollTop = (el.scrollTop === 0) ? 1 : el.scrollTop
-    })
-    
-    el.addEventListener('touchmove', function(e){
-        if (el.scrollTop >= maxScroll + ptaHeight){
-          pta.classList.add('state-release')
-          el.addEventListener('touchend', close)
+      el.addEventListener('touchmove', function(e){
+          handleScrollPosition(el.scrollTop, maxScroll, ptaHeight)
+      })
+
+      el.addEventListener('scroll', function(e){
+        if (el.scrollTop == maxScroll){
+          // insert artificial scroll offset to make the element not completely scrolled so iOS won't switch to scrolling the whole document
+          el.scrollTop = maxScroll - 1
         }
-        else{
-          pta.classList.remove('state-release')
-          el.removeEventListener('touchend', close)
-        }
-    })
+      })
+    }
     
-    el.addEventListener('scroll', function(e){
-      if (el.scrollTop == maxScroll){
-        // insert artificial scroll offset to make the element not completely scrolled so iOS won't switch to scrolling the whole document
-        el.scrollTop = maxScroll - 1
+    function handleScrollPosition(currentScroll, maximumScroll, offset){
+      console.log(currentScroll, maximumScroll, currentScroll>=maximumScroll+offset)
+      if (currentScroll >= maximumScroll + offset){
+        pta.classList.add('state-release')
+        el.addEventListener('touchend', close)
       }
-    })
-
+      else{
+        pta.classList.remove('state-release')
+        el.removeEventListener('touchend', close)
+      }
+    }
+    
     document.addEventListener('DOMContentLoaded', setup)
     // make sure to recalculate dimensions after device auto rotate
     window.addEventListener('orientationchange', setup)
+
+    // shameless check for iOS
+    document.addEventListener('DOMContentLoaded', (/\s?iPhone|iPad\s?/.test(window.navigator.userAgent)) ? useNativeScroll : useIScroll)
 
   </script>
 </body>
