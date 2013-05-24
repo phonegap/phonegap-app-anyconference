@@ -194,6 +194,7 @@ small{
     line-height: 2rem;
     margin: 0;
     padding: .6rem 1.3rem;
+    /* padding: .6rem 0; */
     color: white;
     background: #cc6699;
     font-weight: normal;
