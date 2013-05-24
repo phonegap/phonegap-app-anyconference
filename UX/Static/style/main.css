@@ -189,12 +189,10 @@ small{
 }
 
 .anyconf-list__header{
+    position: relative;
     width: 75%;
-    height: 2rem;
-    line-height: 2rem;
+    height: 3.3rem;
     margin: 0;
-    padding: .6rem 1.3rem;
-    /* padding: .6rem 0; */
     color: white;
     background: #cc6699;
     font-weight: normal;
@@ -209,7 +207,21 @@ small{
     height: 2rem;
     line-height: 2rem;
     padding: .3rem 1.3rem;
-    background: #e9bcd2;
     font-size: 1rem;
     font-weight: 400;
+    background: #e9bcd2;
+}
+
+.anyconf-list-label{
+    display: inline-block;
+    padding: 0.6rem 1.3rem;
+    height: 2rem;
+    line-height: 2rem;
+}
+
+.topcoat-icon--arrow{
+    height: 3.3rem;
+    width: 50px;
+    border-right: 1px solid white;
+    vertical-align: top;
 }
