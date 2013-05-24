@@ -42,7 +42,9 @@ limitations under the License.
 			}
 		},
 		
-		setAsNext: function() {
+		selected: false,
+		
+		setAsNextUp: function() {
 			this.set('timeFlag', timeFlag.NEXT);
 		},
 		
@@ -58,7 +60,6 @@ limitations under the License.
 			if (!this.get("title")) {
 				this.set({"title": this.defaults().title});
 			}
-			this.set('contextView', new SessionDetailsView({model: this}) );
 		}
 	});
 	
@@ -79,7 +80,7 @@ limitations under the License.
 	var speakerList = new SpeakerList;
 
 	var Track = Backbone.Model.extend({
-		
+		selectedSession: null
 	});
 
 	/*
@@ -145,6 +146,181 @@ limitations under the License.
 		}
 	});
 	
+	var SessionListDetailsView = Backbone.View.extend({
+//		model: appView.currentTrack,
+		
+		tagName: 'div',
+		className: 'list-details-view',
+		collection: sessionList,
+		
+		viewPointers: {},
+		
+		currentSession: null,
+		gestureStarted: false,
+		swiping: false,
+		
+		initialize: function() {
+			
+		},
+		
+		addSession: function(session) {
+			var view = new SessionDetailsView({
+				model: session
+			});
+			this.viewPointers[session.cid] = view;
+		},
+		
+		navigateTo: function(track) {
+			var session = track.get('selectedSession');
+			this.render();
+			this.currentSession = session;
+			var detailsView = this.viewPointers[ session.cid ];
+			detailsView.render();
+			this.el.appendChild(detailsView.el);
+			this.renderAdjacent();
+		},
+		
+		setCurrentSession: function(session) {
+			this.currentSession = session;
+			var currentView = this.viewPointers[session.cid];
+			currentView.render();
+			this.renderAdjacent();
+			this.render();
+		},
+		
+		renderAdjacent: function() {
+			var collection = this.collection;
+			var sessionIndex = collection.indexOf(this.currentSession);
+			this.prevSession = collection.at(sessionIndex-1) || collection.last();
+			this.nextSession = collection.at(sessionIndex+1) || collection.first();
+			var prevView = this.viewPointers[this.prevSession.cid];
+			prevView.renderAsPrevious();
+			
+			var nextView = this.viewPointers[this.nextSession.cid];
+			nextView.renderAsNext();
+			
+			this.el.appendChild( prevView.el );
+			this.el.appendChild( nextView.el );
+		},
+		
+		render: function() {
+			document.body.appendChild(this.el);
+			this.el.style.display = 'block';
+			this.el.style.webkitTransform = 'none';
+			window.addEventListener('touchstart', this.touchStart);
+			return this;
+		},
+		
+		transitionTo: function(relativeIndex) {
+			var _this = this;
+			this.animating = true;
+			var width = window.innerWidth;
+			var offsetX = width * relativeIndex;
+			
+			var onTransitionEnd = function(evt) {
+				_this.el.classList.remove('js-session-transition');
+				evt.target.removeEventListener('webkitTransitionEnd', onTransitionEnd);
+				_this.animating = false;
+				switch( relativeIndex ) {
+					case 0:
+						_this.pendingSession = _this.currentSession;
+						break;
+					case 1:
+						var prevView = _this.viewPointers[_this.prevSession.cid];
+						prevView.hide();
+						break;
+					case -1:
+						var nextView = _this.viewPointers[_this.nextSession.cid];
+						nextView.hide();
+						break;
+				}
+				_this.setCurrentSession(_this.pendingSession);
+			};
+			this.el.classList.add('js-session-transition');
+			
+			this.el.style.webkitTransform = 'translateX(' + -offsetX  + 'px) translateZ(0)';
+			this.el.addEventListener('webkitTransitionEnd', onTransitionEnd);
+		},
+		
+		touchStart: function(evt) {
+			var _this = sessionListDetailsView;
+			
+			_this.startPoint = {
+				x: evt.touches[0].pageX,
+				y: evt.touches[0].pageY
+			};
+			_this.lastPoint = {
+				x: _this.startPoint.x,
+				y: _this.startPoint.y
+			};
+			_this.lastDiff = {
+				x: 0,
+				y: 0
+			}
+			window.addEventListener('touchmove', _this.touchMove, false);
+			window.addEventListener('touchend', _this.touchEnd, false);
+		},
+		
+		touchMove: function(evt) {
+			var _this = sessionListDetailsView;
+		
+			var currentPoint = {
+				x: evt.touches[0].pageX,
+				y: evt.touches[0].pageY
+			};
+			var startOffset = {
+				x: currentPoint.x - _this.startPoint.x,
+				y: currentPoint.y - _this.startPoint.y
+			};
+			if( !_this.gestureStarted ) {
+				// determine if scrolling or page swiping
+				var absX = Math.abs( startOffset.x );
+				var absY = Math.abs( startOffset.y );
+				
+				// More horizontal than vertical = swiping
+				_this.swiping = (absX > absY);
+				
+				_this.gestureStarted = true;
+			}
+			if( _this.swiping ) {
+				evt.preventDefault();
+				_this.lastDiff = {
+					x: currentPoint.x - _this.lastPoint.x,
+					y: currentPoint.y - _this.lastPoint.y
+				};
+				_this.lastPoint = currentPoint;
+
+				_this.el.style.webkitTransform = 'translateX(' + startOffset.x + 'px) translateZ(0)';
+				if( startOffset.x > 0 ) {
+					_this.pendingSession = _this.prevSession;
+				} else {
+					_this.pendingSession = _this.nextSession;
+				}
+			}
+		},
+		
+		touchEnd: function(evt) {
+			var _this = sessionListDetailsView;
+			_this.gestureStarted = false;
+			console.log('_this.lastDiff.x', _this.lastDiff.x);
+			if( _this.lastDiff.x > 0 ) {
+				evt.preventDefault();
+				if( _this.pendingSession === _this.prevSession ) {
+					_this.transitionTo(-1);
+				} else {
+					_this.transitionTo(0);
+				}
+			} else {
+				if( _this.pendingSession === _this.nextSession ) {
+					_this.transitionTo(1);
+				} else {
+					_this.transitionTo(0);
+				}
+			}
+		}
+
+	});
+	
 	var SessionListView = Backbone.View.extend({
 		model: Context,
 		
@@ -158,6 +334,10 @@ limitations under the License.
 		nextPage: null,
 
 		pageOverlay: null,
+		
+		leave: function() {
+			this.el.style.display = 'none';
+		},
 		
 		setCurrentPage: function(sessionPage) {
 			if( this.animating ) {
@@ -382,13 +562,39 @@ limitations under the License.
 		template: _.template($('#session-details-template').html()),
 		
 		tagName: 'div',
-		className: 'session-details',
+		className: 'session-details-wrap',
+		
+		hide: function() {
+			this.el.parentNode.removeChild( this.el );
+		},
+		
+		renderAsPrevious: function() {
+			this.renderContent();
+			var width = window.innerWidth;
+			this.el.style.webkitTransform = 'translateX(' + -width + 'px) translateZ(0)';
+			this.el.setAttribute('POS', 'PREVIOUS');
+		},
+		
+		renderAsNext: function() {
+			this.renderContent();
+			var width = window.innerWidth;
+			this.el.style.webkitTransform = 'translateX(' + width + 'px) translateZ(0)';
+			this.el.setAttribute('POS', 'NEXT');
+		},
 		
 		render: function() {
+			this.renderContent();
+			this.el.style.webkitTransform = 'none';
+			this.el.setAttribute('POS', 'CURRENT');
+			// this.renderAdjacent();
+			return this;
+		},
+		
+		renderContent: function() {
 			var modelData = this.model.toJSON();
 			var subtitle = '';
 			var _this = this;
-			var len = modelData.speakers.length;
+			var len = modelData.speakers ? modelData.speakers.length : null;
 			if( len ) {
 				for( var i = 0; i < len; i++ ) {
 					var speakerName = modelData.speakers[i].get('name');
@@ -421,12 +627,13 @@ limitations under the License.
 			this.el.innerHTML = this.template(templateValues);
 
 			return this;	
-		}
+		},
+		
+
 	});
 	
 	var sessionListView;
-	
-	
+	var sessionListDetailsView;
 	
 	var AppView = Backbone.View.extend({
 		model: App,
@@ -435,7 +642,7 @@ limitations under the License.
 		
 		currentContext: null,
 		
-		navigateTo: function(contextView) {
+		navigateTo: function(context) {
 			this.lastContext = this.currentContext;
 			this.lastContext.hide();
 			this.el.appendChild( contextView.render().el );
@@ -490,13 +697,13 @@ limitations under the License.
 					this.setSpeakers(sessionData);
 				}
 				var session = new Session(sessionData);
+				// sessionListDetailsView.listenTo(session, 'change:selected', sessionListDetailsView.navigateTo);
 				sessionArr.push( session );
 				sessionList.add( session );
 			}
 			
 			trackData.sessions = sessionArr;
-			var track = new Track( trackData );
-			this.tracks = [track];
+			this.currentTrack = new Track( trackData );
 		},
 		
 		checkTime: function() {
@@ -515,11 +722,11 @@ limitations under the License.
 				
 				// check if session should be first "up next"
 				if( !timeOfNext && now.isBefore( start ) ) {
-					session.setAsNext();
+					session.setAsNextUp();
 					timeOfNext = start;
 				// check if session is also "up next"
 				} else if( timeOfNext && start.isSame(timeOfNext) ) {
-					session.setAsNext();
+					session.setAsNextUp();
 				// check if session is happening now
 				} else if( now.isAfter( start ) && now.isBefore( end ) ) {
 					session.setAsCurrent();
@@ -527,7 +734,7 @@ limitations under the License.
 					session.clearTimeFlag();
 				}
 			});
-			
+			 
 			setTimeout(this.checkTime, 60 * 1000);
 		},
 		
@@ -535,13 +742,20 @@ limitations under the License.
 			var _this = this;
 
 			sessionListView = new SessionListView({model: sessionListContext});
+			sessionListDetailsView = new SessionListDetailsView({collection: sessionList});
 			sessionListView.listenTo(sessionList, 'add', sessionListView.addSession);
+			sessionListDetailsView.listenTo(sessionList, 'add', sessionListDetailsView.addSession);
+
+			// _this.listenTo(sessionList, 'navigateTo', _this.navigateTo);
 			_this.el.appendChild( sessionListView.el );
 			this.currentContext = sessionListView;
 
 			$.get('data/conference.json', function(data) {
 				_this.processData.call(_this, data);
 				sessionListView.render();
+				sessionListView.listenTo(_this.currentTrack, 'change:selectedSession', sessionListView.leave);
+				sessionListDetailsView.listenTo(_this.currentTrack, 'change:selectedSession', sessionListDetailsView.navigateTo);
+//				appView.listenTo(_this.currentTrack, 'change:selectedSession', sessionListDetailsView.navigateTo);
 				
 				_this.checkTime();
 			}, 'json');
@@ -584,7 +798,7 @@ limitations under the License.
 			var modelData = this.model.toJSON();
 			var subtitle = '';
 			var _this = this;
-			var len = modelData.speakers.length;
+			var len = modelData.speakers ? modelData.speakers.length : null;
 			if( len ) {
 				for( var i = 0; i < len; i++ ) {
 					var speakerName = modelData.speakers[i].get('name');
@@ -614,7 +828,9 @@ limitations under the License.
 			var detailsLink = this.el.getElementsByClassName('js-session-details-link')[0];
 			detailsLink.addEventListener('click', function(evt) {
 				evt.preventDefault();
-				appView.navigateTo(_this.model.get('contextView'));
+				// appView.navigateTo(_this.model.get('contextView'));
+				appView.currentTrack.set('selectedSession', _this.model);
+				
 				// alert(_this.model.get('title'));
 				
 			}, false);

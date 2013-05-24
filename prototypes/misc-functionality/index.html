@@ -11,7 +11,8 @@
 	<style>
 	/* temporary CSS */
 	.session-list,
-	.session-page {
+	.session-page,
+	.session-details {	
 	    position: absolute;
 	    top: 0;
 	    left: 0;
@@ -28,6 +29,10 @@
 	    height: 100%;
 	    opacity: 1;
 	    background: rgba(0, 0, 0, 0.5);
+	}
+	
+	.js-session-transition {
+	    -webkit-transition: all 0.3s;
 	}
 	
 	.js-page-overlay-removed {
