@@ -437,10 +437,10 @@ limitations under the License.
 			});
 		},
 		
-		transitionNextAway: function() {
+		transitionPreviousAway: function() {
 			var _this = this;
 			this.animating = true;
-			this.nextPage.transitionOut(function() {
+			this.prevPage.transitionOut(function() {
 				_this.animating = false;
 				_this.setCurrentPage(_this.currentPage);
 			});
@@ -476,8 +476,8 @@ limitations under the License.
 				x: 0,
 				y: 0
 			}
-			_this.el.addEventListener('touchmove', sessionListView.touchMove, false);
-			_this.el.addEventListener('touchend', sessionListView.touchEnd, false);
+			window.addEventListener('touchmove', sessionListView.touchMove, false);
+			window.addEventListener('touchend', sessionListView.touchEnd, false);
 		},
 		
 		touchMove: function(evt) {
@@ -523,19 +523,19 @@ limitations under the License.
 				} else {
 					_this.transitionCurrentBack();
 				}
-			} else if( _this.lastDiff.y < 0 ) {
+			} else if( _this.lastDiff.y <= 0 ) {
 				evt.preventDefault();
 				if( !_this.nextPage ) {
 					_this.transitionCurrentBack();
 				} else if( _this.pendingPage === _this.nextPage ) {
 					_this.transitionToNext();
-				} else if(_this.nextPage) {
-					_this.transitionNextAway();
+				} else if(_this.prevPage) {
+					_this.transitionPreviousAway();
 				}
 			}
 			
-			_this.el.removeEventListener('touchmove', sessionListView.touchMove);
-			_this.el.removeEventListener('touchend', sessionListView.touchEnd);
+			window.removeEventListener('touchmove', sessionListView.touchMove);
+			window.removeEventListener('touchend', sessionListView.touchEnd);
 		},
 		
 		render: function() {
