@@ -354,114 +354,6 @@ limitations under the License.
 }
 
 /*
- Checkbox
- --------
- 
-Base styles for checkboxes. The `<label>` needs to be placed after the `<input>` element in the HTML. If you are using `.topcoat-checkbox-label--right`, make sure to set the width, so all the labels are the same width and the controls line up vertically.
-
-- `:focus` Focus state
-- `.is-focused` Simulates an focus state on mobile devices
-- `:disabled` Disabled state
-- `.is-disabled` Simulates a disabled state on mobile devices
-- `.topcoat-checkbox`
-- `.topcoat-checkbox-label`
-- `.topcoat-checkbox-label--left` Position the control to the left of the label
-- `.topcoat-checkbox-label--right` Position the control to the right of the label
-
-    
-    <input type="checkbox" id="example-checkbox-checked" class="topcoat-checkbox" checked="checked">
-    <label for="example-checkbox-checked" class="topcoat-checkbox-label topcoat-checkbox-label--left">Extremely Long Label</label>
-    
-    <input type="checkbox" id="example-checkbox-unchecked" class="topcoat-checkbox">
-    <label for="example-checkbox-unchecked" class="topcoat-checkbox-label topcoat-checkbox-label--left">Extremely Long Label</label>
-    
-    <input type="checkbox" id="example-checkbox-disabled" class="topcoat-checkbox is-disabled" disabled>
-    <label for="example-checkbox-disabled" class="topcoat-checkbox-label topcoat-checkbox-label--left">Extremely Long Label</label>
-    
-
-*/
-input[type="checkbox"] {
-  display: none;
-}
-.topcoat-checkbox-label--left:before,
-.topcoat-checkbox-label--right:after {
-  background-position: left -37px;
-}
-input[type="checkbox"]:checked + .topcoat-checkbox-label--left:before,
-input[type="checkbox"]:checked + .topcoat-checkbox-label--right:after {
-  background-position: left -2px;
-}
-input[type="checkbox"]:disabled + label {
-  opacity: 0.3;
-  cursor: default;
-  pointer-events: none;
-}
-.topcoat-checkbox-label--left:before,
-.topcoat-checkbox-label--right:after {
-  content: "";
-  display: inline-block;
-  width: 37px;
-  height: 31px;
-  background-image: var-checkbox-background;
-  background-repeat: no-repeat;
-  -webkit-background-size: 37px;
-  -moz-background-size: 37px;
-  background-size: 37px;
-  cursor: pointer;
-}
-.topcoat-checkbox-label--left:before {
-  margin-right: 15px;
-}
-.topcoat-checkbox-label--right:after {
-  margin-left: 15px;
-}
-.topcoat-checkbox-label--left,
-.topcoat-checkbox-label--right {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  padding: 0 1.25rem;
-  margin: 5px;
-  outline: none;
-  font: var-font;
-  font-weight: 200;
-  line-height: 30px;
-  vertical-align: top;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-}
-.topcoat-not-checkbox {
-  color: #c6c8c8;
-  padding: 0 1.25rem;
-  text-shadow: 0 -1px rgba(0,0,0,0.69);
-  background-color: #595b5b;
-  -webkit-box-shadow: inset 0 1px rgba(255,255,255,0.12);
-  box-shadow: inset 0 1px rgba(255,255,255,0.12);
-  border: 1px solid rgba(0,0,0,0.36);
-  -webkit-border-radius: 5px;
-  border-radius: 5px;
-}
-
-/*
-Copyright 2012 Adobe Systems Inc.;
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-*/
-
-/*
 Copyright 2012 Adobe Systems Inc.;
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -832,7 +724,7 @@ Navigation Bar
   height: 4rem;
   padding-left: 1rem;
   padding-right: 1rem;
-  background: #595b5b;
+  background: var-background-color--navigation-bar;
   color: #fff;
   -webkit-box-shadow: inset 0 -1px #333434, 0 1px rgba(0,0,0,0.15);
   box-shadow: inset 0 -1px #333434, 0 1px rgba(0,0,0,0.15);
