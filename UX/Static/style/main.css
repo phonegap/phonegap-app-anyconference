@@ -1,0 +1,214 @@
+@font-face{
+    font-family: 'League Gothic';
+    src: url(../assets/fonts/LeagueGothic-Regular.otf);
+}
+
+/*
+ * topcoat overrides
+ */
+
+.topcoat-navigation-bar{
+    border-radius: 4px 4px 0 0;
+    background: #dddddd;
+    border-bottom: 1px solid #b4b4b4;
+}
+
+.topcoat-navigation-bar__title{
+    font-family: 'League Gothic';
+    text-transform: uppercase;
+    font-size: 2rem;
+    color: #333;
+    text-shadow: 0px 1px 0px #fff;
+}
+
+.topcoat-list{
+    border-top: none;
+}
+
+.topcoat-list__item{
+    padding: 1rem;
+    background: #f2f3f3;
+    border-bottom: none;
+    border-top: 1px solid #ffffff;
+}
+
+.topcoat-list__container{
+    border-top: none;
+}
+
+/*
+ * custom styles
+ *
+ */
+
+body{
+    background: black;
+    font-family: "Helvetica", sans-serif;
+    color: #333333;
+}
+
+small{
+    text-transform: uppercase;
+}
+
+.anyconf-view-splash{
+    display: table;
+    width: 100vw;
+    height: 100vh;
+    background: #2d3033;
+    border-radius: 6px;
+}
+
+.anyconf-title{
+    display: table-cell;
+    vertical-align: middle;
+    position: relative;
+    top: -3.5rem;
+    margin: 0;
+    font-size: 3.5rem;
+    font-family: 'League Gothic';
+    font-weight: normal;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: .1rem;
+    color: #cdcdcd;
+}
+
+.anyconf-title--green{
+    color: #99cc33;
+}
+
+.anyconf-button-item{
+    position: relative;
+    display: table;
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 8rem;
+    padding: 1rem;
+    background: white;
+    border: 1px solid #e2b6cc;
+}
+
+.anyconf-button-item-content{
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.anyconf-button-item:after{
+    display: block;
+    position: absolute;
+    margin-bottom: -.75rem;
+    margin-left: 1%;
+    bottom: 0;
+    left: 0;
+    content: '';
+    width: 98%;
+    height: 10px;
+    border-top: 1px solid #cc6699;
+}
+
+.anyconf-star{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.anyconf-label-status{
+    position: relative;
+    background: #dcdcdc;
+    height: 2.4rem;
+    padding: 0;
+    border: none;
+    padding-left: 1rem;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+.anyconf-label-status--next{
+    text-align: right;
+    background: #99cc33;
+}
+
+.anyconf-label-status--next:after{
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 90%;
+    content: "UP NEXT";
+    line-height: 2rem;
+    font-size: 2rem;
+    font-family: 'League Gothic';
+    padding: .07rem .7rem;
+    color: white;
+    background: #99cc33;
+    text-shadow: 0px -1px 0px #51740a;
+}
+
+.anyconf-label-time{
+    display: block;
+    color: #707070;
+    background: #f2f3f3;
+    line-height: 1em;
+    font-size: 1.1rem;
+    padding: .5em 1em;
+    text-shadow: 0px 1px 0px #fff;
+}
+
+.anyconf-label-title{
+    font-weight: 400;
+    margin: 0;
+    padding-bottom: .5em;
+}
+
+.anyconf-label-speaker{
+    font-size: 1.1rem;
+}
+
+.anyconf-darken{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.anyconf-menu{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 80vw;
+    height: 100vh;
+    background: #ffffff;
+}
+
+.anyconf-list{
+    margin: 2rem 0 1rem;
+    padding: 0;
+    list-style: none;
+}
+
+.anyconf-list__header{
+    width: 75%;
+    height: 2rem;
+    line-height: 2rem;
+    margin: 0;
+    padding: .6rem 1.3rem;
+    color: white;
+    background: #cc6699;
+    font-weight: normal;
+    font-size: 2rem;
+    font-family: 'League Gothic';
+    text-transform: uppercase;
+    list-style: none;
+}
+
+.anyconf-list__item{
+    width: 75%;
+    height: 2rem;
+    line-height: 2rem;
+    padding: .3rem 1.3rem;
+    background: #e9bcd2;
+    font-size: 1rem;
+    font-weight: 400;
+}
