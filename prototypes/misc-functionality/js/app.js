@@ -326,8 +326,8 @@ limitations under the License.
 	var SessionListView = Backbone.View.extend({
 		model: Context,
 		
-		tagName: 'div',
-		className: 'session-list',
+		tagName: 'ul',
+		className: 'topcoat-list',
 		pages: [],
 		
 		pageHeight: null,
@@ -476,8 +476,8 @@ limitations under the License.
 				x: 0,
 				y: 0
 			}
-			window.addEventListener('touchmove', sessionListView.touchMove, false);
-			window.addEventListener('touchend', sessionListView.touchEnd, false);
+			_this.el.addEventListener('touchmove', sessionListView.touchMove, false);
+			_this.el.addEventListener('touchend', sessionListView.touchEnd, false);
 		},
 		
 		touchMove: function(evt) {
@@ -534,8 +534,8 @@ limitations under the License.
 				}
 			}
 			
-			window.removeEventListener('touchmove', sessionListView.touchMove);
-			window.removeEventListener('touchend', sessionListView.touchEnd);
+			_this.el.removeEventListener('touchmove', sessionListView.touchMove);
+			_this.el.removeEventListener('touchend', sessionListView.touchEnd);
 		},
 		
 		render: function() {
@@ -543,11 +543,11 @@ limitations under the License.
 			this.pageOverlay.classList.remove('js-page-overlay-removed');
 			this.el.insertBefore(this.pageOverlay, this.currentPage.el);
 			this.animating = false;
-			window.addEventListener('touchstart', this.touchStart);
+			this.el.addEventListener('touchstart', this.touchStart);
 		},
 		
 		hide: function() {
-			window.removeEventListener('touchstart', this.touchStart);
+			this.el.removeEventListener('touchstart', this.touchStart);
 			this.el.style.display = 'none';
 		},
 		
@@ -839,7 +839,7 @@ limitations under the License.
 			sessionListDetailsView.listenTo(sessionList, 'add', sessionListDetailsView.addSession);
 
 			// _this.listenTo(sessionList, 'navigateTo', _this.navigateTo);
-			_this.el.appendChild( sessionListView.el );
+			_this.el.getElementsByClassName('topcoat-list__container')[0].appendChild( sessionListView.el );
 			this.currentContext = sessionListView;
 			
 			this.getConferenceData().then(function() {
@@ -871,13 +871,13 @@ limitations under the License.
 		
 		updateTimeFlag: function(model) {
 			var newFlag = model.get('timeFlag');
-			var cl = this.el.classList;
+			var cl = this.el.children[0].classList;
 			cl.remove('js-timeflag--next');
 			cl.remove('js-timeflag--current');
 
 			switch( newFlag ) {
 				case timeFlag.NEXT:
-					cl.add('js-timeflag--next');
+					cl.add('anyconf-label-status--next'); // .add('js-timeflag--next');
 					break;
 				case timeFlag.CURRENT:
 					cl.add('js-timeflag--current');
