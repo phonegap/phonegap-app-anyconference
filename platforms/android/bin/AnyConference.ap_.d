@@ -29,11 +29,10 @@
 /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/android/assets/www/index.html \
 /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/android/assets/www/js \
 /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/android/assets/www/res \
-/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/android/assets/www/spec \
-/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/android/assets/www/spec.html \
 /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/android/assets/www/css/index.css \
 /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/android/assets/www/img/logo.png \
-/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/android/assets/www/js/index.js \
+/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/android/assets/www/js/anyconference.js \
+/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/android/assets/www/js/anyconference.min.js \
 /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/android/assets/www/res/icon \
 /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/android/assets/www/res/screen \
 /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/android/assets/www/res/icon/android \
@@ -90,12 +89,4 @@
 /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/android/assets/www/res/screen/ios/screen-iphone-portrait.png \
 /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/android/assets/www/res/screen/webos/screen-64.png \
 /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/android/assets/www/res/screen/windows-phone/screen-portrait.jpg \
-/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/android/assets/www/spec/helper.js \
-/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/android/assets/www/spec/index.js \
-/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/android/assets/www/spec/lib \
-/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/android/assets/www/spec/lib/jasmine-1.2.0 \
-/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/android/assets/www/spec/lib/jasmine-1.2.0/jasmine-html.js \
-/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/android/assets/www/spec/lib/jasmine-1.2.0/jasmine.css \
-/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/android/assets/www/spec/lib/jasmine-1.2.0/jasmine.js \
-/Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/android/assets/www/spec/lib/jasmine-1.2.0/MIT.LICENSE \
 /Users/krjoseph/Documents/work/PhoneGap/phonegap-app-anyconference/platforms/android/bin/AndroidManifest.xml \
