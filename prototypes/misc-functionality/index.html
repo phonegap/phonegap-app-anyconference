@@ -83,8 +83,8 @@
     <div class="session-details__speakers">
         <ul>
         <% _.each(speakers, function(data) { %> 
-            <li><%= data.name %><br>
-                @<%= data.twitter %></li> 
+            <li><%= data.attributes.first_name %> <%= data.attributes.last_name %><br>
+                @???</li> 
         <% }); %>
         </ul>
     </div>
