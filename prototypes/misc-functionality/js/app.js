@@ -19,6 +19,8 @@ limitations under the License.
 
 	});
 	
+	var app = new App;
+	
 	var timeFlag = {
 		NONE: 0,
 		NEXT: 1,
@@ -594,10 +596,12 @@ limitations under the License.
 			var modelData = this.model.toJSON();
 			var subtitle = '';
 			var _this = this;
+/*
 			var len = modelData.speakers ? modelData.speakers.length : null;
 			if( len ) {
 				for( var i = 0; i < len; i++ ) {
-					var speakerName = modelData.speakers[i].get('name');
+					var speaker = modelData.speakers[i];
+					var speakerName = speaker.get('first_name') + ' ' + speaker.get('last_name');
 					if( i === 0 ) {
 						subtitle += speakerName;
 					} else if( i === len - 1 ) {
@@ -607,21 +611,21 @@ limitations under the License.
 					}
 				}
 			}
-
+			*/
+			
 			var times = modelData.startTime.format('h:mm A');
 			if( modelData.endTime ) {
 				 times += ' - ' + modelData.endTime.format('h:mm A');
 			}
 			
-			// TODO: Replace with real speakers
-			var speakers = speakerList.toJSON();
-
+			var sessionSpeakers = modelData.speakers;
+			
 			var templateValues = {
 				title: modelData.title,
 				subtitle: subtitle,
 				times: times,
 				details: modelData.details,
-				speakers: speakers
+				speakers: sessionSpeakers
 			};
 			
 			this.el.innerHTML = this.template(templateValues);
@@ -636,7 +640,7 @@ limitations under the License.
 	var sessionListDetailsView;
 	
 	var AppView = Backbone.View.extend({
-		model: App,
+		model: app,
 		
 		el: document.body,
 		
@@ -660,7 +664,7 @@ limitations under the License.
 		
 		setSpeakers: function(sessionData) {
 			var speakersById = this.speakersById;
-			var speakerIds = sessionData.speakers;
+			var speakerIds = sessionData.speaker_ids;
 			var speakerArr = [];
 			for( var i = 0; i < speakerIds.length; i++ ) {
 				var id = speakerIds[i];
@@ -738,6 +742,94 @@ limitations under the License.
 			setTimeout(this.checkTime, 60 * 1000);
 		},
 		
+		processEventData: function(data) {
+			// this.model.set('eventData', data);
+			console.log('eventData', this.model.get('eventData'));
+		},
+		
+		processSessionData: function(sessionDataArr) {
+			// this.model.set('sessionData', data);
+			
+			var sessionArr = [];
+			for( var j = 0; j < sessionDataArr.length; j++ ) { 
+				var sessionData = sessionDataArr[j];
+				var firstInstance = sessionData.instances[0];
+				
+				sessionData.startTime = this.makeDate(firstInstance.date, firstInstance.time);
+				sessionData.endTime = sessionData.startTime.clone().add('m', firstInstance.duration);
+				sessionData.title = sessionData.name;
+				sessionData.details = sessionData.description;
+				
+				if( sessionData.speaker_ids.length ) {
+					this.setSpeakers(sessionData);
+				}
+				var session = new Session(sessionData);
+				// sessionListDetailsView.listenTo(session, 'change:selected', sessionListDetailsView.navigateTo);
+				sessionArr.push( session );
+				sessionList.add( session );
+			}
+			this.currentTrack = new Track({
+				collection: sessionList
+			});
+			// trackData.sessionList = sessionList;
+			// this.currentTrack = new Track( trackData );
+		},
+		
+		processSpeakerData: function(speakers) {
+			this.model.set('presenterData', speakers);
+			
+			var speakersById = {};
+			this.speakersById = speakersById;
+
+			for( var i = 0; i < speakers.length; i++ ) {
+				var speaker = new Speaker(speakers[i]);
+				speakersById[ speakers[i].id ] = speaker;
+				speakerList.add( speaker );
+			}
+		},
+		
+		processFileData: function(event, sessions, rooms, presenters, filters, deletions) {
+			var _this = appView;
+			for(var i = 0; i < arguments.length; i++ ) {
+				var item = arguments[i];
+				if( item[1] !== 'success' ) {
+					throw Error('Failed to get file data');
+				}
+			}
+			_this.processEventData(event[0]);
+			_this.processSpeakerData(presenters[0]);
+			_this.processSessionData(sessions[0]);
+		},
+		
+		getConferenceData: function() {
+			var rootUrl = 'https://cssconf.attendease.com/api/';
+			var files = {
+				event: 'event.json?&meta%5B%5D=room_meta_data',
+				sessions: 'sessions.json',
+				rooms: 'rooms.json?meta%5B%5D=coords&meta%5B%5D=level',
+				presenters: 'presenters.json',
+				filters: 'filters.json',
+				deletions: 'deletions.json'
+			};
+			
+			rootUrl = 'data/';
+			files = {
+				event: 'event.json',
+				sessions: 'sessions.json',
+				rooms: 'presenters.json',
+				presenters: 'presenters.json',
+				filters: 'presenters.json',
+				deletions: 'presenters.json'
+			};
+			var xhrs = [];
+			for( var key in files ) {
+				var file = rootUrl + files[key];
+				xhrs.push( $.ajax(file) );
+			}
+			var processDone = $.when.apply(this, xhrs).then(this.processFileData);
+			return processDone;
+		},
+		
 		initialize: function() {
 			var _this = this;
 
@@ -749,16 +841,15 @@ limitations under the License.
 			// _this.listenTo(sessionList, 'navigateTo', _this.navigateTo);
 			_this.el.appendChild( sessionListView.el );
 			this.currentContext = sessionListView;
-
-			$.get('data/conference.json', function(data) {
-				_this.processData.call(_this, data);
+			
+			this.getConferenceData().then(function() {
 				sessionListView.render();
 				sessionListView.listenTo(_this.currentTrack, 'change:selectedSession', sessionListView.leave);
 				sessionListDetailsView.listenTo(_this.currentTrack, 'change:selectedSession', sessionListDetailsView.navigateTo);
 //				appView.listenTo(_this.currentTrack, 'change:selectedSession', sessionListDetailsView.navigateTo);
 				
 				_this.checkTime();
-			}, 'json');
+			});
 		},
 		
 	});
@@ -801,7 +892,8 @@ limitations under the License.
 			var len = modelData.speakers ? modelData.speakers.length : null;
 			if( len ) {
 				for( var i = 0; i < len; i++ ) {
-					var speakerName = modelData.speakers[i].get('name');
+					var speaker = modelData.speakers[i];
+					var speakerName = speaker.get('first_name') + ' ' + speaker.get('last_name');
 					if( i === 0 ) {
 						subtitle += speakerName;
 					} else if( i === len - 1 ) {
