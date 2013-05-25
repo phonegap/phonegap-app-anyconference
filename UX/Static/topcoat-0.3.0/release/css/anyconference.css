@@ -267,6 +267,7 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label--right:after {
 }
 .anyconf-title {
   margin: 0;
+  line-height: 3.5rem;
   font-size: 3.5rem;
   font-family: 'League Gothic';
   font-weight: normal;
@@ -283,6 +284,19 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label--right:after {
 }
 .anyconf-title--green {
   color: #9c3;
+}
+.anyconf-view__container {
+  padding: 20px;
+  background-color: #f2f3f3;
+}
+.anyconf-view--yellow {
+  border: 1px solid #f9e699;
+  border-bottom: none;
+  background: #fff;
+  padding: 1em;
+}
+.anyconf-view--yellow-last {
+  border-bottom: 1px solid #f9e699;
 }
 @font-face {
   font-family: "Source Sans";
@@ -590,6 +604,7 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label--right:after {
 }
 .anyconf-title {
   margin: 0;
+  line-height: 3.5rem;
   font-size: 3.5rem;
   font-family: 'League Gothic';
   font-weight: normal;
@@ -606,6 +621,19 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label--right:after {
 }
 .anyconf-title--green {
   color: #9c3;
+}
+.anyconf-view__container {
+  padding: 20px;
+  background-color: #f2f3f3;
+}
+.anyconf-view--yellow {
+  border: 1px solid #f9e699;
+  border-bottom: none;
+  background: #fff;
+  padding: 1em;
+}
+.anyconf-view--yellow-last {
+  border-bottom: 1px solid #f9e699;
 }
 body {
   margin: 0;
@@ -886,6 +914,7 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label--right:after {
 }
 .anyconf-title {
   margin: 0;
+  line-height: 3.5rem;
   font-size: 3.5rem;
   font-family: 'League Gothic';
   font-weight: normal;
@@ -902,6 +931,19 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label--right:after {
 }
 .anyconf-title--green {
   color: #9c3;
+}
+.anyconf-view__container {
+  padding: 20px;
+  background-color: #f2f3f3;
+}
+.anyconf-view--yellow {
+  border: 1px solid #f9e699;
+  border-bottom: none;
+  background: #fff;
+  padding: 1em;
+}
+.anyconf-view--yellow-last {
+  border-bottom: 1px solid #f9e699;
 }
 .topcoat-icon--menu-stack {
   background: url("../img/hamburger_dark.svg") no-repeat;
@@ -1179,6 +1221,7 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label--right:after {
 }
 .anyconf-title {
   margin: 0;
+  line-height: 3.5rem;
   font-size: 3.5rem;
   font-family: 'League Gothic';
   font-weight: normal;
@@ -1195,6 +1238,19 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label--right:after {
 }
 .anyconf-title--green {
   color: #9c3;
+}
+.anyconf-view__container {
+  padding: 20px;
+  background-color: #f2f3f3;
+}
+.anyconf-view--yellow {
+  border: 1px solid #f9e699;
+  border-bottom: none;
+  background: #fff;
+  padding: 1em;
+}
+.anyconf-view--yellow-last {
+  border-bottom: 1px solid #f9e699;
 }
 .quarter {
   width: 25%;
@@ -1484,6 +1540,7 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label--right:after {
 }
 .anyconf-title {
   margin: 0;
+  line-height: 3.5rem;
   font-size: 3.5rem;
   font-family: 'League Gothic';
   font-weight: normal;
@@ -1500,6 +1557,19 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label--right:after {
 }
 .anyconf-title--green {
   color: #9c3;
+}
+.anyconf-view__container {
+  padding: 20px;
+  background-color: #f2f3f3;
+}
+.anyconf-view--yellow {
+  border: 1px solid #f9e699;
+  border-bottom: none;
+  background: #fff;
+  padding: 1em;
+}
+.anyconf-view--yellow-last {
+  border-bottom: 1px solid #f9e699;
 }
 .left {
   text-align: left;
@@ -1780,6 +1850,7 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label--right:after {
 }
 .anyconf-title {
   margin: 0;
+  line-height: 3.5rem;
   font-size: 3.5rem;
   font-family: 'League Gothic';
   font-weight: normal;
@@ -1796,6 +1867,19 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label--right:after {
 }
 .anyconf-title--green {
   color: #9c3;
+}
+.anyconf-view__container {
+  padding: 20px;
+  background-color: #f2f3f3;
+}
+.anyconf-view--yellow {
+  border: 1px solid #f9e699;
+  border-bottom: none;
+  background: #fff;
+  padding: 1em;
+}
+.anyconf-view--yellow-last {
+  border-bottom: 1px solid #f9e699;
 }
 .reset-ui {
   -webkit-box-sizing: border-box;
@@ -2093,6 +2177,7 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label--right:after {
 }
 .anyconf-title {
   margin: 0;
+  line-height: 3.5rem;
   font-size: 3.5rem;
   font-family: 'League Gothic';
   font-weight: normal;
@@ -2109,6 +2194,19 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label--right:after {
 }
 .anyconf-title--green {
   color: #9c3;
+}
+.anyconf-view__container {
+  padding: 20px;
+  background-color: #f2f3f3;
+}
+.anyconf-view--yellow {
+  border: 1px solid #f9e699;
+  border-bottom: none;
+  background: #fff;
+  padding: 1em;
+}
+.anyconf-view--yellow-last {
+  border-bottom: 1px solid #f9e699;
 }
 /*
 Copyright 2012 Adobe Systems Inc.;
@@ -2394,6 +2492,7 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label--right:after {
 }
 .anyconf-title {
   margin: 0;
+  line-height: 3.5rem;
   font-size: 3.5rem;
   font-family: 'League Gothic';
   font-weight: normal;
@@ -2410,6 +2509,19 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label--right:after {
 }
 .anyconf-title--green {
   color: #9c3;
+}
+.anyconf-view__container {
+  padding: 20px;
+  background-color: #f2f3f3;
+}
+.anyconf-view--yellow {
+  border: 1px solid #f9e699;
+  border-bottom: none;
+  background: #fff;
+  padding: 1em;
+}
+.anyconf-view--yellow-last {
+  border-bottom: 1px solid #f9e699;
 }
 /*
  Button
@@ -2918,6 +3030,7 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label--right:after {
 }
 .anyconf-title {
   margin: 0;
+  line-height: 3.5rem;
   font-size: 3.5rem;
   font-family: 'League Gothic';
   font-weight: normal;
@@ -2934,6 +3047,19 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label--right:after {
 }
 .anyconf-title--green {
   color: #9c3;
+}
+.anyconf-view__container {
+  padding: 20px;
+  background-color: #f2f3f3;
+}
+.anyconf-view--yellow {
+  border: 1px solid #f9e699;
+  border-bottom: none;
+  background: #fff;
+  padding: 1em;
+}
+.anyconf-view--yellow-last {
+  border-bottom: 1px solid #f9e699;
 }
 /*
 Copyright 2012 Adobe Systems Inc.;
@@ -3219,6 +3345,7 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label--right:after {
 }
 .anyconf-title {
   margin: 0;
+  line-height: 3.5rem;
   font-size: 3.5rem;
   font-family: 'League Gothic';
   font-weight: normal;
@@ -3235,6 +3362,19 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label--right:after {
 }
 .anyconf-title--green {
   color: #9c3;
+}
+.anyconf-view__container {
+  padding: 20px;
+  background-color: #f2f3f3;
+}
+.anyconf-view--yellow {
+  border: 1px solid #f9e699;
+  border-bottom: none;
+  background: #fff;
+  padding: 1em;
+}
+.anyconf-view--yellow-last {
+  border-bottom: 1px solid #f9e699;
 }
 /*
  Icon Button
@@ -3722,6 +3862,7 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label--right:after {
 }
 .anyconf-title {
   margin: 0;
+  line-height: 3.5rem;
   font-size: 3.5rem;
   font-family: 'League Gothic';
   font-weight: normal;
@@ -3738,6 +3879,19 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label--right:after {
 }
 .anyconf-title--green {
   color: #9c3;
+}
+.anyconf-view__container {
+  padding: 20px;
+  background-color: #f2f3f3;
+}
+.anyconf-view--yellow {
+  border: 1px solid #f9e699;
+  border-bottom: none;
+  background: #fff;
+  padding: 1em;
+}
+.anyconf-view--yellow-last {
+  border-bottom: 1px solid #f9e699;
 }
 /*
 Copyright 2012 Adobe Systems Inc.;
@@ -4023,6 +4177,7 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label--right:after {
 }
 .anyconf-title {
   margin: 0;
+  line-height: 3.5rem;
   font-size: 3.5rem;
   font-family: 'League Gothic';
   font-weight: normal;
@@ -4039,6 +4194,19 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label--right:after {
 }
 .anyconf-title--green {
   color: #9c3;
+}
+.anyconf-view__container {
+  padding: 20px;
+  background-color: #f2f3f3;
+}
+.anyconf-view--yellow {
+  border: 1px solid #f9e699;
+  border-bottom: none;
+  background: #fff;
+  padding: 1em;
+}
+.anyconf-view--yellow-last {
+  border-bottom: 1px solid #f9e699;
 }
 /*
  List
@@ -4377,6 +4545,7 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label--right:after {
 }
 .anyconf-title {
   margin: 0;
+  line-height: 3.5rem;
   font-size: 3.5rem;
   font-family: 'League Gothic';
   font-weight: normal;
@@ -4393,6 +4562,19 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label--right:after {
 }
 .anyconf-title--green {
   color: #9c3;
+}
+.anyconf-view__container {
+  padding: 20px;
+  background-color: #f2f3f3;
+}
+.anyconf-view--yellow {
+  border: 1px solid #f9e699;
+  border-bottom: none;
+  background: #fff;
+  padding: 1em;
+}
+.anyconf-view--yellow-last {
+  border-bottom: 1px solid #f9e699;
 }
 /*
 Copyright 2012 Adobe Systems Inc.;
@@ -4678,6 +4860,7 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label--right:after {
 }
 .anyconf-title {
   margin: 0;
+  line-height: 3.5rem;
   font-size: 3.5rem;
   font-family: 'League Gothic';
   font-weight: normal;
@@ -4694,6 +4877,19 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label--right:after {
 }
 .anyconf-title--green {
   color: #9c3;
+}
+.anyconf-view__container {
+  padding: 20px;
+  background-color: #f2f3f3;
+}
+.anyconf-view--yellow {
+  border: 1px solid #f9e699;
+  border-bottom: none;
+  background: #fff;
+  padding: 1em;
+}
+.anyconf-view--yellow-last {
+  border-bottom: 1px solid #f9e699;
 }
 /*
 Navigation Bar
@@ -5047,6 +5243,7 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label--right:after {
 }
 .anyconf-title {
   margin: 0;
+  line-height: 3.5rem;
   font-size: 3.5rem;
   font-family: 'League Gothic';
   font-weight: normal;
@@ -5063,6 +5260,19 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label--right:after {
 }
 .anyconf-title--green {
   color: #9c3;
+}
+.anyconf-view__container {
+  padding: 20px;
+  background-color: #f2f3f3;
+}
+.anyconf-view--yellow {
+  border: 1px solid #f9e699;
+  border-bottom: none;
+  background: #fff;
+  padding: 1em;
+}
+.anyconf-view--yellow-last {
+  border-bottom: 1px solid #f9e699;
 }
 /*
 Copyright 2012 Adobe Systems Inc.;
@@ -5348,6 +5558,7 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label--right:after {
 }
 .anyconf-title {
   margin: 0;
+  line-height: 3.5rem;
   font-size: 3.5rem;
   font-family: 'League Gothic';
   font-weight: normal;
@@ -5364,6 +5575,19 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label--right:after {
 }
 .anyconf-title--green {
   color: #9c3;
+}
+.anyconf-view__container {
+  padding: 20px;
+  background-color: #f2f3f3;
+}
+.anyconf-view--yellow {
+  border: 1px solid #f9e699;
+  border-bottom: none;
+  background: #fff;
+  padding: 1em;
+}
+.anyconf-view--yellow-last {
+  border-bottom: 1px solid #f9e699;
 }
 /*
  Search Input
@@ -5726,6 +5950,7 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label--right:after {
 }
 .anyconf-title {
   margin: 0;
+  line-height: 3.5rem;
   font-size: 3.5rem;
   font-family: 'League Gothic';
   font-weight: normal;
@@ -5742,6 +5967,19 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label--right:after {
 }
 .anyconf-title--green {
   color: #9c3;
+}
+.anyconf-view__container {
+  padding: 20px;
+  background-color: #f2f3f3;
+}
+.anyconf-view--yellow {
+  border: 1px solid #f9e699;
+  border-bottom: none;
+  background: #fff;
+  padding: 1em;
+}
+.anyconf-view--yellow-last {
+  border-bottom: 1px solid #f9e699;
 }
 /*
 Copyright 2012 Adobe Systems Inc.;
@@ -6027,6 +6265,7 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label--right:after {
 }
 .anyconf-title {
   margin: 0;
+  line-height: 3.5rem;
   font-size: 3.5rem;
   font-family: 'League Gothic';
   font-weight: normal;
@@ -6043,6 +6282,19 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label--right:after {
 }
 .anyconf-title--green {
   color: #9c3;
+}
+.anyconf-view__container {
+  padding: 20px;
+  background-color: #f2f3f3;
+}
+.anyconf-view--yellow {
+  border: 1px solid #f9e699;
+  border-bottom: none;
+  background: #fff;
+  padding: 1em;
+}
+.anyconf-view--yellow-last {
+  border-bottom: 1px solid #f9e699;
 }
 /*
  Text Input
