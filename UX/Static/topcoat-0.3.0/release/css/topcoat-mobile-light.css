@@ -790,6 +790,105 @@ limitations under the License.
 */
 
 /*
+
+
+Use this class to create a dialog element. Make sure to apply ".topcoat-overlay-bg" an empty div on the page as well,
+so that the dialog is resting on a dark, transparent background
+
+	<div class="topcoat-overlay-bg"></div>
+	<aside class="topcoat-overlay">
+		<h1>Are eagles nice ?</h1>
+		<div class="topcoat-overlay-buttons">
+			<button role="button" class="topcoat-button--cta">Yes!</button>
+			<button role="button" class="topcoat-button">No</button>
+		</div>
+	</aside>
+
+*/
+.topcoat-overlay {
+  width: 50%;
+  height: auto;
+  overflow: hidden;
+  position: absolute;
+  z-index: 10;
+  padding: 20px 10px;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+  margin: 25% 20%;
+  text-align: center;
+  background-color: var-bg-color;
+  border: 1px solid #a5a8a8;
+  font: var-font;
+}
+.topcoat-overlay h1 {
+  font-size: 1.1875rem;
+  color: #484b4c;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #d3d7d7;
+}
+.topcoat-overlay-bg {
+  position: absolute;
+  z-index: 5;
+  background-color: rgba(88,90,92,0.7);
+  width: 100%;
+  height: 100%;
+  -webkit-box-shadow: inset 0px 0px 115px 0px #000;
+  box-shadow: inset 0px 0px 115px 0px #000;
+}
+.topcoat-overlay-buttons {
+  margin-top: 20px;
+}
+.topcoat-overlay-buttons .topcoat-button,
+.topcoat-overlay-buttons .topcoat-button--cta {
+  margin: 5px;
+}
+
+/*
+Copyright 2012 Adobe Systems Inc.;
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
+
+.input {
+  vertical-align: top;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0 1.25rem;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+  margin: 5px;
+  height: 3rem;
+  font: inherit;
+  font-weight: 200;
+  outline: none;
+}
+
+/*
+Copyright 2012 Adobe Systems Inc.;
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
+
+/*
  Search Input
  ------------
 
