@@ -8,7 +8,8 @@
       "topcoat/button-base": "0.3.0",
       "topcoat/navigation-bar-base": "0.2.0",
       "topcoat/input-base": "0.2.0",
-      "topcoat/list-base": "0.2.0"
+      "topcoat/list-base": "0.2.0",
+      "topcoat/overlay": ""
     },
     "utils": {
       "topcoat/utils": "0.1.0"
@@ -22,7 +23,8 @@
       "cjgammon/navigation-bar": "",
       "topcoat/list": "0.2.0",
       "topcoat/text-input": "0.2.0",
-      "topcoat/search-input": "0.1.0"
+      "topcoat/search-input": "0.1.0",
+      "topcoat/overlay": ""
     }
   },
   "directories": {
