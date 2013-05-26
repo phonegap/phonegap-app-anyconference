@@ -334,6 +334,49 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
   right: 10px;
   top: 0px;
 }
+.anyconf-condensed {
+  font-family: 'League Gothic';
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  color: #333;
+}
+.anyconf-link-list {
+  display: inline-block;
+  list-style: none;
+  padding: 0;
+}
+.anyconf-link-list li {
+  margin-top: 0.5rem;
+}
+.anyconf-link {
+  color: #c69;
+}
+.anyconf-link--twitter:before {
+  display: inline-block;
+  position: relative;
+  top: 0.2rem;
+  content: "";
+  width: 20px;
+  height: 20px;
+  margin-right: 0.2rem;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("../img/twitter.svg");
+}
+.anyconf-link--url:before {
+  display: inline-block;
+  position: relative;
+  top: 0.2rem;
+  content: "";
+  width: 20px;
+  height: 20px;
+  margin-right: 0.2rem;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("../img/link.svg");
+}
 .topcoat-icon.topcoat-checkbox-label {
   vertical-align: middle;
 }
@@ -724,6 +767,49 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
   right: 10px;
   top: 0px;
 }
+.anyconf-condensed {
+  font-family: 'League Gothic';
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  color: #333;
+}
+.anyconf-link-list {
+  display: inline-block;
+  list-style: none;
+  padding: 0;
+}
+.anyconf-link-list li {
+  margin-top: 0.5rem;
+}
+.anyconf-link {
+  color: #c69;
+}
+.anyconf-link--twitter:before {
+  display: inline-block;
+  position: relative;
+  top: 0.2rem;
+  content: "";
+  width: 20px;
+  height: 20px;
+  margin-right: 0.2rem;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("../img/twitter.svg");
+}
+.anyconf-link--url:before {
+  display: inline-block;
+  position: relative;
+  top: 0.2rem;
+  content: "";
+  width: 20px;
+  height: 20px;
+  margin-right: 0.2rem;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("../img/link.svg");
+}
 .topcoat-icon.topcoat-checkbox-label {
   vertical-align: middle;
 }
@@ -1087,6 +1173,49 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
   right: 10px;
   top: 0px;
 }
+.anyconf-condensed {
+  font-family: 'League Gothic';
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  color: #333;
+}
+.anyconf-link-list {
+  display: inline-block;
+  list-style: none;
+  padding: 0;
+}
+.anyconf-link-list li {
+  margin-top: 0.5rem;
+}
+.anyconf-link {
+  color: #c69;
+}
+.anyconf-link--twitter:before {
+  display: inline-block;
+  position: relative;
+  top: 0.2rem;
+  content: "";
+  width: 20px;
+  height: 20px;
+  margin-right: 0.2rem;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("../img/twitter.svg");
+}
+.anyconf-link--url:before {
+  display: inline-block;
+  position: relative;
+  top: 0.2rem;
+  content: "";
+  width: 20px;
+  height: 20px;
+  margin-right: 0.2rem;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("../img/link.svg");
+}
 .topcoat-icon.topcoat-checkbox-label {
   vertical-align: middle;
 }
@@ -1446,6 +1575,49 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
   position: absolute;
   right: 10px;
   top: 0px;
+}
+.anyconf-condensed {
+  font-family: 'League Gothic';
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  color: #333;
+}
+.anyconf-link-list {
+  display: inline-block;
+  list-style: none;
+  padding: 0;
+}
+.anyconf-link-list li {
+  margin-top: 0.5rem;
+}
+.anyconf-link {
+  color: #c69;
+}
+.anyconf-link--twitter:before {
+  display: inline-block;
+  position: relative;
+  top: 0.2rem;
+  content: "";
+  width: 20px;
+  height: 20px;
+  margin-right: 0.2rem;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("../img/twitter.svg");
+}
+.anyconf-link--url:before {
+  display: inline-block;
+  position: relative;
+  top: 0.2rem;
+  content: "";
+  width: 20px;
+  height: 20px;
+  margin-right: 0.2rem;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("../img/link.svg");
 }
 .topcoat-icon.topcoat-checkbox-label {
   vertical-align: middle;
@@ -1819,6 +1991,49 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
   right: 10px;
   top: 0px;
 }
+.anyconf-condensed {
+  font-family: 'League Gothic';
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  color: #333;
+}
+.anyconf-link-list {
+  display: inline-block;
+  list-style: none;
+  padding: 0;
+}
+.anyconf-link-list li {
+  margin-top: 0.5rem;
+}
+.anyconf-link {
+  color: #c69;
+}
+.anyconf-link--twitter:before {
+  display: inline-block;
+  position: relative;
+  top: 0.2rem;
+  content: "";
+  width: 20px;
+  height: 20px;
+  margin-right: 0.2rem;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("../img/twitter.svg");
+}
+.anyconf-link--url:before {
+  display: inline-block;
+  position: relative;
+  top: 0.2rem;
+  content: "";
+  width: 20px;
+  height: 20px;
+  margin-right: 0.2rem;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("../img/link.svg");
+}
 .topcoat-icon.topcoat-checkbox-label {
   vertical-align: middle;
 }
@@ -2181,6 +2396,49 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
   position: absolute;
   right: 10px;
   top: 0px;
+}
+.anyconf-condensed {
+  font-family: 'League Gothic';
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  color: #333;
+}
+.anyconf-link-list {
+  display: inline-block;
+  list-style: none;
+  padding: 0;
+}
+.anyconf-link-list li {
+  margin-top: 0.5rem;
+}
+.anyconf-link {
+  color: #c69;
+}
+.anyconf-link--twitter:before {
+  display: inline-block;
+  position: relative;
+  top: 0.2rem;
+  content: "";
+  width: 20px;
+  height: 20px;
+  margin-right: 0.2rem;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("../img/twitter.svg");
+}
+.anyconf-link--url:before {
+  display: inline-block;
+  position: relative;
+  top: 0.2rem;
+  content: "";
+  width: 20px;
+  height: 20px;
+  margin-right: 0.2rem;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("../img/link.svg");
 }
 .topcoat-icon.topcoat-checkbox-label {
   vertical-align: middle;
@@ -2562,6 +2820,49 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
   right: 10px;
   top: 0px;
 }
+.anyconf-condensed {
+  font-family: 'League Gothic';
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  color: #333;
+}
+.anyconf-link-list {
+  display: inline-block;
+  list-style: none;
+  padding: 0;
+}
+.anyconf-link-list li {
+  margin-top: 0.5rem;
+}
+.anyconf-link {
+  color: #c69;
+}
+.anyconf-link--twitter:before {
+  display: inline-block;
+  position: relative;
+  top: 0.2rem;
+  content: "";
+  width: 20px;
+  height: 20px;
+  margin-right: 0.2rem;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("../img/twitter.svg");
+}
+.anyconf-link--url:before {
+  display: inline-block;
+  position: relative;
+  top: 0.2rem;
+  content: "";
+  width: 20px;
+  height: 20px;
+  margin-right: 0.2rem;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("../img/link.svg");
+}
 .topcoat-icon.topcoat-checkbox-label {
   vertical-align: middle;
 }
@@ -2929,6 +3230,49 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
   position: absolute;
   right: 10px;
   top: 0px;
+}
+.anyconf-condensed {
+  font-family: 'League Gothic';
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  color: #333;
+}
+.anyconf-link-list {
+  display: inline-block;
+  list-style: none;
+  padding: 0;
+}
+.anyconf-link-list li {
+  margin-top: 0.5rem;
+}
+.anyconf-link {
+  color: #c69;
+}
+.anyconf-link--twitter:before {
+  display: inline-block;
+  position: relative;
+  top: 0.2rem;
+  content: "";
+  width: 20px;
+  height: 20px;
+  margin-right: 0.2rem;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("../img/twitter.svg");
+}
+.anyconf-link--url:before {
+  display: inline-block;
+  position: relative;
+  top: 0.2rem;
+  content: "";
+  width: 20px;
+  height: 20px;
+  margin-right: 0.2rem;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("../img/link.svg");
 }
 .topcoat-icon.topcoat-checkbox-label {
   vertical-align: middle;
@@ -3521,6 +3865,49 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
   right: 10px;
   top: 0px;
 }
+.anyconf-condensed {
+  font-family: 'League Gothic';
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  color: #333;
+}
+.anyconf-link-list {
+  display: inline-block;
+  list-style: none;
+  padding: 0;
+}
+.anyconf-link-list li {
+  margin-top: 0.5rem;
+}
+.anyconf-link {
+  color: #c69;
+}
+.anyconf-link--twitter:before {
+  display: inline-block;
+  position: relative;
+  top: 0.2rem;
+  content: "";
+  width: 20px;
+  height: 20px;
+  margin-right: 0.2rem;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("../img/twitter.svg");
+}
+.anyconf-link--url:before {
+  display: inline-block;
+  position: relative;
+  top: 0.2rem;
+  content: "";
+  width: 20px;
+  height: 20px;
+  margin-right: 0.2rem;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("../img/link.svg");
+}
 .topcoat-icon.topcoat-checkbox-label {
   vertical-align: middle;
 }
@@ -3888,6 +4275,49 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
   position: absolute;
   right: 10px;
   top: 0px;
+}
+.anyconf-condensed {
+  font-family: 'League Gothic';
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  color: #333;
+}
+.anyconf-link-list {
+  display: inline-block;
+  list-style: none;
+  padding: 0;
+}
+.anyconf-link-list li {
+  margin-top: 0.5rem;
+}
+.anyconf-link {
+  color: #c69;
+}
+.anyconf-link--twitter:before {
+  display: inline-block;
+  position: relative;
+  top: 0.2rem;
+  content: "";
+  width: 20px;
+  height: 20px;
+  margin-right: 0.2rem;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("../img/twitter.svg");
+}
+.anyconf-link--url:before {
+  display: inline-block;
+  position: relative;
+  top: 0.2rem;
+  content: "";
+  width: 20px;
+  height: 20px;
+  margin-right: 0.2rem;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("../img/link.svg");
 }
 .topcoat-icon.topcoat-checkbox-label {
   vertical-align: middle;
@@ -4459,6 +4889,49 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
   right: 10px;
   top: 0px;
 }
+.anyconf-condensed {
+  font-family: 'League Gothic';
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  color: #333;
+}
+.anyconf-link-list {
+  display: inline-block;
+  list-style: none;
+  padding: 0;
+}
+.anyconf-link-list li {
+  margin-top: 0.5rem;
+}
+.anyconf-link {
+  color: #c69;
+}
+.anyconf-link--twitter:before {
+  display: inline-block;
+  position: relative;
+  top: 0.2rem;
+  content: "";
+  width: 20px;
+  height: 20px;
+  margin-right: 0.2rem;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("../img/twitter.svg");
+}
+.anyconf-link--url:before {
+  display: inline-block;
+  position: relative;
+  top: 0.2rem;
+  content: "";
+  width: 20px;
+  height: 20px;
+  margin-right: 0.2rem;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("../img/link.svg");
+}
 .topcoat-icon.topcoat-checkbox-label {
   vertical-align: middle;
 }
@@ -4826,6 +5299,49 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
   position: absolute;
   right: 10px;
   top: 0px;
+}
+.anyconf-condensed {
+  font-family: 'League Gothic';
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  color: #333;
+}
+.anyconf-link-list {
+  display: inline-block;
+  list-style: none;
+  padding: 0;
+}
+.anyconf-link-list li {
+  margin-top: 0.5rem;
+}
+.anyconf-link {
+  color: #c69;
+}
+.anyconf-link--twitter:before {
+  display: inline-block;
+  position: relative;
+  top: 0.2rem;
+  content: "";
+  width: 20px;
+  height: 20px;
+  margin-right: 0.2rem;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("../img/twitter.svg");
+}
+.anyconf-link--url:before {
+  display: inline-block;
+  position: relative;
+  top: 0.2rem;
+  content: "";
+  width: 20px;
+  height: 20px;
+  margin-right: 0.2rem;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("../img/link.svg");
 }
 .topcoat-icon.topcoat-checkbox-label {
   vertical-align: middle;
@@ -5248,6 +5764,49 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
   right: 10px;
   top: 0px;
 }
+.anyconf-condensed {
+  font-family: 'League Gothic';
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  color: #333;
+}
+.anyconf-link-list {
+  display: inline-block;
+  list-style: none;
+  padding: 0;
+}
+.anyconf-link-list li {
+  margin-top: 0.5rem;
+}
+.anyconf-link {
+  color: #c69;
+}
+.anyconf-link--twitter:before {
+  display: inline-block;
+  position: relative;
+  top: 0.2rem;
+  content: "";
+  width: 20px;
+  height: 20px;
+  margin-right: 0.2rem;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("../img/twitter.svg");
+}
+.anyconf-link--url:before {
+  display: inline-block;
+  position: relative;
+  top: 0.2rem;
+  content: "";
+  width: 20px;
+  height: 20px;
+  margin-right: 0.2rem;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("../img/link.svg");
+}
 .topcoat-icon.topcoat-checkbox-label {
   vertical-align: middle;
 }
@@ -5615,6 +6174,49 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
   position: absolute;
   right: 10px;
   top: 0px;
+}
+.anyconf-condensed {
+  font-family: 'League Gothic';
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  color: #333;
+}
+.anyconf-link-list {
+  display: inline-block;
+  list-style: none;
+  padding: 0;
+}
+.anyconf-link-list li {
+  margin-top: 0.5rem;
+}
+.anyconf-link {
+  color: #c69;
+}
+.anyconf-link--twitter:before {
+  display: inline-block;
+  position: relative;
+  top: 0.2rem;
+  content: "";
+  width: 20px;
+  height: 20px;
+  margin-right: 0.2rem;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("../img/twitter.svg");
+}
+.anyconf-link--url:before {
+  display: inline-block;
+  position: relative;
+  top: 0.2rem;
+  content: "";
+  width: 20px;
+  height: 20px;
+  margin-right: 0.2rem;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("../img/link.svg");
 }
 .topcoat-icon.topcoat-checkbox-label {
   vertical-align: middle;
@@ -6052,6 +6654,49 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
   right: 10px;
   top: 0px;
 }
+.anyconf-condensed {
+  font-family: 'League Gothic';
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  color: #333;
+}
+.anyconf-link-list {
+  display: inline-block;
+  list-style: none;
+  padding: 0;
+}
+.anyconf-link-list li {
+  margin-top: 0.5rem;
+}
+.anyconf-link {
+  color: #c69;
+}
+.anyconf-link--twitter:before {
+  display: inline-block;
+  position: relative;
+  top: 0.2rem;
+  content: "";
+  width: 20px;
+  height: 20px;
+  margin-right: 0.2rem;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("../img/twitter.svg");
+}
+.anyconf-link--url:before {
+  display: inline-block;
+  position: relative;
+  top: 0.2rem;
+  content: "";
+  width: 20px;
+  height: 20px;
+  margin-right: 0.2rem;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("../img/link.svg");
+}
 .topcoat-icon.topcoat-checkbox-label {
   vertical-align: middle;
 }
@@ -6419,6 +7064,49 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
   position: absolute;
   right: 10px;
   top: 0px;
+}
+.anyconf-condensed {
+  font-family: 'League Gothic';
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  color: #333;
+}
+.anyconf-link-list {
+  display: inline-block;
+  list-style: none;
+  padding: 0;
+}
+.anyconf-link-list li {
+  margin-top: 0.5rem;
+}
+.anyconf-link {
+  color: #c69;
+}
+.anyconf-link--twitter:before {
+  display: inline-block;
+  position: relative;
+  top: 0.2rem;
+  content: "";
+  width: 20px;
+  height: 20px;
+  margin-right: 0.2rem;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("../img/twitter.svg");
+}
+.anyconf-link--url:before {
+  display: inline-block;
+  position: relative;
+  top: 0.2rem;
+  content: "";
+  width: 20px;
+  height: 20px;
+  margin-right: 0.2rem;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("../img/link.svg");
 }
 .topcoat-icon.topcoat-checkbox-label {
   vertical-align: middle;
@@ -6865,6 +7553,49 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
   right: 10px;
   top: 0px;
 }
+.anyconf-condensed {
+  font-family: 'League Gothic';
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  color: #333;
+}
+.anyconf-link-list {
+  display: inline-block;
+  list-style: none;
+  padding: 0;
+}
+.anyconf-link-list li {
+  margin-top: 0.5rem;
+}
+.anyconf-link {
+  color: #c69;
+}
+.anyconf-link--twitter:before {
+  display: inline-block;
+  position: relative;
+  top: 0.2rem;
+  content: "";
+  width: 20px;
+  height: 20px;
+  margin-right: 0.2rem;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("../img/twitter.svg");
+}
+.anyconf-link--url:before {
+  display: inline-block;
+  position: relative;
+  top: 0.2rem;
+  content: "";
+  width: 20px;
+  height: 20px;
+  margin-right: 0.2rem;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("../img/link.svg");
+}
 .topcoat-icon.topcoat-checkbox-label {
   vertical-align: middle;
 }
@@ -7232,6 +7963,49 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
   position: absolute;
   right: 10px;
   top: 0px;
+}
+.anyconf-condensed {
+  font-family: 'League Gothic';
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  color: #333;
+}
+.anyconf-link-list {
+  display: inline-block;
+  list-style: none;
+  padding: 0;
+}
+.anyconf-link-list li {
+  margin-top: 0.5rem;
+}
+.anyconf-link {
+  color: #c69;
+}
+.anyconf-link--twitter:before {
+  display: inline-block;
+  position: relative;
+  top: 0.2rem;
+  content: "";
+  width: 20px;
+  height: 20px;
+  margin-right: 0.2rem;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("../img/twitter.svg");
+}
+.anyconf-link--url:before {
+  display: inline-block;
+  position: relative;
+  top: 0.2rem;
+  content: "";
+  width: 20px;
+  height: 20px;
+  margin-right: 0.2rem;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("../img/link.svg");
 }
 .topcoat-icon.topcoat-checkbox-label {
   vertical-align: middle;
