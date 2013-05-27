@@ -1,0 +1,105 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>Pull to Action Component</title>
+  <style>
+    body {
+      font: 120%/1.6 normal normal Helvetica, Arial, sans-serif;
+      margin: 0;
+      background: #555;
+    }
+  
+    html, body{
+      height: 100%;
+    }
+  
+    ul, li {
+      padding: 0;
+      margin: 0;
+    }
+  
+    li {
+      padding: 1rem 2rem;
+      background: white;
+      border-bottom: 1px solid #d7d7d7;
+    }
+  
+    .close{
+      -webkit-animation: close 0.4s ease-out;
+    }
+  
+    @-webkit-keyframes close{
+      to {
+        -webkit-transform: scale(0.5);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- 'close' class added to 'pta-wrapper' with JavaScript -->
+  <div class="pta-wrapper">
+    <div class="pta-scroller">
+      <ul>
+        <li><strong>Scroll to the bottom</strong></li>
+        <li><strong>and pull up to close</strong></li>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+        <li>Item 4</li>
+        <li>Item 5</li>
+        <li>Item 6</li>
+        <li>Item 7</li>
+        <li>Item 8</li>
+        <li>Item 9</li>
+        <li>Item 10</li>
+        <li>Item 11</li>
+        <li>Item 12</li>
+        <li>Item 13</li>
+      </ul>
+      <!-- 'pta-state-release' class added to 'pta-message' with JavaScript-->
+      <div class="pta-message">
+        <div class="pta-pull">Pull up to close</div>
+        <div class="pta-release">Release to close</div>
+      </div>
+    </div>
+  </div>
+
+  <link rel="stylesheet" href="pull-to-action.css" />
+  <script src="thirdparty/iscroll/iscroll.js" type="text/javascript"></script>
+  <script src="pull-to-action.js" type="text/javascript"></script>
+  <script>
+  
+    document.addEventListener('DOMContentLoaded', function(){
+      
+      var options = {
+        wrapperEl: document.querySelector('.pta-wrapper'),
+        scrollerEl: document.querySelector('.pta-scroller'),
+        messageEl: document.querySelector('.pta-message'),
+
+        /*
+          The scroll release threshold is (scrollerEl + messageEl) height.
+          When the release occurs, onAction is called.
+        */
+        onAction: function(){
+          // 'this' in this context is the PullToAction object instance
+          var el = this.wrapperEl
+          
+          el.classList.add('close')
+          el.addEventListener('webkitAnimationEnd', function(e){
+            el.classList.remove('close')
+
+            // removes event handlers and the 'pta-state-relese' class
+            this.reset()
+          })
+        }
+      }
+      
+      var pta = PullToAction(options) 
+    })
+    
+  </script>
+</body>
+</html>

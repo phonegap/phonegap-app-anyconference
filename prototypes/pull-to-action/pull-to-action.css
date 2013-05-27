@@ -1,0 +1,50 @@
+.pta-wrapper {
+  height: 100%;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  position: relative;
+}
+
+
+.pta-scroller{
+  min-height: 100%;
+  -webkit-transform: translateZ(0);
+}
+
+.pta-message {
+  box-sizing: border-box;
+  -webkit-perspective: 600;
+  
+  height: 60px;
+  width: 100%;
+  color: white;
+
+  /* Position not 'absolute' because iOS would add the element's height to the container's content box when it's negatively offset at the bottom. Bug? */
+  position: fixed; 
+  z-index: -1;
+  left: 0;
+  bottom: -60px;
+}
+
+.pta-release,
+.pta-pull {
+  display: block;
+  width: 100%;
+  position: absolute;
+  padding: 1rem 2rem;
+  -webkit-transition: -webkit-transform 0.3s ease-out;
+  -webkit-backface-visibility: hidden;
+  background: black;
+}
+
+.pta-release{
+  -webkit-transform: rotateX(-180deg);
+  background: crimson;
+}
+
+.pta-state-release .pta-pull{
+  -webkit-transform: rotateX(180deg);
+}
+.pta-state-release .pta-release{
+  -webkit-transform: rotateX(0);
+}
