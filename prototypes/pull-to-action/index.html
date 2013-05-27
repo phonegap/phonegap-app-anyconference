@@ -86,13 +86,14 @@
         onAction: function(){
           // 'this' in this context is the PullToAction object instance
           var el = this.wrapperEl
+          var self = this
           
           el.classList.add('close')
           el.addEventListener('webkitAnimationEnd', function(e){
             el.classList.remove('close')
 
             // removes event handlers and the 'pta-state-relese' class
-            this.reset()
+            self.reset()
           })
         }
       }
