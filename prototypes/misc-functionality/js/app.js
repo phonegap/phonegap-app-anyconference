@@ -1050,6 +1050,8 @@ limitations under the License.
                 }
                 window.removeEventListener('touchmove', _this.touchMove);
             }
+            
+            _this.lastPoint = currentPoint;
 		},
         
         touchEnd: function(evt) {
