@@ -34,12 +34,6 @@
 
 .topcoat-list__container{
     border-top: none;
-    position: absolute;
-    top: 4rem;
-    left: 0;
-    width: 100%;
-    bottom: 0;
-    background-color: #f2f3f3;
 }
 
 /*
@@ -230,4 +224,63 @@ small{
     width: 50px;
     border-right: 1px solid white;
     vertical-align: top;
+}
+
+
+input[type="checkbox"] {
+  display: none;
+}
+.topcoat-checkbox-label--left:before,
+.topcoat-checkbox-label--right:after {
+  background-position: left -37px;
+}
+input[type="checkbox"]:checked + .topcoat-checkbox-label--left:before,
+input[type="checkbox"]:checked + .topcoat-checkbox-label--right:after {
+  background-position: left -2px;
+}
+input[type="checkbox"]:disabled + label {
+  opacity: 0.3;
+  cursor: default;
+  pointer-events: none;
+}
+.topcoat-checkbox-label--left:before,
+.topcoat-checkbox-label--right:after {
+  content: "";
+  display: inline-block;
+  width: 37px;
+  height: 31px;
+  background-color: blue;
+  background-image: url("../../test/fixtures/img/light-sprites2x.png");
+  background-repeat: no-repeat;
+  background-size: 37px;
+  cursor: pointer;
+}
+.topcoat-checkbox-label--left:before {
+  margin-right: 15px;
+}
+.topcoat-checkbox-label--right:after {
+  margin-left: 15px;
+}
+.topcoat-checkbox-label--left,
+.topcoat-checkbox-label--right {
+  box-sizing: border-box;
+  padding: 0 1.25rem;
+  margin: 5px;
+  outline: none;
+  font: 1em "Source Sans", helvetica, arial, sans-serif;
+  font-weight: 200;
+  line-height: 30px;
+  vertical-align: top;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+}
+.topcoat-not-checkbox {
+  color: var-color;
+  padding: var-padding;
+  text-shadow: var-text-shadow;
+  background-color: var-background-color;
+  box-shadow: var-box-shadow;
+  border: var-border;
+  border-radius: 5px;
 }

@@ -642,7 +642,8 @@ limitations under the License.
 	var AppView = Backbone.View.extend({
 		model: app,
 		
-		el: document.body,
+		tagName: 'div',
+		className: 'topcoat-list__container',
 		
 		currentContext: null,
 		
@@ -839,7 +840,8 @@ limitations under the License.
 			sessionListDetailsView.listenTo(sessionList, 'add', sessionListDetailsView.addSession);
 
 			// _this.listenTo(sessionList, 'navigateTo', _this.navigateTo);
-			_this.el.getElementsByClassName('topcoat-list__container')[0].appendChild( sessionListView.el );
+			_this.el.appendChild( sessionListView.el );
+			$('.topcoat-app-content').append(_this.el);
 			this.currentContext = sessionListView;
 			
 			this.getConferenceData().then(function() {
@@ -930,6 +932,119 @@ limitations under the License.
 			return this;
 		}
 	});
+	
+	var MenuView = Backbone.View.extend({
+		tagName: 'div',
+		className: 'anyconf-menu',
+		animating: false,
+		isShown: false,
+		
+		template: _.template($('#anyconf-menu-template').html()),
+		
+		render: function() {
+		    var _this = this;
+
+			var onTransitionEnd = function(evt) {
+				_this.el.classList.remove('js-menu-transition-in');
+				evt.target.removeEventListener('webkitTransitionEnd', onTransitionEnd);
+				_this.animating = false;
+			};
+
+		    this.animating = true;
+		    this.el.classList.remove('js-menu-offscreen');
+		    this.el.classList.add('js-menu-transition-in');
+		    this.el.style.webkitTransform = 'none';
+		    this.el.addEventListener('webkitTransitionEnd', onTransitionEnd);
+		    this.isShown = true;
+		},
+		
+		hide: function() {
+		    var _this = this;
+
+			var onTransitionEnd = function(evt) {
+				_this.el.classList.remove('js-menu-transition-out');
+				evt.target.removeEventListener('webkitTransitionEnd', onTransitionEnd);
+				_this.animating = false;
+			};
+
+		    this.animating = true;
+		    this.el.classList.add('js-menu-offscreen');
+		    this.el.classList.add('js-menu-transition-out');
+		    this.el.style.webkitTransform = 'translateX(' + -window.innerWidth + 'px)';
+		    this.el.addEventListener('webkitTransitionEnd', onTransitionEnd);
+		    this.isShown = false;
+		},
+		
+		toggleMenu: function(evt) {
+		    var _this = menuView;
+		    if( _this.animating ) {
+		        return;
+		    }
+		    if( !_this.isShown ) {
+		        _this.render();
+		    } else {
+		        _this.hide();
+		    }
+		},
+		
+		touchStart: function(evt) {
+		    var _this = menuView;
+
+			_this.startPoint = {
+				x: evt.touches[0].pageX,
+				y: evt.touches[0].pageY
+			};
+			_this.lastPoint = {
+				x: _this.startPoint.x,
+				y: _this.startPoint.y
+			};
+			_this.lastDiff = {
+				x: 0,
+				y: 0
+			};
+			
+			if( !_this.isShown ) {
+                if( _this.startPoint.x < 20 ) {
+                    _this.gestureStarted = true;
+                    window.addEventListener('touchmove', _this.touchMove, false);
+                }
+            } else {
+                
+            }
+		},
+		
+		touchMove: function(evt) {
+    		var _this = menuView;
+		    var x = evt.touches[0].pageX;
+		    var y = evt.touches[0].pageY;
+		    
+		    if( x > _this.lastPoint.x ) {
+		        _this.render();
+		    } else {
+		        _this.gestureStarted = false;
+		    }
+            window.removeEventListener('touchmove', _this.touchMove);
+		},
+		
+		initialize: function() {
+		    var _this = this;
+		    var button = $('.js-menu')[0];
+		    
+		    button.addEventListener('click', _this.toggleMenu, false);
+		
+		    document.body.appendChild( this.el );
+		    var templateValues = {
+		        
+		    };
+		    this.el.classList.add('js-menu-offscreen');
+		    this.el.style.webkitTransform = 'translateX(' + -window.innerWidth + 'px)';
+		    this.el.innerHTML = this.template(templateValues);
+		    
+		    window.addEventListener('touchstart', _this.touchStart, false);
+		}
+	});
+	
+	var menuView = new MenuView;
 	
 	var appView = new AppView;
 }());
