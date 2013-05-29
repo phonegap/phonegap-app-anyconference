@@ -989,6 +989,7 @@ limitations under the License.
 		
 		touchStart: function(evt) {
 		    var _this = menuView;
+            var darkenedScreen;
 
 			_this.startPoint = {
 				x: evt.touches[0].pageX,
@@ -1003,29 +1004,66 @@ limitations under the License.
 				y: 0
 			};
 			
-			if( !_this.isShown ) {
+            if( _this.isShown ) {
+                if( evt.target == darkenedScreen ) {
+                    _this.hide();
+                } else {
+                    evt.preventDefault();
+                    window.addEventListener('touchmove', _this.touchMove, false);
+                    window.addEventListener('touchend', _this.touchEnd, false);
+                }
+            } else {
                 if( _this.startPoint.x < 20 ) {
                     _this.gestureStarted = true;
                     window.addEventListener('touchmove', _this.touchMove, false);
                 }
-            } else {
-                
             }
 		},
 		
 		touchMove: function(evt) {
     		var _this = menuView;
-		    var x = evt.touches[0].pageX;
-		    var y = evt.touches[0].pageY;
+		    var currentPoint = {
+                x: evt.touches[0].pageX,
+                y: evt.touches[0].pageY,
+            };
+            
+			var startOffset = {
+				x: currentPoint.x - _this.startPoint.x,
+				y: currentPoint.y - _this.startPoint.y
+			};
+            
+            _this.lastDiff = {
+                x: currentPoint.x - _this.lastPoint.x,
+                y: currentPoint.y - _this.lastPoint.y
+            };
+            
+            var darkenedScreen;
 		    
-		    if( x > _this.lastPoint.x ) {
-		        _this.render();
-		    } else {
-		        _this.gestureStarted = false;
-		    }
-            window.removeEventListener('touchmove', _this.touchMove);
+            if( _this.isShown ) {
+                var translateX = Math.min(startOffset.x, 0);
+                _this.el.style.webkitTransform = 'translateX(' + translateX + 'px)';
+            } else {
+                if( currentPoint.x > _this.lastPoint.x ) {
+                    _this.render();
+                } else {
+                    _this.gestureStarted = false;
+                }
+                window.removeEventListener('touchmove', _this.touchMove);
+            }
 		},
-		
+        
+        touchEnd: function(evt) {
+		    var _this = menuView;
+			if( _this.lastDiff.x > 0 ) {
+				evt.preventDefault();
+				_this.render();
+			} else if( _this.lastDiff.x <= 0 ) {
+				_this.hide();
+			}
+            window.removeEventListener('touchmove', _this.touchMove);
+            window.removeEventListener('touchend', _this.touchEnd);
+        },
+        
 		initialize: function() {
 		    var _this = this;
 		    var button = $('.js-menu')[0];
