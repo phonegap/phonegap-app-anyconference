@@ -105,38 +105,35 @@ limitations under the License.
 	var SessionPage = Backbone.View.extend({
 		tagName: 'div',
 		className: 'session-page',
-		
+        transitionCallback: null,
+        
 		hide: function() {
 			this.el.style.display = 'none';
 		},
+        
+        onTransitionEnd: function(evt) {
+            this.el.classList.remove('js-page-transition-in');
+            this.el.classList.remove('js-page-transition-out');
+            if( this.transitionCallback ) {
+                this.transitionCallback.call(this);
+                this.transitionCallback = null;
+            }
+        },
 		
 		transitionIn: function(callback) {
-			var _this = this;
-			var onTransitionEnd = function(evt) {
-				_this.el.classList.remove('js-page-transition-in');
-				evt.target.removeEventListener('webkitTransitionEnd', onTransitionEnd);
-				callback(evt);
-			};
+            this.transitionCallback = callback;
 			this.el.classList.add('js-page-transition-in');
 			this.el.style.webkitTransform = 'none';
-			this.el.addEventListener('webkitTransitionEnd', onTransitionEnd);
 		},
 		
 		transitionOut: function(callback) {
-			var _this = this;
-			var onTransitionEnd = function(evt) {
-				_this.el.classList.remove('js-page-transition-out');
-				evt.target.removeEventListener('webkitTransitionEnd', onTransitionEnd);
-				callback(evt);
-			};
+			this.transitionCallback = callback;
 			this.el.classList.add('js-page-transition-out');
 			this.el.style.webkitTransform = 'translateY(' + -this.options.pageHeight + 'px) translateZ(0)';
-			this.el.addEventListener('webkitTransitionEnd', onTransitionEnd);
 		},
 		
 		render: function() {
 			this.el.style.display = 'block';
-			// this.el.style.zIndex = 10;
 			this.el.style.webkitTransform = 'none';
 		},
 		
@@ -145,7 +142,13 @@ limitations under the License.
 			var offsetY = -this.options.pageHeight;
 			this.el.style.zIndex = 10;
 			this.el.style.webkitTransform = 'translateY(' + offsetY + 'px) translateZ(0)';
-		}
+		},
+        
+        initialize: function() {
+            this.delegateEvents({
+                'webkitTransitionEnd': this.onTransitionEnd
+            });
+        }
 	});
 	
 	var SessionListDetailsView = Backbone.View.extend({
