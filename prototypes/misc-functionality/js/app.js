@@ -20,7 +20,43 @@ limitations under the License.
 	});
 	
 	var app = new App;
-	
+
+    var AppRouter = Backbone.Router.extend({
+ 
+        routes: {
+            '': 'sessionList/:showMenu',
+            'sessionList/:showMenu': 'sessionList',
+            'starredSessionList/:showMenu': 'starredSessionList',
+            'speakerList/:showMenu': 'speakerList',
+
+            'sessionDetails/:sessionId': 'sessionDetails',
+            'speakerDetails/:speakerId': 'speakerDetails'
+        },
+        
+        // These probably aren't necessary if we just use .on(route:*)
+        sessionList: function(showMenu) {
+            
+        },
+            
+        starredSessionList: function(showMenu) {
+            
+        },
+        
+        speakerList: function(showMenu) {
+        
+        },
+        
+        sessionDetails: function(sessionId) {
+
+        },
+        
+        speakerDetails: function(speakerId) {
+        
+        }
+    });
+    
+    var appRouter = new AppRouter();
+        	
 	var timeFlag = {
 		NONE: 0,
 		NEXT: 1,
@@ -30,6 +66,7 @@ limitations under the License.
 	var Session = Backbone.Model.extend({
 		defaults: function() {
 			return {
+			    id: null,
 				track: null,
 				location: null,
 				title: 'Unnamed session',
@@ -165,7 +202,10 @@ limitations under the License.
 		swiping: false,
 		
 		initialize: function() {
-			
+		    var _this = this;
+			appRouter.on('route:sessionDetails', function() {
+			    _this.navigateTo.apply(_this, arguments);
+			});
 		},
 		
 		addSession: function(session) {
@@ -175,8 +215,8 @@ limitations under the License.
 			this.viewPointers[session.cid] = view;
 		},
 		
-		navigateTo: function(track) {
-			var session = track.get('selectedSession');
+		navigateTo: function(sessionId) {
+			var session = this.collection.get(sessionId);
 			this.render();
 			this.currentSession = session;
 			var detailsView = this.viewPointers[ session.cid ];
@@ -209,7 +249,7 @@ limitations under the License.
 		},
 		
 		render: function() {
-			document.body.appendChild(this.el);
+			$('.topcoat-app-content').append(this.el);
 			this.el.style.display = 'block';
 			this.el.style.webkitTransform = 'none';
 			window.addEventListener('touchstart', this.touchStart);
@@ -527,7 +567,7 @@ limitations under the License.
 					_this.transitionCurrentBack();
 				}
 			} else if( _this.lastDiff.y <= 0 ) {
-				evt.preventDefault();
+				// evt.preventDefault(); // this prevents click event
 				if( !_this.nextPage ) {
 					_this.transitionCurrentBack();
 				} else if( _this.pendingPage === _this.nextPage ) {
@@ -555,9 +595,14 @@ limitations under the License.
 		},
 		
 		initialize: function() {
+			var _this = this;
 			this.pageHeight = window.innerHeight;
 			this.pageOverlay = document.createElement('div');
 			this.pageOverlay.className = 'js-page-overlay';
+			
+			appRouter.on('route:sessionDetails', function() {
+			    _this.leave();
+			});
 		}
 	});
 	
@@ -850,10 +895,9 @@ limitations under the License.
 			this.getConferenceData().then(function() {
 				sessionListView.render();
 				sessionListView.listenTo(_this.currentTrack, 'change:selectedSession', sessionListView.leave);
-				sessionListDetailsView.listenTo(_this.currentTrack, 'change:selectedSession', sessionListDetailsView.navigateTo);
-//				appView.listenTo(_this.currentTrack, 'change:selectedSession', sessionListDetailsView.navigateTo);
 				
 				_this.checkTime();
+                Backbone.history.start();
 			});
 		},
 		
@@ -865,6 +909,10 @@ limitations under the License.
 		template: _.template($('#session-entry-template').html()),
 		
 		tagName: 'div',
+		
+		events: {
+            'click .js-session-details-link': 'detailsClicked'
+		},
 		
 		initialize: function() {
 			//this.listenTo(this.model, 'change', this.render);
@@ -888,6 +936,11 @@ limitations under the License.
 					cl.add('js-timeflag--current');
 					break;
 			}
+		},
+		
+		detailsClicked: function(evt) {
+		    var id = this.model.id;
+		    appRouter.navigate('sessionDetails/' + id, {trigger: true});
 		},
 		
 		render: function() {
@@ -921,16 +974,6 @@ limitations under the License.
 			};
 			
 			this.el.innerHTML = this.template(templateValues);
-			
-			var detailsLink = this.el.getElementsByClassName('js-session-details-link')[0];
-			detailsLink.addEventListener('click', function(evt) {
-				evt.preventDefault();
-				// appView.navigateTo(_this.model.get('contextView'));
-				appView.currentTrack.set('selectedSession', _this.model);
-				
-				// alert(_this.model.get('title'));
-				
-			}, false);
 
 			return this;
 		}
@@ -1098,5 +1141,6 @@ limitations under the License.
 	var menuView = new MenuView;
 	
 	var appView = new AppView;
+
 }());
 
