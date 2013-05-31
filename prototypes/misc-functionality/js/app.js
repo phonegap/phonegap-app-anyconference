@@ -1058,12 +1058,20 @@ limitations under the License.
 		},
         
         touchEnd: function(evt) {
+            evt.preventDefault();
 		    var _this = menuView;
-			if( _this.lastDiff.x > 0 ) {
-				evt.preventDefault();
-				_this.render();
-			} else if( _this.lastDiff.x <= 0 ) {
-				_this.hide();
+		    if( !_this.isShown ) {
+                if( _this.lastDiff.x > 0 ) {
+                    _this.render();
+                } else {
+                    _this.hide();
+                }
+			} else {
+                if( _this.lastDiff.x < -5 ) {
+                    _this.hide();
+                } else {
+                    _this.render();
+                }
 			}
             window.removeEventListener('touchmove', _this.touchMove);
             window.removeEventListener('touchend', _this.touchEnd);
