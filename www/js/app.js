@@ -386,6 +386,8 @@ limitations under the License.
 
 		pageOverlay: null,
 		
+		swipeChecked: false,
+		
 		leave: function() {
 			this.el.style.display = 'none';
 		},
@@ -533,6 +535,8 @@ limitations under the License.
 			console.log('touchmove');
 			evt.preventDefault();
 			var _this = sessionListView;
+			
+			
 			var targetEl = _this.currentPage.el;
 			var prevEl;
 			if( _this.prevPage ) {
@@ -548,17 +552,25 @@ limitations under the License.
 			};
 			_this.lastPoint = currentPoint;
 			
-            // determine if scrolling or page swiping
-            var absX = Math.abs( _this.lastDiff.x );
-            var absY = Math.abs( _this.lastDiff.y );
-            
-            // More horizontal than vertical = swiping
-            var swiping = (absX > absY);
-            if( swiping ) {
-                // No more interaction here
-                window.removeEventListener('touchmove', sessionListView.touchMove);
-                window.removeEventListener('touchend', sessionListView.touchEnd);
-                return;
+			if( !_this.swipeChecked ) {
+                // determine if scrolling or page swiping
+                var absX = Math.abs( _this.lastDiff.x );
+                var absY = Math.abs( _this.lastDiff.y );
+                
+				// More horizontal than vertical = swiping
+				_this.swiping = (absX > absY);
+
+				_this.swipeChecked = true;
+
+				if( _this.swiping ) {
+    				console.log('LIST: SWIPING (no scroll)');
+                    // No more interaction here
+                    window.removeEventListener('touchmove', sessionListView.touchMove);
+                    _this.swipeChecked = false;
+                    _this.swiping = false;
+                    return;
+				}
+				console.log('LIST: NOT SWIPING (allow scroll)');
             }
 			
 			var offsetY = currentPoint.y - _this.startPoint.y;
@@ -577,9 +589,14 @@ limitations under the License.
 		touchEnd: function(evt) {
 			var _this = sessionListView;
 			var targetEl = _this.currentPage.el;
+			if( _this.swiping ) {
+			    _this.swiping = false;
+			}
+            _this.swipeChecked = false;
             if( _this.startPoint.y == _this.lastPoint.y ) {
                 return;
             }
+            
 			if( _this.lastDiff.y > 0 ) {
 				evt.preventDefault();
 				if( !_this.prevPage ) {
@@ -1018,6 +1035,9 @@ limitations under the License.
 		className: 'anyconf-menu',
 		animating: false,
 		isShown: false,
+		swiping: false,
+		swipeChecked: false,
+		gestureStarted: false,
 		
 		template: _.template($('#anyconf-menu-template').html()),
 		
@@ -1067,6 +1087,12 @@ limitations under the License.
 		    }
 		},
 		
+		resetGestures: function() {
+            this.swiping = false;
+            this.swipeChecked = false;
+            this.gestureStarted = false;
+		},
+		
 		touchStart: function(evt) {
 		    var _this = menuView;
             var darkenedScreen;
@@ -1093,15 +1119,17 @@ limitations under the License.
                     window.addEventListener('touchend', _this.touchEnd, false);
                 }
             } else {
-                if( _this.startPoint.x < 20 ) {
+                if( _this.startPoint.x < 200 ) {
                     _this.gestureStarted = true;
                     window.addEventListener('touchmove', _this.touchMove, false);
+                    window.addEventListener('touchend', _this.touchEnd, false);
                 }
             }
 		},
 		
 		touchMove: function(evt) {
     		var _this = menuView;
+    		console.log('menu touchmove');
 		    var currentPoint = {
                 x: evt.touches[0].pageX,
                 y: evt.touches[0].pageY,
@@ -1117,8 +1145,30 @@ limitations under the License.
                 y: currentPoint.y - _this.lastPoint.y
             };
             
+			if( !_this.swipeChecked ) {
+                // determine if scrolling or page swiping
+                var absX = Math.abs( _this.lastDiff.x );
+                var absY = Math.abs( _this.lastDiff.y );
+                
+				// More horizontal than vertical = swiping
+				_this.swiping = (absX > absY);
+
+				_this.swipeChecked = true;
+            }
+
+            // Not horizontally swiping, end all further actions
+            if( !_this.swiping ) {
+                console.log('MENU: NOT SWIPING (no menu)');
+                // No more interaction here
+                window.removeEventListener('touchmove', _this.touchMove, false);
+                window.removeEventListener('touchend', _this.touchEnd, false);
+                _this.resetGestures();
+                return;
+            }
+            console.log('MENU: SWIPING (show menu)');
+            
             var darkenedScreen;
-		    
+
             if( _this.isShown ) {
                 var translateX = Math.min(startOffset.x, 0);
                 _this.el.style.webkitTransform = 'translateX(' + translateX + 'px)';
@@ -1135,8 +1185,13 @@ limitations under the License.
 		},
         
         touchEnd: function(evt) {
-            evt.preventDefault();
 		    var _this = menuView;
+		    
+		    // Prevent default if we moved
+            if( _this.swipeChecked ) {
+                evt.preventDefault();
+            }
+            
 		    if( !_this.isShown ) {
                 if( _this.lastDiff.x > 0 ) {
                     _this.render();
@@ -1144,12 +1199,17 @@ limitations under the License.
                     _this.hide();
                 }
 			} else {
-                if( _this.lastDiff.x < -5 ) {
+                if( _this.lastDiff.x < 0 ) {
                     _this.hide();
                 } else {
                     _this.render();
                 }
 			}
+
+            _this.gestureStarted = false;
+            _this.swipeChecked = false;
+            _this.swiping = false;
+            console.log('reset swipeChecked, swiping');
             window.removeEventListener('touchmove', _this.touchMove);
             window.removeEventListener('touchend', _this.touchEnd);
         },
