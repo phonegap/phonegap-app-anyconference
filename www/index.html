@@ -5,11 +5,12 @@
     <meta name="format-detection" content="telephone=no" />
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
 	<title>Conf prototype</title>
-	<link rel="stylesheet" href="css/topcoat-mobile-light.min.css">
 	<script src="js/jquery-2.0.0.min.js"></script>
 	<script src="js/moment.min.js"></script>
 	<script src="js/lodash.min.js"></script>
 	<script src="js/backbone-min.js"></script>
+    <link rel="stylesheet" type="text/css" href="topcoat-0.3.0/release/css/anyconference.min.css">
+
 	<style>
 	/* temporary CSS */
 	.js-shown {
@@ -81,8 +82,12 @@
     }
 	</style>
 	
+	<!--
     <link rel="stylesheet" type="text/css" href="topcoat-0.3.0/release/css/topcoat-mobile-light.min.css">
+    -->
+    <!--
     <link rel="stylesheet" type="text/css" href="style/main.css">
+    -->
 
 </head>
 <body>
@@ -121,24 +126,27 @@
 </script>
 
 <script type="text/template" id="session-details-template">
-<div class="session-details">
-    <header>
-        <h1 class="session-details__times"><%- times %></h1>
-    </header>
-    <div class="session-details__content">
-        <h1 class="session-details__title"><%- title %></h1>
-        <p class="session-details__subtitle"><%- subtitle %></p>
-
-        <div class="session-details__details"><%- details %></div>
+<div class="anyconf-view__container">
+    <div class="topcoat-navigation-bar__item left anyconf-label-time anyconf-view--yellow">
+        <%- times %>
+        <!--9:00<small>am</small>&nbsp;–&nbsp;9:30<small>am</small>-->
     </div>
-    <h2>Presented by:</h2>
-    <div class="session-details__speakers">
-        <ul>
+    <div class="anyconf-view anyconf-view--yellow">
+        <h2 class="anyconf-label-title"><%- title %></h2>
+        <p><%- details %></p>
+    </div>
+    <div class="anyconf-view anyconf-view--yellow anyconf-view--yellow-last">
+        <h4 class="anyconf-label-title anyconf-condensed">Presented By:</h4>
         <% _.each(speakers, function(data) { %> 
-            <li><%= data.attributes.first_name %> <%= data.attributes.last_name %><br>
-                @???</li> 
+            <div>
+                <img src="./assets/images/headshot1.png" width="80px">
+                <ul class="anyconf-link-list">
+                    <b><a class="anyconf-link" href="#"><%= data.attributes.first_name %> <%= data.attributes.last_name %></a></b>
+                    <li><a class="anyconf-link anyconf-link--twitter" href="http://twitter.com/twitter">@twitter</a></li>
+                    <li><a class="anyconf-link anyconf-link--url" href="http://example.com">example.com</a></li>
+                </ul>
+            </div>
         <% }); %>
-        </ul>
     </div>
 </div>
 </script>

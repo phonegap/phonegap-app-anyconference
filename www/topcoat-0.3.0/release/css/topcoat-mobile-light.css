@@ -26,13 +26,21 @@
   src: url("../font/SourceSansPro-Semibold.otf");
   font-weight: 600;
 }
+@font-face {
+  font-family: "League Gothic Condensed";
+  src: url("../font/LeagueGothic-CondensedRegular.otf");
+}
+@font-face {
+  font-family: "League Gothic";
+  src: url("../font/LeagueGothic-Regular.otf");
+}
 
 body {
   margin: 0;
   padding: 0;
   background: #dfe2e2;
   color: #000;
-  font: 16px "Source Sans", helvetica, arial, sans-serif;
+  font: 16px helvetica, arial, sans-serif;
   font-weight: 200;
   text-rendering: optimizeLegibility;
 }
@@ -352,114 +360,6 @@ limitations under the License.
   cursor: default;
   pointer-events: none;
 }
-
-/*
- Checkbox
- --------
- 
-Base styles for checkboxes. The `<label>` needs to be placed after the `<input>` element in the HTML. If you are using `.topcoat-checkbox-label--right`, make sure to set the width, so all the labels are the same width and the controls line up vertically.
-
-- `:focus` Focus state
-- `.is-focused` Simulates an focus state on mobile devices
-- `:disabled` Disabled state
-- `.is-disabled` Simulates a disabled state on mobile devices
-- `.topcoat-checkbox`
-- `.topcoat-checkbox-label`
-- `.topcoat-checkbox-label--left` Position the control to the left of the label
-- `.topcoat-checkbox-label--right` Position the control to the right of the label
-
-    
-    <input type="checkbox" id="example-checkbox-checked" class="topcoat-checkbox" checked="checked">
-    <label for="example-checkbox-checked" class="topcoat-checkbox-label topcoat-checkbox-label--left">Extremely Long Label</label>
-    
-    <input type="checkbox" id="example-checkbox-unchecked" class="topcoat-checkbox">
-    <label for="example-checkbox-unchecked" class="topcoat-checkbox-label topcoat-checkbox-label--left">Extremely Long Label</label>
-    
-    <input type="checkbox" id="example-checkbox-disabled" class="topcoat-checkbox is-disabled" disabled>
-    <label for="example-checkbox-disabled" class="topcoat-checkbox-label topcoat-checkbox-label--left">Extremely Long Label</label>
-    
-
-*/
-input[type="checkbox"] {
-  display: none;
-}
-.topcoat-checkbox-label--left:before,
-.topcoat-checkbox-label--right:after {
-  background-position: left -37px;
-}
-input[type="checkbox"]:checked + .topcoat-checkbox-label--left:before,
-input[type="checkbox"]:checked + .topcoat-checkbox-label--right:after {
-  background-position: left -2px;
-}
-input[type="checkbox"]:disabled + label {
-  opacity: 0.3;
-  cursor: default;
-  pointer-events: none;
-}
-.topcoat-checkbox-label--left:before,
-.topcoat-checkbox-label--right:after {
-  content: "";
-  display: inline-block;
-  width: 37px;
-  height: 31px;
-  background-image: var-checkbox-background;
-  background-repeat: no-repeat;
-  -webkit-background-size: 37px;
-  -moz-background-size: 37px;
-  background-size: 37px;
-  cursor: pointer;
-}
-.topcoat-checkbox-label--left:before {
-  margin-right: 15px;
-}
-.topcoat-checkbox-label--right:after {
-  margin-left: 15px;
-}
-.topcoat-checkbox-label--left,
-.topcoat-checkbox-label--right {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  padding: 0 1.25rem;
-  margin: 5px;
-  outline: none;
-  font: var-font;
-  font-weight: 200;
-  line-height: 30px;
-  vertical-align: top;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-}
-.topcoat-not-checkbox {
-  color: #454545;
-  padding: 0 1.25rem;
-  text-shadow: 0 1px #fff;
-  background-color: #e5e9e8;
-  -webkit-box-shadow: inset 0 1px #fff;
-  box-shadow: inset 0 1px #fff;
-  border: 1px solid #a5a8a8;
-  -webkit-border-radius: 5px;
-  border-radius: 5px;
-}
-
-/*
-Copyright 2012 Adobe Systems Inc.;
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-*/
 
 /*
 Copyright 2012 Adobe Systems Inc.;
@@ -832,10 +732,11 @@ Navigation Bar
   height: 4rem;
   padding-left: 1rem;
   padding-right: 1rem;
-  background: #e5e9e8;
+  background: var-background-color--navigation-bar;
   color: #000;
   -webkit-box-shadow: inset 0 -1 #b9bcbc, 0 1px rgba(0,0,0,0.95);
   box-shadow: inset 0 -1 #b9bcbc, 0 1px rgba(0,0,0,0.95);
+  border-bottom: var-border-bottom--navigation-bar;
 }
 .topcoat-navigation-bar__item {
   -webkit-box-sizing: border-box;
@@ -871,6 +772,105 @@ Navigation Bar
   font-size: 1.3rem;
   font-weight: 400;
   color: #000;
+}
+
+/*
+Copyright 2012 Adobe Systems Inc.;
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
+
+/*
+
+
+Use this class to create a dialog element. Make sure to apply ".topcoat-overlay-bg" an empty div on the page as well,
+so that the dialog is resting on a dark, transparent background
+
+	<div class="topcoat-overlay-bg"></div>
+	<aside class="topcoat-overlay">
+		<h1>Are eagles nice ?</h1>
+		<div class="topcoat-overlay-buttons">
+			<button role="button" class="topcoat-button--cta">Yes!</button>
+			<button role="button" class="topcoat-button">No</button>
+		</div>
+	</aside>
+
+*/
+.topcoat-overlay {
+  width: 50%;
+  height: auto;
+  overflow: hidden;
+  position: absolute;
+  z-index: 10;
+  padding: 20px 10px;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+  margin: 25% 20%;
+  text-align: center;
+  background-color: var-bg-color;
+  border: 1px solid #a5a8a8;
+  font: var-font;
+}
+.topcoat-overlay h1 {
+  font-size: 1.1875rem;
+  color: #484b4c;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #d3d7d7;
+}
+.topcoat-overlay-bg {
+  position: absolute;
+  z-index: 5;
+  background-color: rgba(88,90,92,0.7);
+  width: 100%;
+  height: 100%;
+  -webkit-box-shadow: inset 0px 0px 115px 0px #000;
+  box-shadow: inset 0px 0px 115px 0px #000;
+}
+.topcoat-overlay-buttons {
+  margin-top: 20px;
+}
+.topcoat-overlay-buttons .topcoat-button,
+.topcoat-overlay-buttons .topcoat-button--cta {
+  margin: 5px;
+}
+
+/*
+Copyright 2012 Adobe Systems Inc.;
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
+
+.input {
+  vertical-align: top;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0 1.25rem;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+  margin: 5px;
+  height: 3rem;
+  font: inherit;
+  font-weight: 200;
+  outline: none;
 }
 
 /*
