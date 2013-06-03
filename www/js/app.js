@@ -547,6 +547,20 @@ limitations under the License.
 				y: currentPoint.y - _this.lastPoint.y
 			};
 			_this.lastPoint = currentPoint;
+			
+            // determine if scrolling or page swiping
+            var absX = Math.abs( _this.lastDiff.x );
+            var absY = Math.abs( _this.lastDiff.y );
+            
+            // More horizontal than vertical = swiping
+            var swiping = (absX > absY);
+            if( swiping ) {
+                // No more interaction here
+                window.removeEventListener('touchmove', sessionListView.touchMove);
+                window.removeEventListener('touchend', sessionListView.touchEnd);
+                return;
+            }
+			
 			var offsetY = currentPoint.y - _this.startPoint.y;
 			if( offsetY < 0 ) {
 				// drag current page up
@@ -563,6 +577,9 @@ limitations under the License.
 		touchEnd: function(evt) {
 			var _this = sessionListView;
 			var targetEl = _this.currentPage.el;
+            if( _this.startPoint.y == _this.lastPoint.y ) {
+                return;
+            }
 			if( _this.lastDiff.y > 0 ) {
 				evt.preventDefault();
 				if( !_this.prevPage ) {
@@ -573,7 +590,7 @@ limitations under the License.
 					_this.transitionCurrentBack();
 				}
 			} else if( _this.lastDiff.y <= 0 ) {
-				// evt.preventDefault(); // this prevents click event
+				evt.preventDefault(); // this prevents click event
 				if( !_this.nextPage ) {
 					_this.transitionCurrentBack();
 				} else if( _this.pendingPage === _this.nextPage ) {
@@ -1157,7 +1174,10 @@ limitations under the License.
 	
 	var menuView = new MenuView;
 	
-	var appView = new AppView;
+	var appView;
+	$(function() {
+	    appView = new AppView;
+	});
 
 }());
 
