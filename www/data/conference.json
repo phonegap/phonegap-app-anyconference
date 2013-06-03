@@ -1,0 +1,107 @@
+{
+    "title": "CSSConf 2013",
+    "speakers": [
+        {
+            "id": "dean_ashworth",
+            "name": "Dean Ashworth",
+            "bio": "Dean Ashworth is formerly referred to as a \"UI Engineer\" but really he gets paid to design, troubleshoot, think, play with devices, and collaborate with lots of super talented folks. He is a native Californian, lover of forests, and proud father of 3 boys.",
+            "twitter": "deanashworth"
+        },
+        {
+            "id": "pamela_fox",
+            "name": "Pamela Fox",
+            "bio": "Pamela Fox loves to learn, teach, create, and every combination of those. During the day, she works as a frontend engineer at Coursera, working to improve the future of online education. At night and on the weekends, she teaches web development classes for the GirlDevelopIt San Francisco chapter. Before that, she worked in Google Developer Relations, and graduated from USC's Computer Science Department (Go Trojans!).",
+            "twitter": "pamelafox"
+        }
+    ],
+    "tracks": [
+        {
+            "name": "CSSConf 2013",
+            "date": "2013-05-28",
+            "sessions": [
+                {
+                    "title": "1 Breakfast & Registration",
+                    "startTime": "08:00",
+                    "endTime": "09:00"
+                },
+                {
+                    "title": "2 Opening Remarks",
+                    "startTime": "09:00",
+                    "endTime": "09:15"
+                },
+                {
+                    "title": "3 Opening Remarks",
+                    "startTime": "09:00",
+                    "endTime": "09:15"
+                },
+                {
+                    "title": "4 Opening Remarks",
+                    "startTime": "09:00",
+                    "endTime": "09:15"
+                },
+                {
+                    "title": "5 Opening Remarks",
+                    "startTime": "09:00",
+                    "endTime": "09:15"
+                },
+                {
+                    "title": "6 Opening Remarks",
+                    "startTime": "09:00",
+                    "endTime": "09:15"
+                },
+                {
+                    "title": "7 Opening Remarks",
+                    "startTime": "09:00",
+                    "endTime": "09:15"
+                },
+                {
+                    "title": "8 Opening Remarks",
+                    "startTime": "09:00",
+                    "endTime": "09:15"
+                },
+                {
+                    "title": "9 Opening Remarks",
+                    "startTime": "09:00",
+                    "endTime": "09:15"
+                },
+                {
+                    "title": "Opening Remarks",
+                    "startTime": "09:00",
+                    "endTime": "09:15"
+                },
+                {
+                    "title": "Opening Remarks",
+                    "startTime": "09:00",
+                    "endTime": "09:15"
+                },
+                {
+                    "title": "Opening Remarks",
+                    "startTime": "09:00",
+                    "endTime": "09:15"
+                },
+                {
+                    "title": "Opening Remarks",
+                    "startTime": "09:00",
+                    "endTime": "09:15"
+                },
+                {
+                    "title": "Opening Remarks",
+                    "startTime": "09:00",
+                    "endTime": "09:15"
+                },
+                {
+                    "title": "Opening Remarks",
+                    "startTime": "09:00",
+                    "endTime": "09:15"
+                },
+                {
+                    "title": "END When Bootstrap Attacks",
+                    "startTime": "09:15",
+                    "endTime": "09:45",
+                    "speakers": ["pamela_fox"],
+                    "details": "Like many a startup, our original codebase was built around Twitter Bootstrap for its look and feel. It was the easiest way for a bunch of backend engineers to get the app quickly up and running and have it still be somewhat usable.\n\nAll was well and good, until it was time to upgrade Bootstrap. Because of the ways that Bootstrap and our own codebase are architected, it took a month of coding, a week of Q&A, and a week of post-release fixes, just to make the \"simple upgrade\".\n\nIt really shouldn't have to be that way for you, so in this talk, I'll share what I learned and what I'd recommend for your own CSS architecture."
+                }
+            ]
+        }
+    ]
+}
