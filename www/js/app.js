@@ -148,29 +148,38 @@ limitations under the License.
 			this.el.style.display = 'none';
 		},
 
-        onTransitionStart: function(evt) {
-            this.parentView.animating = true;
+        transitionFromClass: function(className) {
+            var classList = this.el.classList;
+			if( classList.contains(className) ) {
+			    console.error('unexpected classlist re-add');
+			    this.parentView.animating = false;
+			} else {
+                this.parentView.animating = true;
+                console.log('Start animating...');
+			    classList.add(className);
+			}
         },
         
         onTransitionEnd: function(evt) {
+            this.parentView.animating = false;
             this.el.classList.remove('js-page-transition-in');
             this.el.classList.remove('js-page-transition-out');
             if( this.transitionCallback ) {
                 this.transitionCallback.call(this);
                 this.transitionCallback = null;
             }
-            this.parentView.animating = false;
+            console.log('...animation ended');
         },
 		
 		transitionIn: function(callback) {
             this.transitionCallback = callback;
-			this.el.classList.add('js-page-transition-in');
+            this.transitionFromClass('js-page-transition-in');
 			this.el.style.webkitTransform = 'none';
 		},
 		
 		transitionOut: function(callback) {
 			this.transitionCallback = callback;
-			this.el.classList.add('js-page-transition-out');
+			this.transitionFromClass('js-page-transition-out');
 			this.el.style.webkitTransform = 'translateY(' + -this.options.pageHeight + 'px) translateZ(0)';
 		},
 		
@@ -182,7 +191,6 @@ limitations under the License.
 		renderAsPrevious: function() {
 			this.render();
 			var offsetY = -this.options.pageHeight;
-			this.el.style.zIndex = 10;
 			this.el.style.webkitTransform = 'translateY(' + offsetY + 'px) translateZ(0)';
 		},
         
@@ -218,6 +226,18 @@ limitations under the License.
 			    _this.leave();
 			});
 		},
+		
+        transitionFromClass: function(className) {
+            var classList = this.el.classList;
+			if( classList.contains(className) ) {
+			    console.error('unexpected classlist re-add');
+			    this.animating = false;
+			} else {
+                this.animating = true;
+                console.log('Start animating...');
+			    classList.add(className);
+			}
+        },
 		
 		leave: function() {
 		    this.el.style.display = 'none';
@@ -276,14 +296,12 @@ limitations under the License.
 			var width = window.innerWidth;
 			var offsetX = width * relativeIndex;
 			
-			var onTransitionStart = function(evt) {
-			    _this.animating = true;
-			};
+            _this.animating = true;
 			
 			var onTransitionEnd = function(evt) {
+				_this.animating = false;
 				_this.el.classList.remove('js-session-transition');
 				evt.target.removeEventListener('webkitTransitionEnd', onTransitionEnd);
-				_this.animating = false;
 				switch( relativeIndex ) {
 					case 0:
 						_this.pendingSession = _this.currentSession;
@@ -299,15 +317,17 @@ limitations under the License.
 				}
 				_this.setCurrentSession(_this.pendingSession);
 			};
-			this.el.classList.add('js-session-transition');
+			this.transitionFromClass('js-session-transition');
 			
 			this.el.style.webkitTransform = 'translateX(' + -offsetX  + 'px) translateZ(0)';
 			this.el.addEventListener('webkitTransitionEnd', onTransitionEnd);
-			this.el.addEventListener('webkitTransitionStart', onTransitionStart);
 		},
 		
 		touchStart: function(evt) {
 			var _this = sessionListDetailsView;
+			if( _this.animating ) {
+			    return;
+			}
 			
 			_this.startPoint = {
 				x: evt.touches[0].pageX,
@@ -407,9 +427,6 @@ limitations under the License.
 		},
 		
 		setCurrentPage: function(sessionPage) {
-			if( this.animating ) {
-				return;
-			}
 			this.currentPage = sessionPage;
 			this.nextPage = null;
 			this.prevPage = null;
@@ -434,14 +451,17 @@ limitations under the License.
 			}
 			if( this.nextPage ) {
 				this.nextPage.render();
-				this.updateOverlay();
-			} else {
-				this.updateOverlay();
 			}
+		},
+		
+		positionOverlay: function() {
+            this.pageOverlay.classList.remove('js-page-overlay-removed');
+            this.el.insertBefore(this.pageOverlay, this.currentPage.el);
 		},
 		
 		updateOverlay: function() {
 			var _this = this;
+			_this.animating = true;
 			
 			var onTransitionStart = function(evt) {
 			    _this.animating = true;
@@ -449,14 +469,12 @@ limitations under the License.
 			
 			var onTransitionEnd = function(evt) {
 				_this.animating = false;
-				_this.pageOverlay.classList.remove('js-page-overlay-removed');
 				evt.target.removeEventListener('webkitTransitionEnd', onTransitionEnd);
-				_this.el.insertBefore(_this.pageOverlay, _this.currentPage.el);
+				_this.positionOverlay();
 			};
 
 			this.pageOverlay.classList.add('js-page-overlay-removed');
 			this.pageOverlay.addEventListener('webkitTransitionEnd', onTransitionEnd);
-			this.pageOverlay.addEventListener('webkitTransitionStart', onTransitionStart);
 		},
 		
 		addToNewPage: function() {
@@ -492,6 +510,7 @@ limitations under the License.
 			// animate current page up
 			this.currentPage.transitionOut(function() {
 				_this.setCurrentPage(_this.nextPage);
+				_this.updateOverlay();
 			});
 		},
 		
@@ -500,6 +519,7 @@ limitations under the License.
 			// pull previous from top
 			this.prevPage.transitionIn(function() {
 				_this.setCurrentPage(_this.prevPage);
+				_this.positionOverlay();
 			});
 		},
 		
@@ -507,6 +527,7 @@ limitations under the License.
 			var _this = this;
 			this.prevPage.transitionOut(function() {
 				_this.setCurrentPage(_this.currentPage);
+				_this.positionOverlay();
 			});
 		},
 		
@@ -514,6 +535,7 @@ limitations under the License.
 			var _this = this;
 			this.currentPage.transitionIn(function() {
 				_this.setCurrentPage(_this.currentPage);
+				_this.positionOverlay();
 			});
 		},
 		
@@ -522,6 +544,8 @@ limitations under the License.
 		
 			console.log('touchstart');
 			if( _this.animating ) {
+			    evt.preventDefault();
+			    console.log('blocked due to animating');
 				return;
 			}
 			// evt.preventDefault();
@@ -635,8 +659,8 @@ limitations under the License.
 		render: function() {
 		    this.el.style.display = 'block';
 			this.setCurrentPage( this.pages[0] );
-			this.pageOverlay.classList.remove('js-page-overlay-removed');
-			this.el.insertBefore(this.pageOverlay, this.currentPage.el);
+			
+			this.positionOverlay();
 			// this.animating = false;
 			this.el.addEventListener('touchstart', this.touchStart);
 		},
@@ -981,7 +1005,6 @@ limitations under the License.
 			// this.on('change:timeFlag', this.updateTimeFlag);
 			
 			this.listenTo(this.model, 'destroy', this.remove);
-			
 		},
 		
 		updateTimeFlag: function(model) {
@@ -1044,6 +1067,8 @@ limitations under the License.
 	var MenuView = Backbone.View.extend({
 		tagName: 'div',
 		className: 'anyconf-menu',
+		overlay: null,
+		
 		animating: false,
 		isShown: false,
 		swiping: false,
@@ -1054,10 +1079,7 @@ limitations under the License.
 		
 		render: function() {
 		    var _this = this;
-
-			var onTransitionStart = function(evt) {
-			    _this.animating = true;
-			};
+            _this.animating = true;
 
 			var onTransitionEnd = function(evt) {
 				_this.el.classList.remove('js-menu-transition-in');
@@ -1065,27 +1087,30 @@ limitations under the License.
 				_this.animating = false;
 			};
 
+            $(this.overlay).show();
 		    this.el.classList.remove('js-menu-offscreen');
 		    this.el.classList.add('js-menu-transition-in');
 		    this.el.style.webkitTransform = 'none';
 		    this.el.addEventListener('webkitTransitionEnd', onTransitionEnd);
 		    this.el.addEventListener('webkitTransitionStart', onTransitionStart);
+
+			this.$el.before( this.overlay );
+		    
 		    this.isShown = true;
 		},
 		
 		hide: function() {
 		    var _this = this;
 
-			var onTransitionStart = function(evt) {
-			    _this.animating = true;
-			};
+            _this.animating = true;
 
 			var onTransitionEnd = function(evt) {
 				_this.el.classList.remove('js-menu-transition-out');
 				evt.target.removeEventListener('webkitTransitionEnd', onTransitionEnd);
 				_this.animating = false;
 			};
-
+			
+            $(this.overlay).hide();
 		    this.el.classList.add('js-menu-offscreen');
 		    this.el.classList.add('js-menu-transition-out');
 		    this.el.style.webkitTransform = 'translateX(' + -window.innerWidth + 'px)';
@@ -1119,8 +1144,6 @@ limitations under the License.
 		        return;
 		    }
 		    
-            var darkenedScreen;
-
 			_this.startPoint = {
 				x: evt.touches[0].pageX,
 				y: evt.touches[0].pageY
@@ -1135,7 +1158,7 @@ limitations under the License.
 			};
 			
             if( _this.isShown ) {
-                if( evt.target == darkenedScreen ) {
+                if( evt.target == _this.overlay ) {
                     _this.hide();
                 } else {
                     evt.preventDefault();
@@ -1191,8 +1214,6 @@ limitations under the License.
             }
             console.log('MENU: SWIPING (show menu)');
             
-            var darkenedScreen;
-
             if( _this.isShown ) {
                 var translateX = Math.min(startOffset.x, 0);
                 _this.el.style.webkitTransform = 'translateX(' + translateX + 'px)';
@@ -1241,6 +1262,9 @@ limitations under the License.
 		initialize: function() {
 		    var _this = this;
 		    var button = $('.js-menu')[0];
+		    
+			this.overlay = document.createElement('div');
+			this.overlay.className = 'js-menu-overlay';
 		    
 		    button.addEventListener('click', _this.toggleMenu, false);
 		
