@@ -197,8 +197,7 @@ limitations under the License.
         initialize: function() {
             this.parentView = this.options.parentView;
             this.delegateEvents({
-                'webkitTransitionEnd': this.onTransitionEnd,
-                'webkitTransitionStart': this.onTransitionStart
+                'webkitTransitionEnd': this.onTransitionEnd
             });
         }
 	});
@@ -462,10 +461,6 @@ limitations under the License.
 		updateOverlay: function() {
 			var _this = this;
 			_this.animating = true;
-			
-			var onTransitionStart = function(evt) {
-			    _this.animating = true;
-			};
 			
 			var onTransitionEnd = function(evt) {
 				_this.animating = false;
@@ -962,6 +957,43 @@ limitations under the License.
 			return processDone;
 		},
 		
+		goBack: function(evt) {
+		    window.history.go(-1);
+		},
+		
+		setHeading: function(route) {
+		    var headingText;
+		    var showBackButton = false;
+		    var dayOfWeek = 'TODAY';
+            switch( route ) {
+                case 'sessionList':
+                case 'starredSessionList':
+                    headingText = dayOfWeek;
+                    break;
+                case 'speakerList':
+                    headingText = 'SPEAKERS';
+                    break;
+                case 'sessionDetails':
+                    headingText = 'SESSION';
+                    showBackButton = true;
+                    break;
+                case 'speakerDetails':
+                    headingText = 'SPEAKER';
+                    showBackButton = true;
+                    break;
+            }
+            $('.js-navbar-title').text( headingText );
+            if( showBackButton ) {
+                $('.js-back-button').show();
+                $('.js-menu-button').hide();
+            } else {
+                $('.js-back-button').hide();
+                $('.js-menu-button').show();
+            }
+            
+            console.log('route', arguments);
+		},
+		
 		initialize: function() {
 			var _this = this;
 
@@ -974,6 +1006,15 @@ limitations under the License.
 			_this.el.appendChild( sessionListView.el );
 			$('.topcoat-app-content').append(_this.el);
 			this.currentContext = sessionListView;
+			
+			_this.setHeading('sessionList');
+			
+			appRouter.on('route', function(route) {
+			    _this.setHeading.apply(_this, arguments);
+			});
+			
+			var backButton = $('.js-back-button')[0];
+			backButton.addEventListener('click', _this.goBack, false);
 			
 			this.getConferenceData().then(function() {
 				sessionListView.render();
@@ -1092,7 +1133,6 @@ limitations under the License.
 		    this.el.classList.add('js-menu-transition-in');
 		    this.el.style.webkitTransform = 'none';
 		    this.el.addEventListener('webkitTransitionEnd', onTransitionEnd);
-		    this.el.addEventListener('webkitTransitionStart', onTransitionStart);
 
 			this.$el.before( this.overlay );
 		    
@@ -1115,7 +1155,6 @@ limitations under the License.
 		    this.el.classList.add('js-menu-transition-out');
 		    this.el.style.webkitTransform = 'translateX(' + -window.innerWidth + 'px)';
 		    this.el.addEventListener('webkitTransitionEnd', onTransitionEnd);
-		    this.el.addEventListener('webkitTransitionStart', onTransitionStart);
 		    this.isShown = false;
 		},
 		
@@ -1261,13 +1300,12 @@ limitations under the License.
         
 		initialize: function() {
 		    var _this = this;
-		    var button = $('.js-menu')[0];
-		    
+		    var menuButton = $('.js-menu-button')[0];
+		    menuButton.addEventListener('click', _this.toggleMenu, false);
+
 			this.overlay = document.createElement('div');
 			this.overlay.className = 'js-menu-overlay';
 		    
-		    button.addEventListener('click', _this.toggleMenu, false);
-		
 		    document.body.appendChild( this.el );
 		    var templateValues = {
 		        

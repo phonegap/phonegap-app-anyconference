@@ -88,6 +88,14 @@
 	.js-menu-transition-out {
 	    -webkit-transition: all 0.2s;
     }
+    
+    .topcoat-icon--left-arrow {
+        background: url("../img/arrowleft.svg") no-repeat;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        background-size: 160%;
+        background-position: 50% 50%;
+    }
 	</style>
 	
 	<!--
@@ -102,12 +110,15 @@
 
 <header class="topcoat-navigation-bar">
     <div class="topcoat-navigation-bar__item left quarter">
-        <a class="topcoat-icon-button--quiet js-menu">
+        <a class="topcoat-icon-button--quiet js-menu-button">
           <span class="topcoat-icon topcoat-icon--menu-stack"></span>
+        </a>
+        <a class="topcoat-icon-button--quiet js-back-button">
+          <span class="topcoat-icon topcoat-icon--left-arrow"></span>
         </a>
     </div>
     <div class="topcoat-navigation-bar__item center half">
-        <h1 class="topcoat-navigation-bar__title">Today</h1>
+        <h1 class="topcoat-navigation-bar__title js-navbar-title">Today</h1>
     </div>
 </header>
 
@@ -115,19 +126,19 @@
 
 
 <script type="text/template" id="session-entry-template">
-<div class="topcoat-list__header anyconf-label-status">
+<div class="topcoat-navigation-bar__item left anyconf-label-time">
     <div class="topcoat-navigation-bar__item left anyconf-label-time"><%- times %><!--9:00<small>am</small>&nbsp;–&nbsp;9:30<small>am</small>--></div>
 </div>
 
 <li class="topcoat-list__item">
-    <div class="anyconf-button-item">
-        <div class="anyconf-button-item-content js-session-details-link">
+    <div class="topcoat-card js-session-details-link">
+        <div class="topcoat-card-content">
             <h2 class="anyconf-label-title"><%- title %></h2>
             <div class="anyconf-label-speaker"><%- subtitle %></div>
         </div>
-        <div class="anyconf-star">
-            <input type="checkbox" class="checkbox-5"></input>
-            <label for="checkbox-5" class="light-checkbox checkbox-left"></label>
+        <div class="topcoat-card-components">
+            <input type="checkbox" class="topcoat-checkbox"></input>
+            <label for="topcoat-checkbox" class="topcoat-checkbox-label--right topcoat-checkbox-label-star"></label>
         </div>
     </div>
 </li>
