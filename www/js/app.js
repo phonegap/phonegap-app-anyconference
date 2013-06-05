@@ -286,7 +286,7 @@ limitations under the License.
 			$('.topcoat-app-content').append(this.el);
 			this.el.style.display = 'block';
 			this.el.style.webkitTransform = 'none';
-			window.addEventListener('touchstart', this.touchStart);
+			window.addEventListener('touchdown', this.touchStart);
 			return this;
 		},
 		
@@ -323,7 +323,7 @@ limitations under the License.
 		},
 		
 		touchStart: function(evt) {
-		    console.log('touchstart');
+		    console.log('touchdown');
 			var _this = sessionListDetailsView;
 			if( _this.animating ) {
 			    return;
@@ -341,12 +341,12 @@ limitations under the License.
 				x: 0,
 				y: 0
 			}
-			window.addEventListener('touchmove', _this.touchMove, false);
-			window.addEventListener('touchend', _this.touchEnd, false);
+			window.addEventListener('pointermove', _this.pointerMove, false);
+			window.addEventListener('pointerend', _this.pointerUp, false);
 		},
 		
-		touchMove: function(evt) {
-		    console.log('touchmove');
+		pointerMove: function(evt) {
+		    console.log('pointermove');
 			var _this = sessionListDetailsView;
 		
 			var currentPoint = {
@@ -384,8 +384,8 @@ limitations under the License.
 			}
 		},
 		
-		touchEnd: function(evt) {
-		    console.log('touchend');
+		pointerUp: function(evt) {
+		    console.log('pointerend');
 			var _this = sessionListDetailsView;
 			_this.gestureStarted = false;
 			console.log('_this.lastDiff.x', _this.lastDiff.x);
@@ -421,8 +421,15 @@ limitations under the License.
 
 		pageOverlay: null,
 		
+		pointerStarted: false,
 		animating: false,
 		swipeChecked: false,
+		
+		events: {
+		    'pointerdown': 'pointerDown',
+		    'pointermove': 'pointerMove',
+		    'pointerup': 'pointerUp'
+		},
 		
 		leave: function() {
 			this.el.style.display = 'none';
@@ -537,121 +544,123 @@ limitations under the License.
 			});
 		},
 		
-		touchStart: function(evt) {
-			var _this = sessionListView;
-		
-			console.log('touchstart');
-			if( _this.animating ) {
+		pointerDown: function(jqEvt) {
+		    var evt = jqEvt.originalEvent;
+			console.log('pointerdown');
+			if( this.animating ) {
 			    evt.preventDefault();
 			    console.log('blocked due to animating');
 				return;
 			}
 			// evt.preventDefault();
 			// evt.stopPropagation();
-			_this.startPoint = {
-				x: evt.touches[0].pageX,
-				y: evt.touches[0].pageY
+			this.startPoint = {
+				x: evt.pageX,
+				y: evt.pageY
 			};
-			_this.lastPoint = {
-				x: _this.startPoint.x,
-				y: _this.startPoint.y
+			this.lastPoint = {
+				x: this.startPoint.x,
+				y: this.startPoint.y
 			};
-			_this.lastDiff = {
+			this.lastDiff = {
 				x: 0,
 				y: 0
 			}
-			window.addEventListener('touchmove', sessionListView.touchMove, false);
-			window.addEventListener('touchend', sessionListView.touchEnd, false);
+			this.pointerStarted = true;
 		},
 		
-		touchMove: function(evt) {
-			console.log('touchmove');
+		pointerMove: function(jqEvt) {
+		    var evt = jqEvt.originalEvent;
+		    if( !this.pointerStarted ) {
+		        return;
+		    }
+			console.log('pointermove');
 			evt.preventDefault();
-			var _this = sessionListView;
 			
-			
-			var targetEl = _this.currentPage.el;
+			var targetEl = this.currentPage.el;
 			var prevEl;
-			if( _this.prevPage ) {
-				prevEl = _this.prevPage.el;
+			if( this.prevPage ) {
+				prevEl = this.prevPage.el;
 			}
 			var currentPoint = {
-				x: evt.touches[0].pageX,
-				y: evt.touches[0].pageY
+				x: evt.pageX,
+				y: evt.pageY
 			};
-			_this.lastDiff = {
-				x: currentPoint.x - _this.lastPoint.x,
-				y: currentPoint.y - _this.lastPoint.y
+			this.lastDiff = {
+				x: currentPoint.x - this.lastPoint.x,
+				y: currentPoint.y - this.lastPoint.y
 			};
-			_this.lastPoint = currentPoint;
+			this.lastPoint = currentPoint;
 			
-			if( !_this.swipeChecked ) {
+			if( !this.swipeChecked ) {
                 // determine if scrolling or page swiping
-                var absX = Math.abs( _this.lastDiff.x );
-                var absY = Math.abs( _this.lastDiff.y );
+                var absX = Math.abs( this.lastDiff.x );
+                var absY = Math.abs( this.lastDiff.y );
                 
 				// More horizontal than vertical = swiping
-				_this.swiping = (absX > absY);
+				this.swiping = (absX > absY);
 
-				_this.swipeChecked = true;
+				this.swipeChecked = true;
 
-				if( _this.swiping ) {
+				if( this.swiping ) {
     				console.log('LIST: SWIPING (no scroll)');
                     // No more interaction here
-                    window.removeEventListener('touchmove', sessionListView.touchMove);
-                    _this.swipeChecked = false;
-                    _this.swiping = false;
+                    window.removeEventListener('pointermove', sessionListView.touchMove);
+                    this.swipeChecked = false;
+                    this.swiping = false;
+                    this.pointerStarted = false;
                     return;
 				}
 				console.log('LIST: NOT SWIPING (allow scroll)');
             }
 			
-			var offsetY = currentPoint.y - _this.startPoint.y;
+			var offsetY = currentPoint.y - this.startPoint.y;
 			if( offsetY < 0 ) {
 				// drag current page up
 				targetEl.style.webkitTransform = 'translateY(' + offsetY + 'px) translateZ(0)';
-				_this.pendingPage = _this.nextPage;
+				this.pendingPage = this.nextPage;
 			} else if( prevEl ) {
 				// drag previous page down
-				offsetY = Math.min( -_this.pageHeight + offsetY * 1.5, 0 );
+				offsetY = Math.min( -this.pageHeight + offsetY * 1.5, 0 );
 				prevEl.style.webkitTransform = 'translateY(' + offsetY + 'px) translateZ(0)';
-				_this.pendingPage = _this.prevPage;
+				this.pendingPage = this.prevPage;
 			}
 		},
 		
-		touchEnd: function(evt) {
-			var _this = sessionListView;
-			var targetEl = _this.currentPage.el;
-			if( _this.swiping ) {
-			    _this.swiping = false;
+		pointerUp: function(jqEvt) {
+		    var evt = jqEvt.originalEvent;
+			var targetEl = this.currentPage.el;
+			if( this.swiping ) {
+			    this.swiping = false;
 			}
-            _this.swipeChecked = false;
-            if( _this.startPoint.y == _this.lastPoint.y ) {
+            this.swipeChecked = false;
+            if( this.startPoint.y == this.lastPoint.y ) {
+                this.pointerStarted = false;
                 return;
             }
+            evt.preventDefault(); // this prevents click event
+            evt.stopPropagation();
             
-			if( _this.lastDiff.y > 0 ) {
-				evt.preventDefault();
-				if( !_this.prevPage ) {
+			if( this.lastDiff.y > 0 ) {
+				if( !this.prevPage ) {
 					// do nothing?
-				} else if( _this.pendingPage === _this.prevPage ) {
-					_this.transitionToPrevious();
+				} else if( this.pendingPage === this.prevPage ) {
+					this.transitionToPrevious();
 				} else {
-					_this.transitionCurrentBack();
+					this.transitionCurrentBack();
 				}
-			} else if( _this.lastDiff.y <= 0 ) {
-				evt.preventDefault(); // this prevents click event
-				if( !_this.nextPage ) {
-					_this.transitionCurrentBack();
-				} else if( _this.pendingPage === _this.nextPage ) {
-					_this.transitionToNext();
-				} else if(_this.prevPage) {
-					_this.transitionPreviousAway();
+			} else if( this.lastDiff.y <= 0 ) {
+				if( !this.nextPage ) {
+					this.transitionCurrentBack();
+				} else if( this.pendingPage === this.nextPage ) {
+					this.transitionToNext();
+				} else if(this.prevPage) {
+					this.transitionPreviousAway();
 				}
 			}
-			
-			window.removeEventListener('touchmove', sessionListView.touchMove);
-			window.removeEventListener('touchend', sessionListView.touchEnd);
+            this.pointerStarted = false;
+			// window.removeEventListener('pointermove', sessionListView.pointerMove);
+			// window.removeEventListener('pointerend', sessionListView.pointerUp);
 		},
 		
 		render: function() {
@@ -660,11 +669,11 @@ limitations under the License.
 			
 			this.positionOverlay();
 			// this.animating = false;
-			this.el.addEventListener('touchstart', this.touchStart);
 		},
 		
 		hide: function() {
-			this.el.removeEventListener('touchstart', this.touchStart);
+			// this.el.removeEventListener('pointerdown', this.pointerDown);
+			this.pointerStarted = false;
 			this.el.style.display = 'none';
 		},
 		
@@ -1017,7 +1026,7 @@ limitations under the License.
 			});
 			
 			var backButton = $('.js-back-button')[0];
-			backButton.addEventListener('click', _this.goBack, false);
+			backButton.addEventListener('pointerup', _this.goBack, false);
 			
 			this.getConferenceData().then(function() {
 				sessionListView.render();
@@ -1039,7 +1048,8 @@ limitations under the License.
 		tagName: 'div',
 		
 		events: {
-            'click .js-session-details-link': 'detailsClicked'
+            'pointerdown .js-session-details-link': 'onDetailsDown',
+            'pointerup .js-session-details-link': 'onDetailsUp'
 		},
 		
 		initialize: function() {
@@ -1067,9 +1077,16 @@ limitations under the License.
 			}
 		},
 		
-		detailsClicked: function(evt) {
-		    var id = this.model.id;
-		    appRouter.navigate('sessionDetails/' + id, {trigger: true});
+		onDetailsDown: function(evt) {
+		    this.moveY = evt.originalEvent.pageY;
+		},
+		
+		onDetailsUp: function(evt) {
+		    var diffY = evt.originalEvent.pageY - this.moveY;
+		    if( diffY == 0 ) {
+                var id = this.model.id;
+                appRouter.navigate('sessionDetails/' + id, {trigger: true});
+		    }
 		},
 		
 		render: function() {
@@ -1118,6 +1135,12 @@ limitations under the License.
 		swiping: false,
 		swipeChecked: false,
 		gestureStarted: false,
+		
+		events: {
+		    'pointerdown body': 'pointerDown',
+		    'pointermove body': 'pointerMove',
+		    'pointerup body': 'pointerUp'
+		},
 		
 		template: _.template($('#anyconf-menu-template').html()),
 		
@@ -1179,132 +1202,138 @@ limitations under the License.
             this.gestureStarted = false;
 		},
 		
-		touchStart: function(evt) {
-		    var _this = menuView;
-		    
-		    if( _this.animating ) {
+		pointerDown: function(jqEvt) {
+		    console.log( 'pointerDown');
+		    var evt = jqEvt.originalEvent;
+		    if( this.animating ) {
 		        return;
 		    }
 		    
-			_this.startPoint = {
-				x: evt.touches[0].pageX,
-				y: evt.touches[0].pageY
+			this.startPoint = {
+				x: evt.pageX,
+				y: evt.pageY
 			};
-			_this.lastPoint = {
-				x: _this.startPoint.x,
-				y: _this.startPoint.y
+			this.lastPoint = {
+				x: this.startPoint.x,
+				y: this.startPoint.y
 			};
-			_this.lastDiff = {
+			this.lastDiff = {
 				x: 0,
 				y: 0
 			};
 			
-            if( _this.isShown ) {
-                if( evt.target == _this.overlay ) {
-                    _this.hide();
+            if( this.isShown ) {
+                if( evt.target == this.overlay ) {
+                    this.hide();
                 } else {
                     evt.preventDefault();
-                    window.addEventListener('touchmove', _this.touchMove, false);
-                    window.addEventListener('touchend', _this.touchEnd, false);
+                    this.pointerStarted = true;
+                    // window.addEventListener('pointermove', this.pointerMove, false);
+                    // window.addEventListener('pointerend', this.pointerUp, false);
                 }
             } else {
-                if( _this.startPoint.x < 50 ) {
-                    _this.gestureStarted = true;
-                    window.addEventListener('touchmove', _this.touchMove, false);
-                    window.addEventListener('touchend', _this.touchEnd, false);
+                if( this.startPoint.x < 50 ) {
+                    this.gestureStarted = true;
+                    this.pointerStarted = true;
+                    // window.addEventListener('pointermove', this.pointerMove, false);
+                    // window.addEventListener('pointerend', this.pointerUp, false);
                 }
             }
 		},
 		
-		touchMove: function(evt) {
-    		var _this = menuView;
-    		console.log('menu touchmove');
+		pointerMove: function(jqEvt) {
+		    if( !this.pointerStarted ) {
+		        return;
+		    }
+    		var evt = jqEvt.originalEvent;
+    		console.log('menu pointermove');
 		    var currentPoint = {
                 x: evt.touches[0].pageX,
                 y: evt.touches[0].pageY,
             };
             
 			var startOffset = {
-				x: currentPoint.x - _this.startPoint.x,
-				y: currentPoint.y - _this.startPoint.y
+				x: currentPoint.x - this.startPoint.x,
+				y: currentPoint.y - this.startPoint.y
 			};
             
-            _this.lastDiff = {
-                x: currentPoint.x - _this.lastPoint.x,
-                y: currentPoint.y - _this.lastPoint.y
+            this.lastDiff = {
+                x: currentPoint.x - this.lastPoint.x,
+                y: currentPoint.y - this.lastPoint.y
             };
             
-			if( !_this.swipeChecked ) {
+			if( !this.swipeChecked ) {
                 // determine if scrolling or page swiping
-                var absX = Math.abs( _this.lastDiff.x );
-                var absY = Math.abs( _this.lastDiff.y );
+                var absX = Math.abs( this.lastDiff.x );
+                var absY = Math.abs( this.lastDiff.y );
                 
 				// More horizontal than vertical = swiping
-				_this.swiping = (absX > absY);
+				this.swiping = (absX > absY);
 
-				_this.swipeChecked = true;
+				this.swipeChecked = true;
             }
 
             // Not horizontally swiping, end all further actions
-            if( !_this.swiping ) {
+            if( !this.swiping ) {
                 console.log('MENU: NOT SWIPING (no menu)');
                 // No more interaction here
-                window.removeEventListener('touchmove', _this.touchMove, false);
-                window.removeEventListener('touchend', _this.touchEnd, false);
-                _this.resetGestures();
+                this.pointerStarted = false;
+                this.resetGestures();
                 return;
             }
             console.log('MENU: SWIPING (show menu)');
             
-            if( _this.isShown ) {
+            if( this.isShown ) {
                 var translateX = Math.min(startOffset.x, 0);
-                _this.el.style.webkitTransform = 'translateX(' + translateX + 'px)';
+                this.el.style.webkitTransform = 'translateX(' + translateX + 'px)';
             } else {
-                if( currentPoint.x > _this.lastPoint.x ) {
-                    _this.render();
+                if( currentPoint.x > this.lastPoint.x ) {
+                    this.render();
                 } else {
-                    _this.gestureStarted = false;
+                    this.gestureStarted = false;
                 }
-                window.removeEventListener('touchmove', _this.touchMove);
+                this.pointerStarted = false;
             }
             
-            _this.lastPoint = currentPoint;
+            this.lastPoint = currentPoint;
 		},
         
-        touchEnd: function(evt) {
-		    var _this = menuView;
+        pointerUp: function(jqEvt) {
+		    if( !this.pointerStarted ) {
+		        return;
+		    }
+    		var evt = jqEvt.originalEvent;
 		    
 		    // Prevent default if we moved
-            if( _this.swipeChecked ) {
+            if( this.swipeChecked ) {
                 evt.preventDefault();
             } else {
-                _this.resetGestures();
+                this.resetGestures();
                 return;
             }
             
-		    if( !_this.isShown ) {
-                if( _this.lastDiff.x > 0 ) {
-                    _this.render();
+		    if( !this.isShown ) {
+                if( this.lastDiff.x > 0 ) {
+                    this.render();
                 } else {
-                    _this.hide();
+                    this.hide();
                 }
 			} else {
-                if( _this.lastDiff.x < 0 ) {
-                    _this.hide();
+                if( this.lastDiff.x < 0 ) {
+                    this.hide();
                 } else {
-                    _this.render();
+                    this.render();
                 }
 			}
             
-            _this.resetGestures();
-            window.removeEventListener('touchmove', _this.touchMove);
-            window.removeEventListener('touchend', _this.touchEnd);
+            this.resetGestures();
+            this.pointerStarted = false;
         },
         
 		initialize: function() {
 		    var _this = this;
 		    var menuButton = $('.js-menu-button')[0];
-		    menuButton.addEventListener('click', _this.toggleMenu, false);
+		    menuButton.addEventListener('pointerup', _this.toggleMenu, false);
 
 			this.overlay = document.createElement('div');
 			this.overlay.className = 'js-menu-overlay';
@@ -1316,8 +1345,7 @@ limitations under the License.
 		    this.el.classList.add('js-menu-offscreen');
 		    this.el.style.webkitTransform = 'translateX(' + -window.innerWidth + 'px)';
 		    this.el.innerHTML = this.template(templateValues);
-		    
-		    window.addEventListener('touchstart', _this.touchStart, false);
+		    // $('body').on("pointerdown",this.pointerDown);
 		}
 	});
 	
