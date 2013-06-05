@@ -32,6 +32,15 @@
 	    position: relative;
 	}
 	
+	.anyconf-view__container {
+	    position: absolute;
+	    width: 100%;
+	    box-sizing: border-box;
+	    top: 0;
+	    bottom: 0;
+	    overflow: auto;
+	}
+	
 	.anyconf-menu {
 	    z-index: 30;
 	    -webkit-user-select: none;
@@ -41,6 +50,10 @@
 	
 	.topcoat-app-content {
 	    top: 63px;
+	}
+	
+	.list-details-view {
+	    -webkit-transform: translateX(0px);
 	}
 		
 	.js-page-overlay,
@@ -74,7 +87,7 @@
 
 	.js-page-transition-out {
 	    -webkit-transition: all 0.2s;
-	    -webkit-transform: translateY(-100vh) translateZ(0);
+	    -webkit-transform: translateY(-100%) translateZ(0);
 	}
 	
 	.js-menu-offscreen {
@@ -90,7 +103,7 @@
     }
     
     .topcoat-icon--left-arrow {
-        background: url("../img/arrowleft.svg") no-repeat;
+        background: url("img/arrowleft.svg") no-repeat;
         -webkit-background-size: cover;
         -moz-background-size: cover;
         background-size: 160%;
@@ -153,20 +166,24 @@
     <div class="anyconf-view anyconf-view--yellow">
         <h2 class="anyconf-label-title"><%- title %></h2>
         <p><%- details %></p>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
     </div>
-    <div class="anyconf-view anyconf-view--yellow anyconf-view--yellow-last">
-        <h4 class="anyconf-label-title anyconf-condensed">Presented By:</h4>
-        <% _.each(speakers, function(data) { %> 
-            <div>
-                <img src="./assets/images/headshot1.png" width="80px">
-                <ul class="anyconf-link-list">
-                    <b><a class="anyconf-link" href="#"><%= data.attributes.first_name %> <%= data.attributes.last_name %></a></b>
-                    <li><a class="anyconf-link anyconf-link--twitter" href="http://twitter.com/twitter">@twitter</a></li>
-                    <li><a class="anyconf-link anyconf-link--url" href="http://example.com">example.com</a></li>
-                </ul>
-            </div>
-        <% }); %>
-    </div>
+    <% if( speakers.length ) { %>
+        <div class="anyconf-view anyconf-view--yellow anyconf-view--yellow-last">
+            <h4 class="anyconf-label-title anyconf-condensed">Presented By:</h4>
+            <% _.each(speakers, function(data) { %> 
+                <div>
+                    <img src="./assets/images/headshot1.png" width="80px">
+                    <ul class="anyconf-link-list">
+                        <b><a class="anyconf-link" href="#"><%= data.attributes.first_name %> <%= data.attributes.last_name %></a></b>
+                        <li><a class="anyconf-link anyconf-link--twitter" href="http://twitter.com/twitter">@twitter</a></li>
+                        <li><a class="anyconf-link anyconf-link--url" href="http://example.com">example.com</a></li>
+                    </ul>
+                </div>
+            <% }); %>
+        </div>
+    <% } %>
 </div>
 </script>
 

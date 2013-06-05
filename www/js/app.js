@@ -323,6 +323,7 @@ limitations under the License.
 		},
 		
 		touchStart: function(evt) {
+		    console.log('touchstart');
 			var _this = sessionListDetailsView;
 			if( _this.animating ) {
 			    return;
@@ -345,6 +346,7 @@ limitations under the License.
 		},
 		
 		touchMove: function(evt) {
+		    console.log('touchmove');
 			var _this = sessionListDetailsView;
 		
 			var currentPoint = {
@@ -383,6 +385,7 @@ limitations under the License.
 		},
 		
 		touchEnd: function(evt) {
+		    console.log('touchend');
 			var _this = sessionListDetailsView;
 			_this.gestureStarted = false;
 			console.log('_this.lastDiff.x', _this.lastDiff.x);
