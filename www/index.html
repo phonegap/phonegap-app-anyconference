@@ -5,7 +5,7 @@
     <meta name="format-detection" content="telephone=no" />
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
 	<title>Conf prototype</title>
-	<script src="js/hand-1.0.12.js"></script>
+	<script src="js/Points.js"></script>
 	<script src="js/jquery-2.0.0.min.js"></script>
 	<script src="js/moment.min.js"></script>
 	<script src="js/lodash.min.js"></script>
@@ -169,8 +169,6 @@
     <div class="anyconf-view anyconf-view--yellow">
         <h2 class="anyconf-label-title"><%- title %></h2>
         <p><%- details %></p>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
     </div>
     <% if( speakers.length ) { %>
         <div class="anyconf-view anyconf-view--yellow anyconf-view--yellow-last">
@@ -179,7 +177,7 @@
                 <div>
                     <img src="./assets/images/headshot1.png" width="80px">
                     <ul class="anyconf-link-list">
-                        <b><a class="anyconf-link js-speaker-link" href="#"><%= data.attributes.first_name %> <%= data.attributes.last_name %></a></b>
+                        <b><a class="anyconf-link js-speaker-link" href="speakerDetails/<%- data.id %>"><%= data.attributes.full_name %></a></b>
                         <li><a class="anyconf-link anyconf-link--twitter js-speaker-link" href="http://twitter.com/twitter">@twitter</a></li>
                         <li><a class="anyconf-link anyconf-link--url js-speaker-link" href="http://example.com">example.com</a></li>
                     </ul>
@@ -188,6 +186,14 @@
         </div>
     <% } %>
 </div>
+</script>
+
+<script type="text/template" id="speaker-entry-template">
+<li><%- full_name %></li>
+</script>
+
+<script type="text/template" id="speaker-details-template">
+<li><%- full_name %></li>
 </script>
 
 <script type="text/template" id="anyconf-menu-template">

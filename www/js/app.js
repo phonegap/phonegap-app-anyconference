@@ -101,14 +101,91 @@ limitations under the License.
 		}
 	});
 	
+	
+	
 	var SessionList = Backbone.Collection.extend({
 		model: Session
 	});
 	
 	var sessionList = new SessionList;
 	
-	var Speaker = Backbone.Model.extend({
+	var SpeakerListDetailsView = Backbone.View.extend({
+		tagName: 'div',
+		className: 'list-details-view',
+		collection: speakerList,
 		
+		viewPointers: {},
+		
+		initialize: function() {
+		    var _this = this;
+			appRouter.on('route:speakerDetails', function() {
+			    _this.navigateTo.apply(_this, arguments);
+			});
+			appRouter.on('route:speakerList', function() {
+			    _this.leave();
+			});
+		},
+		
+		navigateTo: function(speakerId) {
+			var speaker = this.collection.get(speakerId);
+			this.render();
+			this.currentSpeaker = speaker;
+			var detailsView = this.viewPointers[ speaker.cid ];
+			detailsView.render();
+			this.el.appendChild(detailsView.el);
+			// this.renderAdjacent();
+		},
+
+		leave: function() {
+		    this.el.style.display = 'none';
+		},
+		
+		addSpeaker: function(speaker) {
+			var view = new SpeakerDetailsView({
+				model: speaker
+			});
+			this.viewPointers[speaker.cid] = view;
+		},
+
+		render: function() {
+			$('.topcoat-app-content').append(this.el);
+			this.el.style.display = 'block';
+			this.el.style.webkitTransform = 'none';
+			return this;
+		},
+
+	});
+	
+	var speakerListDetailsView;
+	
+	var SpeakerDetailsView = Backbone.View.extend({
+	    model: Speaker,
+	    
+	    template: _.template($('#speaker-details-template').html()),
+	    
+		tagName: 'div',
+		className: 'speaker-details-wrap',
+		
+		render: function() {
+			this.renderContent();
+			this.el.style.webkitTransform = 'none';
+			this.el.setAttribute('POS', 'CURRENT');
+			return this;
+		},
+		
+		renderContent: function() {
+    	    var modelData = this.model.toJSON();
+    	    this.el.innerHTML = this.template(modelData);
+			return this;
+		}
+	    
+	});
+	
+	var Speaker = Backbone.Model.extend({
+		initialize: function() {
+		    var fullName = this.get('first_name') + ' ' + this.get('last_name');
+		    this.set('full_name', fullName);
+		}
 	});
 	
 	var SpeakerList = Backbone.Collection.extend({
@@ -116,6 +193,41 @@ limitations under the License.
 	});
 	
 	var speakerList = new SpeakerList;
+	
+	var SpeakerView = Backbone.View.extend({
+	    model: Speaker,
+	    
+	    template: _.template($('#speaker-entry-template').html()),
+	    
+    	tagName: 'div',
+    	
+    	initialize: function() {
+    	    
+    	},
+    	
+    	render: function() {
+    	    var modelData = this.model.toJSON();
+    	    this.el.innerHTML = this.template(modelData);
+			return this;
+    	}
+	});
+	
+	var SpeakerListView = Backbone.View.extend({
+		tagName: 'ul',
+		className: 'topcoat-list',
+		collection: speakerList,
+		viewPointers: {},
+		
+		initialize: function() {
+		    
+		},
+		
+		addSpeaker: function(speakerModel) {
+		    var speakerView = new SpeakerView({model: speakerModel}).render();
+		}
+	});
+	
+	var speakerListView;
 
 	var Track = Backbone.Model.extend({
 		selectedSession: null
@@ -126,17 +238,6 @@ limitations under the License.
 		
 	};
 	*/
-	
-	var Context = Backbone.Model.extend({
-	
-	});
-	
-	var sidepanel = new Context;
-	var sessionListContext = new Context;
-	var starredSessionListContext = new Context;
-	// var sessionDetailsContext = new Context;
-	var speakerListContext = new Context;
-	var speakerDetailsContext = new Context;
 	
 	var SessionPage = Backbone.View.extend({
 		tagName: 'div',
@@ -216,6 +317,12 @@ limitations under the License.
 		gestureStarted: false,
 		swiping: false,
 		
+		events: {
+		    'pointerdown': 'pointerDown',
+		    'pointermove': 'pointerMove',
+		    'pointerup': 'pointerUp'
+		},
+		
 		initialize: function() {
 		    var _this = this;
 			appRouter.on('route:sessionDetails', function() {
@@ -224,6 +331,10 @@ limitations under the License.
 			appRouter.on('route:sessionList', function() {
 			    _this.leave();
 			});
+			appRouter.on('route:speakerDetails', function() {
+			    _this.leave();
+			});
+
 		},
 		
         transitionFromClass: function(className) {
@@ -286,7 +397,6 @@ limitations under the License.
 			$('.topcoat-app-content').append(this.el);
 			this.el.style.display = 'block';
 			this.el.style.webkitTransform = 'none';
-			window.addEventListener('touchdown', this.touchStart);
 			return this;
 		},
 		
@@ -322,93 +432,99 @@ limitations under the License.
 			this.el.addEventListener('webkitTransitionEnd', onTransitionEnd);
 		},
 		
-		touchStart: function(evt) {
-		    console.log('touchdown');
-			var _this = sessionListDetailsView;
-			if( _this.animating ) {
+		pointerDown: function(jqEvt) {
+		    var evt = jqEvt.originalEvent;
+		    console.log('pointerDown');
+			if( this.animating ) {
 			    return;
 			}
 			
-			_this.startPoint = {
-				x: evt.touches[0].clientX,
-				y: evt.touches[0].clientY
+			this.startPoint = {
+				x: evt.clientX,
+				y: evt.clientY
 			};
-			_this.lastPoint = {
-				x: _this.startPoint.x,
-				y: _this.startPoint.y
+			this.lastPoint = {
+				x: this.startPoint.x,
+				y: this.startPoint.y
 			};
-			_this.lastDiff = {
+			this.lastDiff = {
 				x: 0,
 				y: 0
-			}
-			window.addEventListener('pointermove', _this.pointerMove, false);
-			window.addEventListener('pointerend', _this.pointerUp, false);
+			};
+			this.pointerStarted = true;
 		},
 		
-		pointerMove: function(evt) {
+		pointerMove: function(jqEvt) {
+		    var evt = jqEvt.originalEvent;
+		    if( !this.pointerStarted ) {
+		        return;
+		    }
 		    console.log('pointermove');
-			var _this = sessionListDetailsView;
-		
+
 			var currentPoint = {
-				x: evt.touches[0].clientX,
-				y: evt.touches[0].clientY
+				x: evt.clientX,
+				y: evt.clientY
 			};
 			var startOffset = {
-				x: currentPoint.x - _this.startPoint.x,
-				y: currentPoint.y - _this.startPoint.y
+				x: currentPoint.x - this.startPoint.x,
+				y: currentPoint.y - this.startPoint.y
 			};
-			if( !_this.gestureStarted ) {
+			if( !this.gestureStarted ) {
 				// determine if scrolling or page swiping
 				var absX = Math.abs( startOffset.x );
 				var absY = Math.abs( startOffset.y );
 				
 				// More horizontal than vertical = swiping
-				_this.swiping = (absX > absY);
+				this.swiping = (absX > absY);
 				
-				_this.gestureStarted = true;
+				this.gestureStarted = true;
 			}
-			if( _this.swiping ) {
+			if( this.swiping ) {
 				evt.preventDefault();
-				_this.lastDiff = {
-					x: currentPoint.x - _this.lastPoint.x,
-					y: currentPoint.y - _this.lastPoint.y
+				this.lastDiff = {
+					x: currentPoint.x - this.lastPoint.x,
+					y: currentPoint.y - this.lastPoint.y
 				};
-				_this.lastPoint = currentPoint;
+				this.lastPoint = currentPoint;
 
-				_this.el.style.webkitTransform = 'translateX(' + startOffset.x + 'px) translateZ(0)';
+				this.el.style.webkitTransform = 'translateX(' + startOffset.x + 'px) translateZ(0)';
 				if( startOffset.x > 0 ) {
-					_this.pendingSession = _this.prevSession;
+					this.pendingSession = this.prevSession;
 				} else {
-					_this.pendingSession = _this.nextSession;
+					this.pendingSession = this.nextSession;
 				}
 			}
 		},
 		
-		pointerUp: function(evt) {
+		pointerUp: function(jqEvt) {
+		    var evt = jqEvt.originalEvent;
 		    console.log('pointerend');
-			var _this = sessionListDetailsView;
-			_this.gestureStarted = false;
-			console.log('_this.lastDiff.x', _this.lastDiff.x);
-			if( _this.lastDiff.x > 0 ) {
+		    if( !this.pointerStarted ) {
+		        return;
+		    }
+
+			this.gestureStarted = false;
+			console.log('this.lastDiff.x', this.lastDiff.x);
+			if( this.lastDiff.x > 0 ) {
 				evt.preventDefault();
-				if( _this.pendingSession === _this.prevSession ) {
-					_this.transitionTo(-1);
+				if( this.pendingSession === this.prevSession ) {
+					this.transitionTo(-1);
 				} else {
-					_this.transitionTo(0);
+					this.transitionTo(0);
 				}
 			} else {
-				if( _this.pendingSession === _this.nextSession ) {
-					_this.transitionTo(1);
+				if( this.pendingSession === this.nextSession ) {
+					this.transitionTo(1);
 				} else {
-					_this.transitionTo(0);
+					this.transitionTo(0);
 				}
 			}
+			this.pointerStarted = false;
 		}
 
 	});
 	
 	var SessionListView = Backbone.View.extend({
-		model: Context,
 		
 		tagName: 'ul',
 		className: 'topcoat-list',
@@ -605,7 +721,6 @@ limitations under the License.
 				if( this.swiping ) {
     				console.log('LIST: SWIPING (no scroll)');
                     // No more interaction here
-                    window.removeEventListener('pointermove', sessionListView.touchMove);
                     this.swipeChecked = false;
                     this.swiping = false;
                     this.pointerStarted = false;
@@ -703,7 +818,8 @@ limitations under the License.
 		
 		events: {
             'pointerdown .js-speaker-link': 'onLinkDown',
-            'pointerup .js-speaker-link': 'onLinkUp'
+            'pointerup .js-speaker-link': 'onLinkUp',
+            'click .js-speaker-link': 'onLinkUp'
 		},
 		
 		onLinkDown: function(jqEvt) {
@@ -711,7 +827,10 @@ limitations under the License.
 		},
 		
 		onLinkUp: function(jqEvt) {
-		    
+		    jqEvt.preventDefault();
+		    var target = jqEvt.target;
+		    var href = target.pathname.substr(1); // 'speakerDetails/' + id
+            appRouter.navigate(href, {trigger: true});
 		},
 		
 		hide: function() {
@@ -744,22 +863,6 @@ limitations under the License.
 			var modelData = this.model.toJSON();
 			var subtitle = '';
 			var _this = this;
-/*
-			var len = modelData.speakers ? modelData.speakers.length : null;
-			if( len ) {
-				for( var i = 0; i < len; i++ ) {
-					var speaker = modelData.speakers[i];
-					var speakerName = speaker.get('first_name') + ' ' + speaker.get('last_name');
-					if( i === 0 ) {
-						subtitle += speakerName;
-					} else if( i === len - 1 ) {
-						subtitle += ' & ' + speakerName;
-					} else {
-						subtitle += ', ' + speakerName;
-					}
-				}
-			}
-			*/
 			
 			var times = modelData.startTime.format('h:mm A');
 			if( modelData.endTime ) {
@@ -792,15 +895,6 @@ limitations under the License.
 		
 		tagName: 'div',
 		className: 'topcoat-list__container',
-		
-		currentContext: null,
-		
-		navigateTo: function(context) {
-			this.lastContext = this.currentContext;
-			this.lastContext.hide();
-			this.el.appendChild( contextView.render().el );
-			this.currentContext = contextView;
-		},
 		
 		makeDate: function(day, time) {
 			var dateString = day + ' ' + time;
@@ -1022,15 +1116,22 @@ limitations under the License.
 		initialize: function() {
 			var _this = this;
 
-			sessionListView = new SessionListView({model: sessionListContext});
+			sessionListView = new SessionListView({collection: sessionList});
 			sessionListDetailsView = new SessionListDetailsView({collection: sessionList});
+			
+			speakerListView = new SpeakerListView({collection: speakerList});
+			speakerListDetailsView = new SpeakerListDetailsView({collection: speakerList});
+			
 			sessionListView.listenTo(sessionList, 'add', sessionListView.addSession);
 			sessionListDetailsView.listenTo(sessionList, 'add', sessionListDetailsView.addSession);
+
+			speakerListView.listenTo(speakerList, 'add', speakerListView.addSpeaker);
+			speakerListDetailsView.listenTo(speakerList, 'add', speakerListDetailsView.addSpeaker);
+			
 
 			// _this.listenTo(sessionList, 'navigateTo', _this.navigateTo);
 			_this.el.appendChild( sessionListView.el );
 			$('.topcoat-app-content').append(_this.el);
-			this.currentContext = sessionListView;
 			
 			_this.setHeading('sessionList');
 			
@@ -1110,7 +1211,7 @@ limitations under the License.
 			if( len ) {
 				for( var i = 0; i < len; i++ ) {
 					var speaker = modelData.speakers[i];
-					var speakerName = speaker.get('first_name') + ' ' + speaker.get('last_name');
+					var speakerName = speaker.get('full_name');
 					if( i === 0 ) {
 						subtitle += speakerName;
 					} else if( i === len - 1 ) {
