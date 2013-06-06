@@ -330,8 +330,8 @@ limitations under the License.
 			}
 			
 			_this.startPoint = {
-				x: evt.touches[0].pageX,
-				y: evt.touches[0].pageY
+				x: evt.touches[0].clientX,
+				y: evt.touches[0].clientY
 			};
 			_this.lastPoint = {
 				x: _this.startPoint.x,
@@ -350,8 +350,8 @@ limitations under the License.
 			var _this = sessionListDetailsView;
 		
 			var currentPoint = {
-				x: evt.touches[0].pageX,
-				y: evt.touches[0].pageY
+				x: evt.touches[0].clientX,
+				y: evt.touches[0].clientY
 			};
 			var startOffset = {
 				x: currentPoint.x - _this.startPoint.x,
@@ -555,8 +555,8 @@ limitations under the License.
 			// evt.preventDefault();
 			// evt.stopPropagation();
 			this.startPoint = {
-				x: evt.pageX,
-				y: evt.pageY
+				x: evt.clientX,
+				y: evt.clientY
 			};
 			this.lastPoint = {
 				x: this.startPoint.x,
@@ -583,8 +583,8 @@ limitations under the License.
 				prevEl = this.prevPage.el;
 			}
 			var currentPoint = {
-				x: evt.pageX,
-				y: evt.pageY
+				x: evt.clientX,
+				y: evt.clientY
 			};
 			this.lastDiff = {
 				x: currentPoint.x - this.lastPoint.x,
@@ -700,6 +700,19 @@ limitations under the License.
 		
 		tagName: 'div',
 		className: 'session-details-wrap',
+		
+		events: {
+            'pointerdown .js-speaker-link': 'onLinkDown',
+            'pointerup .js-speaker-link': 'onLinkUp'
+		},
+		
+		onLinkDown: function(jqEvt) {
+		    
+		},
+		
+		onLinkUp: function(jqEvt) {
+		    
+		},
 		
 		hide: function() {
 			this.el.parentNode.removeChild( this.el );
@@ -1078,12 +1091,12 @@ limitations under the License.
 		},
 		
 		onDetailsDown: function(evt) {
-		    this.moveY = evt.originalEvent.pageY;
+		    this.moveY = evt.originalEvent.clientY;
 		},
 		
 		onDetailsUp: function(evt) {
-		    var diffY = evt.originalEvent.pageY - this.moveY;
-		    if( diffY == 0 ) {
+		    var diffY = evt.originalEvent.clientY - this.moveY;
+		    if( diffY > -3 && diffY < 3 ) {
                 var id = this.model.id;
                 appRouter.navigate('sessionDetails/' + id, {trigger: true});
 		    }
@@ -1137,9 +1150,9 @@ limitations under the License.
 		gestureStarted: false,
 		
 		events: {
-		    'pointerdown body': 'pointerDown',
-		    'pointermove body': 'pointerMove',
-		    'pointerup body': 'pointerUp'
+		    'pointerdown': 'pointerDown',
+		    'pointermove': 'pointerMove',
+		    'pointerup': 'pointerUp'
 		},
 		
 		template: _.template($('#anyconf-menu-template').html()),
@@ -1210,8 +1223,8 @@ limitations under the License.
 		    }
 		    
 			this.startPoint = {
-				x: evt.pageX,
-				y: evt.pageY
+				x: evt.clientX,
+				y: evt.clientY
 			};
 			this.lastPoint = {
 				x: this.startPoint.x,
@@ -1248,8 +1261,8 @@ limitations under the License.
     		var evt = jqEvt.originalEvent;
     		console.log('menu pointermove');
 		    var currentPoint = {
-                x: evt.touches[0].pageX,
-                y: evt.touches[0].pageY,
+                x: evt.clientX,
+                y: evt.clientY,
             };
             
 			var startOffset = {
@@ -1337,6 +1350,11 @@ limitations under the License.
 
 			this.overlay = document.createElement('div');
 			this.overlay.className = 'js-menu-overlay';
+			
+			// Not a child of this.el, so can't use backbone events
+			$(this.overlay).on('pointerup', function() {
+			    _this.hide();
+			});
 		    
 		    document.body.appendChild( this.el );
 		    var templateValues = {
