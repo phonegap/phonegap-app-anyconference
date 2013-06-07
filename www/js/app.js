@@ -16,7 +16,7 @@ limitations under the License.
 
 (function(){
 	var App = Backbone.Model.extend({
-
+        
 	});
 	
 	var app = new App;
@@ -25,23 +25,23 @@ limitations under the License.
  
         routes: {
             'sessionList': 'sessionList',
-            'starredSessionList/:showMenu': 'starredSessionList',
-            'speakerList/:showMenu': 'speakerList',
+            'starredSessionList': 'starredSessionList',
+            'speakerList': 'speakerList',
 
             'sessionDetails/:sessionId': 'sessionDetails',
             'speakerDetails/:speakerId': 'speakerDetails'
         },
         
         // These probably aren't necessary if we just use .on(route:*)
-        sessionList: function(showMenu) {
+        sessionList: function() {
             
         },
             
-        starredSessionList: function(showMenu) {
+        starredSessionList: function() {
             
         },
         
-        speakerList: function(showMenu) {
+        speakerList: function() {
         
         },
         
@@ -118,15 +118,17 @@ limitations under the License.
 		
 		initialize: function() {
 		    var _this = this;
-			appRouter.on('route:speakerDetails', function() {
-			    _this.navigateTo.apply(_this, arguments);
-			});
-			appRouter.on('route:speakerList', function() {
-			    _this.leave();
-			});
+		    appRouter.on('route', function(route, speakerId) {
+		        if( route == 'speakerDetails' ) {
+		            _this.navigateTo(speakerId);
+		        } else {
+		            _this.leave();
+		        }
+		    });
 		},
 		
 		navigateTo: function(speakerId) {
+            appView.setCurrentView(this);
 			var speaker = this.collection.get(speakerId);
 			this.render();
 			this.currentSpeaker = speaker;
@@ -169,7 +171,7 @@ limitations under the License.
 		render: function() {
 			this.renderContent();
 			this.el.style.webkitTransform = 'none';
-			this.el.setAttribute('POS', 'CURRENT');
+			// this.el.setAttribute('POS', 'CURRENT');
 			return this;
 		},
 		
@@ -218,12 +220,40 @@ limitations under the License.
 		collection: speakerList,
 		viewPointers: {},
 		
+		events: {
+		    'pointerup': 'pointerUp',
+		    'click': 'pointerUp'
+		},
+		
 		initialize: function() {
-		    
+		    var _this = this;
+		    appRouter.on('route', function(route) {
+		        if( route == 'speakerList' ) {
+		            _this.render();
+		        } else {
+		            _this.leave();
+		        }
+		    });
+		},
+		
+		pointerUp: function(jqEvt) {
+		    jqEvt.preventDefault();
+		    var href = jqEvt.target.getAttribute('href'); // 'speakerDetails/' + id
+            appRouter.navigate(href, {trigger: true});
+		},
+		
+		leave: function() {
+			this.el.style.display = 'none';
+		},
+		
+		render: function() {
+            appView.setCurrentView(this);
+		    this.el.style.display = 'block';
 		},
 		
 		addSpeaker: function(speakerModel) {
 		    var speakerView = new SpeakerView({model: speakerModel}).render();
+		    this.el.appendChild( speakerView.el );
 		}
 	});
 	
@@ -325,16 +355,13 @@ limitations under the License.
 		
 		initialize: function() {
 		    var _this = this;
-			appRouter.on('route:sessionDetails', function() {
-			    _this.navigateTo.apply(_this, arguments);
-			});
-			appRouter.on('route:sessionList', function() {
-			    _this.leave();
-			});
-			appRouter.on('route:speakerDetails', function() {
-			    _this.leave();
-			});
-
+		    appRouter.on('route', function(route, sessionId) {
+		        if( route == 'sessionDetails' ) {
+		            _this.navigateTo(sessionId);
+		        } else {
+		            _this.leave();
+		        }
+		    });
 		},
 		
         transitionFromClass: function(className) {
@@ -361,6 +388,7 @@ limitations under the License.
 		},
 		
 		navigateTo: function(sessionId) {
+            appView.setCurrentView(this);
 			var session = this.collection.get(sessionId);
 			this.render();
 			this.currentSession = session;
@@ -779,6 +807,7 @@ limitations under the License.
 		},
 		
 		render: function() {
+            appView.setCurrentView(this);
 		    this.el.style.display = 'block';
 			this.setCurrentPage( this.pages[0] );
 			
@@ -798,13 +827,13 @@ limitations under the License.
 			this.pageOverlay = document.createElement('div');
 			this.pageOverlay.className = 'js-page-overlay';
 			
-			appRouter.on('route:sessionDetails', function() {
-			    _this.leave();
-			});
-			
-            appRouter.on('route:sessionList', function() {
-			    _this.render();
-			});
+		    appRouter.on('route', function(route) {
+		        if( route == 'sessionList' ) {
+		            _this.render();
+		        } else {
+		            _this.leave();
+		        }
+		    });
 		}
 	});
 	
@@ -829,7 +858,7 @@ limitations under the License.
 		onLinkUp: function(jqEvt) {
 		    jqEvt.preventDefault();
 		    var target = jqEvt.target;
-		    var href = target.pathname.substr(1); // 'speakerDetails/' + id
+		    var href = target.getAttribute('href'); // 'speakerDetails/' + id
             appRouter.navigate(href, {trigger: true});
 		},
 		
@@ -895,6 +924,13 @@ limitations under the License.
 		
 		tagName: 'div',
 		className: 'topcoat-list__container',
+		lastView: null,
+		currentView: null,
+		
+		setCurrentView: function( view ) {
+		    this.lastView = this.currentView;
+		    this.currentView = view;
+		},
 		
 		makeDate: function(day, time) {
 			var dateString = day + ' ' + time;
@@ -1130,6 +1166,7 @@ limitations under the License.
 			
 
 			// _this.listenTo(sessionList, 'navigateTo', _this.navigateTo);
+			_this.el.appendChild( speakerListView.el );
 			_this.el.appendChild( sessionListView.el );
 			$('.topcoat-app-content').append(_this.el);
 			
@@ -1137,6 +1174,11 @@ limitations under the License.
 			
 			appRouter.on('route', function(route) {
 			    _this.setHeading.apply(_this, arguments);
+			});
+			
+			this.on('change:currentView', function() {
+                _this.lastView = _this.get('currentView');
+			    _this.currentView = route;
 			});
 			
 			var backButton = $('.js-back-button')[0];
@@ -1253,7 +1295,9 @@ limitations under the License.
 		events: {
 		    'pointerdown': 'pointerDown',
 		    'pointermove': 'pointerMove',
-		    'pointerup': 'pointerUp'
+		    'pointerup': 'pointerUp',
+		    'pointerup .js-speakerlist-link': 'linkUp',
+		    'click .js-speakerlist-link': 'linkUp'
 		},
 		
 		template: _.template($('#anyconf-menu-template').html()),
@@ -1314,6 +1358,14 @@ limitations under the License.
             this.swiping = false;
             this.swipeChecked = false;
             this.gestureStarted = false;
+		},
+		
+		linkUp: function(jqEvt) {
+		    jqEvt.preventDefault();
+		    jqEvt.stopPropagation();
+		    var target = jqEvt.currentTarget;
+		    var href = target.getAttribute('href');
+		    appRouter.navigate(href, {trigger: true});
 		},
 		
 		pointerDown: function(jqEvt) {
@@ -1417,11 +1469,12 @@ limitations under the License.
 		        return;
 		    }
     		var evt = jqEvt.originalEvent;
-		    
 		    // Prevent default if we moved
             if( this.swipeChecked ) {
                 evt.preventDefault();
             } else {
+                // Check if this is a link
+    		    evt.preventDefault();
                 this.resetGestures();
                 return;
             }
@@ -1455,6 +1508,13 @@ limitations under the License.
 			// Not a child of this.el, so can't use backbone events
 			$(this.overlay).on('pointerup', function() {
 			    _this.hide();
+			});
+			
+			// Close on any navigation
+			appRouter.on('route', function() {
+			    if( _this.isShown ) {
+			        _this.hide();
+			    }
 			});
 		    
 		    document.body.appendChild( this.el );

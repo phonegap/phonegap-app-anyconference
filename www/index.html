@@ -189,11 +189,11 @@
 </script>
 
 <script type="text/template" id="speaker-entry-template">
-<li><%- full_name %></li>
+<li><a href="speakerDetails/<%- id %>"><%- full_name %></a></li>
 </script>
 
 <script type="text/template" id="speaker-details-template">
-<li><%- full_name %></li>
+<div><%- full_name %></div>
 </script>
 
 <script type="text/template" id="anyconf-menu-template">
@@ -210,8 +210,10 @@
         </li>
     </ul>
     <h3 class="topcoat-list__header anyconf-list__header">
-        <span class="topcoat-icon topcoat-icon--blank"></span>
-        <span class="anyconf-list-label">Speakers</span>
+        <a href="speakerList" class="js-speakerlist-link">
+            <span class="topcoat-icon topcoat-icon--blank"></span>
+            <span class="anyconf-list-label">Speakers</span>
+        </a>
     </h3>
 
 </div>
