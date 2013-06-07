@@ -15620,6 +15620,8 @@ keys = _.keys(LayoutManager.prototype.options);
 
 })(typeof global === "object" ? global : this);
 
+/*global app:false*/
+
 (function(global) {
     'use strict';
     // Provide a global location to place configuration settings and module
@@ -15634,7 +15636,7 @@ keys = _.keys(LayoutManager.prototype.options);
     };
 
     // Localize or create a new JavaScript Template object.
-    var JST = window.JST = window.JST || {};
+    var JST = global.JST = global.JST || {};
 
     // Configure LayoutManager with Backbone Boilerplate defaults.
     Backbone.Layout.configure({
@@ -15703,8 +15705,11 @@ keys = _.keys(LayoutManager.prototype.options);
 
 }(this));
 
+/*global console:false*/
 (function(global) {
     'use strict';
+
+    var Backbone = global.Backbone;
 
     // Defining the application router, you can attach sub routers here.
     var Router = Backbone.Router.extend({
@@ -15713,7 +15718,7 @@ keys = _.keys(LayoutManager.prototype.options);
         },
 
         index: function() {
-
+            console.log('WORKING');
         }
     });
 
@@ -15721,3 +15726,37 @@ keys = _.keys(LayoutManager.prototype.options);
 
 }(this));
 
+
+(function (global) {
+    'use strict';
+
+    var Backbone = global.Backbone;
+    var $ = Backbone.$;
+    var app = global.app;
+    var document = global.document;
+
+    // Trigger the initial route and enable HTML5 History API support, set the
+    // root folder to '/' by default.  Change in app.js.
+    Backbone.history.start({ pushState: true, root: app.root });
+
+    // All navigation that is relative should be passed through the navigate
+    // method, to be processed by the router. If the link has a `data-bypass`
+    // attribute, bypass the delegation completely.
+    $(document).on('click', 'a:not([data-bypass])', function (evt) {
+        // Get the absolute anchor href.
+        var href = $(this).attr('href');
+
+        // If the href exists and is a hash route, run it through Backbone.
+        if (href && href.indexOf('#') === 0) {
+            // Stop the default event to ensure the link will not cause a page
+            // refresh.
+            evt.preventDefault();
+
+            // `Backbone.history.navigate` is sufficient for all Routers and will
+            // trigger the correct events. The Router's internal `navigate` method
+            // calls this anyways.  The fragment is sliced from the root.
+            Backbone.history.navigate(href, true);
+        }
+    });
+
+}(this));
