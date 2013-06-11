@@ -1,11 +1,15 @@
 <header class="topcoat-navigation-bar fixed full">
     <div class="topcoat-navigation-bar__item left quarter">
-        <a class="topcoat-icon-button--quiet">
+        <a class="topcoat-icon-button--quiet js-menu-button">
           <span class="topcoat-icon topcoat-icon--menu-stack"></span>
         </a>
+        <a class="topcoat-icon-button--quiet js-back-button">
+          <span class="topcoat-icon topcoat-icon--left-arrow"></span>
+        </a>
+
     </div>
     <div class="topcoat-navigation-bar__item center half">
-      <h1 class="topcoat-navigation-bar__title"><%= name || "" %></h1>
+      <h1 class="topcoat-navigation-bar__title js-navbar-title"><%= name || "" %></h1>
     </div>
 </header>
 

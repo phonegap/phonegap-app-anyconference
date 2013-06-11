@@ -1,18 +1,34 @@
+require.config({
+    baseUrl: 'js/third-party',
+    paths: {
+        app: '../app'
+    }
+});
+
 define(function(require, exports, module) {
     //Require dependencies
-    var config = require('config');
+    var config = require('app/config');
+
+    var appRouter = window.require('app/appRouter');
+
     //Session
-    var SessionCollection = require('sessions/sessionCollection');
-    var SessionCollectionView = require('sessions/sessionCollectionView');
+    var SessionCollection = require('app/sessions/sessionCollection');
+    var SessionCollectionView = require('app/sessions/sessionCollectionView');
+    var SessionCollectionDetailsView = require('app/sessions/sessionCollectionDetailsView');
 
     var sessionCollection = new SessionCollection();
     var sessionCollectionView = new SessionCollectionView({
         collection: sessionCollection
     });
+    
+    var sessionCollectionDetailsView = new SessionCollectionDetailsView({
+        collection: sessionCollection
+    });
+    
     //var SessionModel = require('sessions/sessionModel');
 
     //Load html template
-    var appTemplate = require("text!templates/main.html");
+    var appTemplate = require("text!app/templates/main.html");
 
     //Define main app view
     var AppView = Backbone.View.extend({
@@ -22,7 +38,8 @@ define(function(require, exports, module) {
         //Define the template to use
         template: _.template(appTemplate),
         events: {
-
+            'pointerup .js-menu-button': 'showMenu',
+            'pointerup .js-back-button': 'goBack'
         },
 
         initialize: function() {
@@ -33,11 +50,22 @@ define(function(require, exports, module) {
             //   the main view when data from api call returns
             this.listenTo(this.model, 'change', this.render);
             this.listenTo(this.model, 'destroy', this.remove);
+            this.listenTo(appRouter, 'route', this.setHeading);
+
+            /*
+			appRouter.on('route', function(route) {
+			    _this.setHeading.apply(_this, arguments);
+			});
+			*/
+
         },
 
         render: function() {
             this.$el.html(this.template(this.model.attributes));
             this.setContent(sessionCollectionView.el);
+            sessionCollectionView.render().$el.appendTo('#content');
+            Backbone.history.start();
+            
             return this;
         },
 
@@ -45,7 +73,49 @@ define(function(require, exports, module) {
             //Transition out current content
             //Once transition ends transition in new content
             $('#content').html(content);
-        }
+        },
+        
+        showMenu: function() {
+            this.menuView.render();
+        },
+        
+		goBack: function(evt) {
+		    window.history.go(-1);
+		},
+		
+		setHeading: function(route) {
+		    var headingText;
+		    var showBackButton = false;
+		    var dayOfWeek = 'TODAY';
+            switch( route ) {
+                case 'sessionCollection':
+                case 'starredSessionCollection':
+                    headingText = dayOfWeek;
+                    break;
+                case 'speakerList':
+                    headingText = 'SPEAKERS';
+                    break;
+                case 'sessionDetails':
+                    headingText = 'SESSION';
+                    showBackButton = true;
+                    break;
+                case 'speakerDetails':
+                    headingText = 'SPEAKER';
+                    showBackButton = true;
+                    break;
+            }
+            $('.js-navbar-title').text( headingText );
+            if( showBackButton ) {
+                $('.js-back-button').show();
+                $('.js-menu-button').hide();
+            } else {
+                $('.js-back-button').hide();
+                $('.js-menu-button').show();
+            }
+            
+            console.log('route', arguments);
+		}
+		
     });
 
     //Define app model
