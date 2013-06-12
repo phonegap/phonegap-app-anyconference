@@ -7,7 +7,7 @@ define(function(require, exports, module) {
         model: SessionModel,
         
         initialize: function() {
-            
+            this.fetch();
         },
 
 		makeDate: function(day, time) {

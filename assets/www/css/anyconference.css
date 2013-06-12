@@ -2,8 +2,8 @@
     position: absolute;
     top: 4rem;
     left: 0;
+    bottom: 0;
     width: 100%;
-    height: 100%;
     overflow: hidden;
     background: #fff;
 }
@@ -214,6 +214,7 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
 }
 .anyconf-menu {
   position: fixed;
+  z-index: 30;
   top: 0;
   left: 0;
   width: 80vw;
@@ -466,13 +467,12 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
 }
 @font-face {
   font-family: "League Gothic Condensed";
-  src: url("../font/LeagueGothic-CondensedRegular.otf");
+  src: url("../font/LeagueGothic-CondensedRegular.svg") format('svg');
 }
 @font-face {
   font-family: "League Gothic";
-  src: url("../font/LeagueGothic-Regular.otf");
+  src: url("../font/LeagueGothic-Regular.svg") format('svg');
 }
-
 .topcoat-view {
   border-radius: 6px;
 }
@@ -3174,7 +3174,8 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
   background-image: url("../img/hearton.svg");
   -webkit-filter: drop-shadow(0px 3px 0px #000);
 }
-.js-page-overlay {
+.js-page-overlay,
+.js-menu-overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -3183,6 +3184,10 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
   opacity: 1;
   background: rgba(0,0,0,0.5);
 }
+.js-menu-overlay {
+    z-index: 25;
+}
+
 .js-session-transition {
   -webkit-transition: all 0.3s;
 }
@@ -3196,7 +3201,14 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
 }
 .js-page-transition-out {
   -webkit-transition: all 0.2s;
-  -webkit-transform: translateY(-100vh) translateZ(0);
+  -webkit-transform: translateY(-100%) translateZ(0);
+}
+.js-menu-transition-in {
+    -webkit-transition: all 0.2s;
+    -webkit-transform: none;
+}
+.js-menu-transition-out {
+    -webkit-transition: all 0.2s;
 }
 
 .topcoat-view {
@@ -3394,8 +3406,8 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
   position: fixed;
   top: 0;
   left: 0;
-  width: 80vw;
-  height: 100vh;
+  width: 80%;
+  height: 100%;
   background: #fff;
 }
 .anyconf-list {
@@ -3498,8 +3510,8 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
 }
 .anyconf-view-splash {
   display: table;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   background: #2d3033;
   border-radius: 6px;
 }
@@ -3847,8 +3859,8 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
   position: fixed;
   top: 0;
   left: 0;
-  width: 80vw;
-  height: 100vh;
+  width: 80%;
+  height: 100%;
   background: #fff;
 }
 .anyconf-list {
@@ -3951,8 +3963,8 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
 }
 .anyconf-view-splash {
   display: table;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   background: #2d3033;
   border-radius: 6px;
 }

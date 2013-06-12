@@ -9,7 +9,7 @@ define(function(require, exports, module) {
     //Require dependencies
     var config = require('app/config');
 
-    var appRouter = window.require('app/appRouter');
+    var appRouter = require('app/appRouter');
 
     //Session
     var SessionCollection = require('app/sessions/sessionCollection');
@@ -25,7 +25,22 @@ define(function(require, exports, module) {
         collection: sessionCollection
     });
     
-    //var SessionModel = require('sessions/sessionModel');
+    //Speaker
+    var SpeakerCollection = require('app/speakers/speakerCollection');
+    var SpeakerCollectionView = require('app/speakers/speakerCollectionView');
+    var SpeakerCollectionDetailsView = require('app/speakers/speakerCollectionDetailsView');
+
+    var speakerCollection = new SpeakerCollection();
+    var speakerCollectionView = new SpeakerCollectionView({
+        collection: speakerCollection
+    });
+    
+    var speakerCollectionDetailsView = new SpeakerCollectionDetailsView({
+        collection: speakerCollection
+    });
+    
+    // Menu
+    var menuView = require('app/menu');
 
     //Load html template
     var appTemplate = require("text!app/templates/main.html");
@@ -64,6 +79,7 @@ define(function(require, exports, module) {
             this.$el.html(this.template(this.model.attributes));
             this.setContent(sessionCollectionView.el);
             sessionCollectionView.render().$el.appendTo('#content');
+            speakerCollectionView.$el.appendTo('#content');
             Backbone.history.start();
             
             return this;
@@ -76,7 +92,7 @@ define(function(require, exports, module) {
         },
         
         showMenu: function() {
-            this.menuView.render();
+            menuView.render();
         },
         
 		goBack: function(evt) {
@@ -92,7 +108,7 @@ define(function(require, exports, module) {
                 case 'starredSessionCollection':
                     headingText = dayOfWeek;
                     break;
-                case 'speakerList':
+                case 'speakerCollection':
                     headingText = 'SPEAKERS';
                     break;
                 case 'sessionDetails':
