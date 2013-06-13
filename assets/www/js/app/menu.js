@@ -1,6 +1,7 @@
 define(function(require, exports, module) {
 
     var appRouter = require('app/appRouter');
+    var dayEntryTemplate = require('text!app/templates/dayEntryTemplate.html');
     var menuTemplate = require('text!app/templates/menuTemplate.html');
 
 	var MenuView = Backbone.View.extend({
@@ -19,13 +20,15 @@ define(function(require, exports, module) {
 		    'pointerdown': 'pointerDown',
 		    'pointermove': 'pointerMove',
 		    'pointerup': 'pointerUp',
+		    'pointerup .js-schedule-link': 'linkUp',
+		    'click .js-schedule-link': 'linkUp',
 		    'pointerup .js-speakerlist-link': 'linkUp',
 		    'click .js-speakerlist-link': 'linkUp'
 		},
 		
 		template: _.template(menuTemplate),
 		
-		afterRender: function() {
+		show: function() {
 		    var _this = this;
             _this.animating = true;
 
@@ -71,7 +74,7 @@ define(function(require, exports, module) {
 		        return;
 		    }
 		    if( !_this.isShown ) {
-		        _this.render();
+		        _this.show();
 		    } else {
 		        _this.hide();
 		    }
@@ -178,7 +181,7 @@ define(function(require, exports, module) {
                 this.el.style.webkitTransform = 'translateX(' + translateX + 'px)';
             } else {
                 if( currentPoint.x > this.lastPoint.x ) {
-                    this.render();
+                    this.show();
                 } else {
                     this.gestureStarted = false;
                 }
@@ -205,7 +208,7 @@ define(function(require, exports, module) {
             
 		    if( !this.isShown ) {
                 if( this.lastDiff.x > 0 ) {
-                    this.render();
+                    this.show();
                 } else {
                     this.hide();
                 }
@@ -213,7 +216,7 @@ define(function(require, exports, module) {
                 if( this.lastDiff.x < 0 ) {
                     this.hide();
                 } else {
-                    this.render();
+                    this.show();
                 }
 			}
             
@@ -221,8 +224,25 @@ define(function(require, exports, module) {
             this.pointerStarted = false;
         },
         
+        afterRender: function() {
+            var dates = this.model.get('dates');
+            var $header = this.$el.find('.js-schedule-header');
+            for( var i = 0; i < dates.length; i++ ) {
+                var day = moment(dates[i].date).format('dddd, MMM D');
+                var html = _.template(dayEntryTemplate, {day: day});
+                var elem = $(html);
+                $header.after(elem);
+            }
+        },
+        
 		initialize: function() {
 		    var _this = this;
+		    /*
+		    this.model.on('change', function() {
+		        this.addDates();
+		    }, this);
+		    */
+		    
 		    // var menuButton = $('.js-menu-button')[0];
 		    // menuButton.addEventListener('pointerup', _this.toggleMenu, false);
 
@@ -252,6 +272,5 @@ define(function(require, exports, module) {
 		}
 	});
 	
-	var menuView = new MenuView();
-    return menuView;
+    return MenuView;
 });

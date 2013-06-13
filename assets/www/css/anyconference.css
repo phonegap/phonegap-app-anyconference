@@ -8,7 +8,8 @@
     background: #fff;
 }
 
-.session-details-wrap {
+.session-details-wrap,
+.speaker-details-wrap {
     position: absolute;
     width: 100%;
 }

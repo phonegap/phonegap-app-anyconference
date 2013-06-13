@@ -39,9 +39,6 @@ define(function(require, exports, module) {
         collection: speakerCollection
     });
     
-    // Menu
-    var menuView = require('app/menu');
-
     //Load html template
     var appTemplate = require("text!app/templates/main.html");
 
@@ -83,20 +80,15 @@ define(function(require, exports, module) {
             this.setView('#content', sessionCollectionView, true);
             this.setView('#content', sessionCollectionDetailsView, true);
             this.setView('#content', speakerCollectionView, true);
+            this.setView('#content', speakerCollectionDetailsView, true);
             this.setView(menuView, true);
+            menuView.render();
             
-            /*
-            this.$el.html(this.template(this.model.attributes));
-            this.setContent(sessionCollectionView.el);
-            sessionCollectionView.render().$el.appendTo('#content');
-            speakerCollectionView.$el.appendTo('#content');
-            */
-            // speakerCollectionDetailsView.$el.appendTo('#content');
             Backbone.history.start();
         },
 
         showMenu: function() {
-            menuView.render();
+            menuView.show();
         },
         
 		goBack: function(evt) {
@@ -154,6 +146,10 @@ define(function(require, exports, module) {
     var appView = new AppView({
         'model': appModel
     });
+
+    // Menu
+    var MenuView = require('app/menu');
+    var menuView = new MenuView({model: appModel});
 
     //Handler for phonegap deviceready event
     var deviceReadyHandeler = function() {

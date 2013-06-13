@@ -13,7 +13,8 @@ define(function(require, exports, module) {
 		
 		events: {
             'pointerdown .js-session-details-link': 'onDetailsDown',
-            'pointerup .js-session-details-link': 'onDetailsUp'
+            'pointerup .js-session-details-link': 'onDetailsUp',
+            'pointerup .js-star-button': 'onStarUp'
 		},
 		
 		initialize: function() {
@@ -53,6 +54,15 @@ define(function(require, exports, module) {
 		    }
 		},
 		
+		onStarUp: function(evt) {
+		    evt.preventDefault();
+		    evt.stopPropagation();
+		    var checkbox = $(evt.currentTarget).find('input')[0];
+		    var newState = !checkbox.checked;
+		    this.model.set('starred', newState);
+		    checkbox.checked = newState;
+		},
+		
 		render: function() {
 			var modelData = this.model.toJSON();
 			var subtitle = '';
@@ -84,6 +94,8 @@ define(function(require, exports, module) {
 			};
 			
 			this.el.innerHTML = this.template(templateValues);
+			var isStarred = this.model.get('starred');
+			this.$el.find('.js-star-button input')[0].checked = isStarred;
 
 			return this;
 		}

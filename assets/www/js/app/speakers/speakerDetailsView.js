@@ -5,6 +5,7 @@ define(function(require, exports, module) {
     var appRouter = require('app/appRouter');
 
 	var SpeakerDetailsView = Backbone.View.extend({
+	    manage: true,
 		model: SpeakerModel,
 		
 		template: _.template(speakerDetailsTemplate),
@@ -30,35 +31,33 @@ define(function(require, exports, module) {
 		},
 		
 		hide: function() {
-			this.el.parentNode.removeChild( this.el );
+			// this.el.parentNode.removeChild( this.el );
+			this.el.style.display = 'none';
 		},
 		
-		renderAsPrevious: function() {
-			this.renderContent();
+		setupAsCurrent: function() {
+			this.el.style.display = 'block';
+			this.el.style.webkitTransform = 'none';
+		},
+		
+		setupAsPrevious: function() {
+			this.el.style.display = 'block';
 			var width = window.innerWidth;
 			this.el.style.webkitTransform = 'translateX(' + -width + 'px) translateZ(0)';
 			// this.el.setAttribute('POS', 'PREVIOUS');
 		},
 		
-		renderAsNext: function() {
-			this.renderContent();
+		setupAsNext: function() {
+			this.el.style.display = 'block';
 			var width = window.innerWidth;
 			this.el.style.webkitTransform = 'translateX(' + width + 'px) translateZ(0)';
 			// this.el.setAttribute('POS', 'NEXT');
 		},
 		
-		render: function() {
-			this.renderContent();
-			this.el.style.webkitTransform = 'none';
-			// this.el.setAttribute('POS', 'CURRENT');
-			// this.renderAdjacent();
-			return this;
-		},
-		
-		renderContent: function() {
-    	    var modelData = this.model.toJSON();
-    	    this.el.innerHTML = this.template(modelData);
-			return this;
+		serialize: function() {
+			var modelData = this.model.toJSON();
+
+			return modelData;
 		},
 	});
 

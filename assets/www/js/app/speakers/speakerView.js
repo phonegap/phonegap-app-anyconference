@@ -5,6 +5,7 @@ define(function(require, exports, module) {
     var appRouter = require('app/appRouter');
 
 	var SpeakerView = Backbone.View.extend({
+	    manage: true,
 	    model: SpeakerModel,
 	    
 	    template: _.template(speakerTemplate),
@@ -15,10 +16,9 @@ define(function(require, exports, module) {
     	    
     	},
     	
-    	render: function() {
+    	serialize: function() {
     	    var modelData = this.model.toJSON();
-    	    this.el.innerHTML = this.template(modelData);
-			return this;
+    	    return modelData;
     	}
 	});
 	

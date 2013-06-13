@@ -56,17 +56,6 @@ define(function(require, exports, module) {
 			// this.el.setAttribute('POS', 'NEXT');
 		},
 		
-		/*
-		render: function() {
-			this.renderContent();
-			this.el.style.webkitTransform = 'none';
-			// this.el.setAttribute('POS', 'CURRENT');
-			// this.renderAdjacent();
-			return this;
-		},
-		*/
-		
-		// renderContent: function() {
 		serialize: function() {
 			var modelData = this.model.toJSON();
 			var subtitle = '';
@@ -89,8 +78,6 @@ define(function(require, exports, module) {
 			
 			return templateValues;
 		},
-		
-
 	});
 
     return SessionDetailsView;

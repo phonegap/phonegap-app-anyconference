@@ -5,7 +5,7 @@ define(function(require, exports, module) {
     var appRouter = require('app/appRouter');
     var SessionView = require('app/sessions/sessionView');
     var SessionDetailsView = require('app/sessions/sessionDetailsView');
-    var sessionCollectionDetailsTemplate = require('text!app/sessions/templates/sessionCollectionDetailsTemplate.html');
+    // var sessionCollectionDetailsTemplate = require('text!app/sessions/templates/sessionCollectionDetailsTemplate.html');
 
 	var SessionCollectionDetailsView = Backbone.View.extend({
         manage: true,
@@ -28,11 +28,6 @@ define(function(require, exports, module) {
 		
 		initialize: function() {
 		    var _this = this;
-		    /*
-		    this.collection.on('add', function(model) {
-		        _this.addSession(model);
-		    });
-		    */
 		    
 		    appRouter.on('route', function(route, sessionId) {
 		        if( route == 'sessionDetails' ) {
@@ -59,13 +54,6 @@ define(function(require, exports, module) {
 		    this.el.style.display = 'none';
 		},
 		
-		addSession: function(session) {
-			var view = new SessionDetailsView({
-				model: session
-			});
-			this.viewPointers[session.cid] = view;
-		},
-		
 		beforeRender: function() {
 		    this.$el.empty();
 		    this.viewPointers = {};
@@ -79,12 +67,6 @@ define(function(require, exports, module) {
 		    }, this);
             
             this.setCurrentSession( this.currentSession );
-            
-            /*
-            var currentView = this.viewPointers[ this.currentSession.cid ];
-            currentView.setAsCurrent();
-            this.currentSession.setAdjacent();
-            */
 		},
 		
 		afterRender: function() {
@@ -96,13 +78,6 @@ define(function(require, exports, module) {
 			var session = this.collection.get(sessionId);
 			this.currentSession = session;
 			this.render();
-			
-			/*
-			var detailsView = this.viewPointers[ session.cid ];
-			detailsView.render();
-			this.el.appendChild(detailsView.el);
-			this.renderAdjacent();
-			*/
 		},
 		
 		setupCurrentDetails: function() {
@@ -129,19 +104,7 @@ define(function(require, exports, module) {
 			
 			var nextView = this.viewPointers[this.nextSession.cid];
 			nextView.setupAsNext();
-			
-			// this.el.appendChild( prevView.el );
-			// this.el.appendChild( nextView.el );
 		},
-		
-		/*
-		render: function() {
-			$('#content').append(this.el);
-			this.el.style.display = 'block';
-			this.el.style.webkitTransform = 'none';
-			return this;
-		},
-		*/
 		
 		transitionTo: function(relativeIndex) {
 			var _this = this;
@@ -168,6 +131,8 @@ define(function(require, exports, module) {
 						break;
 				}
 				_this.setCurrentSession(_this.pendingSession);
+				// This would "break" the back button:
+				// appRouter.navigate('sessionDetails/' + _this.pendingSession.id);
 			};
 			this.transitionFromClass('js-session-transition');
 			

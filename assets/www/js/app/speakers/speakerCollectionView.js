@@ -1,14 +1,12 @@
 define(function(require, exports, module) {
 
-    //var SessionView = require('sessions/sessionView');
-    //var SessionModel = require('sessions/sessionModel');
     var appRouter = require('app/appRouter');
     var SpeakerView = require('app/speakers/speakerView');
     var speakerCollectionTemplate = require('text!app/speakers/templates/speakerCollectionTemplate.html');
 
 	var SpeakerCollectionView = Backbone.View.extend({
 	    manage: true,
-		tagName: 'ul',
+		tagName: 'div',
 		className: 'topcoat-list',
 		viewPointers: {},
 		
@@ -16,6 +14,7 @@ define(function(require, exports, module) {
 		    'pointerup': 'pointerUp',
 		    'click': 'pointerUp'
 		},
+        template: _.template(speakerCollectionTemplate),
 		
 		initialize: function() {
 		    var _this = this;
@@ -39,20 +38,14 @@ define(function(require, exports, module) {
 			this.el.style.display = 'none';
 		},
 		
-		render: function() {
-		    var _this = this;
-		    /*
-		    this.collection.each(function(model) {
-		        _this.addSpeaker(model);
-		    });
-		    */
+		beforeRender: function() {
+		    this.$el.children().remove();
+		    this.el.style.display = 'block';
 
-        },
-		
-		addSpeaker: function(speakerModel) {
-		    var speakerView = new SpeakerView({model: speakerModel}).render();
-		    this.el.appendChild( speakerView.el );
-		}
+            this.collection.each(function(speakerModel) {
+                this.insertView(new SpeakerView({model: speakerModel}));
+            }, this);
+        }
 	});
 
     return SpeakerCollectionView;
