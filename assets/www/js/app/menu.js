@@ -4,6 +4,7 @@ define(function(require, exports, module) {
     var menuTemplate = require('text!app/templates/menuTemplate.html');
 
 	var MenuView = Backbone.View.extend({
+	    manage: true,
 		tagName: 'div',
 		className: 'anyconf-menu',
 		overlay: null,
@@ -24,7 +25,7 @@ define(function(require, exports, module) {
 		
 		template: _.template(menuTemplate),
 		
-		render: function() {
+		afterRender: function() {
 		    var _this = this;
             _this.animating = true;
 

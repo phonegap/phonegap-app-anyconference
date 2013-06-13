@@ -5,6 +5,7 @@ define(function(require, exports, module) {
     var appRouter = require('app/appRouter');
 
 	var SessionDetailsView = Backbone.View.extend({
+	    manage: true,
 		model: SessionModel,
 		
 		template: _.template(sessionDetailsTemplate),
@@ -30,23 +31,32 @@ define(function(require, exports, module) {
 		},
 		
 		hide: function() {
-			this.el.parentNode.removeChild( this.el );
+			// this.el.parentNode.removeChild( this.el );
+			this.el.style.display = 'none';
 		},
 		
-		renderAsPrevious: function() {
-			this.renderContent();
+		setupAsCurrent: function() {
+			this.el.style.display = 'block';
+			this.el.style.webkitTransform = 'none';
+		},
+		
+		setupAsPrevious: function() {
+			// this.renderContent();
+			this.el.style.display = 'block';
 			var width = window.innerWidth;
 			this.el.style.webkitTransform = 'translateX(' + -width + 'px) translateZ(0)';
 			// this.el.setAttribute('POS', 'PREVIOUS');
 		},
 		
-		renderAsNext: function() {
-			this.renderContent();
+		setupAsNext: function() {
+			// this.renderContent();
+			this.el.style.display = 'block';
 			var width = window.innerWidth;
 			this.el.style.webkitTransform = 'translateX(' + width + 'px) translateZ(0)';
 			// this.el.setAttribute('POS', 'NEXT');
 		},
 		
+		/*
 		render: function() {
 			this.renderContent();
 			this.el.style.webkitTransform = 'none';
@@ -54,8 +64,10 @@ define(function(require, exports, module) {
 			// this.renderAdjacent();
 			return this;
 		},
+		*/
 		
-		renderContent: function() {
+		// renderContent: function() {
+		serialize: function() {
 			var modelData = this.model.toJSON();
 			var subtitle = '';
 			var _this = this;
@@ -75,9 +87,7 @@ define(function(require, exports, module) {
 				speakers: sessionSpeakers
 			};
 			
-			this.el.innerHTML = this.template(templateValues);
-
-			return this;	
+			return templateValues;
 		},
 		
 

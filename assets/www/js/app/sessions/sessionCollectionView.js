@@ -8,6 +8,7 @@ define(function(require, exports, module) {
     var sessionCollectionTemplate = require('text!app/sessions/templates/sessionCollectionTemplate.html');
 
 	var SessionCollectionView = Backbone.View.extend({
+	    manage: true,
 		
 		// el: '#content',
 		tagName: 'div',
@@ -263,6 +264,32 @@ define(function(require, exports, module) {
 			// window.removeEventListener('pointerend', sessionListView.pointerUp);
 		},
 		
+		beforeRender: function() {
+            this.prevPage = null;
+            this.currentPage = null;
+            this.nextPage = null;
+            this.pages = [];
+		},
+		
+        afterRender: function() {
+            this.el.style.display = 'block';
+            this.listEl = this.$el.find('.js-session-view-container')[0];
+            
+		    this.collection.each(function(model) {
+		        this.addSession(model);
+		    }, this);
+		
+            // appView.setCurrentView(this);
+			this.setCurrentPage( this.pages[0] );
+			
+			this.positionOverlay();
+        },
+		
+		serialize: function() {
+		
+		},
+		
+		/*
 		render: function() {
 		    var _this = this;
 		    this.$el.html( this.template() );
@@ -284,6 +311,7 @@ define(function(require, exports, module) {
 			return this;
 			// this.animating = false;
 		},
+		*/
 		
 		hide: function() {
 			// this.el.removeEventListener('pointerdown', this.pointerDown);

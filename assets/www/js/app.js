@@ -46,12 +46,13 @@ define(function(require, exports, module) {
     var appTemplate = require("text!app/templates/main.html");
 
     //Define main app view
-    var AppView = Backbone.View.extend({
+    var AppView = Backbone.Layout.extend({
         //Declare the anchor element in index.html to
         //  render the app into
         el: '#main',
         //Define the template to use
         template: _.template(appTemplate),
+        
         events: {
             'pointerup .js-menu-button': 'showMenu',
             'pointerup .js-back-button': 'goBack'
@@ -74,23 +75,26 @@ define(function(require, exports, module) {
 			*/
 
         },
-
-        render: function() {
+        
+        serialize: function() {
+            return this.model.attributes;
+        },
+        afterRender: function() {
+            this.setView('#content', sessionCollectionView, true);
+            this.setView('#content', sessionCollectionDetailsView, true);
+            this.setView('#content', speakerCollectionView, true);
+            this.setView(menuView, true);
+            
+            /*
             this.$el.html(this.template(this.model.attributes));
             this.setContent(sessionCollectionView.el);
             sessionCollectionView.render().$el.appendTo('#content');
             speakerCollectionView.$el.appendTo('#content');
+            */
+            // speakerCollectionDetailsView.$el.appendTo('#content');
             Backbone.history.start();
-            
-            return this;
         },
 
-        setContent: function(content) {
-            //Transition out current content
-            //Once transition ends transition in new content
-            $('#content').html(content);
-        },
-        
         showMenu: function() {
             menuView.render();
         },

@@ -7,6 +7,7 @@ define(function(require, exports, module) {
     var speakerCollectionTemplate = require('text!app/speakers/templates/speakerCollectionTemplate.html');
 
 	var SpeakerCollectionView = Backbone.View.extend({
+	    manage: true,
 		tagName: 'ul',
 		className: 'topcoat-list',
 		viewPointers: {},

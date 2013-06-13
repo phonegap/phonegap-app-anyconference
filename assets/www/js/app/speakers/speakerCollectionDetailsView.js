@@ -6,8 +6,10 @@ define(function(require, exports, module) {
     var speakerCollectionDetailsTemplate = require('text!app/speakers/templates/speakerCollectionDetailsTemplate.html');
 
 	var SpeakerCollectionDetailsView = Backbone.View.extend({
+        manage: true,
 		tagName: 'div',
 		className: 'list-details-view',
+		template: _.template(speakerCollectionDetailsTemplate),
 		
 		viewPointers: {},
 		
@@ -51,7 +53,8 @@ define(function(require, exports, module) {
 		render: function() {
 		    var _this = this;
 		    this.collection.each(function(model) {
-		        _this.addSpeaker(model);
+		        var view = this.viewPointers[model.cid];
+		        _this.el.appendChild( view.render().el );
 		    });
 		
 			$('#content').append(this.el);

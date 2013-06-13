@@ -8,7 +8,7 @@ define(function(require, exports, module) {
     var sessionCollectionDetailsTemplate = require('text!app/sessions/templates/sessionCollectionDetailsTemplate.html');
 
 	var SessionCollectionDetailsView = Backbone.View.extend({
-//		model: appView.currentTrack,
+        manage: true,
 		
 		tagName: 'div',
 		className: 'collection-details-view',
@@ -28,9 +28,11 @@ define(function(require, exports, module) {
 		
 		initialize: function() {
 		    var _this = this;
+		    /*
 		    this.collection.on('add', function(model) {
 		        _this.addSession(model);
 		    });
+		    */
 		    
 		    appRouter.on('route', function(route, sessionId) {
 		        if( route == 'sessionDetails' ) {
@@ -64,46 +66,82 @@ define(function(require, exports, module) {
 			this.viewPointers[session.cid] = view;
 		},
 		
+		beforeRender: function() {
+		    this.$el.empty();
+		    this.viewPointers = {};
+		    this.collection.each(function(sessionModel) {
+		        var view = new SessionDetailsView({
+                    model: sessionModel
+                });
+                view.hide(); // Hide by default
+		        this.insertView(view);
+		        this.viewPointers[sessionModel.cid] = view;
+		    }, this);
+            
+            this.setCurrentSession( this.currentSession );
+            
+            /*
+            var currentView = this.viewPointers[ this.currentSession.cid ];
+            currentView.setAsCurrent();
+            this.currentSession.setAdjacent();
+            */
+		},
+		
+		afterRender: function() {
+		    this.el.style.display = 'block';
+		},
+		
 		navigateTo: function(sessionId) {
             // appView.setCurrentView(this);
 			var session = this.collection.get(sessionId);
-			this.render();
 			this.currentSession = session;
+			this.render();
+			
+			/*
 			var detailsView = this.viewPointers[ session.cid ];
 			detailsView.render();
 			this.el.appendChild(detailsView.el);
 			this.renderAdjacent();
+			*/
+		},
+		
+		setupCurrentDetails: function() {
+			var currentView = this.viewPointers[ this.currentSession.cid ];
+			this.setupCurrent( currentView );
+			this.setupAdjacent();
 		},
 		
 		setCurrentSession: function(session) {
 			this.currentSession = session;
 			var currentView = this.viewPointers[session.cid];
-			currentView.render();
-			this.renderAdjacent();
-			this.render();
+			currentView.setupAsCurrent();
+			this.setupAdjacent();
+			this.el.style.webkitTransform = 'none';
 		},
 		
-		renderAdjacent: function() {
+		setupAdjacent: function() {
 			var collection = this.collection;
 			var sessionIndex = collection.indexOf(this.currentSession);
 			this.prevSession = collection.at(sessionIndex-1) || collection.last();
 			this.nextSession = collection.at(sessionIndex+1) || collection.first();
 			var prevView = this.viewPointers[this.prevSession.cid];
-			prevView.renderAsPrevious();
+			prevView.setupAsPrevious();
 			
 			var nextView = this.viewPointers[this.nextSession.cid];
-			nextView.renderAsNext();
+			nextView.setupAsNext();
 			
-			this.el.appendChild( prevView.el );
-			this.el.appendChild( nextView.el );
+			// this.el.appendChild( prevView.el );
+			// this.el.appendChild( nextView.el );
 		},
 		
+		/*
 		render: function() {
 			$('#content').append(this.el);
 			this.el.style.display = 'block';
 			this.el.style.webkitTransform = 'none';
 			return this;
 		},
+		*/
 		
 		transitionTo: function(relativeIndex) {
 			var _this = this;
