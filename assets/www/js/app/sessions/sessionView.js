@@ -46,21 +46,33 @@ define(function(require, exports, module) {
 		    this.moveY = evt.originalEvent.clientY;
 		},
 		
-		onDetailsUp: function(evt) {
-		    var diffY = evt.originalEvent.clientY - this.moveY;
-		    if( diffY > -3 && diffY < 3 ) {
-                var id = this.model.id;
-                appRouter.navigate('sessionDetails/' + id, {trigger: true});
+		hasMoved: function(evt) {
+		    if( !this.moveY ) {
+		        return true;
 		    }
+		    var diffY = evt.originalEvent.clientY - this.moveY;
+		    return ( diffY < -3 || diffY > 3 );
+		},
+		
+		onDetailsUp: function(evt) {
+		    if( this.hasMoved(evt) || evt.starHandled ) {
+		        return;
+		    }
+            var id = this.model.id;
+            appRouter.navigate('sessionDetails/' + id, {trigger: true});
 		},
 		
 		onStarUp: function(evt) {
-		    evt.preventDefault();
-		    evt.stopPropagation();
-		    var checkbox = $(evt.currentTarget).find('input')[0];
-		    var newState = !checkbox.checked;
-		    this.model.storeData({'starred': newState});
-		    checkbox.checked = newState;
+		    if( this.hasMoved(evt) ) {
+		        return;
+		    }
+            var checkbox = $(evt.currentTarget).find('input')[0];
+            var newState = !checkbox.checked;
+            this.model.storeData({'starred': newState});
+            checkbox.checked = newState;
+            
+            // Need to bubble up to sessionCollectionView but skip onDetailsUp
+            evt.starHandled = true;
 		},
 		
 		render: function() {

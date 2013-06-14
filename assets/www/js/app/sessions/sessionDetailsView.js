@@ -16,7 +16,13 @@ define(function(require, exports, module) {
 		events: {
             'pointerdown .js-speaker-link': 'onLinkDown',
             'pointerup .js-speaker-link': 'onLinkUp',
-            'click .js-speaker-link': 'onLinkUp'
+            'click .js-speaker-link': 'onLinkUp',
+            'pointerdown': 'onPointerDown'
+		},
+		
+		onPointerDown: function(jqEvt) {
+		    console.log('prevent default from details view');
+		    jqEvt.preventDefault();
 		},
 		
 		onLinkDown: function(jqEvt) {

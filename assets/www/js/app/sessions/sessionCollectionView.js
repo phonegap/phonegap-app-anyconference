@@ -246,8 +246,8 @@ define(function(require, exports, module) {
             evt.stopPropagation();
             
 			if( this.lastDiff.y > 0 ) {
-				if( !this.prevPage ) {
-					// do nothing?
+				if( !this.prevPage && this.pendingPage ) {
+					this.transitionCurrentBack();
 				} else if( this.pendingPage === this.prevPage ) {
 					this.transitionToPrevious();
 				} else {

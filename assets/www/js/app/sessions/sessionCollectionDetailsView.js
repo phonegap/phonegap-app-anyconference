@@ -142,6 +142,7 @@ define(function(require, exports, module) {
 		
 		pointerDown: function(jqEvt) {
 		    var evt = jqEvt.originalEvent;
+		    jqEvt.preventDefault();
 		    console.log('pointerDown');
 			if( this.animating ) {
 			    return;
