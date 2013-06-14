@@ -59,7 +59,7 @@ define(function(require, exports, module) {
 		    evt.stopPropagation();
 		    var checkbox = $(evt.currentTarget).find('input')[0];
 		    var newState = !checkbox.checked;
-		    this.model.set('starred', newState);
+		    this.model.storeData({'starred': newState});
 		    checkbox.checked = newState;
 		},
 		

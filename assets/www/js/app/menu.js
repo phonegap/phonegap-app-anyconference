@@ -23,7 +23,9 @@ define(function(require, exports, module) {
 		    'pointerup .js-schedule-link': 'linkUp',
 		    'click .js-schedule-link': 'linkUp',
 		    'pointerup .js-speakerlist-link': 'linkUp',
-		    'click .js-speakerlist-link': 'linkUp'
+		    'click .js-speakerlist-link': 'linkUp',
+		    'pointerup .js-starredlist-link': 'linkUp',
+		    'click .js-starredlist-link': 'linkUp'
 		},
 		
 		template: _.template(menuTemplate),

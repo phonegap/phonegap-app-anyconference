@@ -1,11 +1,14 @@
 define(function(require, exports, module) {
 
-    //var SessionView = require('sessions/sessionView');
-    //var SessionModel = require('sessions/sessionModel');
     var appRouter = require('app/appRouter');
     var SessionView = require('app/sessions/sessionView');
     var SessionPageView = require('app/sessions/sessionPageView');
     var sessionCollectionTemplate = require('text!app/sessions/templates/sessionCollectionTemplate.html');
+    var emptyPageTemplate = require('text!app/sessions/templates/emptyPageTemplate.html');
+    var Strings = {
+        NO_STARRED_SESSIONS_FOUND: 'You haven\'t starred any sessions!',
+        NO_SESSIONS_FOUND: 'No sessions found'
+    };
 
 	var SessionCollectionView = Backbone.View.extend({
 	    manage: true,
@@ -26,6 +29,8 @@ define(function(require, exports, module) {
 		pointerStarted: false,
 		animating: false,
 		swipeChecked: false,
+		
+		routeId: null,
 		
 		events: {
 		    'pointerdown': 'pointerDown',
@@ -108,8 +113,6 @@ define(function(require, exports, module) {
 				this.addToNewPage();
 				this.currentPage.el.appendChild( sessionView.el );
 			}
-			
-			// this.el.appendChild(sessionView.render().el);
 		},
 		
 		transitionToNext: function() {
@@ -260,8 +263,20 @@ define(function(require, exports, module) {
 				}
 			}
             this.pointerStarted = false;
-			// window.removeEventListener('pointermove', sessionListView.pointerMove);
-			// window.removeEventListener('pointerend', sessionListView.pointerUp);
+		},
+		
+		showEmptyPage: function() {
+		    var params = {};
+		    switch( this.options.type ) {
+		        case 'starred':
+		            params.message = Strings.NO_STARRED_SESSIONS_FOUND;
+		            break;
+		        default:
+		            params.message = Strings.NO_SESSIONS_FOUND;
+		            break;
+		    }
+		    var page = _.template(emptyPageTemplate, params);
+		    this.$el.append(page);
 		},
 		
 		beforeRender: function() {
@@ -274,10 +289,20 @@ define(function(require, exports, module) {
         afterRender: function() {
             this.el.style.display = 'block';
             this.listEl = this.$el.find('.js-session-view-container')[0];
+            var viewType = this.options.type;
+            var sessionCount = 0;
             
 		    this.collection.each(function(model) {
-		        this.addSession(model);
+		        if( !viewType || model.get(viewType) == true ) {
+		            this.addSession(model);
+		            sessionCount++;
+		        }
 		    }, this);
+		    
+		    if( sessionCount == 0 ) {
+		        this.showEmptyPage();
+		        return;
+		    }
 		
             // appView.setCurrentView(this);
 			this.setCurrentPage( this.pages[0] );
@@ -288,30 +313,6 @@ define(function(require, exports, module) {
 		serialize: function() {
 		
 		},
-		
-		/*
-		render: function() {
-		    var _this = this;
-		    this.$el.html( this.template() );
-		    this.listEl = this.$el.find('.js-session-view-container')[0];
-            this.prevPage = null;
-            this.currentPage = null;
-            this.nextPage = null;
-            this.pages = [];
-            
-		    this.el.style.display = 'block';
-		    this.collection.each(function(model) {
-		        _this.addSession(model);
-		    });
-		
-            // appView.setCurrentView(this);
-			this.setCurrentPage( this.pages[0] );
-			
-			this.positionOverlay();
-			return this;
-			// this.animating = false;
-		},
-		*/
 		
 		hide: function() {
 			// this.el.removeEventListener('pointerdown', this.pointerDown);
@@ -327,13 +328,21 @@ define(function(require, exports, module) {
 			this.pageOverlay = document.createElement('div');
 			this.pageOverlay.className = 'js-page-overlay';
 			
+			switch( this.options.type ) {
+			    case 'starred':
+    			    this.routeId = 'starredSessionCollection';
+    			    break;
+    			default:
+    			    this.routeId = 'sessionCollection';
+			}
+			
 		    appRouter.on('route', function(route) {
-		        if( route == 'sessionCollection' ) {
+		        if( route == this.routeId ) {
 		            _this.render();
 		        } else {
 		            _this.leave();
 		        }
-		    });
+		    }, this);
 		}
 	});
 

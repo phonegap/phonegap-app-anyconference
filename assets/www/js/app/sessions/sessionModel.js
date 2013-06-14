@@ -22,6 +22,8 @@ define(function(require, exports, module) {
                 loved: false
             }
         },
+        
+        storageId: 'session',
 
         selected: false,
 
@@ -36,9 +38,32 @@ define(function(require, exports, module) {
         clearTimeFlag: function() {
             this.set('timeFlag', timeFlag.NONE);
         },
+        
+        restoreData: function() {
+            var data = this.retrieveItem();
+        },
+        
+        storeData: function(attrs) {
+            for( var key in attrs ) {
+                this.set(key, attrs[key]);
+            }
+            localStorage.setItem(this.storageId + this.id, JSON.stringify(attrs));
+        },
+
+        retrieveData: function() {
+            var str = localStorage.getItem(this.storageId + this.id);
+            if( !str ) {
+                return;
+            }
+            var attrs = JSON.parse( str );
+            for( var key in attrs ) {
+                this.set(key, attrs[key]);
+            }
+        },
 
         initialize: function() {
-        
+            this.retrieveData();
+            
             if (!this.get("title")) {
                 this.set({
                     "title": this.defaults().title

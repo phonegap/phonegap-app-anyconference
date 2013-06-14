@@ -5,6 +5,7 @@ define(function(require, exports, module) {
     var SessionCollection = Backbone.Collection.extend({
         url: config.url + 'sessions.json',
         model: SessionModel,
+        // localStorage: new Backbone.LocalStorage("todos-backbone"),
         
         initialize: function() {
             this.fetch();

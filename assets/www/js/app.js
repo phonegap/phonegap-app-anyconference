@@ -20,6 +20,10 @@ define(function(require, exports, module) {
     var sessionCollectionView = new SessionCollectionView({
         collection: sessionCollection
     });
+    var sessionCollectionStarredView = new SessionCollectionView({
+        collection: sessionCollection,
+        type: 'starred'
+    });
     
     var sessionCollectionDetailsView = new SessionCollectionDetailsView({
         collection: sessionCollection
@@ -78,6 +82,7 @@ define(function(require, exports, module) {
         },
         afterRender: function() {
             this.setView('#content', sessionCollectionView, true);
+            this.setView('#content', sessionCollectionStarredView, true);
             this.setView('#content', sessionCollectionDetailsView, true);
             this.setView('#content', speakerCollectionView, true);
             this.setView('#content', speakerCollectionDetailsView, true);
@@ -101,8 +106,10 @@ define(function(require, exports, module) {
 		    var dayOfWeek = 'TODAY';
             switch( route ) {
                 case 'sessionCollection':
-                case 'starredSessionCollection':
                     headingText = dayOfWeek;
+                    break;
+                case 'starredSessionCollection':
+                    headingText = 'STARRED';
                     break;
                 case 'speakerCollection':
                     headingText = 'SPEAKERS';
