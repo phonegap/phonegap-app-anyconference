@@ -7,7 +7,8 @@ define(function(require, exports, module) {
         model: SessionModel,
         // localStorage: new Backbone.LocalStorage("todos-backbone"),
         
-        initialize: function() {
+        initialize: function(args) {
+            this.speakerCollection = args.speakerCollection;
             this.fetch();
         },
 

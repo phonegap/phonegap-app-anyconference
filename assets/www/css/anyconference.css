@@ -8,8 +8,7 @@
     background: #fff;
 }
 
-.session-details-wrap,
-.speaker-details-wrap {
+.item-details-wrap {
     position: absolute;
     width: 100%;
 }
@@ -3189,7 +3188,7 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
     z-index: 25;
 }
 
-.js-session-transition {
+.js-details-transition {
   -webkit-transition: all 0.3s;
 }
 .js-page-overlay-removed {

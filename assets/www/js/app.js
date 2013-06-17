@@ -11,24 +11,6 @@ define(function(require, exports, module) {
 
     var appRouter = require('app/appRouter');
 
-    //Session
-    var SessionCollection = require('app/sessions/sessionCollection');
-    var SessionCollectionView = require('app/sessions/sessionCollectionView');
-    var SessionCollectionDetailsView = require('app/sessions/sessionCollectionDetailsView');
-
-    var sessionCollection = new SessionCollection();
-    var sessionCollectionView = new SessionCollectionView({
-        collection: sessionCollection
-    });
-    var sessionCollectionStarredView = new SessionCollectionView({
-        collection: sessionCollection,
-        type: 'starred'
-    });
-    
-    var sessionCollectionDetailsView = new SessionCollectionDetailsView({
-        collection: sessionCollection
-    });
-    
     //Speaker
     var SpeakerCollection = require('app/speakers/speakerCollection');
     var SpeakerCollectionView = require('app/speakers/speakerCollectionView');
@@ -41,6 +23,26 @@ define(function(require, exports, module) {
     
     var speakerCollectionDetailsView = new SpeakerCollectionDetailsView({
         collection: speakerCollection
+    });
+    
+    //Session
+    var SessionCollection = require('app/sessions/sessionCollection');
+    var SessionCollectionView = require('app/sessions/sessionCollectionView');
+    var SessionCollectionDetailsView = require('app/sessions/sessionCollectionDetailsView');
+
+    var sessionCollection = new SessionCollection({
+        speakerCollection: speakerCollection
+    });
+    var sessionCollectionView = new SessionCollectionView({
+        collection: sessionCollection
+    });
+    var sessionCollectionStarredView = new SessionCollectionView({
+        collection: sessionCollection,
+        type: 'starred'
+    });
+    
+    var sessionCollectionDetailsView = new SessionCollectionDetailsView({
+        collection: sessionCollection
     });
     
     //Load html template
