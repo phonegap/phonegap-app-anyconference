@@ -77,6 +77,7 @@ define(function(require, exports, module) {
 		},
 		
 		setCurrentItem: function(item) {
+		    item.set('selected', true);
 			this.currentItem = item;
 			var currentView = this.viewPointers[item.cid];
 			currentView.setupAsCurrent();

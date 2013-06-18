@@ -24,6 +24,8 @@ define(function(require, exports, module) {
         },
         
         storageId: 'session',
+        
+        storageObject: {},
 
         selected: false,
 
@@ -43,11 +45,9 @@ define(function(require, exports, module) {
             var data = this.retrieveItem();
         },
         
-        storeData: function(attrs) {
-            for( var key in attrs ) {
-                this.set(key, attrs[key]);
-            }
-            localStorage.setItem(this.storageId + this.id, JSON.stringify(attrs));
+        storeData: function(key, value) {
+            this.storageObject[key] = value;
+            localStorage.setItem(this.storageId + this.id, JSON.stringify(this.storageObject));
         },
 
         retrieveData: function() {
@@ -56,13 +56,22 @@ define(function(require, exports, module) {
                 return;
             }
             var attrs = JSON.parse( str );
+            this.storageObject = attrs;
+
             for( var key in attrs ) {
-                this.set(key, attrs[key]);
+                this.attributes[key] = attrs[key];
             }
         },
 
         initialize: function() {
             this.retrieveData();
+            this.on('change:starred', function() {
+                this.storeData('starred', this.get('starred'))
+            }, this);
+            
+            this.on('change:loved', function() {
+                this.storeData('loved', this.get('loved'))
+            }, this);
             
             if (!this.get("title")) {
                 this.set({

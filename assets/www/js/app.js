@@ -29,6 +29,7 @@ define(function(require, exports, module) {
     var SessionCollection = require('app/sessions/sessionCollection');
     var SessionCollectionView = require('app/sessions/sessionCollectionView');
     var SessionCollectionDetailsView = require('app/sessions/sessionCollectionDetailsView');
+    var SessionOptionView = require('app/sessions/sessionOptionView');
 
     var sessionCollection = new SessionCollection({
         speakerCollection: speakerCollection
@@ -45,6 +46,18 @@ define(function(require, exports, module) {
         collection: sessionCollection
     });
     
+    var starredOptionView = new SessionOptionView({
+        sessionCollection: sessionCollection,
+        flag: 'starred',
+        template: require('text!app/templates/starButtonTemplate.html')
+    });
+
+    var lovedOptionView = new SessionOptionView({
+        sessionCollection: sessionCollection,
+        flag: 'loved',
+        template: require('text!app/templates/loveButtonTemplate.html')
+    });
+
     //Load html template
     var appTemplate = require("text!app/templates/main.html");
 
@@ -70,7 +83,7 @@ define(function(require, exports, module) {
             this.listenTo(this.model, 'change', this.render);
             this.listenTo(this.model, 'destroy', this.remove);
             this.listenTo(appRouter, 'route', this.setHeading);
-
+            
             /*
 			appRouter.on('route', function(route) {
 			    _this.setHeading.apply(_this, arguments);
@@ -89,6 +102,8 @@ define(function(require, exports, module) {
             this.setView('#content', speakerCollectionView, true);
             this.setView('#content', speakerCollectionDetailsView, true);
             this.setView(menuView, true);
+            this.setView('.js-button-container', starredOptionView, true);
+            this.setView('.js-button-container', lovedOptionView, true);
             menuView.render();
             
             Backbone.history.start();

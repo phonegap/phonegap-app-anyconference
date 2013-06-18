@@ -68,7 +68,7 @@ define(function(require, exports, module) {
 		    }
             var checkbox = $(evt.currentTarget).find('input')[0];
             var newState = !checkbox.checked;
-            this.model.storeData({'starred': newState});
+            this.model.set('starred', newState);
             checkbox.checked = newState;
             
             // Need to bubble up to sessionCollectionView but skip onDetailsUp

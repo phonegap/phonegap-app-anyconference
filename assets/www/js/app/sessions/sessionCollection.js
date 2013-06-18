@@ -10,6 +10,17 @@ define(function(require, exports, module) {
         initialize: function(args) {
             this.speakerCollection = args.speakerCollection;
             this.fetch();
+            _.bindAll(this, 'selectionChangeHandler');
+            this.on('change:selected', this.selectionChangeHandler);
+        },
+        
+        selectionChangeHandler: function(model) {
+            if (this.selected) {
+               this.selected.set({
+                   'selected': false
+               });
+            }
+            this.selected = model;
         },
 
 		makeDate: function(day, time) {
