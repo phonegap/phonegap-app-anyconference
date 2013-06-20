@@ -37,6 +37,8 @@ define(function(require, exports, module) {
     var sessionCollectionView = new SessionCollectionView({
         collection: sessionCollection
     });
+    speakerCollection.setSessions( sessionCollection );
+    
     var sessionCollectionStarredView = new SessionCollectionView({
         collection: sessionCollection,
         type: 'starred'

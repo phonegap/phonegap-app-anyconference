@@ -3191,6 +3191,12 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
 .js-details-transition {
   -webkit-transition: all 0.3s;
 }
+
+.js-overlay-transition-out {
+  -webkit-transition: opacity 0.5s;
+  opacity: 0;
+}
+
 .js-page-overlay-removed {
   opacity: 0;
   -webkit-transition: opacity 0.1s;
@@ -9225,7 +9231,7 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
 }
 .topcoat-overlay {
   position: fixed;
-  top: 0;
+  top: 30%;
   left: 0;
   width: auto;
   height: auto;

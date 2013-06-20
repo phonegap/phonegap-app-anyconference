@@ -10,9 +10,9 @@ define(function(require, exports, module) {
 		className: 'item-details-wrap',
 		
 		events: {
-            'pointerdown .js-speaker-link': 'onLinkDown',
-            'pointerup .js-speaker-link': 'onLinkUp',
-            'click .js-speaker-link': 'onLinkUp',
+            'pointerdown .js-link': 'onLinkDown',
+            'pointerup .js-link': 'onLinkUp',
+            'click .js-link': 'onLinkUp',
             'pointerdown': 'onPointerDown'
 		},
 		

@@ -1,7 +1,6 @@
 <div class="anyconf-view__container">
     <div class="topcoat-navigation-bar__item left anyconf-label-time anyconf-view--yellow">
-        <%- times %>
-        <!--9:00<small>am</small>&nbsp;–&nbsp;9:30<small>am</small>-->
+        <%- startTime.time %><small><%- startTime.suffix %></small>&nbsp;–&nbsp;<%- endTime.time %><small><%- endTime.suffix %></small>
     </div>
     <div class="anyconf-view anyconf-view--yellow">
         <h2 class="anyconf-label-title"><%- title %></h2>
@@ -14,9 +13,9 @@
                 <div>
                     <img src="./assets/images/headshot1.png" width="80px">
                     <ul class="anyconf-link-list">
-                        <b><a class="anyconf-link js-speaker-link" href="speakerDetails/<%- data.id %>"><%= data.attributes.full_name %></a></b>
-                        <li><a class="anyconf-link anyconf-link--twitter js-speaker-link" href="http://twitter.com/twitter">@twitter</a></li>
-                        <li><a class="anyconf-link anyconf-link--url js-speaker-link" href="http://example.com">example.com</a></li>
+                        <b><a class="anyconf-link js-link" href="speakerDetails/<%- data.id %>"><%= data.attributes.full_name %></a></b>
+                        <li><a class="anyconf-link anyconf-link--twitter js-link" href="http://twitter.com/twitter">@twitter</a></li>
+                        <li><a class="anyconf-link anyconf-link--url js-link" href="http://example.com">example.com</a></li>
                     </ul>
                 </div>
             <% }); %>

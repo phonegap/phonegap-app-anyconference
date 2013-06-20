@@ -94,15 +94,20 @@ define(function(require, exports, module) {
 				}
 			}
 
-			var times = modelData.startTime.format('h:mm A');
-			if( modelData.endTime ) {
-				 times += ' - ' + modelData.endTime.format('h:mm A');
-			}
+            var startTime = {
+                time: modelData.startTime.format('h:mm'),
+                suffix: modelData.startTime.format('A')
+            };
+            var endTime = {
+                time: modelData.endTime.format('h:mm'),
+                suffix: modelData.endTime.format('A')
+            };
 
 			var templateValues = {
 				title: modelData.title,
 				subtitle: subtitle,
-				times: times
+				startTime: startTime,
+				endTime: endTime
 			};
 			
 			this.el.innerHTML = this.template(templateValues);

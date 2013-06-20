@@ -18,7 +18,12 @@ define(function(require, exports, module) {
 				speakerArr.push( speakerData );
 			}
             return speakerArr;
+        },
+        
+        setSessions: function(sessionCollection) {
+            this.sessionCollection = sessionCollection;
         }
+        
     });
 
     return SpeakerCollection;
