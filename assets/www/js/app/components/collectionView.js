@@ -149,7 +149,6 @@ define(function(require, exports, module) {
 			console.log('pointerdown');
 			if( this.animating ) {
 			    evt.preventDefault();
-			    console.log('blocked due to animating');
 				return;
 			}
 			// evt.preventDefault();

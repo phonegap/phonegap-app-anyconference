@@ -73,7 +73,8 @@ define(function(require, exports, module) {
         
         events: {
             'pointerup .js-menu-button': 'showMenu',
-            'pointerup .js-back-button': 'goBack'
+            'pointerup .js-back-button': 'goBack',
+            'pointerdown': 'pointerDown',
         },
 
         initialize: function() {
@@ -184,5 +185,4 @@ define(function(require, exports, module) {
         };
 
     //Add event listener for phonegap device ready event
-    window.document.addEventListener("deviceready", deviceReadyHandeler, false);
-});
+    window.document.addEventListener("deviceready", deviceReadyHandeler, false);});

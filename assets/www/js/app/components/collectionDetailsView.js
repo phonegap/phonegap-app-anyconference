@@ -6,6 +6,8 @@ define(function(require, exports, module) {
         manage: true,
 		
 		viewPointers: {},
+		tagName: 'div',
+		className: 'all-details-wrap',
 		
 		currentItem: null,
 		animating: false,
@@ -15,7 +17,8 @@ define(function(require, exports, module) {
 		events: {
 		    'pointerdown': 'pointerDown',
 		    'pointermove': 'pointerMove',
-		    'pointerup': 'pointerUp'
+		    'pointerup': 'pointerUp',
+		    'touchstart': 'touchStart'
 		},
 		
 		initialize: function() {
@@ -82,7 +85,7 @@ define(function(require, exports, module) {
 			var currentView = this.viewPointers[item.cid];
 			currentView.setupAsCurrent();
 			this.setupAdjacent();
-			this.el.style.webkitTransform = 'none';
+			this.el.style.webkitTransform = null;
 		},
 		
 		setupAdjacent: function() {
@@ -133,8 +136,6 @@ define(function(require, exports, module) {
 		
 		pointerDown: function(jqEvt) {
 		    var evt = jqEvt.originalEvent;
-		    jqEvt.preventDefault();
-		    console.log('pointerDown');
 			if( this.animating ) {
 			    return;
 			}
@@ -176,7 +177,6 @@ define(function(require, exports, module) {
 				
 				// More horizontal than vertical = swiping
 				this.swiping = (absX > absY);
-				
 				this.gestureStarted = true;
 			}
 			if( this.swiping ) {
@@ -224,4 +224,5 @@ define(function(require, exports, module) {
 	});
 
     return CollectionDetailsView;
+    
 });

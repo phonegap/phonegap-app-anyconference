@@ -18,7 +18,7 @@ define(function(require, exports, module) {
 		
 		onPointerDown: function(jqEvt) {
 		    console.log('prevent default from details view');
-		    jqEvt.preventDefault();
+		    // jqEvt.preventDefault();
 		},
 		
 		onLinkDown: function(jqEvt) {
