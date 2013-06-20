@@ -2,7 +2,7 @@
     <div class="topcoat-navigation-bar__item left anyconf-label-time anyconf-view--yellow">
         <%- startTime.time %><small><%- startTime.suffix %></small>&nbsp;–&nbsp;<%- endTime.time %><small><%- endTime.suffix %></small>
     </div>
-    <div class="anyconf-view anyconf-view--yellow">
+    <div class="anyconf-view anyconf-view--yellow <%- !speakers.length ? 'anyconf-view--yellow-last' : '' %>">
         <h2 class="anyconf-label-title"><%- title %></h2>
         <p><%- details %></p>
     </div>
@@ -11,7 +11,7 @@
             <h4 class="anyconf-label-title anyconf-condensed">Presented By:</h4>
             <% _.each(speakers, function(data) { %> 
                 <div>
-                    <img src="./assets/images/headshot1.png" width="80px">
+                    <img src="<%- data.attributes.profile_url %>" width="80px">
                     <ul class="anyconf-link-list">
                         <b><a class="anyconf-link js-link" href="speakerDetails/<%- data.id %>"><%= data.attributes.full_name %></a></b>
                         <li><a class="anyconf-link anyconf-link--twitter js-link" href="http://twitter.com/twitter">@twitter</a></li>
