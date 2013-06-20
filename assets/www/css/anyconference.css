@@ -30,9 +30,9 @@
   letter-spacing: 0.1rem;
   text-shadow: 0px 1px 0px #fff;
 }
-.session-list,
-.session-page,
-.session-details {
+.item-list,
+.item-page,
+.item-details {
   position: absolute;
   top: 0;
   left: 0;

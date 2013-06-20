@@ -5,20 +5,48 @@ define(function(require, exports, module) {
     var appRouter = require('app/appRouter');
 
 	var SpeakerView = Backbone.View.extend({
-	    manage: true,
+	    // manage: true,
 	    model: SpeakerModel,
 	    
 	    template: _.template(speakerTemplate),
 	    
     	tagName: 'div',
     	
+		events: {
+            'pointerdown .js-details-link': 'onDetailsDown',
+            'pointerup .js-details-link': 'onDetailsUp',
+            'click .js-details-link': 'onDetailsUp'
+		},
+		
+		onDetailsDown: function(evt) {
+		    this.moveY = evt.originalEvent.clientY;
+		},
+		
+		hasMoved: function(evt) {
+		    if( !this.moveY ) {
+		        return true;
+		    }
+		    var diffY = evt.originalEvent.clientY - this.moveY;
+		    return ( diffY < -3 || diffY > 3 );
+		},
+		
+		onDetailsUp: function(evt) {
+            evt.preventDefault();
+		    if( this.hasMoved(evt) || evt.starHandled ) {
+		        return;
+		    }
+            var id = this.model.id;
+            appRouter.navigate('speakerDetails/' + id, {trigger: true});
+		},
+    	
     	initialize: function() {
     	    
     	},
     	
-    	serialize: function() {
-    	    var modelData = this.model.toJSON();
-    	    return modelData;
+    	render: function() {
+    	    var templateValues = this.model.toJSON();
+            this.el.innerHTML = this.template(templateValues);
+            return this;
     	}
 	});
 	

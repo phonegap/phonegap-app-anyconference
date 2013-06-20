@@ -11,7 +11,7 @@
         <p><%- bio %></p>
     </div>
     <div class="anyconf-view anyconf-view--yellow anyconf-view--yellow-last">
-        <h4 class="anyconf-label-title anyconf-condensed"><%- confname %> SESSIONS:</h4>
+        <h4 class="anyconf-label-title anyconf-condensed"><!-- confname --> SESSIONS:</h4>
         <% _.each(sessions, function(data) { %> 
             <div>
                 <h5><a href="sessionDetails/<%- data.id %>" class="js-link"><%- data.title %></a></h5>

@@ -1,5 +1,19 @@
 define(function(require, exports, module) {
 
+    var SpeakerView = require('app/speakers/speakerView');
+    var CollectionView = require('app/components/collectionView');
+
+    var SpeakerCollectionView = CollectionView.extend({
+        ItemView: SpeakerView,
+        routeId: 'speakerCollection'
+    });
+    
+    return SpeakerCollectionView;
+});
+
+/*
+define(function(require, exports, module) {
+
     var appRouter = require('app/appRouter');
     var SpeakerView = require('app/speakers/speakerView');
     var speakerCollectionTemplate = require('text!app/speakers/templates/speakerCollectionTemplate.html');
@@ -50,3 +64,4 @@ define(function(require, exports, module) {
 
     return SpeakerCollectionView;
 });
+*/

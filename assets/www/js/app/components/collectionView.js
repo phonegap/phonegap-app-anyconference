@@ -1,73 +1,23 @@
 define(function(require, exports, module) {
 
-    var SessionView = require('app/sessions/sessionView');
-    var CollectionView = require('app/components/collectionView');
-    var emptyPageTemplate = require('text!app/sessions/templates/emptyPageTemplate.html');
-    var Strings = {
-        NO_STARRED_SESSIONS_FOUND: 'You haven\'t starred any sessions!',
-        NO_SESSIONS_FOUND: 'No sessions found'
-    };
-
-    var SessionCollectionView = CollectionView.extend({
-        ItemView: SessionView,
-        routeId: 'sessionCollection',
-		showEmptyPage: function() {
-		    var params = {};
-		    switch( this.options.type ) {
-		        case 'starred':
-		            params.message = Strings.NO_STARRED_SESSIONS_FOUND;
-		            break;
-		        default:
-		            params.message = Strings.NO_SESSIONS_FOUND;
-		            break;
-		    }
-		    var page = _.template(emptyPageTemplate, params);
-		    this.$el.append(page);
-		},
-		initialize: function() {
-		    // call super
-		    CollectionView.prototype.initialize.apply(this, arguments);
-			switch( this.options.type ) {
-			    case 'starred':
-    			    this.routeId = 'starredSessionCollection';
-    			    break;
-    			default:
-    			    this.routeId = 'sessionCollection';
-			}
-		}
-    });
-    
-    return SessionCollectionView;
-});
-
-/*
-
-
-define(function(require, exports, module) {
-
     var appRouter = require('app/appRouter');
-    var SessionView = require('app/sessions/sessionView');
-    var SessionPageView = require('app/sessions/sessionPageView');
-    var sessionCollectionTemplate = require('text!app/sessions/templates/sessionCollectionTemplate.html');
-    var emptyPageTemplate = require('text!app/sessions/templates/emptyPageTemplate.html');
-    var Strings = {
-        NO_STARRED_SESSIONS_FOUND: 'You haven\'t starred any sessions!',
-        NO_SESSIONS_FOUND: 'No sessions found'
-    };
+    var ItemPageView = require('app/components/itemPageView');
+    var collectionTemplate = require('text!app/templates/itemCollectionTemplate.html');
 
-	var SessionCollectionView = Backbone.View.extend({
+	var CollectionView = Backbone.View.extend({
 	    manage: true,
 		
 		// el: '#content',
 		tagName: 'div',
 		// className: 'topcoat-list',
+		template: _.template(collectionTemplate),
+		
 		pages: [],
 		
 		pageHeight: null,
 		prevPage: null,
 		currentPage: null,
 		nextPage: null,
-        template: _.template(sessionCollectionTemplate),
 
 		pageOverlay: null,
 		
@@ -87,14 +37,14 @@ define(function(require, exports, module) {
 			this.el.style.display = 'none';
 		},
 		
-		setCurrentPage: function(sessionPage) {
-			this.currentPage = sessionPage;
+		setCurrentPage: function(itemPage) {
+			this.currentPage = itemPage;
 			this.nextPage = null;
 			this.prevPage = null;
 			for( var i = 0; i < this.pages.length; i++ ) {
 				var page = this.pages[i];
 				// page.el.setAttribute('data-i', i);
-				if( page === sessionPage ) {
+				if( page === itemPage ) {
 					if( i > 0 ) {
 						this.prevPage = this.pages[i-1];
 					}
@@ -135,7 +85,7 @@ define(function(require, exports, module) {
 		},
 		
 		addToNewPage: function() {
-			this.currentPage = new SessionPageView({
+			this.currentPage = new ItemPageView({
 				pageHeight: this.pageHeight,
 				parentView: this
 			});
@@ -143,20 +93,20 @@ define(function(require, exports, module) {
 			this.listEl.insertBefore( this.currentPage.el, this.listEl.firstChild );
 		},
 		
-		addSession: function(sessionModel) {
+		addItem: function(model) {
 			if( !this.currentPage ) {
 				this.addToNewPage();
 			}
-			var sessionView = new SessionView({model: sessionModel}).render();
+			var itemView = new this.ItemView({model: model}).render();
 			
 			// See if it fits on the page
-			this.currentPage.el.appendChild( sessionView.el );
-			var viewBottom = sessionView.el.offsetTop + sessionView.el.offsetHeight;
+			this.currentPage.el.appendChild( itemView.el );
+			var viewBottom = itemView.el.offsetTop + itemView.el.offsetHeight;
 			var pageBottom = this.currentPage.el.offsetTop + this.currentPage.el.offsetHeight;
 
 			if( viewBottom > pageBottom ) {
 				this.addToNewPage();
-				this.currentPage.el.appendChild( sessionView.el );
+				this.currentPage.el.appendChild( itemView.el );
 			}
 		},
 		
@@ -310,20 +260,6 @@ define(function(require, exports, module) {
             this.pointerStarted = false;
 		},
 		
-		showEmptyPage: function() {
-		    var params = {};
-		    switch( this.options.type ) {
-		        case 'starred':
-		            params.message = Strings.NO_STARRED_SESSIONS_FOUND;
-		            break;
-		        default:
-		            params.message = Strings.NO_SESSIONS_FOUND;
-		            break;
-		    }
-		    var page = _.template(emptyPageTemplate, params);
-		    this.$el.append(page);
-		},
-		
 		beforeRender: function() {
             this.prevPage = null;
             this.currentPage = null;
@@ -333,18 +269,18 @@ define(function(require, exports, module) {
 		
         afterRender: function() {
             this.el.style.display = 'block';
-            this.listEl = this.$el.find('.js-session-view-container')[0];
+            this.listEl = this.$el.find('.js-item-view-container')[0];
             var viewType = this.options.type;
-            var sessionCount = 0;
+            var itemCount = 0;
             
 		    this.collection.each(function(model) {
 		        if( !viewType || model.get(viewType) == true ) {
-		            this.addSession(model);
-		            sessionCount++;
+		            this.addItem(model);
+		            itemCount++;
 		        }
 		    }, this);
 		    
-		    if( sessionCount == 0 ) {
+		    if( itemCount == 0 ) {
 		        this.showEmptyPage();
 		        return;
 		    }
@@ -373,14 +309,6 @@ define(function(require, exports, module) {
 			this.pageOverlay = document.createElement('div');
 			this.pageOverlay.className = 'js-page-overlay';
 			
-			switch( this.options.type ) {
-			    case 'starred':
-    			    this.routeId = 'starredSessionCollection';
-    			    break;
-    			default:
-    			    this.routeId = 'sessionCollection';
-			}
-			
 		    appRouter.on('route', function(route) {
 		        if( route == this.routeId ) {
 		            _this.render();
@@ -391,6 +319,5 @@ define(function(require, exports, module) {
 		}
 	});
 
-    return SessionCollectionView;
+    return CollectionView;
 });
-*/

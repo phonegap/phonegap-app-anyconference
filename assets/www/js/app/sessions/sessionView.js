@@ -12,8 +12,8 @@ define(function(require, exports, module) {
 		tagName: 'div',
 		
 		events: {
-            'pointerdown .js-session-details-link': 'onDetailsDown',
-            'pointerup .js-session-details-link': 'onDetailsUp',
+            'pointerdown .js-details-link': 'onDetailsDown',
+            'pointerup .js-details-link': 'onDetailsUp',
             'pointerup .js-star-button': 'onStarUp'
 		},
 		
