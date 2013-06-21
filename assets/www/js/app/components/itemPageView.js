@@ -1,8 +1,8 @@
 define(function(require, exports, module) {
 
 	var PageView = Backbone.View.extend({
-		tagName: 'div',
-		className: 'item-page',
+		tagName: 'ul',
+		className: 'topcoat-list item-page',
         transitionCallback: null,
         parentView: null,
         

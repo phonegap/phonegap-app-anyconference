@@ -10,7 +10,8 @@ define(function(require, exports, module) {
 	    
 	    template: _.template(speakerTemplate),
 	    
-    	tagName: 'div',
+    	tagName: 'li',
+    	className: '',
     	
 		events: {
             'pointerdown .js-details-link': 'onDetailsDown',

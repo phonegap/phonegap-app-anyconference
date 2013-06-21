@@ -9,7 +9,7 @@ define(function(require, exports, module) {
 		
 		template: _.template( sessionTemplate ),
 		
-		tagName: 'div',
+		tagName: 'li',
 		
 		events: {
             'pointerdown .js-details-link': 'onDetailsDown',

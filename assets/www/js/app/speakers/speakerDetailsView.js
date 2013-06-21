@@ -12,10 +12,8 @@ define(function(require, exports, module) {
 			var modelData = this.model.toJSON();
 			var allSessions = this.model.collection.sessionCollection;
 			var speakerId = this.model.id;
-			console.log('speakerId: ', speakerId);
 			var speakerSessions = allSessions.filter(function(session) {
 			    var speaker_ids = session.attributes.speaker_ids;
-    			console.log('speaker_ids: ', speaker_ids.join(','));
 			    return speaker_ids.indexOf( speakerId ) > -1;
 			}, this);
 			var sessions = _.map(speakerSessions, function(sessionModel) {
@@ -39,7 +37,9 @@ define(function(require, exports, module) {
 			});
 			
     	    modelData.sessions = sessions;
-    	    modelData.confname = 'fooConf';
+    	    
+    	    // TODO: Get conference name
+    	    // modelData.confname = 'fooConf';
 
 			return modelData;
 		}
