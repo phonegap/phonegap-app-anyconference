@@ -2852,6 +2852,50 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
     margin-left: 16px;
 }
 
+.topcoat-overlay {
+    width: auto;
+    padding: 10px;
+    border-radius: 5px;
+    margin-left: 50%;
+    left: -80px;
+}
+
+.topcoat-overlay h1 {
+    width: 100px;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.anyconf-overlay-love h1:before,
+.anyconf-overlay-star h1:before,
+.anyconf-overlay-unlove h1:before,
+.anyconf-overlay-unstar h1:before {
+  display: block;
+  content: '';
+  margin: auto;
+  width: 60px;
+  height: 60px;
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url("../img/no-star.svg");
+  -webkit-filter: drop-shadow(0px 3px 0px #000);
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
+
+.anyconf-overlay-star h1:before {
+  background-image: url("../img/staron.svg");
+}
+
+.anyconf-overlay-unstar h1:before {
+  background-image: url("../img/no-star.svg");
+}
+
+.anyconf-overlay-unlove h1:before {
+  background-image: url("../img/no-heart.svg");
+}
+
 .item-page {
     background: #f2f3f3;
 }
