@@ -2812,11 +2812,23 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
 }
 
 .anyconf-list-label {
+    line-height: 3.5rem;
+}
+
+.anyconf-list__header .anyconf-list-label {
     line-height: 3.9rem;
 }
 
+.anyconf-list__item {
+    border-top: 1px solid white;
+}  
+
+.anyconf-list__item .topcoat-icon--star {
+    background-image: url("../img/starmenu.svg");
+}
+
 .topcoat-list__container {
-    background: #f2f3f3;
+    //background: #f2f3f3;
 }
 
 .anyconf-speaker-wrap {
