@@ -10,7 +10,7 @@
         <div class="anyconf-view anyconf-view--yellow anyconf-view--yellow-last">
             <h4 class="anyconf-label-title anyconf-condensed">Presented By:</h4>
             <% _.each(speakers, function(data) { %> 
-                <div>
+                <div class="anyconf-session-speakers">
                     <img src="<%- data.attributes.profile_url %>" width="80px">
                     <ul class="anyconf-link-list">
                         <b><a class="anyconf-link js-link" href="speakerDetails/<%- data.id %>"><%= data.attributes.full_name %></a></b>

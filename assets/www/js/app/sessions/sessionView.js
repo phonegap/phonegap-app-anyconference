@@ -4,6 +4,12 @@ define(function(require, exports, module) {
     var sessionTemplate = require('text!app/sessions/templates/sessionTemplate.html');
     var appRouter = require('app/appRouter');
 
+    var timeFlag = {
+        NONE: 0,
+        NEXT: 1,
+        CURRENT: 2
+    };
+
 	var SessionView = Backbone.View.extend({
 		model: SessionModel,
 		
@@ -21,7 +27,7 @@ define(function(require, exports, module) {
 		    var _this = this;
 			this.listenTo(this.model, 'change', this.render);
 			this.listenTo(this.model, 'change:timeFlag', this.updateTimeFlag);
-			// this.on('change:timeFlag', this.updateTimeFlag);
+			this.on('change:timeFlag', this.updateTimeFlag);
 			
 			this.listenTo(this.model, 'destroy', this.remove);
 		},
@@ -113,6 +119,8 @@ define(function(require, exports, module) {
 			this.el.innerHTML = this.template(templateValues);
 			var isStarred = this.model.get('starred');
 			this.$el.find('.js-star-button input')[0].checked = isStarred;
+
+			this.updateTimeFlag( this.model );
 
 			return this;
 		}

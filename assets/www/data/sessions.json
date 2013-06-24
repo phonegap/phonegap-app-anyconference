@@ -12,7 +12,7 @@
         "id": "519e6ad3ecdcc48b64000007",
         "room_id": "519e6a13ecdcc48b64000004",
         "duration": 120,
-        "date": "2013-05-27",
+        "date": "2013-06-27",
         "time": "20:00",
         "capacity": 139,
         "attendance": 0
@@ -31,7 +31,7 @@
         "id": "519e6bdcecdcc48b6400000c",
         "room_id": "519e77e0ecdcc473cd000008",
         "duration": 60,
-        "date": "2013-05-28",
+        "date": "2013-06-28",
         "time": "08:00",
         "capacity": 800,
         "attendance": 0
@@ -50,7 +50,7 @@
         "id": "519e6c04ecdcc4368b000002",
         "room_id": "519e6b65ecdcc48b64000009",
         "duration": 30,
-        "date": "2013-05-28",
+        "date": "2013-06-28",
         "time": "09:00",
         "capacity": 800,
         "attendance": 0
@@ -69,7 +69,7 @@
         "id": "519e76dcecdcc473cd000002",
         "room_id": "519e6b65ecdcc48b64000009",
         "duration": 30,
-        "date": "2013-05-28",
+        "date": "2013-06-28",
         "time": "09:30",
         "capacity": 800,
         "attendance": 0
@@ -88,7 +88,7 @@
         "id": "519e7722ecdcc473cd000004",
         "room_id": "519e6b65ecdcc48b64000009",
         "duration": 30,
-        "date": "2013-05-28",
+        "date": "2013-06-28",
         "time": "10:00",
         "capacity": 800,
         "attendance": 0
@@ -107,7 +107,7 @@
         "id": "519e7776ecdcc473cd000006",
         "room_id": "519e6b65ecdcc48b64000009",
         "duration": 30,
-        "date": "2013-05-28",
+        "date": "2013-06-28",
         "time": "10:30",
         "capacity": 800,
         "attendance": 0
@@ -126,7 +126,7 @@
         "id": "519e781becdcc473cd000009",
         "room_id": "519e77e0ecdcc473cd000008",
         "duration": 30,
-        "date": "2013-05-28",
+        "date": "2013-06-28",
         "time": "11:00",
         "capacity": 800,
         "attendance": 0
@@ -134,7 +134,7 @@
         "id": "519e8771ecdcc4e4f400000d",
         "room_id": "519e77e0ecdcc473cd000008",
         "duration": 30,
-        "date": "2013-05-28",
+        "date": "2013-06-28",
         "time": "14:30",
         "capacity": 800,
         "attendance": 0
@@ -142,7 +142,7 @@
         "id": "519e8b44ecdcc4944d00001a",
         "room_id": "519e77e0ecdcc473cd000008",
         "duration": 30,
-        "date": "2013-05-28",
+        "date": "2013-06-28",
         "time": "17:00",
         "capacity": 800,
         "attendance": 0
@@ -161,7 +161,7 @@
         "id": "519e85d5ecdcc4e4f4000002",
         "room_id": "519e6b65ecdcc48b64000009",
         "duration": 30,
-        "date": "2013-05-28",
+        "date": "2013-06-28",
         "time": "11:00",
         "capacity": 800,
         "attendance": 0
@@ -180,7 +180,7 @@
         "id": "519e8623ecdcc4e4f4000004",
         "room_id": "519e6b65ecdcc48b64000009",
         "duration": 30,
-        "date": "2013-05-28",
+        "date": "2013-06-28",
         "time": "11:30",
         "capacity": 800,
         "attendance": 0
@@ -199,7 +199,7 @@
         "id": "519e865fecdcc4e4f4000006",
         "room_id": "519e6a13ecdcc48b64000004",
         "duration": 60,
-        "date": "2013-05-28",
+        "date": "2013-06-28",
         "time": "12:00",
         "capacity": 139,
         "attendance": 0
@@ -218,7 +218,7 @@
         "id": "519e86c5ecdcc4e4f4000008",
         "room_id": "519e6b65ecdcc48b64000009",
         "duration": 30,
-        "date": "2013-05-28",
+        "date": "2013-06-28",
         "time": "13:00",
         "capacity": 800,
         "attendance": 0
@@ -237,7 +237,7 @@
         "id": "519e8705ecdcc4e4f400000a",
         "room_id": "519e6b65ecdcc48b64000009",
         "duration": 30,
-        "date": "2013-05-28",
+        "date": "2013-06-28",
         "time": "13:30",
         "capacity": 800,
         "attendance": 0
@@ -256,7 +256,7 @@
         "id": "519e8749ecdcc4e4f400000c",
         "room_id": "519e6b65ecdcc48b64000009",
         "duration": 30,
-        "date": "2013-05-28",
+        "date": "2013-06-28",
         "time": "14:00",
         "capacity": 800,
         "attendance": 0
@@ -275,7 +275,7 @@
         "id": "519e881cecdcc4e4f400000f",
         "room_id": "519e6b65ecdcc48b64000009",
         "duration": 30,
-        "date": "2013-05-28",
+        "date": "2013-06-28",
         "time": "15:00",
         "capacity": 800,
         "attendance": 0
@@ -294,7 +294,7 @@
         "id": "519e88a8ecdcc4e4f4000012",
         "room_id": "519e6b65ecdcc48b64000009",
         "duration": 30,
-        "date": "2013-05-28",
+        "date": "2013-06-28",
         "time": "15:30",
         "capacity": 800,
         "attendance": 0
@@ -313,7 +313,7 @@
         "id": "519e89f6ecdcc4944d000013",
         "room_id": "519e6b65ecdcc48b64000009",
         "duration": 30,
-        "date": "2013-05-28",
+        "date": "2013-06-28",
         "time": "16:00",
         "capacity": 800,
         "attendance": 0
@@ -332,7 +332,7 @@
         "id": "519e8a57ecdcc4944d000017",
         "room_id": "519e6b65ecdcc48b64000009",
         "duration": 30,
-        "date": "2013-05-28",
+        "date": "2013-06-28",
         "time": "16:30",
         "capacity": 800,
         "attendance": 0
@@ -351,7 +351,7 @@
         "id": "519e8b81ecdcc4944d00001c",
         "room_id": "519e6b65ecdcc48b64000009",
         "duration": 30,
-        "date": "2013-05-28",
+        "date": "2013-06-28",
         "time": "17:30",
         "capacity": 800,
         "attendance": 0
@@ -370,7 +370,7 @@
         "id": "519e8bc3ecdcc4944d00001e",
         "room_id": "519e6b65ecdcc48b64000009",
         "duration": 30,
-        "date": "2013-05-28",
+        "date": "2013-06-28",
         "time": "18:00",
         "capacity": 800,
         "attendance": 0
@@ -389,7 +389,7 @@
         "id": "519e8bfeecdcc4944d000020",
         "room_id": "519e6b65ecdcc48b64000009",
         "duration": 30,
-        "date": "2013-05-28",
+        "date": "2013-06-28",
         "time": "18:30",
         "capacity": 800,
         "attendance": 0
@@ -408,7 +408,7 @@
         "id": "519e8c67ecdcc4944d000023",
         "room_id": "519e8c3aecdcc4944d000022",
         "duration": 90,
-        "date": "2013-05-28",
+        "date": "2013-06-28",
         "time": "19:00",
         "capacity": 800,
         "attendance": 0

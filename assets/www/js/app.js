@@ -108,7 +108,7 @@ define(function(require, exports, module) {
             this.setView('.js-button-container', starredOptionView, true);
             this.setView('.js-button-container', lovedOptionView, true);
             menuView.render();
-            
+            this.checkTime();
             Backbone.history.start();
         },
 
@@ -153,7 +153,39 @@ define(function(require, exports, module) {
             }
             
             console.log('route', arguments);
-		}
+		},
+		
+		checkTime: function() {
+			var viewMode = 1;
+			// check if we're in the right mode
+			if( viewMode !== 1 ) {
+				return;
+			}
+			var now = moment();
+			// TODO: For each track, if track is today...
+			var timeOfNext = null;
+			
+			sessionCollection.each(function(session) {
+				var start = session.get('startTime');
+				var end = session.get('endTime');
+				
+				// check if session should be first "up next"
+				if( !timeOfNext && now.isBefore( start ) ) {
+					session.setAsNextUp();
+					timeOfNext = start;
+				// check if session is also "up next"
+				} else if( timeOfNext && start.isSame(timeOfNext) ) {
+					session.setAsNextUp();
+				// check if session is happening now
+				} else if( now.isAfter( start ) && now.isBefore( end ) ) {
+					session.setAsCurrent();
+				} else {
+					session.clearTimeFlag();
+				}
+			});
+			 
+			setTimeout(this.checkTime, 60 * 1000);
+		},
 		
     });
 

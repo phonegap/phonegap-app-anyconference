@@ -1,5 +1,5 @@
 <div class="anyconf-view__container">
-    <div class="topcoat-navigation-bar__item left anyconf-view--yellow">
+    <div class="topcoat-navigation-bar__item left anyconf-view--yellow anyconf-label-speaker-heading">
         <img src="<%- profile_url %>">
         <%- full_name %>
     </div>
@@ -10,14 +10,15 @@
         </ul>
         <p><%- bio %></p>
     </div>
-    <div class="anyconf-view anyconf-view--yellow anyconf-view--yellow-last">
+    <div class="anyconf-view anyconf-session-speakers anyconf-view--yellow anyconf-view--yellow-last">
         <h4 class="anyconf-label-title anyconf-condensed"><!-- confname --> SESSIONS:</h4>
         <% _.each(sessions, function(data) { %> 
             <div>
-                <h5><a href="sessionDetails/<%- data.id %>" class="js-link"><%- data.title %></a></h5>
-                <div><%- data.startTime.time %><%- data.startTime.suffix %></div>
-                <div><%- data.endTime.time %><%- data.endTime.suffix %></div>
-                <div><%- data.day %></div>
+                <h5><a href="sessionDetails/<%- data.id %>" class="anyconf-link anyconf-session-title-link js-link"><%- data.title %></a></h5>
+                <div class="anyconf-label-time">
+                    <%- data.startTime.time %><small><%- data.startTime.suffix %></small>&nbsp;–&nbsp;<%- data.endTime.time %><small><%- data.endTime.suffix %></small> <span class="anyconf-day"><%- data.day %></div>
+                </div>
+                
             </div>
         <% }); %>
     </div>
