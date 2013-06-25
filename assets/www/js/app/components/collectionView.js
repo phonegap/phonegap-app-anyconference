@@ -30,7 +30,9 @@ define(function(require, exports, module) {
 		events: {
 		    'pointerdown': 'pointerDown',
 		    'pointermove': 'pointerMove',
-		    'pointerup': 'pointerUp'
+		    'pointerup': 'pointerUp',
+		    'pointercancel': 'pointerUp',
+		    'pointerleave': 'pointerUp'
 		},
 		
 		leave: function() {
@@ -151,6 +153,8 @@ define(function(require, exports, module) {
 			    evt.preventDefault();
 				return;
 			}
+			
+			
 			// evt.preventDefault();
 			// evt.stopPropagation();
 			this.startPoint = {
@@ -171,9 +175,10 @@ define(function(require, exports, module) {
 		pointerMove: function(jqEvt) {
 		    var evt = jqEvt.originalEvent;
 		    if( !this.pointerStarted ) {
+		        this.animating = false;
 		        return;
 		    }
-			console.log('pointermove');
+			console.log('pointermove', this.currentPage);
 			evt.preventDefault();
 			
 			var targetEl = this.currentPage.el;
@@ -228,6 +233,10 @@ define(function(require, exports, module) {
 		pointerUp: function(jqEvt) {
 		    var evt = jqEvt.originalEvent;
 			var targetEl = this.currentPage.el;
+		    if( !this.pointerStarted ) {
+		        return;
+		    }
+			
 			if( this.swiping ) {
 			    this.swiping = false;
 			}
@@ -303,6 +312,15 @@ define(function(require, exports, module) {
 		initialize: function() {
 			var _this = this;
 			// this.listenTo(this.collection, 'add', this.addSession);
+			var documentPointerUp = function(jqEvt) {
+                if( _this.el.parentNode ) {
+                    _this.pointerUp.call(_this, jqEvt);
+                }
+            };
+			$(document).on({
+			    pointerleave: documentPointerUp,
+			    pointerup: documentPointerUp
+			});
 		    
 			this.pageHeight = window.innerHeight;
 			this.pageOverlay = document.createElement('div');

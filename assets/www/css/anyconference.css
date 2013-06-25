@@ -1,7 +1,9 @@
+/*
 @font-face {
-  font-family: "SourceSansPro";
-  src: url("../font/SourceSansPro-Regular.ttf") format('truetype');
+  font-family: "league-gothic";
+  src: url("../font/league-gothic-Regular.ttf") format('truetype');
 }
+*/
 
 #content {
     position: absolute;
@@ -48,9 +50,8 @@
   border-radius: 6px;
 }
 .topcoat-navigation-bar__title {
-  font-family: "SourceSansPro";
+  font-family: "league-gothic";
   text-transform: uppercase;
-  letter-spacing: 0.1rem;
   text-shadow: 0px 1px 0px #fff;
 }
 .item-list,
@@ -85,7 +86,7 @@
   content: "UP NEXT";
   line-height: 2rem;
   font-size: 2rem;
-  font-family: 'SourceSansPro';
+  font-family: 'league-gothic';
   font-weight: 100;
   padding: 0.07rem 0.7rem;
   color: #fff;
@@ -259,7 +260,7 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
   background: #c69;
   font-weight: normal;
   font-size: 2.5rem;
-  font-family: 'SourceSansPro';
+  font-family: 'league-gothic';
   text-transform: uppercase;
   list-style: none;
 }
@@ -319,7 +320,7 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
 }
 .anyconf-label-date {
   margin: 0;
-  font-family: 'SourceSansPro';
+  font-family: 'league-gothic';
   text-align: center;
   font-weight: normal;
   font-size: 2rem;
@@ -327,7 +328,7 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
 }
 .anyconf-label-location {
   margin: 0;
-  font-family: 'SourceSansPro';
+  font-family: 'league-gothic';
   text-align: center;
   font-weight: normal;
   font-size: 1.5rem;
@@ -358,11 +359,10 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
   margin: 0;
   line-height: 3.5rem;
   font-size: 3.5rem;
-  font-family: 'SourceSansPro';
+  font-family: 'league-gothic';
   font-weight: normal;
   text-transform: uppercase;
   text-align: center;
-  letter-spacing: 0.1rem;
   color: #cdcdcd;
 }
 .anyconf-title-vcenter {
@@ -396,7 +396,7 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
   top: 0px;
 }
 .anyconf-condensed {
-  font-family: 'SourceSansPro';
+  font-family: 'league-gothic';
   text-transform: uppercase;
   font-size: 1.5rem;
   color: #333;
@@ -472,7 +472,7 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
 .topcoat-overlay h1 {
   margin: 0;
   color: #fff;
-  font-family: 'SourceSansPro';
+  font-family: 'league-gothic';
   border-bottom: none;
   font-size: 1.5rem;
   font-weight: normal;
@@ -497,7 +497,8 @@ body {
   color: #000;
   font: 16px helvetica, arial, sans-serif;
   font-weight: 200;
-  text-rendering: optimizeLegibility;
+  /* This breaks custom fonts on Android -adeveria */
+  /* text-rendering: optimizeLegibility; */
 }
 
 
@@ -615,9 +616,8 @@ body {
   border-radius: 6px;
 }
 .topcoat-navigation-bar__title {
-  font-family: "SourceSansPro";
+  font-family: "league-gothic";
   text-transform: uppercase;
-  letter-spacing: 0.1rem;
   text-shadow: 0px 1px 0px #fff;
 }
 .session-list,
@@ -652,7 +652,7 @@ body {
   content: "UP NEXT";
   line-height: 2rem;
   font-size: 2rem;
-  font-family: 'SourceSansPro';
+  font-family: 'league-gothic';
   font-weight: 100;
   padding: 0.07rem 0.7rem;
   color: #fff;
@@ -825,7 +825,7 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
   background: #c69;
   font-weight: normal;
   font-size: 2.5rem;
-  font-family: 'SourceSansPro';
+  font-family: 'league-gothic';
   text-transform: uppercase;
   list-style: none;
 }
@@ -880,7 +880,7 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
 }
 .anyconf-label-date {
   margin: 0;
-  font-family: 'SourceSansPro';
+  font-family: 'league-gothic';
   text-align: center;
   font-weight: normal;
   font-size: 2rem;
@@ -888,7 +888,7 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
 }
 .anyconf-label-location {
   margin: 0;
-  font-family: 'SourceSansPro';
+  font-family: 'league-gothic';
   text-align: center;
   font-weight: normal;
   font-size: 1.5rem;
@@ -919,11 +919,10 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
   margin: 0;
   line-height: 3.5rem;
   font-size: 3.5rem;
-  font-family: 'SourceSansPro';
+  font-family: 'league-gothic';
   font-weight: normal;
   text-transform: uppercase;
   text-align: center;
-  letter-spacing: 0.1rem;
   color: #cdcdcd;
 }
 .anyconf-title-vcenter {
@@ -957,7 +956,7 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
   top: 0px;
 }
 .anyconf-condensed {
-  font-family: 'SourceSansPro';
+  font-family: 'league-gothic';
   text-transform: uppercase;
   font-size: 1.5rem;
   color: #333;
@@ -1032,7 +1031,7 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
 .topcoat-overlay h1 {
   margin: 0;
   color: #fff;
-  font-family: 'SourceSansPro';
+  font-family: 'league-gothic';
   border-bottom: none;
   font-size: 1.5rem;
   font-weight: normal;
@@ -1068,9 +1067,8 @@ limitations under the License.
   border-radius: 6px;
 }
 .topcoat-navigation-bar__title {
-  font-family: "SourceSansPro";
+  font-family: "league-gothic";
   text-transform: uppercase;
-  letter-spacing: 0.1rem;
   text-shadow: 0px 1px 0px #fff;
 }
 .session-list,
@@ -1105,7 +1103,7 @@ limitations under the License.
   content: "UP NEXT";
   line-height: 2rem;
   font-size: 2rem;
-  font-family: 'SourceSansPro';
+  font-family: 'league-gothic';
   font-weight: 100;
   padding: 0.07rem 0.7rem;
   color: #fff;
@@ -1278,7 +1276,7 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
   background: #c69;
   font-weight: normal;
   font-size: 2.5rem;
-  font-family: 'SourceSansPro';
+  font-family: 'league-gothic';
   text-transform: uppercase;
   list-style: none;
 }
@@ -1333,7 +1331,7 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
 }
 .anyconf-label-date {
   margin: 0;
-  font-family: 'SourceSansPro';
+  font-family: 'league-gothic';
   text-align: center;
   font-weight: normal;
   font-size: 2rem;
@@ -1341,7 +1339,7 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
 }
 .anyconf-label-location {
   margin: 0;
-  font-family: 'SourceSansPro';
+  font-family: 'league-gothic';
   text-align: center;
   font-weight: normal;
   font-size: 1.5rem;
@@ -1372,11 +1370,10 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
   margin: 0;
   line-height: 3.5rem;
   font-size: 3.5rem;
-  font-family: 'SourceSansPro';
+  font-family: 'league-gothic';
   font-weight: normal;
   text-transform: uppercase;
   text-align: center;
-  letter-spacing: 0.1rem;
   color: #cdcdcd;
 }
 .anyconf-title-vcenter {
@@ -1410,7 +1407,7 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
   top: 0px;
 }
 .anyconf-condensed {
-  font-family: 'SourceSansPro';
+  font-family: 'league-gothic';
   text-transform: uppercase;
   font-size: 1.5rem;
   color: #333;
@@ -1485,7 +1482,7 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
 .topcoat-overlay h1 {
   margin: 0;
   color: #fff;
-  font-family: 'SourceSansPro';
+  font-family: 'league-gothic';
   border-bottom: none;
   font-size: 1.5rem;
   font-weight: normal;
@@ -2287,9 +2284,8 @@ limitations under the License.
   border-radius: 6px;
 }
 .topcoat-navigation-bar__title {
-  font-family: "SourceSansPro";
+  font-family: "league-gothic";
   text-transform: uppercase;
-  letter-spacing: 0.1rem;
   text-shadow: 0px 1px 0px #fff;
   
   text-transform: none;
@@ -2327,7 +2323,7 @@ limitations under the License.
   content: "UP NEXT";
   line-height: 2rem;
   font-size: 2rem;
-  font-family: 'SourceSansPro';
+  font-family: 'league-gothic';
   font-weight: 100;
   padding: 0.07rem 0.7rem;
   color: #fff;
@@ -2500,7 +2496,7 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
   background: #c69;
   font-weight: normal;
   font-size: 2.5rem;
-  font-family: 'SourceSansPro';
+  font-family: 'league-gothic';
   text-transform: uppercase;
   list-style: none;
 }
@@ -2555,7 +2551,7 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
 }
 .anyconf-label-date {
   margin: 0;
-  font-family: 'SourceSansPro';
+  font-family: 'league-gothic';
   text-align: center;
   font-weight: normal;
   font-size: 2rem;
@@ -2563,7 +2559,7 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
 }
 .anyconf-label-location {
   margin: 0;
-  font-family: 'SourceSansPro';
+  font-family: 'league-gothic';
   text-align: center;
   font-weight: normal;
   font-size: 1.5rem;
@@ -2594,11 +2590,10 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
   margin: 0;
   line-height: 3.5rem;
   font-size: 3.5rem;
-  font-family: 'SourceSansPro';
+  font-family: 'league-gothic';
   font-weight: normal;
   text-transform: uppercase;
   text-align: center;
-  letter-spacing: 0.1rem;
   color: #cdcdcd;
 }
 .anyconf-title-vcenter {
@@ -2632,7 +2627,7 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
   top: 0px;
 }
 .anyconf-condensed {
-  font-family: 'SourceSansPro';
+  font-family: 'league-gothic';
   text-transform: uppercase;
   font-size: 1.5rem;
   color: #333;
@@ -2707,7 +2702,7 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
 .topcoat-overlay h1 {
   margin: 0;
   color: #fff;
-  font-family: 'SourceSansPro';
+  font-family: 'league-gothic';
   border-bottom: none;
   font-size: 1.5rem;
   font-weight: normal;
@@ -2807,16 +2802,21 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
     border-bottom: 1px solid #b4b4b4;
 }
 
+.anyconf-list__header,
+.anyconf-list__item {
+    width: 90%;
+}
+
 .topcoat-navigation-bar__title {
-    line-height: 4.5rem;
+    //line-height: 4.5rem;
 }
 
 .anyconf-list-label {
-    line-height: 3.5rem;
+    padding: 0 0.5rem;
 }
 
 .anyconf-list__header .anyconf-list-label {
-    line-height: 3.9rem;
+    //line-height: 3.9rem;
 }
 
 .anyconf-list__item {
@@ -2886,7 +2886,7 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
     padding: 10px;
     border-radius: 5px;
     margin-left: 50%;
-    left: -80px;
+    left: -100px;
 }
 
 .anyconf-session-title-link {
@@ -2897,13 +2897,10 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
 }
 
 .topcoat-overlay h1 {
-    width: 100px;
+    width: 150px;
     padding: 10px 20px;
     border-radius: 5px;
-}
-
-.anyconf-label-status--next:after {
-    line-height: 2.5rem;
+    font-size: 1.5rem;
 }
 
 .anyconf-overlay-love h1:before,

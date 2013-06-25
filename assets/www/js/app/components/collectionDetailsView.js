@@ -22,6 +22,8 @@ define(function(require, exports, module) {
 		},
 		
 		initialize: function() {
+		    var _this = this;
+		    
 		    appRouter.on('route', function(route, itemId) {
 		        if( route == this.routeId ) {
 		            this.navigateTo(itemId);
@@ -29,6 +31,17 @@ define(function(require, exports, module) {
 		            this.leave();
 		        }
 		    }, this);
+		    
+			var documentPointerUp = function(jqEvt) {
+                if( _this.el.parentNode ) {
+                    _this.pointerUp.call(_this, jqEvt);
+                }
+            };
+		    
+			$(document).on({
+			    pointerleave: documentPointerUp,
+			    pointerup: documentPointerUp
+			});
 		},
 		
         transitionFromClass: function(className) {
@@ -200,6 +213,7 @@ define(function(require, exports, module) {
 		    var evt = jqEvt.originalEvent;
 		    console.log('pointerend');
 		    if( !this.pointerStarted ) {
+		        this.animating = false;
 		        return;
 		    }
 
