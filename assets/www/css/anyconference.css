@@ -595,7 +595,7 @@ body {
 
 .js-page-overlay-removed {
   opacity: 0;
-  -webkit-transition: opacity 0.1s;
+  -webkit-transition: opacity 0.3s;
 }
 .js-page-transition-in {
   -webkit-transition: all 0.2s;
@@ -2967,6 +2967,7 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
     top: 0;
     bottom: 0;
     overflow: auto;
+    background-color: #f2f3f3;
     -webkit-overflow-scrolling: touch;
 }
 

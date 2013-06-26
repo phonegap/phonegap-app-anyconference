@@ -78,6 +78,7 @@ define(function(require, exports, module) {
 			
 			var onTransitionEnd = function(evt) {
 				_this.animating = false;
+				console.log('overlay transition end');
 				evt.target.removeEventListener('webkitTransitionEnd', onTransitionEnd);
 				_this.positionOverlay();
 			};
@@ -159,7 +160,6 @@ define(function(require, exports, module) {
 				return;
 			}
 			
-			
 			// evt.preventDefault();
 			// evt.stopPropagation();
 			this.startPoint = {
@@ -175,6 +175,8 @@ define(function(require, exports, module) {
 				y: 0
 			}
 			this.pointerStarted = true;
+            this.currentPage.el.classList.remove('js-page-transition-in');
+            this.currentPage.el.classList.remove('js-page-transition-out');
 		},
 		
 		pointerMove: function(jqEvt) {
@@ -228,7 +230,6 @@ define(function(require, exports, module) {
 				targetEl.style.webkitTransform = 'translateY(' + offsetY + 'px) translateZ(0)';
 				var amount = -(offsetY / this.pageHeight);
 				this.pageOverlay.style.opacity = (1 - amount).toFixed(2);
-				console.log('val: ' + this.pageOverlay.style.opacity);
 				
 				this.pendingPage = this.nextPage;
 			} else if( prevEl ) {
@@ -237,9 +238,17 @@ define(function(require, exports, module) {
 				prevEl.style.webkitTransform = 'translateY(' + offsetY + 'px) translateZ(0)';
 				this.pendingPage = this.prevPage;
 			}
+            var hasIn = targetEl.classList.contains('js-page-transition-in');
+            var hasOut = targetEl.classList.contains('js-page-transition-out');
+            console.log('has trans class in: ' + hasIn );
+            console.log('has trans class out: ' + hasOut );
+            if( hasIn || hasOut ) {
+                console.error('HAS TRANS');
+            }
 		},
 		
 		pointerUp: function(jqEvt) {
+		    console.log('pointerup');
 		    var evt = jqEvt.originalEvent;
 			var targetEl = this.currentPage.el;
 			

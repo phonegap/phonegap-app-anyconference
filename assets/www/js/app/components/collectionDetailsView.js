@@ -140,6 +140,7 @@ define(function(require, exports, module) {
 				_this.setCurrentItem(_this.pendingItem);
 				// This would "break" the back button:
 				// appRouter.navigate('itemDetails/' + _this.pendingItem.id);
+    			console.log('...done animating');
 			};
 			this.transitionFromClass('js-details-transition');
 			
@@ -150,8 +151,10 @@ define(function(require, exports, module) {
 		pointerDown: function(jqEvt) {
 		    var evt = jqEvt.originalEvent;
 			if( this.animating ) {
+			    console.log('blocked due to animating');
 			    return;
 			}
+			console.log('pointer down approved');
 			
 			this.startPoint = {
 				x: evt.clientX,
@@ -166,6 +169,7 @@ define(function(require, exports, module) {
 				y: 0
 			};
 			this.pointerStarted = true;
+            this.el.classList.remove('js-details-transition');
 		},
 		
 		pointerMove: function(jqEvt) {
@@ -211,8 +215,10 @@ define(function(require, exports, module) {
 		
 		pointerUp: function(jqEvt) {
 		    var evt = jqEvt.originalEvent;
+		    
 		    console.log('pointerend');
 		    if( !this.pointerStarted ) {
+		        console.log('animating: false');
 		        this.animating = false;
 		        return;
 		    }
