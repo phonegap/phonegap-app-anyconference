@@ -577,10 +577,8 @@ body {
   width: 100%;
   height: 100%;
   opacity: 1;
-  background-image: url('../img/screen.png');
-  //background: hsla(0,0%,0%,0.5);
-
-  //background: rgba(0,0,0,0.5);
+  -webkit-transform: translateZ(0);
+  background: rgba(0,0,0,0.5);
 }
 .js-menu-overlay {
     z-index: 25;
