@@ -114,10 +114,12 @@ define(function(require, exports, module) {
 		
 		transitionToNext: function() {
 			var _this = this;
+
 			// animate current page up
 			this.currentPage.transitionOut(function() {
 				_this.setCurrentPage(_this.nextPage);
 				_this.updateOverlay();
+				_this.pageOverlay.style.opacity = null;
 			});
 		},
 		
@@ -140,9 +142,12 @@ define(function(require, exports, module) {
 		
 		transitionCurrentBack: function() {
 			var _this = this;
+			this.pageOverlay.style.opacity = 1;
+
 			this.currentPage.transitionIn(function() {
 				_this.setCurrentPage(_this.currentPage);
 				_this.positionOverlay();
+				_this.pageOverlay.style.opacity = null;
 			});
 		},
 		
@@ -178,7 +183,7 @@ define(function(require, exports, module) {
 		        this.animating = false;
 		        return;
 		    }
-			console.log('pointermove', this.currentPage);
+			console.log('pointermove');
 			evt.preventDefault();
 			
 			var targetEl = this.currentPage.el;
@@ -221,6 +226,10 @@ define(function(require, exports, module) {
 			if( offsetY < 0 ) {
 				// drag current page up
 				targetEl.style.webkitTransform = 'translateY(' + offsetY + 'px) translateZ(0)';
+				var amount = -(offsetY / this.pageHeight);
+				this.pageOverlay.style.opacity = (1 - amount).toFixed(2);
+				console.log('val: ' + this.pageOverlay.style.opacity);
+				
 				this.pendingPage = this.nextPage;
 			} else if( prevEl ) {
 				// drag previous page down
@@ -233,6 +242,7 @@ define(function(require, exports, module) {
 		pointerUp: function(jqEvt) {
 		    var evt = jqEvt.originalEvent;
 			var targetEl = this.currentPage.el;
+			
 		    if( !this.pointerStarted ) {
 		        return;
 		    }

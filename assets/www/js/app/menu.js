@@ -40,7 +40,12 @@ define(function(require, exports, module) {
 				_this.animating = false;
 			};
 
-            $(this.overlay).show();
+            this.overlay.style.display = 'block';
+            setTimeout( function() {
+                _this.overlay.classList.remove('js-menu-overlay-hidden');
+                _this.overlay.classList.add('js-menu-overlay-shown');
+            }, 1);
+            
 		    this.el.classList.remove('js-menu-offscreen');
 		    this.el.classList.add('js-menu-transition-in');
 		    this.el.style.webkitTransform = 'none';
@@ -58,11 +63,14 @@ define(function(require, exports, module) {
 
 			var onTransitionEnd = function(evt) {
 				_this.el.classList.remove('js-menu-transition-out');
+                _this.overlay.style.display = 'none';
 				evt.target.removeEventListener('webkitTransitionEnd', onTransitionEnd);
 				_this.animating = false;
 			};
 			
-            $(this.overlay).hide();
+            this.overlay.classList.add('js-menu-overlay-hidden');
+            this.overlay.classList.remove('js-menu-overlay-shown');
+
 		    this.el.classList.add('js-menu-offscreen');
 		    this.el.classList.add('js-menu-transition-out');
 		    this.el.style.webkitTransform = 'translateX(' + -window.innerWidth + 'px)';
