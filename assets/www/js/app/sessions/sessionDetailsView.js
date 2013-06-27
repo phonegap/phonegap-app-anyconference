@@ -16,6 +16,8 @@ define(function(require, exports, module) {
         model: SessionModel,
         template: _.template(sessionDetailsTemplate),
         
+        parentRoute: 'sessionCollection',
+        
         initialize: function() {
             this.model.on('change:starred', this.handleStarredChange, this);
             this.model.on('change:loved', this.handleLovedChange, this);

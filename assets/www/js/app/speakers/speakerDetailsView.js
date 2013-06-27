@@ -8,6 +8,9 @@ define(function(require, exports, module) {
     var SpeakerDetailsView = ItemDetailsView.extend({
         model: SpeakerModel,
         template: _.template(speakerDetailsTemplate),
+        
+        parentRoute: 'speakerCollection',
+
 		serialize: function() {
 			var modelData = this.model.toJSON();
 			var allSessions = this.model.collection.sessionCollection;

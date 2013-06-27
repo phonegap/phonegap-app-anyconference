@@ -72,12 +72,12 @@ define(function(require, exports, module) {
 		        this.viewPointers[itemModel.cid] = view;
 		    }, this);
             
-            this.setCurrentItem( this.currentItem );
 		},
 		
 		afterRender: function() {
 		    this.el.style.display = 'block';
-		},
+            this.setCurrentItem( this.currentItem );
+  		},
 		
 		navigateTo: function(itemId) {
             // appView.setCurrentView(this);

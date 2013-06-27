@@ -2961,6 +2961,34 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
     bottom: 0;
 }
 
+.anyconf-scroll-content {
+    min-height: 100%;
+    box-sizing: border-box;
+}
+
+.topcoat-card:active {
+    background-color: #dcdcdc;
+}
+
+.anyconf-pull-message {
+    text-align: center;
+    background-color: #dcdcdc;
+    color: white;
+    -webkit-transform: translateZ(0); /* Needed for Android */
+    z-index: 100;
+    position: fixed;
+    margin: 0;
+    line-height: 5rem;
+    padding: 0;
+    font-size: 1.3rem;
+    -webkit-transition: background-color 0.2s;
+}
+
+.anyconf-return-ready {
+    color: white;
+    background-color: #454545;
+}
+
 .item-details-wrap {
     position: absolute;
     width: 100%;
