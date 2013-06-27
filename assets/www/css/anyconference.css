@@ -2859,7 +2859,8 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
 .anyconf-session-speakers .anyconf-label-time {
     background: white;
     padding-left: 0;
-    font-size: 1.1rem;
+    padding-right: 0;
+    font-size: 1rem;
 }
 
 .anyconf-label-speaker-heading {
@@ -2904,9 +2905,8 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
 
 .anyconf-session-title-link {
     text-decoration: none;
-    font-size: 1.7rem;
+    font-size: 1.3rem;
     font-weight: normal;
-    
 }
 
 .topcoat-overlay h1 {
@@ -2959,6 +2959,19 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
     width: 100%;
     top: 0;
     bottom: 0;
+}
+
+.anyconf-speaker-details-img {
+    display: inline-block;
+}
+
+.anyconf-speaker-details-name {
+    display: inline-block; //table-cell;
+    vertical-align: middle;
+    width: 50%;
+    line-height: 1.4;
+    font-size: 2rem;
+    margin-left: 1rem;
 }
 
 .anyconf-scroll-content {
