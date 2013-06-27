@@ -1,9 +1,7 @@
-/*
 @font-face {
-  font-family: "league-gothic";
-  src: url("../font/league-gothic-Regular.ttf") format('truetype');
+  font-family: 'SourceSansPro';
+  src: url("../font/SourceSansPro-Regular.ttf") format('truetype');
 }
-*/
 
 #content {
     position: absolute;
@@ -50,7 +48,7 @@
   border-radius: 6px;
 }
 .topcoat-navigation-bar__title {
-  font-family: "league-gothic";
+  font-family: 'league-gothic', 'SourceSansPro';
   text-transform: uppercase;
   text-shadow: 0px 1px 0px #fff;
 }
@@ -86,7 +84,7 @@
   content: "UP NEXT";
   line-height: 2rem;
   font-size: 2rem;
-  font-family: 'league-gothic';
+  font-family: 'league-gothic', 'SourceSansPro';
   font-weight: 100;
   padding: 0.07rem 0.7rem;
   color: #fff;
@@ -260,7 +258,7 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
   background: #c69;
   font-weight: normal;
   font-size: 2.5rem;
-  font-family: 'league-gothic';
+  font-family: 'league-gothic', 'SourceSansPro';
   text-transform: uppercase;
   list-style: none;
 }
@@ -320,7 +318,7 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
 }
 .anyconf-label-date {
   margin: 0;
-  font-family: 'league-gothic';
+  font-family: 'league-gothic', 'SourceSansPro';
   text-align: center;
   font-weight: normal;
   font-size: 2rem;
@@ -328,7 +326,7 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
 }
 .anyconf-label-location {
   margin: 0;
-  font-family: 'league-gothic';
+  font-family: 'league-gothic', 'SourceSansPro';
   text-align: center;
   font-weight: normal;
   font-size: 1.5rem;
@@ -359,7 +357,7 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
   margin: 0;
   line-height: 3.5rem;
   font-size: 3.5rem;
-  font-family: 'league-gothic';
+  font-family: 'league-gothic', 'SourceSansPro';
   font-weight: normal;
   text-transform: uppercase;
   text-align: center;
@@ -396,7 +394,7 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
   top: 0px;
 }
 .anyconf-condensed {
-  font-family: 'league-gothic';
+  font-family: 'league-gothic', 'SourceSansPro';
   text-transform: uppercase;
   font-size: 1.5rem;
   color: #333;
@@ -472,7 +470,7 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
 .topcoat-overlay h1 {
   margin: 0;
   color: #fff;
-  font-family: 'league-gothic';
+  font-family: 'league-gothic', 'SourceSansPro';
   border-bottom: none;
   font-size: 1.5rem;
   font-weight: normal;
@@ -629,7 +627,7 @@ body {
   border-radius: 6px;
 }
 .topcoat-navigation-bar__title {
-  font-family: "league-gothic";
+  font-family: 'league-gothic', 'SourceSansPro';
   text-transform: uppercase;
   text-shadow: 0px 1px 0px #fff;
 }
@@ -665,7 +663,7 @@ body {
   content: "UP NEXT";
   line-height: 2rem;
   font-size: 2rem;
-  font-family: 'league-gothic';
+  font-family: 'league-gothic', 'SourceSansPro';
   font-weight: 100;
   padding: 0.07rem 0.7rem;
   color: #fff;
@@ -838,7 +836,7 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
   background: #c69;
   font-weight: normal;
   font-size: 2.5rem;
-  font-family: 'league-gothic';
+  font-family: 'league-gothic', 'SourceSansPro';
   text-transform: uppercase;
   list-style: none;
 }
@@ -893,7 +891,7 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
 }
 .anyconf-label-date {
   margin: 0;
-  font-family: 'league-gothic';
+  font-family: 'league-gothic', 'SourceSansPro';
   text-align: center;
   font-weight: normal;
   font-size: 2rem;
@@ -901,7 +899,7 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
 }
 .anyconf-label-location {
   margin: 0;
-  font-family: 'league-gothic';
+  font-family: 'league-gothic', 'SourceSansPro';
   text-align: center;
   font-weight: normal;
   font-size: 1.5rem;
@@ -932,7 +930,7 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
   margin: 0;
   line-height: 3.5rem;
   font-size: 3.5rem;
-  font-family: 'league-gothic';
+  font-family: 'league-gothic', 'SourceSansPro';
   font-weight: normal;
   text-transform: uppercase;
   text-align: center;
@@ -969,7 +967,7 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
   top: 0px;
 }
 .anyconf-condensed {
-  font-family: 'league-gothic';
+  font-family: 'league-gothic', 'SourceSansPro';
   text-transform: uppercase;
   font-size: 1.5rem;
   color: #333;
@@ -1044,7 +1042,7 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
 .topcoat-overlay h1 {
   margin: 0;
   color: #fff;
-  font-family: 'league-gothic';
+  font-family: 'league-gothic', 'SourceSansPro';
   border-bottom: none;
   font-size: 1.5rem;
   font-weight: normal;
@@ -1080,7 +1078,7 @@ limitations under the License.
   border-radius: 6px;
 }
 .topcoat-navigation-bar__title {
-  font-family: "league-gothic";
+  font-family: 'league-gothic', 'SourceSansPro';
   text-transform: uppercase;
   text-shadow: 0px 1px 0px #fff;
 }
@@ -1116,7 +1114,7 @@ limitations under the License.
   content: "UP NEXT";
   line-height: 2rem;
   font-size: 2rem;
-  font-family: 'league-gothic';
+  font-family: 'league-gothic', 'SourceSansPro';
   font-weight: 100;
   padding: 0.07rem 0.7rem;
   color: #fff;
@@ -1289,7 +1287,7 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
   background: #c69;
   font-weight: normal;
   font-size: 2.5rem;
-  font-family: 'league-gothic';
+  font-family: 'league-gothic', 'SourceSansPro';
   text-transform: uppercase;
   list-style: none;
 }
@@ -1344,7 +1342,7 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
 }
 .anyconf-label-date {
   margin: 0;
-  font-family: 'league-gothic';
+  font-family: 'league-gothic', 'SourceSansPro';
   text-align: center;
   font-weight: normal;
   font-size: 2rem;
@@ -1352,7 +1350,7 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
 }
 .anyconf-label-location {
   margin: 0;
-  font-family: 'league-gothic';
+  font-family: 'league-gothic', 'SourceSansPro';
   text-align: center;
   font-weight: normal;
   font-size: 1.5rem;
@@ -1383,7 +1381,7 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
   margin: 0;
   line-height: 3.5rem;
   font-size: 3.5rem;
-  font-family: 'league-gothic';
+  font-family: 'league-gothic', 'SourceSansPro';
   font-weight: normal;
   text-transform: uppercase;
   text-align: center;
@@ -1420,7 +1418,7 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
   top: 0px;
 }
 .anyconf-condensed {
-  font-family: 'league-gothic';
+  font-family: 'league-gothic', 'SourceSansPro';
   text-transform: uppercase;
   font-size: 1.5rem;
   color: #333;
@@ -1495,7 +1493,7 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
 .topcoat-overlay h1 {
   margin: 0;
   color: #fff;
-  font-family: 'league-gothic';
+  font-family: 'league-gothic', 'SourceSansPro';
   border-bottom: none;
   font-size: 1.5rem;
   font-weight: normal;
@@ -2297,7 +2295,7 @@ limitations under the License.
   border-radius: 6px;
 }
 .topcoat-navigation-bar__title {
-  font-family: "league-gothic";
+  font-family: 'league-gothic', 'SourceSansPro';
   text-transform: uppercase;
   text-shadow: 0px 1px 0px #fff;
   
@@ -2336,7 +2334,7 @@ limitations under the License.
   content: "UP NEXT";
   line-height: 2rem;
   font-size: 2rem;
-  font-family: 'league-gothic';
+  font-family: 'league-gothic', 'SourceSansPro';
   font-weight: 100;
   padding: 0.07rem 0.7rem;
   color: #fff;
@@ -2509,7 +2507,7 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
   background: #c69;
   font-weight: normal;
   font-size: 2.5rem;
-  font-family: 'league-gothic';
+  font-family: 'league-gothic', 'SourceSansPro';
   text-transform: uppercase;
   list-style: none;
 }
@@ -2564,7 +2562,7 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
 }
 .anyconf-label-date {
   margin: 0;
-  font-family: 'league-gothic';
+  font-family: 'league-gothic', 'SourceSansPro';
   text-align: center;
   font-weight: normal;
   font-size: 2rem;
@@ -2572,7 +2570,7 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
 }
 .anyconf-label-location {
   margin: 0;
-  font-family: 'league-gothic';
+  font-family: 'league-gothic', 'SourceSansPro';
   text-align: center;
   font-weight: normal;
   font-size: 1.5rem;
@@ -2603,7 +2601,7 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
   margin: 0;
   line-height: 3.5rem;
   font-size: 3.5rem;
-  font-family: 'league-gothic';
+  font-family: 'league-gothic', 'SourceSansPro';
   font-weight: normal;
   text-transform: uppercase;
   text-align: center;
@@ -2640,7 +2638,7 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
   top: 0px;
 }
 .anyconf-condensed {
-  font-family: 'league-gothic';
+  font-family: 'league-gothic', 'SourceSansPro';
   text-transform: uppercase;
   font-size: 1.5rem;
   color: #333;
@@ -2715,7 +2713,7 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
 .topcoat-overlay h1 {
   margin: 0;
   color: #fff;
-  font-family: 'league-gothic';
+  font-family: 'league-gothic', 'SourceSansPro';
   border-bottom: none;
   font-size: 1.5rem;
   font-weight: normal;
@@ -3017,4 +3015,29 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
     margin-left: -1px;
     background-size: 27px;
     margin-top: 1px;
+}
+
+/* Use smaller size for fallback font (no wf-active) */
+.topcoat-navigation-bar__title {
+    font-size: 1.8rem;
+}
+
+.wf-active .topcoat-navigation-bar__title {
+    font-size: 2.5rem;
+}
+
+.anyconf-list__header {
+   font-size: 1.5rem;
+}
+
+.wf-active .anyconf-list__header {
+   font-size: 2.5rem;
+}
+
+.anyconf-label-status--next:after {
+    font-size: 1.5rem;
+}
+
+.wf-active .anyconf-label-status--next:after {
+    font-size: 2rem;
 }
