@@ -13,6 +13,7 @@ define(function(require, exports, module) {
 		animating: false,
 		gestureStarted: false,
 		swiping: false,
+		inView: false,
 		
 		events: {
 		    'pointerdown': 'pointerDown',
@@ -26,9 +27,13 @@ define(function(require, exports, module) {
 		    
 		    appRouter.on('route', function(route, itemId) {
 		        if( route == this.routeId ) {
+		            this.inView = true;
 		            this.navigateTo(itemId);
 		        } else {
-		            this.leave();
+		            if( this.inView ) {
+		                this.leave();
+		            }
+		            this.inView = false;
 		        }
 		    }, this);
 		    
@@ -57,7 +62,8 @@ define(function(require, exports, module) {
         },
 		
 		leave: function() {
-		    this.el.style.display = 'none';
+    		this.transitionOut();
+		    // this.el.style.display = 'none';
 		},
 		
 		beforeRender: function() {
@@ -74,9 +80,52 @@ define(function(require, exports, module) {
             
 		},
 		
+		transitionIn: function() {
+		    var _this = this;
+		    var el = this.el;
+		    // Start from side
+            el.style.display = 'block';
+		    el.style.webkitTransform = 'translateX(' + window.innerWidth + 'px) translateZ(0)';
+		    el.style.overflow = 'hidden';
+		    setTimeout( function() {
+		        _this.transitionFromClass('js-enter-view-transition');
+		        el.style.webkitTransform = 'none';
+		    }, 1);
+		    
+			var onTransitionEnd = function(evt) {
+				_this.animating = false;
+                el.style.overflow = null;
+				el.classList.remove('js-enter-view-transition');
+				el.removeEventListener('webkitTransitionEnd', onTransitionEnd);
+			};
+			el.addEventListener('webkitTransitionEnd', onTransitionEnd);
+		},
+		
+        transitionOut: function() {
+		    var _this = this;
+		    var el = this.el;
+		    // Move to right side
+            el.style.webkitTransform = 'none';
+		    el.style.overflow = 'hidden';
+		    setTimeout( function() {
+		        _this.transitionFromClass('js-leave-view-transition');
+    		    el.style.webkitTransform = 'translateX(' + window.innerWidth + 'px) translateZ(0)';
+		    }, 1);
+		    
+			var onTransitionEnd = function(evt) {
+				_this.animating = false;
+                el.style.overflow = null;
+                el.style.display = 'none';
+				el.classList.remove('js-leave-view-transition');
+				el.removeEventListener('webkitTransitionEnd', onTransitionEnd);
+			};
+			el.addEventListener('webkitTransitionEnd', onTransitionEnd);
+        },
+		
 		afterRender: function() {
 		    this.el.style.display = 'block';
             this.setCurrentItem( this.currentItem );
+            this.transitionIn();
   		},
 		
 		navigateTo: function(itemId) {

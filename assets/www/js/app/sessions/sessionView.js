@@ -25,7 +25,6 @@ define(function(require, exports, module) {
 		
 		initialize: function() {
 		    var _this = this;
-			this.listenTo(this.model, 'change', this.render);
 			this.listenTo(this.model, 'change:timeFlag', this.updateTimeFlag);
 			this.on('change:timeFlag', this.updateTimeFlag);
 			
@@ -85,10 +84,20 @@ define(function(require, exports, module) {
 			var modelData = this.model.toJSON();
 			var subtitle = '';
 			var _this = this;
-			var len = modelData.speakers ? modelData.speakers.length : null;
+			var sessionSpeakers = [];
+			var speakerCollection = this.model.collection.speakerCollection;
+			
+			// TODO: Do this in model?
+			for( var i = 0; i < modelData.speaker_ids.length; i++ ) {
+			    var speakerId = modelData.speaker_ids[i];
+			    sessionSpeakers.push( speakerCollection.get( speakerId ) );
+			}
+
+			var len = sessionSpeakers.length;
+
 			if( len ) {
 				for( var i = 0; i < len; i++ ) {
-					var speaker = modelData.speakers[i];
+					var speaker = sessionSpeakers[i];
 					var speakerName = speaker.get('full_name');
 					if( i === 0 ) {
 						subtitle += speakerName;

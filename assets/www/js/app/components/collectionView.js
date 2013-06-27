@@ -9,7 +9,7 @@ define(function(require, exports, module) {
 		
 		// el: '#content',
 		tagName: 'div',
-		// className: 'topcoat-list',
+		className: 'anyconf-collection-container',
 		template: _.template(collectionTemplate),
 		
 		pages: [],
@@ -26,6 +26,7 @@ define(function(require, exports, module) {
 		swipeChecked: false,
 		
 		routeId: null,
+		inView: false,
 		
 		events: {
 		    'pointerdown': 'pointerDown',
@@ -36,8 +37,21 @@ define(function(require, exports, module) {
 		},
 		
 		leave: function() {
-			this.el.style.display = 'none';
+			// this.el.style.display = 'none';
+			this.transitionOut();
 		},
+		
+        transitionFromClass: function(className) {
+            var classList = this.el.classList;
+			if( classList.contains(className) ) {
+			    console.error('unexpected classlist re-add');
+			    this.animating = false;
+			} else {
+                this.animating = true;
+                console.log('Start animating...');
+			    classList.add(className);
+			}
+        },
 		
 		setCurrentPage: function(itemPage) {
 			this.currentPage = itemPage;
@@ -108,6 +122,8 @@ define(function(require, exports, module) {
 			var pageBottom = this.currentPage.el.offsetTop + this.currentPage.el.offsetHeight;
 
 			if( viewBottom > pageBottom ) {
+			    // Fix the page's height
+			    this.currentPage.el.style.height = this.currentPage.el.offsetHeight + 'px';
 				this.addToNewPage();
 				this.currentPage.el.appendChild( itemView.el );
 			}
@@ -330,6 +346,50 @@ define(function(require, exports, module) {
 			this.setCurrentPage( this.pages[0] );
 			
 			this.positionOverlay();
+			
+			this.transitionIn();
+        },
+
+        transitionIn: function() {
+		    var _this = this;
+		    var el = this.el;
+		    // Start from side
+		    el.style.display = 'block';
+		    el.style.webkitTransform = 'translateX(-' + window.innerWidth + 'px) translateZ(0)';
+		    // el.style.overflow = 'hidden';
+		    setTimeout( function() {
+		        _this.transitionFromClass('js-enter-view-transition');
+		        el.style.webkitTransform = null; // 'none';
+		    }, 1);
+		    
+			var onTransitionEnd = function(evt) {
+				_this.animating = false;
+                // el.style.overflow = null;
+				el.classList.remove('js-enter-view-transition');
+				el.removeEventListener('webkitTransitionEnd', onTransitionEnd);
+			};
+			el.addEventListener('webkitTransitionEnd', onTransitionEnd);
+        },
+		        
+        transitionOut: function() {
+		    var _this = this;
+		    var el = this.el;
+		    // Move to left side
+            el.style.webkitTransform = 'none';
+		    el.style.overflow = 'hidden';
+		    setTimeout( function() {
+		        _this.transitionFromClass('js-leave-view-transition');
+    		    el.style.webkitTransform = 'translateX(-' + window.innerWidth + 'px) translateZ(0)';
+		    }, 1);
+		    
+			var onTransitionEnd = function(evt) {
+				_this.animating = false;
+                el.style.overflow = null;
+    		    el.style.display = 'none';
+				el.classList.remove('js-leave-view-transition');
+				el.removeEventListener('webkitTransitionEnd', onTransitionEnd);
+			};
+			el.addEventListener('webkitTransitionEnd', onTransitionEnd);
         },
 		
 		serialize: function() {
@@ -361,9 +421,13 @@ define(function(require, exports, module) {
 			
 		    appRouter.on('route', function(route) {
 		        if( route == this.routeId ) {
-		            _this.render();
+		            this.inView = true;
+		            this.render();
 		        } else {
-		            _this.leave();
+		            if( this.inView ) {
+		                this.leave();
+		            }
+		            this.inView = false;
 		        }
 		    }, this);
 		}
