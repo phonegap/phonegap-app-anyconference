@@ -155,7 +155,7 @@ define(function(require, exports, module) {
 		pointerDown: function(jqEvt) {
 		    var evt = jqEvt.originalEvent;
 			console.log('pointerdown');
-			if( this.animating ) {
+			if( this.animating || !this.currentPage ) {
 			    evt.preventDefault();
 				return;
 			}
@@ -247,9 +247,23 @@ define(function(require, exports, module) {
             }
 		},
 		
+		handleEmptyPointerUp: function(jqEvt) {
+		    jqEvt.preventDefault();
+		    if( jqEvt.target.tagName === 'A' ) {
+		        var href = jqEvt.target.getAttribute('href');
+		        appRouter.navigate(href, {trigger: true});
+		    }
+		},
+		
 		pointerUp: function(jqEvt) {
 		    console.log('pointerup');
 		    var evt = jqEvt.originalEvent;
+		    
+		    if( !this.currentPage ) {
+		        this.handleEmptyPointerUp(jqEvt);
+		        return;
+		    }
+		    
 			var targetEl = this.currentPage.el;
 			
 		    if( !this.pointerStarted ) {

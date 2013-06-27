@@ -1,3 +1,18 @@
-<div>
-    <%- message %>
+<div class="item-page">
+    <div class="topcoat-list__header anyconf-label-status">
+        <div class="topcoat-navigation-bar__item left anyconf-label-time">
+            <%- title %>
+        </div>
+    </div>
+
+    <div class="topcoat-list__item">
+        <div class="topcoat-card">
+            <div class="topcoat-card-content">
+                <h2 class="anyconf-label-title"><%- message %></h2>
+                <div class="anyconf-label-speaker js-details-link">
+                    <%- helpInfoBefore %><a href="sessionCollection"><%- helpInfoLinkText %></a><%- helpInfoAfter %>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
