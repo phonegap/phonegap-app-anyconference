@@ -2967,6 +2967,15 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
     box-sizing: border-box;
 }
 
+.anyconf-menu-title {
+    margin-top: 14rem;
+}
+
+.anyconf-menu {
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
 .topcoat-card {
     display: block;
     min-height: 100px;
@@ -2986,7 +2995,7 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
     background-color: #dcdcdc;
     color: white;
     -webkit-transform: translateZ(0); /* Needed for Android */
-    z-index: 100;
+    //z-index: 100;
     position: fixed;
     margin: 0;
     line-height: 5rem;

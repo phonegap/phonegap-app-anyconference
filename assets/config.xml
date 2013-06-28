@@ -13,7 +13,10 @@
         PhoneGap Team
     </author>
 
+    <access origin="*" />
+
     <feature name="http://api.phonegap.com/1.0/device" />
+    <feature name="http://api.phonegap.com/1.0/network"/>
 
     <preference name="phonegap-version" value="2.7.0" />
     <preference name="orientation"      value="portrait" />
