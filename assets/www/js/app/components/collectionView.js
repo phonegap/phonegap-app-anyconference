@@ -123,7 +123,9 @@ define(function(require, exports, module) {
 
 			if( viewBottom > pageBottom ) {
 			    // Fix the page's height
-			    this.currentPage.el.style.height = this.currentPage.el.offsetHeight + 'px';
+			    var pageHeight = this.currentPage.el.offsetHeight;
+			    this.currentPage.el.style.height = pageHeight + 'px';
+			    this.listEl.style.height = pageHeight + 'px';
 				this.addToNewPage();
 				this.currentPage.el.appendChild( itemView.el );
 			}

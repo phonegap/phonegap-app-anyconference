@@ -2836,10 +2836,6 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
     background-image: url("../img/starmenu.svg");
 }
 
-.anyconf-session-speakers h4 {
-    font-size: 2rem;
-}
-
 .anyconf-session-speakers h5 {
     margin: 0;
 }
