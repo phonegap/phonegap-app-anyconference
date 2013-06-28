@@ -86,18 +86,12 @@ define(function(require, exports, module) {
             this.listenTo(this.model, 'change', this.render);
             this.listenTo(this.model, 'destroy', this.remove);
             this.listenTo(appRouter, 'route', this.setHeading);
-            
-            /*
-			appRouter.on('route', function(route) {
-			    _this.setHeading.apply(_this, arguments);
-			});
-			*/
-
         },
         
         serialize: function() {
             return this.model.attributes;
         },
+        
         afterRender: function() {
             this.setView('#content', sessionCollectionView, true);
             this.setView('#content', sessionCollectionStarredView, true);
@@ -123,9 +117,19 @@ define(function(require, exports, module) {
 		setHeading: function(route) {
 		    var headingText;
 		    var showBackButton = false;
-		    var dayOfWeek = 'TODAY';
             switch( route ) {
                 case 'sessionCollection':
+                    // TODO: This needs to change for multiple dates
+                    var dayStr = this.model.get('dates')[0].date;
+                    var day = moment(dayStr);
+                    var curDate = moment().format("YYYY-MM-DD");
+                    var dayDate = day.format("YYYY-MM-DD");
+                    var dayOfWeek;
+                    if( dayDate == curDate ) {
+                        dayOfWeek = 'TODAY';
+                    } else {
+                        dayOfWeek = day.format('dddd').toUpperCase();
+                    }
                     headingText = dayOfWeek;
                     break;
                 case 'starredSessionCollection':

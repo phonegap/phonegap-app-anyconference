@@ -339,6 +339,7 @@ define(function(require, exports, module) {
 		    
 		    if( itemCount == 0 ) {
 		        this.showEmptyPage();
+		        this.transitionIn();
 		        return;
 		    }
 		
@@ -358,6 +359,7 @@ define(function(require, exports, module) {
 		    el.style.webkitTransform = 'translateX(-' + window.innerWidth + 'px) translateZ(0)';
 		    // el.style.overflow = 'hidden';
 		    setTimeout( function() {
+    		    el.style.display = 'block';
 		        _this.transitionFromClass('js-enter-view-transition');
 		        el.style.webkitTransform = null; // 'none';
 		    }, 1);

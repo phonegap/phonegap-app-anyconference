@@ -80,6 +80,14 @@ define(function(require, exports, module) {
             
 		},
 		
+		removeTransitionClasses: function() {
+			var cl = this.el.classList;
+			// Not all browsers support removing multiple at once...
+			cl.remove('js-enter-view-transition');
+			cl.remove('js-leave-view-transition')
+			cl.remove('js-details-transition');
+		},
+		
 		transitionIn: function() {
 		    var _this = this;
 		    var el = this.el;
@@ -95,7 +103,9 @@ define(function(require, exports, module) {
 			var onTransitionEnd = function(evt) {
 				_this.animating = false;
                 el.style.overflow = null;
-				el.classList.remove('js-enter-view-transition');
+    		    el.style.display = 'block';
+				//el.classList.remove('js-enter-view-transition');
+				_this.removeTransitionClasses();
 				el.removeEventListener('webkitTransitionEnd', onTransitionEnd);
 			};
 			el.addEventListener('webkitTransitionEnd', onTransitionEnd);
@@ -116,7 +126,8 @@ define(function(require, exports, module) {
 				_this.animating = false;
                 el.style.overflow = null;
                 el.style.display = 'none';
-				el.classList.remove('js-leave-view-transition');
+				// el.classList.remove('js-leave-view-transition');
+				_this.removeTransitionClasses();
 				el.removeEventListener('webkitTransitionEnd', onTransitionEnd);
 			};
 			el.addEventListener('webkitTransitionEnd', onTransitionEnd);
@@ -171,7 +182,9 @@ define(function(require, exports, module) {
 			
 			var onTransitionEnd = function(evt) {
 				_this.animating = false;
-				_this.el.classList.remove('js-details-transition');
+				// _this.el.classList.remove('js-details-transition');
+                _this.removeTransitionClasses();
+
 				evt.target.removeEventListener('webkitTransitionEnd', onTransitionEnd);
 				switch( relativeIndex ) {
 					case 0:
@@ -218,7 +231,7 @@ define(function(require, exports, module) {
 				y: 0
 			};
 			this.pointerStarted = true;
-            this.el.classList.remove('js-details-transition');
+            this.removeTransitionClasses();
 		},
 		
 		pointerMove: function(jqEvt) {

@@ -2814,6 +2814,7 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
 }
 
 .anyconf-collection-container {
+    background-color: #f2f3f3;
     width: 100%;
     height: 100%;
 }
@@ -2823,16 +2824,8 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
     width: 90%;
 }
 
-.topcoat-navigation-bar__title {
-    //line-height: 4.5rem;
-}
-
 .anyconf-list-label {
     padding: 0 0.5rem;
-}
-
-.anyconf-list__header .anyconf-list-label {
-    //line-height: 3.9rem;
 }
 
 .anyconf-list__item {
@@ -2841,10 +2834,6 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
 
 .anyconf-list__item .topcoat-icon--star {
     background-image: url("../img/starmenu.svg");
-}
-
-.topcoat-list__container {
-    //background: #f2f3f3;
 }
 
 .anyconf-session-speakers h4 {
@@ -2985,14 +2974,14 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
 .topcoat-card {
     display: block;
     min-height: 100px;
-    //position: static;
 }
 
 .topcoat-card-content {
     display: block;
 }   
 
-.topcoat-card:active {
+.topcoat-card:active,
+.anyconf-speaker-item:active {
     background-color: #dcdcdc;
 }
 
