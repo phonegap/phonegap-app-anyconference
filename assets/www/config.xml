@@ -14,18 +14,26 @@
     </author>
 
     <access origin="*" />
-
+    
+    <icon src="res/icon/icon.png" />
+    <gap:splash gap:platform="ios" src="res/screen/ios-splash.png" />
+    <gap:splash src="res/screen/android-splash.png" gap:platform="android" gap:density="ldpi" />
+    <gap:splash src="res/screen/android-splash.png" gap:platform="android" gap:density="mdpi" />
+    <gap:splash src="res/screen/android-splash.png" gap:platform="android" gap:density="hdpi" />
+    <gap:splash src="res/screen/android-splash.png" gap:platform="android" gap:density="xhdpi" />
+    
     <feature name="http://api.phonegap.com/1.0/device" />
     <feature name="http://api.phonegap.com/1.0/network"/>
 
+    <preference name="prerendered-icon" value="true" />
     <preference name="phonegap-version" value="2.7.0" />
     <preference name="orientation"      value="portrait" />
     <preference name="target-device"    value="handset" />
     <preference name="fullscreen"       value="false" />
     
     <preference name="webviewbounce" value="false" />
-    <preference name="load-url-timeout" value="10000" />
-    <preference name="splash-screen-duration" value="10000" />
+    <preference name="load-url-timeout" value="5000" />
+    <preference name="splash-screen-duration" value="5000" />
     <preference name="auto-hide-splash-screen" value="true" />
 
 </widget>
