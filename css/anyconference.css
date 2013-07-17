@@ -2968,12 +2968,23 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
 }
 
 .anyconf-menu-title {
-    margin-top: 14rem;
+    margin-top: 2rem;
 }
 
 .anyconf-menu {
     overflow: auto;
     -webkit-overflow-scrolling: touch;
+}
+
+.anyconf-event-logo {
+    width: 40%;
+    height: 160px;
+    margin: 0 auto;
+
+    background-image: url('../img/event-logo.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .topcoat-card {

@@ -245,6 +245,16 @@ define(function(require, exports, module) {
             }
         },
         
+        serialize: function() {
+            var eventData = this.model.toJSON();
+		    var templateValues = {
+		        title: eventData.name,
+		        date: eventData.dates[0].date,
+		        location: eventData.location
+		    };
+            return templateValues;
+        },
+        
 		initialize: function() {
 		    var _this = this;
 		    /*
@@ -272,12 +282,9 @@ define(function(require, exports, module) {
 			});
 		    
 		    document.body.appendChild( this.el );
-		    var templateValues = {
-		        
-		    };
 		    this.el.classList.add('js-menu-offscreen');
 		    this.el.style.webkitTransform = 'translateX(' + -window.innerWidth + 'px)';
-		    this.el.innerHTML = this.template(templateValues);
+		    // this.el.innerHTML = this.template(templateValues);
 		    // $('body').on("pointerdown",this.pointerDown);
 		}
 	});
