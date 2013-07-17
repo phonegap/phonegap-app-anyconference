@@ -1,1 +1,0 @@
-PhoneGap plugins go here to get auto loaded
