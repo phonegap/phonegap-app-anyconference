@@ -22,8 +22,18 @@ limitations under the License.
           <span class="topcoat-icon topcoat-icon--left-arrow"></span>
         </a>
     </div>
-    <div class="topcoat-navigation-bar__item center half">
+    <div class="topcoat-navigation-bar__item center half js-section-title">
       <h1 class="topcoat-navigation-bar__title js-navbar-title"><%= name || "" %></h1>
+    </div>
+    <div class="topcoat-navigation-bar__item topcoat-navigation-bar__day-container center half js-day-titles">
+        <% _.each(days, function(day) { %> 
+            <h1 class="topcoat-navigation-bar__title"><%- day %></h1>
+        <% }); %>
+      <div class="topcoat-page-indicator">
+        <% _.each(days, function(day) { %> 
+            <div class="topcoat-day-symbol"></div>
+        <% }); %>
+      </div>
     </div>
     <div class="topcoat-navigation-bar__item right anyconf-utils-right js-button-container">
 <!--

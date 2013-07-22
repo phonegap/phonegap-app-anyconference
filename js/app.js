@@ -104,7 +104,22 @@ define(function(require, exports, module) {
         },
         
         serialize: function() {
-            return this.model.attributes;
+            var modelProps = this.model.toJSON();
+            var dates = modelProps.dates;
+            modelProps.days = _.map( dates, function(item) {
+                var dayOfWeek;
+                var dayStr = item.date;
+                var day = moment(dayStr);
+                var curDate = moment().format("YYYY-MM-DD");
+                var dayDate = day.format("YYYY-MM-DD");
+                if( dayDate == curDate ) {
+                    dayOfWeek = 'TODAY';
+                } else {
+                    dayOfWeek = day.format('dddd').toUpperCase();
+                }
+                return dayOfWeek;
+            });
+            return modelProps;
         },
         
         afterRender: function() {
@@ -132,35 +147,28 @@ define(function(require, exports, module) {
 		setHeading: function(route) {
 		    var headingText;
 		    var showBackButton = false;
-            switch( route ) {
-                case 'sessionCollection':
-                    // TODO: This needs to change for multiple dates
-                    var dayStr = this.model.get('dates')[0].date;
-                    var day = moment(dayStr);
-                    var curDate = moment().format("YYYY-MM-DD");
-                    var dayDate = day.format("YYYY-MM-DD");
-                    var dayOfWeek;
-                    if( dayDate == curDate ) {
-                        dayOfWeek = 'TODAY';
-                    } else {
-                        dayOfWeek = day.format('dddd').toUpperCase();
-                    }
-                    headingText = dayOfWeek;
-                    break;
-                case 'starredSessionCollection':
-                    headingText = 'STARRED';
-                    break;
-                case 'speakerCollection':
-                    headingText = 'SPEAKERS';
-                    break;
-                case 'sessionDetails':
-                    headingText = 'SESSION';
-                    showBackButton = true;
-                    break;
-                case 'speakerDetails':
-                    headingText = 'SPEAKER';
-                    showBackButton = true;
-                    break;
+		    if( route === 'sessionCollection' ) {
+                $('.js-day-titles').show();
+                $('.js-section-title').hide();
+		    } else {
+                $('.js-day-titles').hide();
+                $('.js-section-title').show();
+                switch( route ) {
+                    case 'starredSessionCollection':
+                        headingText = 'STARRED';
+                        break;
+                    case 'speakerCollection':
+                        headingText = 'SPEAKERS';
+                        break;
+                    case 'sessionDetails':
+                        headingText = 'SESSION';
+                        showBackButton = true;
+                        break;
+                    case 'speakerDetails':
+                        headingText = 'SPEAKER';
+                        showBackButton = true;
+                        break;
+                }
             }
             $('.js-navbar-title').text( headingText );
             if( showBackButton ) {
