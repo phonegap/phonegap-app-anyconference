@@ -18,11 +18,10 @@ define(function(require, exports, module) {
     var AppRouter = Backbone.Router.extend({
  
         routes: {
-            '': 'sessionCollection',
-            'sessionCollection': 'sessionCollection',
             'starredSessionCollection': 'starredSessionCollection',
             'speakerCollection': 'speakerCollection',
 
+            'sessionCollection/:dayId': 'sessionCollection',
             'sessionDetails/:sessionId': 'sessionDetails',
             'speakerDetails/:speakerId': 'speakerDetails'
         },

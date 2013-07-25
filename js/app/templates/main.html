@@ -26,12 +26,9 @@ limitations under the License.
       <h1 class="topcoat-navigation-bar__title js-navbar-title"><%= name || "" %></h1>
     </div>
     <div class="topcoat-navigation-bar__item topcoat-navigation-bar__day-container center half js-day-titles">
-        <% _.each(days, function(day) { %> 
-            <h1 class="topcoat-navigation-bar__title"><%- day %></h1>
-        <% }); %>
       <div class="topcoat-page-indicator">
-        <% _.each(days, function(day) { %> 
-            <div class="topcoat-day-symbol"></div>
+        <% _.each(dates, function(day) { %> 
+            <div class="topcoat-day-symbol js-day-symbol" data-day-id="<%- day.id %>"></div>
         <% }); %>
       </div>
     </div>

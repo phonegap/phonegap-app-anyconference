@@ -26,10 +26,38 @@ define(function(require, exports, module) {
 
     var appRouter = require('app/appRouter');
 
+    //Define app model
+    var AppModel = Backbone.Model.extend({
+        url: config.url + 'event.json',
+        defaults: {
+            'name': 'AnyConference',
+            'title': 'Today'
+        }
+    });
+
+    //Instantiate app model
+    var appModel = new AppModel();
+
+    //Day
+    var DayCollection = require('app/days/dayCollection');
+    
+    var DayCollectionView = require('app/days/dayCollectionView');
+    var DayCollectionHeadersView = require('app/days/dayCollectionHeadersView');
+    
     //Speaker
     var SpeakerCollection = require('app/speakers/speakerCollection');
+    
     var SpeakerCollectionView = require('app/speakers/speakerCollectionView');
     var SpeakerCollectionDetailsView = require('app/speakers/speakerCollectionDetailsView');
+    
+    //Session
+    var SessionCollection = require('app/sessions/sessionCollection'); // day of sessions or starred sessions
+    
+    var SessionCollectionView = require('app/sessions/sessionCollectionView');
+    var SessionCollectionDetailsView = require('app/sessions/sessionCollectionDetailsView');
+    var SessionOptionView = require('app/sessions/sessionOptionView');
+
+    
 
     var speakerCollection = new SpeakerCollection();
     var speakerCollectionView = new SpeakerCollectionView({
@@ -40,12 +68,9 @@ define(function(require, exports, module) {
         collection: speakerCollection
     });
     
-    //Session
-    var SessionCollection = require('app/sessions/sessionCollection');
-    var SessionCollectionView = require('app/sessions/sessionCollectionView');
-    var SessionCollectionDetailsView = require('app/sessions/sessionCollectionDetailsView');
-    var SessionOptionView = require('app/sessions/sessionOptionView');
-
+    
+    /*
+    // TODO: Put this in days
     var sessionCollection = new SessionCollection({
         speakerCollection: speakerCollection
     });
@@ -53,7 +78,8 @@ define(function(require, exports, module) {
         collection: sessionCollection
     });
     speakerCollection.setSessions( sessionCollection );
-    
+    */
+    /*
     var sessionCollectionStarredView = new SessionCollectionView({
         collection: sessionCollection,
         type: 'starred'
@@ -74,6 +100,7 @@ define(function(require, exports, module) {
         flag: 'loved',
         template: require('text!app/templates/loveButtonTemplate.html')
     });
+    */
 
     //Load html template
     var appTemplate = require("text!app/templates/main.html");
@@ -105,35 +132,44 @@ define(function(require, exports, module) {
         
         serialize: function() {
             var modelProps = this.model.toJSON();
-            var dates = modelProps.dates;
-            modelProps.days = _.map( dates, function(item) {
-                var dayOfWeek;
-                var dayStr = item.date;
-                var day = moment(dayStr);
-                var curDate = moment().format("YYYY-MM-DD");
-                var dayDate = day.format("YYYY-MM-DD");
-                if( dayDate == curDate ) {
-                    dayOfWeek = 'TODAY';
-                } else {
-                    dayOfWeek = day.format('dddd').toUpperCase();
-                }
-                return dayOfWeek;
-            });
             return modelProps;
         },
         
         afterRender: function() {
-            this.setView('#content', sessionCollectionView, true);
-            this.setView('#content', sessionCollectionStarredView, true);
-            this.setView('#content', sessionCollectionDetailsView, true);
+            var dayCollection = new DayCollection();
+            dayCollection.add( this.model.get('dates') );
+            
+            var dayCollectionView = new DayCollectionView({
+                collection: dayCollection
+            });
+
+            this.setView('#content', dayCollectionView, true);
+            dayCollectionView.render();
+            
+            var dayCollectionHeadersView = new DayCollectionHeadersView({
+                collection: dayCollection
+            });
+            this.setView('.js-day-titles', dayCollectionHeadersView, true);
+
+            
+            
+            //this.setView('#content', sessionCollectionView, true);
+            //this.setView('#content', sessionCollectionStarredView, true);
+            //this.setView('#content', sessionCollectionDetailsView, true);
             this.setView('#content', speakerCollectionView, true);
             this.setView('#content', speakerCollectionDetailsView, true);
+            //this.setView('.js-day-titles', dayCollectionView, true);
             this.setView(menuView, true);
-            this.setView('.js-button-container', starredOptionView, true);
-            this.setView('.js-button-container', lovedOptionView, true);
+            //this.setView('.js-button-container', starredOptionView, true);
+            //this.setView('.js-button-container', lovedOptionView, true);
+            
+            // TODO: Something better than this
+            // dayCollectionView.navigateTo(this.model.get('dates')[0].id);
+            var firstId = this.model.get('dates')[0].id;
             menuView.render();
             this.checkTime();
             Backbone.history.start();
+            appRouter.navigate('sessionCollection/' + firstId, {trigger: true});
         },
 
         showMenu: function() {
@@ -192,6 +228,8 @@ define(function(require, exports, module) {
 			// TODO: For each track, if track is today...
 			var timeOfNext = null;
 			
+			// TODO: Fix this
+			return;
 			sessionCollection.each(function(session) {
 				var start = session.get('startTime');
 				var end = session.get('endTime');
@@ -215,19 +253,7 @@ define(function(require, exports, module) {
 		},
 		
     });
-
-    //Define app model
-    var AppModel = Backbone.Model.extend({
-        url: config.url + 'event.json',
-        defaults: {
-            'name': 'AnyConference',
-            'title': 'Today'
-        }
-    });
-
-    //Instantiate app model
-    var appModel = new AppModel();
-
+    
     //Indtantiate app view
     var appView = new AppView({
         'model': appModel

@@ -25,6 +25,8 @@ define(function(require, exports, module) {
 		className: 'all-details-wrap',
 		
 		currentItem: null,
+		itemWidth: null,
+		
 		animating: false,
 		gestureStarted: false,
 		swiping: false,
@@ -39,6 +41,7 @@ define(function(require, exports, module) {
 		
 		initialize: function() {
 		    var _this = this;
+		    this.itemWidth = window.innerWidth;
 		    
 		    appRouter.on('route', function(route, itemId) {
 		        if( route == this.routeId ) {
@@ -108,7 +111,7 @@ define(function(require, exports, module) {
 		    var el = this.el;
 		    // Start from side
             el.style.display = 'block';
-		    el.style.webkitTransform = 'translateX(' + window.innerWidth + 'px) translateZ(0)';
+		    el.style.webkitTransform = 'translateX(' + this.itemWidth + 'px) translateZ(0)';
 		    el.style.overflow = 'hidden';
 		    setTimeout( function() {
 		        _this.transitionFromClass('js-enter-view-transition');
@@ -134,7 +137,7 @@ define(function(require, exports, module) {
 		    el.style.overflow = 'hidden';
 		    setTimeout( function() {
 		        _this.transitionFromClass('js-leave-view-transition');
-    		    el.style.webkitTransform = 'translateX(' + window.innerWidth + 'px) translateZ(0)';
+    		    el.style.webkitTransform = 'translateX(' + this.itemWidth + 'px) translateZ(0)';
 		    }, 1);
 		    
 			var onTransitionEnd = function(evt) {
@@ -150,8 +153,10 @@ define(function(require, exports, module) {
 		
 		afterRender: function() {
 		    this.el.style.display = 'block';
-            this.setCurrentItem( this.currentItem );
-            this.transitionIn();
+		    if( this.currentItem ) {
+                this.setCurrentItem( this.currentItem );
+                this.transitionIn();
+            }
   		},
 		
 		navigateTo: function(itemId) {
@@ -190,8 +195,7 @@ define(function(require, exports, module) {
 		
 		transitionTo: function(relativeIndex) {
 			var _this = this;
-			var width = window.innerWidth;
-			var offsetX = width * relativeIndex;
+			var offsetX = this.itemWidth * relativeIndex;
 			
             _this.animating = true;
 			

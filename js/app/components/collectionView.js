@@ -412,7 +412,6 @@ define(function(require, exports, module) {
         },
 		
 		serialize: function() {
-		
 		},
 		
 		hide: function() {
@@ -438,10 +437,12 @@ define(function(require, exports, module) {
 			this.pageOverlay = document.createElement('div');
 			this.pageOverlay.className = 'js-page-overlay';
 			
-		    appRouter.on('route', function(route) {
+		    appRouter.on('route', function(route, itemId) {
 		        if( route == this.routeId ) {
 		            this.inView = true;
-		            this.render();
+		            if( this.collection.length ) {
+		                this.render();
+		            }
 		        } else {
 		            if( this.inView ) {
 		                this.leave();
