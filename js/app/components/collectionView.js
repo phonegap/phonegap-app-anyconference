@@ -342,6 +342,7 @@ define(function(require, exports, module) {
 		},
 		
         afterRender: function() {
+            this.inView = true;
             this.el.style.display = 'block';
             this.listEl = this.$el.find('.js-item-view-container')[0];
             var viewType = this.options.type;
@@ -439,9 +440,19 @@ define(function(require, exports, module) {
 			
 		    appRouter.on('route', function(route, itemId) {
 		        if( route == this.routeId ) {
-		            this.inView = true;
-		            if( this.collection.length ) {
-		                this.render();
+		            if( itemId && itemId.length == 1) {
+		                if( itemId[0] == this.id ) {
+		                    this.el.style.display = 'block';
+        		            this.render();
+		                    this.transitionIn();
+		                } else {
+		                    this.el.style.display = 'none';
+		                }
+		            } else {
+		                // Prevent from rendering before collection populated
+                        if( this.collection.length ) {
+                            this.render();
+                        }
 		            }
 		        } else {
 		            if( this.inView ) {

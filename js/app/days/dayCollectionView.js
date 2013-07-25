@@ -32,15 +32,29 @@ define(function(require, exports, module) {
 		},
 		afterRender: function() {
             //dayCollectionHeadersView.render();
+            
+            /*
+            var sessionCollectionStarredView = new SessionCollectionView({
+                collection: sessionCollection,
+                type: 'starred'
+            });
 
+            this.setView(sessionCollectionStarredView, true);
+            */
+            
 		    this.collection.each(function(dayModel) {
 		        var sessionCollection = dayModel.sessionCollection;
 		        
 		        var sessionCollectionView = new SessionCollectionView({collection: sessionCollection});
+                var sessionCollectionDetailsView = new SessionCollectionDetailsView({collection: sessionCollection});
+
 		        this.setView(sessionCollectionView, true);
-		        
+		        this.setView(sessionCollectionDetailsView, true);
+
 		        sessionCollectionView.listenTo(sessionCollection, 'sync', function(evt) {
+		            sessionCollectionView.id = dayModel.id;
                     sessionCollectionView.render();
+                    // sessionCollectionDetailsView.render();
                 });
 		    }, this);
             // this.setView(sessionCollectionStarredView, true);

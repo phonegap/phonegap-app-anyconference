@@ -169,7 +169,10 @@ define(function(require, exports, module) {
             menuView.render();
             this.checkTime();
             Backbone.history.start();
-            appRouter.navigate('sessionCollection/' + firstId, {trigger: true});
+            if( !Backbone.history.fragment.length ) {
+                // Go to first day by default
+                appRouter.navigate('sessionCollection/' + firstId, {trigger: true});
+            }
         },
 
         showMenu: function() {

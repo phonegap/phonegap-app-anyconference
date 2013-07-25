@@ -1571,6 +1571,11 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
     background-color: #c69;
 }
 
+.anyconf-day-list-collection {
+    height: 100vh;
+    width: 100vw;
+}
+
 
 .anyconf-list-label {
     padding: 0 0.5rem;

@@ -80,8 +80,8 @@ define(function(require, exports, module) {
         },
 		
 		leave: function() {
-    		this.transitionOut();
-		    // this.el.style.display = 'none';
+    		// this.transitionOut();
+		    this.el.style.display = 'none';
 		},
 		
 		beforeRender: function() {
@@ -95,8 +95,15 @@ define(function(require, exports, module) {
 		        this.insertView(view);
 		        this.viewPointers[itemModel.cid] = view;
 		    }, this);
-            
 		},
+		
+		afterRender: function() {
+		    this.el.style.display = 'block';
+		    if( this.currentItem ) {
+                this.setCurrentItem( this.currentItem );
+                this.transitionIn();
+            }
+  		},
 		
 		removeTransitionClasses: function() {
 			var cl = this.el.classList;
@@ -151,14 +158,6 @@ define(function(require, exports, module) {
 			el.addEventListener('webkitTransitionEnd', onTransitionEnd);
         },
 		
-		afterRender: function() {
-		    this.el.style.display = 'block';
-		    if( this.currentItem ) {
-                this.setCurrentItem( this.currentItem );
-                this.transitionIn();
-            }
-  		},
-		
 		navigateTo: function(itemId) {
             // appView.setCurrentView(this);
 			var item = this.collection.get(itemId);
@@ -166,18 +165,14 @@ define(function(require, exports, module) {
 			this.render();
 		},
 		
-		setupCurrentDetails: function() {
-			var currentView = this.viewPointers[ this.currentItem.cid ];
-			this.setupCurrent( currentView );
-			this.setupAdjacent();
-		},
-		
 		setCurrentItem: function(item) {
 		    item.set('selected', true);
 			this.currentItem = item;
 			var currentView = this.viewPointers[item.cid];
 			currentView.setupAsCurrent();
-			this.setupAdjacent();
+			if( this.collection.length > 1 ) {
+    			this.setupAdjacent();
+			}
 			this.el.style.webkitTransform = null;
 		},
 		
