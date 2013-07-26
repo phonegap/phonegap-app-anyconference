@@ -59,7 +59,8 @@ define(function(require, exports, module) {
 
     var speakerCollection = new SpeakerCollection();
     var speakerCollectionView = new SpeakerCollectionView({
-        collection: speakerCollection
+        collection: speakerCollection,
+        filter: function() { return true }
     });
     
     var speakerCollectionDetailsView = new SpeakerCollectionDetailsView({
@@ -70,31 +71,6 @@ define(function(require, exports, module) {
     var sessionCollection = new SessionCollection();
     sessionCollection.setSpeakers(speakerCollection);
     speakerCollection.setSessions(sessionCollection);
-    /*
-    var sessionCollectionStarredView = new SessionCollectionView({
-        collection: sessionCollection,
-        type: 'starred',
-        filter: function(model) {
-            // TODO: this
-        }
-    });
-    
-    var sessionCollectionDetailsView = new SessionCollectionDetailsView({
-        collection: sessionCollection
-    });
-    
-    var starredOptionView = new SessionOptionView({
-        sessionCollection: sessionCollection,
-        flag: 'starred',
-        template: require('text!app/templates/starButtonTemplate.html')
-    });
-
-    var lovedOptionView = new SessionOptionView({
-        sessionCollection: sessionCollection,
-        flag: 'loved',
-        template: require('text!app/templates/loveButtonTemplate.html')
-    });
-    */
 
     //Load html template
     var appTemplate = require("text!app/templates/main.html");
@@ -175,10 +151,13 @@ define(function(require, exports, module) {
             menuView.render();
             this.checkTime();
             Backbone.history.start();
-            if( !Backbone.history.fragment.length ) {
-                // Go to first day by default
-                appRouter.navigate('sessionCollection/' + firstId, {trigger: true});
-            }
+            
+            sessionCollection.on('sync', function(evt) {
+                if( !Backbone.history.fragment.length ) {
+                    // Go to first day by default
+                    appRouter.navigate('sessionCollection/' + firstId, {trigger: true});
+                }
+            });
         },
 
         showMenu: function() {

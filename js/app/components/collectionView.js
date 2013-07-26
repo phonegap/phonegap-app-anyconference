@@ -364,6 +364,10 @@ define(function(require, exports, module) {
 			
 			this.transitionIn();
         },
+        
+        destroy: function() {
+            this.$el.remove();
+        },
 
         transitionIn: function() {
 		    var _this = this;
@@ -440,19 +444,17 @@ define(function(require, exports, module) {
 		                if( itemId[0] == this.id ) {
 		                    this.el.style.display = 'block';
         		            this.render();
-		                    this.transitionIn();
+		                    // this.transitionIn();
 		                } else {
-		                    this.el.style.display = 'none';
+		                    // this.el.style.display = 'none';
+		                    this.destroy();
 		                }
 		            } else {
-		                // Prevent from rendering before collection populated
-                        if( this.collection.length ) {
-                            this.render();
-                        }
+                        this.render();
 		            }
 		        } else {
 		            if( this.inView ) {
-		                this.leave();
+		                this.destroy();
 		            }
 		            this.inView = false;
 		        }

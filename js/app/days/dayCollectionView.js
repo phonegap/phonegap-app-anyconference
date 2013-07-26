@@ -47,7 +47,6 @@ define(function(require, exports, module) {
 		            collection: sessionCollection,
 		            filter: function(model) {
 		                var sessionDate = model.get('instances')[0].date;
-		                console.log('day date', dayModel.get('date'), 'sessionDate', sessionDate );
 		                return (sessionDate == dayModel.get('date'));
 		            }
 		        });
@@ -58,8 +57,7 @@ define(function(require, exports, module) {
 
 		        sessionCollectionView.listenTo(sessionCollection, 'sync', function(evt) {
 		            sessionCollectionView.id = dayModel.id;
-                    sessionCollectionView.render();
-                    // sessionCollectionDetailsView.render();
+                    // sessionCollectionView.render();
                 });
 		    }, this);
             
