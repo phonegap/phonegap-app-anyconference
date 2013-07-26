@@ -13,96 +13,6 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-#content {
-    position: absolute;
-    top: 4rem;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    overflow: hidden;
-    background: #fff;
-}
-
-.all-details-wrap {
-    position: absolute;
-    width: 100%;
-    top: 0;
-    bottom: 0;
-}
-
-.item-details-wrap {
-    position: absolute;
-    width: 100%;
-    top: 0;
-    bottom: 0;
-    overflow: auto;
-    -webkit-overflow-scrolling: touch;
-}
-
-.anyconf-utils-right input[type="checkbox"]:checked + .topcoat-checkbox-label-star.topcoat-checkbox-label--right:after,
-.anyconf-utils-right input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-label--right:after {
-    margin-left: -1px;
-    background-size: 27px;
-    margin-top: 1px;
-}
-
-.fixed {
-    position: fixed
-}
-
-.top {
-    top: 0
-}
-
-.item-list,
-.item-page,
-.item-details {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #ddd;
-}
-.anyconf-list__item .anyconf-list-label {
-  padding: 0;
-}
-.topcoat-icon--arrow {
-  height: 3.3rem;
-  width: 50px;
-  border-right: 1px solid #fff;
-  vertical-align: top;
-  background-image: url("../img/arrowdown.svg");
-  background-position: center;
-}
-.topcoat-icon--blank {
-  height: 3.3rem;
-  width: 50px;
-  border-right: 1px solid transparent;
-  vertical-align: top;
-}
-.topcoat-icon--left-arrow {
-    background-size: 40px;
-    background-image: url("../img/arrowleft.svg");
-    background-position: 50% 50%;
-}
-.topcoat-icon--star {
-  height: 3.3rem;
-  width: 50px;
-  vertical-align: top;
-  background-size: 40px;
-  background-image: url("../img/staroff.svg");
-  background-position: center;
-  background-repeat: no-repeat;
-}
-.topcoat-icon--heart {
-  height: 3.3rem;
-  width: 50px;
-  vertical-align: top;
-  background-size: 40px;
-  background-image: url("../img/heartoff.svg");
-  background-position: center;
-}
 
 body {
   margin: 0;
@@ -115,15 +25,12 @@ body {
   /* text-rendering: optimizeLegibility; */
 }
 
-
-.topcoat-icon--menu-stack {
-  background: url("../img/hamburger_dark.svg") no-repeat;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  background-size: cover;
+.fixed {
+    position: fixed
 }
-
-
+.top {
+    top: 0
+}
 .quarter {
   width: 25%;
 }
@@ -142,8 +49,6 @@ body {
 .full {
   width: 100%;
 }
-
-
 .left {
   text-align: left;
 }
@@ -153,8 +58,6 @@ body {
 .right {
   text-align: right;
 }
-
-
 .reset-ui {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -182,6 +85,47 @@ body {
   overflow: hidden;
 }
 
+.anyconf-app-content {
+    position: absolute;
+    top: 4rem;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    overflow: hidden;
+    background: #fff;
+}
+
+.all-details-wrap {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+}
+
+.item-list,
+.item-page,
+.item-details {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #ddd;
+}
+
+.item-details-wrap {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    background-color: #f2f3f3;
+}
+
+.anyconf-list__item .anyconf-list-label {
+  padding: 0;
+}
 
 .js-page-overlay,
 .js-menu-overlay {
@@ -195,20 +139,16 @@ body {
   -webkit-transition: opacity 0.2s;
   background: rgba(0,0,0,0.5);
 }
-
 .js-menu-overlay {
     z-index: 25;
 }
-
 .js-details-transition {
   -webkit-transition: all 0.3s;
 }
-
 .js-overlay-transition-out {
   -webkit-transition: opacity 0.5s;
   opacity: 0;
 }
-
 .js-page-overlay-removed {
   opacity: 0;
   -webkit-transition: opacity 0.3s;
@@ -222,19 +162,21 @@ body {
   -webkit-transform: translateY(-100%) translateZ(0);
 }
 .js-menu-transition-in {
-    -webkit-transition: all 0.2s;
-    -webkit-transform: none;
+  -webkit-transition: all 0.2s;
+  -webkit-transform: none;
 }
 .js-menu-transition-out {
-    -webkit-transition: all 0.2s;
+  -webkit-transition: all 0.2s;
 }
-
 .js-menu-overlay-hidden {
-    opacity: 0;
+  opacity: 0;
 }
-
 .js-menu-overlay-shown {
-    opacity: 1;
+  opacity: 1;
+}
+.js-enter-view-transition,
+.js-leave-view-transition {
+  -webkit-transition: -webkit-transform 0.3s;
 }
 
 .anyconf-label-status--next {
@@ -297,14 +239,24 @@ body {
 .topcoat-overlay {
   position: fixed;
   top: 30%;
+  left: -100px;
   width: auto;
   height: auto;
-  margin-left: 30%;
+  margin-left: 50%;
   margin-right: 30%;
   padding: 10px;
   text-align: center;
   background-color: rgba(51,51,51,0.9);
+  border-radius: 5px;
 }
+.topcoat-overlay h1 {
+  width: 150px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1.5rem;
+  color: #fff;
+}
+
 
 /*
  Button
@@ -756,28 +708,51 @@ body {
   height: 1.5rem;
   vertical-align: middle;
 }
+.topcoat-icon--blank {
+  height: 3.3rem;
+  width: 50px;
+  border-right: 1px solid transparent;
+  vertical-align: top;
+}
+.topcoat-icon--arrow {
+  height: 3.3rem;
+  width: 50px;
+  border-right: 1px solid #fff;
+  vertical-align: top;
+  background-image: url("../img/arrowdown.svg");
+  background-position: center;
+}
+.topcoat-icon--left-arrow {
+    background-size: 40px;
+    background-image: url("../img/arrowleft.svg");
+    background-position: 50% 50%;
+}
+.topcoat-icon--menu-stack {
+  background: url("../img/hamburger_dark.svg") no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+}
 .topcoat-icon--large {
   width: 2.5rem;
   height: 2.5rem;
 }
-
-
-/*
-Copyright 2012 Adobe Systems Inc.;
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-*/
-
-
+.topcoat-icon--star {
+  height: 3.3rem;
+  width: 50px;
+  vertical-align: top;
+  background-size: 40px;
+  background-image: url("../img/staroff.svg");
+  background-position: center;
+}
+.topcoat-icon--heart {
+  height: 3.3rem;
+  width: 50px;
+  vertical-align: top;
+  background-size: 40px;
+  background-image: url("../img/heartoff.svg");
+  background-position: center;
+}
 /*
  List
  ------------
@@ -798,6 +773,13 @@ limitations under the License.
     </div>
 
 */
+.topcoat-list {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  border-top: none;
+  color: #454545;
+}
 .topcoat-list__container {
   padding: 0;
   margin: 0;
@@ -827,13 +809,6 @@ limitations under the License.
   border-top: solid 1px rgba(255,255,255,0.5);
   border-bottom: solid 1px rgba(255,255,255,0.23);
 }
-.topcoat-list {
-  padding: 0;
-  margin: 0;
-  list-style-type: none;
-  border-top: none;
-  color: #454545;
-}
 .topcoat-list__item,
 .topcoat-list__item--first {
   margin: 0;
@@ -845,23 +820,6 @@ limitations under the License.
 .topcoat-list__item--first {
   border-top: var-border-top--list-item--first;
 }
-
-
-/*
-Copyright 2012 Adobe Systems Inc.;
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-*/
-
 
 /*
 Navigation Bar
@@ -945,130 +903,6 @@ Navigation Bar
   color: #333;
 }
 
-
-/*
-Copyright 2012 Adobe Systems Inc.;
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-*/
-
-
-/*
- Search Input
- ------------
-
- :disabled - Disabled state
-
- .is-disabled - Simulates a disabled state
-
-    <input type="search" value="" placeholder="search" class="topcoat-search-input">
-    <input type="search is-disabled" value="" placeholder="search" class="topcoat-search-input">
-
- */
-.topcoat-search-input,
-.topcoat-search-input--large {
-  vertical-align: top;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  padding: 0 1.25rem;
-  -webkit-border-radius: 6px;
-  border-radius: 6px;
-  margin: 5px;
-  height: 3rem;
-  font: inherit;
-  font-weight: 200;
-  outline: none;
-  border: 1px solid #a5a8a8;
-  background-color: #fff;
-  -webkit-box-shadow: inset 0 1px rgba(0,0,0,0.12);
-  box-shadow: inset 0 1px rgba(0,0,0,0.12);
-  color: #454545;
-  -webkit-appearance: none;
-  padding: 0 0 0 2.7em;
-  -webkit-border-radius: 30px;
-  border-radius: 30px;
-  background-image: url("../img/search.svg");
-  background-position: 1em center;
-  background-repeat: no-repeat;
-  -webkit-background-size: 16px;
-  -moz-background-size: 16px;
-  background-size: 16px;
-}
-.topcoat-search-input:focus,
-.topcoat-search-input--large:focus {
-  background-color: #fff;
-  color: var-color-focus;
-}
-.topcoat-search-input::-webkit-search-cancel-button,
-.topcoat-search-input::-webkit-search-decoration {
-  margin-right: 5px;
-}
-.topcoat-search-input:focus::-webkit-input-placeholder,
-.topcoat-search-input:focus::-webkit-input-placeholder {
-  color: #c6c8c8;
-}
-.topcoat-search-input:disabled,
-.topcoat-search-input.is-disabled {
-  opacity: 0.3;
-  cursor: default;
-  pointer-events: none;
-}
-/*
- Large Search Input
- ------------------
-
- :disabled - Disabled state
-
- .is-disabled - Simulates a disabled state
-
-    <input type="search"  value="" placeholder="search" class="topcoat-search-input--large">
-    <input type="search"  value="" placeholder="search" class="topcoat-search-input--large .is-disabled">
-
-*/
-.topcoat-search-input--large {
-  height: 4rem;
-  font-size: 2.5rem;
-  font-weight: 200;
-  padding-left: 2.8em;
-  -webkit-border-radius: 40px;
-  border-radius: 40px;
-  background-position: 1.2em center;
-  -webkit-background-size: 2.5rem;
-  -moz-background-size: 2.5rem;
-  background-size: 2.5rem;
-}
-.topcoat-search-input--large:disabled,
-.topcoat-search-input--large.is-disabled {
-  opacity: 0.3;
-  cursor: default;
-  pointer-events: none;
-}
-
-
-/*
-Copyright 2012 Adobe Systems Inc.;
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-*/
 
 .topcoat-view {
   border-radius: 6px;
@@ -1401,6 +1235,12 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
   right: 10px;
   top: 0px;
 }
+.anyconf-utils-right input[type="checkbox"]:checked + .topcoat-checkbox-label-star.topcoat-checkbox-label--right:after,
+.anyconf-utils-right input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-label--right:after {
+    margin-left: -1px;
+    background-size: 27px;
+    margin-top: 1px;
+}
 .anyconf-condensed {
   font-family: 'league-gothic', 'SourceSansPro';
   text-transform: uppercase;
@@ -1464,73 +1304,6 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
   background: none;
 }
 
-/*
- Text Input
- ----------
-
-:disabled - Disabled state
-.is-disabled - Simulates a disabled state on mobile devices
-
-    <input type="text" class="topcoat-text-input" value="" placeholder="text">
-    <input type="text" class="topcoat-text-input is-disabled" value="" placeholder="text">
-
-*/
-.topcoat-text-input,
-.topcoat-text-input--large {
-  vertical-align: top;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  padding: 0 1.25rem;
-  -webkit-border-radius: 6px;
-  border-radius: 6px;
-  margin: 5px;
-  height: 3rem;
-  font: inherit;
-  font-weight: 200;
-  outline: none;
-  border: 1px solid #a5a8a8;
-  background-color: #fff;
-  -webkit-box-shadow: inset 0 1px rgba(0,0,0,0.12);
-  box-shadow: inset 0 1px rgba(0,0,0,0.12);
-  color: #454545;
-}
-.topcoat-text-input:focus {
-  background-color: #fff;
-  color: #000;
-}
-.topcoat-text-input:disabled,
-.topcoat-text-input.is-disabled {
-  opacity: 0.3;
-  cursor: default;
-  pointer-events: none;
-}
-/*
- Large Text Input
- ----------------
-
-:disabled - Disabled state
-.is-disabled - Simulates a disabled state on mobile devices
-
-    <input type="text" class="topcoat-text-input--large" value="" placeholder="text">
-    <input type="text" class="topcoat-text-input--large is-disabled" value="" placeholder="text">
-*/
-.topcoat-text-input--large {
-  height: 4rem;
-  font-size: 2.5rem;
-}
-.topcoat-text-input--large:focus {
-  background-color: #fff;
-  color: #000;
-}
-.topcoat-text-input--large.is-disabled,
-.topcoat-text-input--large:disabled {
-  opacity: 0.3;
-  cursor: default;
-  pointer-events: none;
-}
-
-
 
 /* added by adeveria */
 .reset-ui {
@@ -1549,7 +1322,7 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
     width: 90%;
 }
 
-.topcoat-page-indicator {
+.anyconf-page-indicator {
     text-align: center;
     position: absolute;
     line-height: 15px;
@@ -1558,7 +1331,7 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
     width: 100%;
 }
 
-.topcoat-day-symbol {
+.anyconf-day-symbol {
     display: inline-block;
     width: 5px;
     height: 5px;
@@ -1567,7 +1340,7 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
     margin: 0 1px;
 }
 
-.topcoat-day-symbol--selected {
+.anyconf-day-symbol--selected {
     background-color: #c69;
 }
 
@@ -1636,26 +1409,11 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
     margin-left: 16px;
 }
 
-.topcoat-overlay {
-    width: auto;
-    padding: 10px;
-    border-radius: 5px;
-    margin-left: 50%;
-    left: -100px;
-}
 
 .anyconf-session-title-link {
     text-decoration: none;
     font-size: 1.3rem;
     font-weight: normal;
-}
-
-.topcoat-overlay h1 {
-    width: 150px;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-size: 1.5rem;
-    color: #fff;
 }
 
 .anyconf-overlay-love h1:before,
@@ -1794,28 +1552,6 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
 .anyconf-return-ready {
     color: white;
     background-color: #454545;
-}
-
-.item-details-wrap {
-    position: absolute;
-    width: 100%;
-    top: 0;
-    bottom: 0;
-    overflow: auto;
-    background-color: #f2f3f3;
-    -webkit-overflow-scrolling: touch;
-}
-
-.anyconf-utils-right input[type="checkbox"]:checked + .topcoat-checkbox-label-star.topcoat-checkbox-label--right:after,
-.anyconf-utils-right input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-label--right:after {
-    margin-left: -1px;
-    background-size: 27px;
-    margin-top: 1px;
-}
-
-.js-enter-view-transition,
-.js-leave-view-transition {
-    -webkit-transition: -webkit-transform 0.3s;
 }
 
 /* Use smaller size for fallback font (no wf-active) */

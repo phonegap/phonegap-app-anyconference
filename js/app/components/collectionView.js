@@ -22,7 +22,6 @@ define(function(require, exports, module) {
 	var CollectionView = Backbone.View.extend({
 	    manage: true,
 		
-		// el: '#content',
 		tagName: 'div',
 		className: 'anyconf-collection-container',
 		template: _.template(collectionTemplate),

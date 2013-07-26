@@ -143,7 +143,7 @@ define(function(require, exports, module) {
                 collection: dayCollection
             });
 
-            this.setView('#content', dayCollectionView, true);
+            this.setView('.js-app-content', dayCollectionView, true);
             dayCollectionView.render();
             
             var dayCollectionHeadersView = new DayCollectionHeadersView({
@@ -151,13 +151,8 @@ define(function(require, exports, module) {
             });
             this.setView('.js-day-titles', dayCollectionHeadersView, true);
 
-            
-            
-            //this.setView('#content', sessionCollectionView, true);
-            //this.setView('#content', sessionCollectionStarredView, true);
-            //this.setView('#content', sessionCollectionDetailsView, true);
-            this.setView('#content', speakerCollectionView, true);
-            this.setView('#content', speakerCollectionDetailsView, true);
+            this.setView('.js-app-content', speakerCollectionView, true);
+            this.setView('.js-app-content', speakerCollectionDetailsView, true);
             //this.setView('.js-day-titles', dayCollectionView, true);
             this.setView(menuView, true);
             //this.setView('.js-button-container', starredOptionView, true);

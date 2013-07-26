@@ -254,7 +254,8 @@ define(function(require, exports, module) {
             var $header = this.$el.find('.js-schedule-header');
             for( var i = 0; i < dates.length; i++ ) {
                 var day = moment(dates[i].date).format('dddd, MMM D');
-                var html = _.template(dayEntryTemplate, {day: day});
+                var date = dates[i];
+                var html = _.template(dayEntryTemplate, {day: day, dayId: date.id});
                 var elem = $(html);
                 $header.after(elem);
             }
