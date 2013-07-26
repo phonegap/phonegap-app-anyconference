@@ -22,7 +22,6 @@ define(function(require, exports, module) {
     
     var SessionCollectionView = require('app/sessions/sessionCollectionView');
     var SessionCollectionDetailsView = require('app/sessions/sessionCollectionDetailsView');
-    var SessionOptionView = require('app/sessions/sessionOptionView');
 
     var DayCollectionView = Backbone.View.extend({
         manage: true,
@@ -31,9 +30,8 @@ define(function(require, exports, module) {
 		    this.sessionCollection = args.sessionCollection;
 		},
 		afterRender: function() {
-            //dayCollectionHeadersView.render();
             var sessionCollection = this.sessionCollection;
-            
+
             var sessionCollectionStarredView = new SessionCollectionView({
                 collection: sessionCollection,
                 type: 'starred',
@@ -64,8 +62,7 @@ define(function(require, exports, module) {
                     // sessionCollectionDetailsView.render();
                 });
 		    }, this);
-            // this.setView(sessionCollectionStarredView, true);
-            // this.setView(sessionCollectionDetailsView, true);
+            
 		}
     });
     

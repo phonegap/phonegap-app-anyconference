@@ -69,7 +69,7 @@ define(function(require, exports, module) {
     
     var sessionCollection = new SessionCollection();
     sessionCollection.setSpeakers(speakerCollection);
-    speakerCollection.setSessions( sessionCollection );
+    speakerCollection.setSessions(sessionCollection);
     /*
     var sessionCollectionStarredView = new SessionCollectionView({
         collection: sessionCollection,
@@ -149,12 +149,25 @@ define(function(require, exports, module) {
             });
             this.setView('.js-day-titles', dayCollectionHeadersView, true);
 
+            var starredOptionView = new SessionOptionView({
+                sessionCollection: sessionCollection,
+                flag: 'starred',
+                template: require('text!app/templates/starButtonTemplate.html')
+            });
+
+            var lovedOptionView = new SessionOptionView({
+                sessionCollection: sessionCollection,
+                flag: 'loved',
+                template: require('text!app/templates/loveButtonTemplate.html')
+            });
+
+            this.setView('.js-button-container', starredOptionView, true);
+            this.setView('.js-button-container', lovedOptionView, true);
+
             this.setView('.js-app-content', speakerCollectionView, true);
             this.setView('.js-app-content', speakerCollectionDetailsView, true);
             //this.setView('.js-day-titles', dayCollectionView, true);
             this.setView(menuView, true);
-            //this.setView('.js-button-container', starredOptionView, true);
-            //this.setView('.js-button-container', lovedOptionView, true);
             
             // TODO: Something better than this
             // dayCollectionView.navigateTo(this.model.get('dates')[0].id);
