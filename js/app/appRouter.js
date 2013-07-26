@@ -20,10 +20,15 @@ define(function(require, exports, module) {
         routes: {
             'starredSessionCollection': 'starredSessionCollection',
             'speakerCollection': 'speakerCollection',
+            'schedule': 'schedule',
 
             'sessionCollection/:dayId': 'sessionCollection',
             'sessionDetails/:sessionId': 'sessionDetails',
             'speakerDetails/:speakerId': 'speakerDetails'
+        },
+        
+        schedule: function() {
+            this.navigate('sessionCollection/' + this.scheduleId, {trigger: true});
         },
         
         // These probably aren't necessary if we just use .on(route:*)
@@ -45,6 +50,10 @@ define(function(require, exports, module) {
         
         speakerDetails: function(speakerId) {
         
+        },
+        
+        setScheduleId: function(id) {
+            this.scheduleId = id;
         }
     });
     

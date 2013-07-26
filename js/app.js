@@ -148,6 +148,8 @@ define(function(require, exports, module) {
             // TODO: Something better than this
             // dayCollectionView.navigateTo(this.model.get('dates')[0].id);
             var firstId = this.model.get('dates')[0].id;
+            appRouter.setScheduleId(firstId);
+            
             menuView.render();
             this.checkTime();
             Backbone.history.start();

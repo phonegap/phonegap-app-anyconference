@@ -367,7 +367,7 @@ define(function(require, exports, module) {
         
         destroy: function() {
             this.$el.remove();
-        },
+        }, 
 
         transitionIn: function() {
 		    var _this = this;
@@ -442,11 +442,8 @@ define(function(require, exports, module) {
 		        if( route == this.routeId ) {
 		            if( itemId && itemId.length == 1) {
 		                if( itemId[0] == this.id ) {
-		                    this.el.style.display = 'block';
         		            this.render();
-		                    // this.transitionIn();
 		                } else {
-		                    // this.el.style.display = 'none';
 		                    this.destroy();
 		                }
 		            } else {
