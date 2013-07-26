@@ -113,6 +113,10 @@ body {
   background: #ddd;
 }
 
+.item-page {
+    background: #f2f3f3;
+}
+
 .item-details-wrap {
     position: absolute;
     width: 100%;
@@ -1377,12 +1381,26 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
     font-size: 1rem;
 }
 
-.anyconf-label-speaker-heading {
+.anyconf-speaker-details .topcoat-navigation-bar__item {
     font-size: 1.2rem;
     vertical-align: middle;
     font-weight: bold;
     width: 100%;
 }
+
+.anyconf-speaker-details__img {
+    display: inline-block;
+}
+
+.anyconf-speaker-details__name {
+    display: inline-block; //table-cell;
+    vertical-align: middle;
+    width: 50%;
+    line-height: 1.4;
+    font-size: 2rem;
+    margin-left: 1rem;
+}
+
 
 .anyconf-label-speaker-heading img {
     vertical-align: middle;
@@ -1408,6 +1426,7 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
     font-family: helvetica, arial, sans-serif;
     margin-left: 16px;
 }
+
 
 
 .anyconf-session-title-link {
@@ -1450,28 +1469,11 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
   background-image: url("../img/hearton.svg");
 }
 
-.item-page {
-    background: #f2f3f3;
-}
-
 .all-details-wrap {
     position: absolute;
     width: 100%;
     top: 0;
     bottom: 0;
-}
-
-.anyconf-speaker-details-img {
-    display: inline-block;
-}
-
-.anyconf-speaker-details-name {
-    display: inline-block; //table-cell;
-    vertical-align: middle;
-    width: 50%;
-    line-height: 1.4;
-    font-size: 2rem;
-    margin-left: 1rem;
 }
 
 .anyconf-scroll-content {

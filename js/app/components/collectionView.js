@@ -344,17 +344,14 @@ define(function(require, exports, module) {
             this.inView = true;
             this.el.style.display = 'block';
             this.listEl = this.$el.find('.js-item-view-container')[0];
-            var viewType = this.options.type;
-            var itemCount = 0;
+            // var viewType = this.options.type;
             
-		    this.collection.each(function(model) {
-		        if( !viewType || model.get(viewType) == true ) {
-		            this.addItem(model);
-		            itemCount++;
-		        }
-		    }, this);
+            var filteredSet = this.collection.filter(this.options.filter);
+            _.each(filteredSet, function(model) {
+                this.addItem(model);
+            }, this);
 		    
-		    if( itemCount == 0 ) {
+		    if( filteredSet.length == 0 ) {
 		        this.showEmptyPage();
 		        this.transitionIn();
 		        return;

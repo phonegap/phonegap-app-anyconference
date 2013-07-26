@@ -12,10 +12,6 @@ define(function(require, exports, module) {
             this.on('change:selected', this.selectionChangeHandler);
         },
         
-        setDate: function(dateStr) {
-            this.dateStr = dateStr;
-        },
-        
         setSpeakers: function(speakers) {
             this.speakerCollection = speakers;
         },
@@ -43,9 +39,6 @@ define(function(require, exports, module) {
 			for( var i = 0; i < sessionDataArr.length; i++ ) { 
 				var sessionData = sessionDataArr[i];
 				var firstInstance = sessionData.instances[0];
-				if( firstInstance.date != this.dateStr ) {
-				    continue;
-				}
 				
 				sessionData.startTime = this.makeDate(firstInstance.date, firstInstance.time);
 				sessionData.endTime = sessionData.startTime.clone().add('m', firstInstance.duration);

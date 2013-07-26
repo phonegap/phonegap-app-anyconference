@@ -57,8 +57,6 @@ define(function(require, exports, module) {
     var SessionCollectionDetailsView = require('app/sessions/sessionCollectionDetailsView');
     var SessionOptionView = require('app/sessions/sessionOptionView');
 
-    
-
     var speakerCollection = new SpeakerCollection();
     var speakerCollectionView = new SpeakerCollectionView({
         collection: speakerCollection
@@ -69,20 +67,16 @@ define(function(require, exports, module) {
     });
     
     
-    /*
-    // TODO: Put this in days
-    var sessionCollection = new SessionCollection({
-        speakerCollection: speakerCollection
-    });
-    var sessionCollectionView = new SessionCollectionView({
-        collection: sessionCollection
-    });
+    var sessionCollection = new SessionCollection();
+    sessionCollection.setSpeakers(speakerCollection);
     speakerCollection.setSessions( sessionCollection );
-    */
     /*
     var sessionCollectionStarredView = new SessionCollectionView({
         collection: sessionCollection,
-        type: 'starred'
+        type: 'starred',
+        filter: function(model) {
+            // TODO: this
+        }
     });
     
     var sessionCollectionDetailsView = new SessionCollectionDetailsView({
@@ -137,10 +131,14 @@ define(function(require, exports, module) {
         
         afterRender: function() {
             var dayCollection = new DayCollection();
+            dayCollection.setSpeakers(speakerCollection);
             dayCollection.add( this.model.get('dates') );
             
+            sessionCollection.fetch();
+            
             var dayCollectionView = new DayCollectionView({
-                collection: dayCollection
+                collection: dayCollection,
+                sessionCollection: sessionCollection
             });
 
             this.setView('.js-app-content', dayCollectionView, true);

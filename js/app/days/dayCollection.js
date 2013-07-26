@@ -16,12 +16,17 @@ limitations under the License.
 define(function(require, exports, module) {
     var config = require('app/config');
     var DayModel = require('app/days/dayModel');
+    var SessionCollection = require('app/sessions/sessionCollection');
     
     var dayCollection = Backbone.Collection.extend({
         model: DayModel,
         // localStorage: new Backbone.LocalStorage("todos-backbone"),
         
         initialize: function() {
+        },
+        
+        setSpeakers: function(speakerCollection) {
+            this.speakerCollection = speakerCollection;
         },
         
         selectionChangeHandler: function(model) {

@@ -15,9 +15,8 @@ limitations under the License.
 */
 define(function(require, exports, module) {
 
-    var SessionCollection = require('app/sessions/sessionCollection');
     var SpeakerCollection = require('app/speakers/speakerCollection');
-    var speakerCollection = new SpeakerCollection();
+    //var speakerCollection = new SpeakerCollection();
 
     var DayModel = Backbone.Model.extend({
 
@@ -26,10 +25,6 @@ define(function(require, exports, module) {
         initialize: function() {
             var dateStr = this.get('date');
             this.setDayOfWeek(dateStr);
-            this.sessionCollection = new SessionCollection();
-            this.sessionCollection.setDate(dateStr);
-            this.sessionCollection.setSpeakers(speakerCollection);
-            this.sessionCollection.fetch();
         },
         
         setDayOfWeek: function(dayStr) {

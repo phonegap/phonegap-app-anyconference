@@ -28,24 +28,31 @@ define(function(require, exports, module) {
         manage: true,
         className: 'anyconf-day-list-collection',
 		initialize: function(args) {
-		    // this.collection = args.collection;
+		    this.sessionCollection = args.sessionCollection;
 		},
 		afterRender: function() {
             //dayCollectionHeadersView.render();
+            var sessionCollection = this.sessionCollection;
             
-            /*
             var sessionCollectionStarredView = new SessionCollectionView({
                 collection: sessionCollection,
-                type: 'starred'
+                type: 'starred',
+                filter: function(model) {
+                    return model.get('starred');
+                }
             });
 
             this.setView(sessionCollectionStarredView, true);
-            */
             
 		    this.collection.each(function(dayModel) {
-		        var sessionCollection = dayModel.sessionCollection;
-		        
-		        var sessionCollectionView = new SessionCollectionView({collection: sessionCollection});
+		        var sessionCollectionView = new SessionCollectionView({
+		            collection: sessionCollection,
+		            filter: function(model) {
+		                var sessionDate = model.get('instances')[0].date;
+		                console.log('day date', dayModel.get('date'), 'sessionDate', sessionDate );
+		                return (sessionDate == dayModel.get('date'));
+		            }
+		        });
                 var sessionCollectionDetailsView = new SessionCollectionDetailsView({collection: sessionCollection});
 
 		        this.setView(sessionCollectionView, true);
