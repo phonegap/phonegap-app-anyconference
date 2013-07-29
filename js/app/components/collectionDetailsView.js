@@ -74,7 +74,7 @@ define(function(require, exports, module) {
 			    this.animating = false;
 			} else {
                 this.animating = true;
-                console.log('Start animating...');
+                console.log('Start animating...', className);
 			    classList.add(className);
 			}
         },
@@ -118,8 +118,8 @@ define(function(require, exports, module) {
 		    var el = this.el;
 		    // Start from side
             el.style.display = 'block';
-		    el.style.webkitTransform = 'translateX(' + this.itemWidth + 'px) translateZ(0)';
-		    el.style.overflow = 'hidden';
+		    el.style.webkitTransform = 'translateX(' + this.itemWidth + 'px) translateZ(0px)';
+		    // el.style.overflow = 'hidden';
 		    setTimeout( function() {
 		        _this.transitionFromClass('js-enter-view-transition');
 		        el.style.webkitTransform = 'none';
@@ -141,10 +141,10 @@ define(function(require, exports, module) {
 		    var el = this.el;
 		    // Move to right side
             el.style.webkitTransform = 'none';
-		    el.style.overflow = 'hidden';
+		    // el.style.overflow = 'hidden';
 		    setTimeout( function() {
 		        _this.transitionFromClass('js-leave-view-transition');
-    		    el.style.webkitTransform = 'translateX(' + this.itemWidth + 'px) translateZ(0)';
+    		    el.style.webkitTransform = 'translateX(' + this.itemWidth + 'px) translateZ(0px)';
 		    }, 1);
 		    
 			var onTransitionEnd = function(evt) {
@@ -173,19 +173,39 @@ define(function(require, exports, module) {
 			if( this.collection.length > 1 ) {
     			this.setupAdjacent();
 			}
+			if( currentView.itemWidth ) {
+			    this.itemWidth = currentView.itemWidth;
+			}
 			this.el.style.webkitTransform = null;
 		},
 		
 		setupAdjacent: function() {
 			var collection = this.collection;
 			var itemIndex = collection.indexOf(this.currentItem);
-			this.prevItem = collection.at(itemIndex-1) || collection.last();
-			this.nextItem = collection.at(itemIndex+1) || collection.first();
-			var prevView = this.viewPointers[this.prevItem.cid];
-			prevView.setupAsPrevious();
+			var prevView;
+			var nextView;
+			if( collection.length == 2 ) {
+			    if( itemIndex == 0 ) {
+			        this.prevItem = null;
+			        this.nextItem = collection.last();
+			    } else {
+			        this.prevItem = collection.first();
+			        this.nextItem = null;
+			    }
+			} else {
+                this.prevItem = collection.at(itemIndex-1) || collection.last();
+                this.nextItem = collection.at(itemIndex+1) || collection.first();
+			}
 			
-			var nextView = this.viewPointers[this.nextItem.cid];
-			nextView.setupAsNext();
+			if( this.prevItem ) {
+                prevView = this.viewPointers[this.prevItem.cid];
+                prevView.setupAsPrevious();
+			}
+			
+			if( this.nextItem ) {
+                nextView = this.viewPointers[this.nextItem.cid];
+                nextView.setupAsNext();
+			}
 		},
 		
 		transitionTo: function(relativeIndex) {
@@ -205,12 +225,16 @@ define(function(require, exports, module) {
 						_this.pendingItem = _this.currentItem;
 						break;
 					case 1:
-						var prevView = _this.viewPointers[_this.prevItem.cid];
-						prevView.hide();
+					    if( _this.prevItem ) {
+                            var prevView = _this.viewPointers[_this.prevItem.cid];
+                            prevView.hide();
+						}
 						break;
 					case -1:
-						var nextView = _this.viewPointers[_this.nextItem.cid];
-						nextView.hide();
+					    if( _this.nextItem ) { 
+                            var nextView = _this.viewPointers[_this.nextItem.cid];
+                            nextView.hide();
+						}
 						break;
 				}
 				_this.setCurrentItem(_this.pendingItem);
@@ -219,8 +243,7 @@ define(function(require, exports, module) {
     			console.log('...done animating');
 			};
 			this.transitionFromClass('js-details-transition');
-			
-			this.el.style.webkitTransform = 'translateX(' + -offsetX  + 'px) translateZ(0)';
+			this.el.style.webkitTransform = 'translateX(' + -offsetX  + 'px) translateZ(0px)';
 			this.el.addEventListener('webkitTransitionEnd', onTransitionEnd);
 		},
 		
@@ -279,12 +302,30 @@ define(function(require, exports, module) {
 					y: currentPoint.y - this.lastPoint.y
 				};
 				this.lastPoint = currentPoint;
-
-				this.el.style.webkitTransform = 'translateX(' + startOffset.x + 'px) translateZ(0)';
+                
+                var allowChange = true;
+                if( !this.nextItem && startOffset.x < 0 ) {
+                    startOffset.x = startOffset.x / 4;
+                    allowChange = false;
+                }
+                
+                if( !this.prevItem && startOffset.x > 0 ) {
+                    startOffset.x = startOffset.x / 4;
+                    allowChange = false;
+                }
+                
+				this.el.style.webkitTransform = 'translateX(' + startOffset.x + 'px) translateZ(0px)';
+				if( !allowChange ) {
+				    this.pendingItem = this.currentItem;
+				    return;
+				}
+				
 				if( startOffset.x > 0 ) {
 					this.pendingItem = this.prevItem;
-				} else {
+				} else if( startOffset.x < 0 ) {
 					this.pendingItem = this.nextItem;
+				} else {
+				    this.pendingItem = this.currentItem;
 				}
 			}
 		},
@@ -301,6 +342,13 @@ define(function(require, exports, module) {
 
 			this.gestureStarted = false;
 			console.log('this.lastDiff.x', this.lastDiff.x);
+			
+			if( this.pendingItem === this.currentItem ) {
+			    this.transitionTo(0);
+			    this.pointerStarted = false;
+			    return;
+			}
+			
 			if( this.lastDiff.x > 0 ) {
 				evt.preventDefault();
 				if( this.pendingItem === this.prevItem ) {

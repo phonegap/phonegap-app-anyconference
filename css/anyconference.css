@@ -1321,6 +1321,10 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
     height: 100%;
 }
 
+.topcoat-navigation-bar__day-container {
+    overflow: hidden;
+}
+
 .anyconf-list__header,
 .anyconf-list__item {
     width: 90%;
@@ -1516,7 +1520,7 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
 }
 
 .topcoat-titles-wrap {
-    -webkit-transform: translateZ(0);
+    //-webkit-transform: translateZ(0);
     //overflow: hidden;
     height: 4rem;
 }

@@ -31,7 +31,7 @@ define(function(require, exports, module) {
         
 		afterRender: function() {
 			this.el.innerHTML = this.model.get('dayOfWeek');
-            this.itemWidth = window.innerWidth; //this.el.offsetWidth;
+            this.itemWidth = this.el.offsetWidth;
 		},
 		
 		hide: function() {
@@ -52,13 +52,15 @@ define(function(require, exports, module) {
 		setupAsPrevious: function() {
 			this.el.style.display = 'block';
 			this.render();
-			this.el.style.webkitTransform = 'translateX(' + -this.itemWidth + 'px)';
+			this.el.style.left = -this.itemWidth + 'px';
+			// this.el.style.webkitTransform = 'translateX(' + -this.itemWidth + 'px) translateZ(0px)';
 		},
 		
 		setupAsNext: function() {
 			this.el.style.display = 'block';
 			this.render();
-			this.el.style.webkitTransform = 'translateX(' + this.itemWidth + 'px)';
+			this.el.style.left = this.itemWidth + 'px';
+			// this.el.style.webkitTransform = 'translateX(' + this.itemWidth + 'px) translateZ(0px)';
 		},
     });
     

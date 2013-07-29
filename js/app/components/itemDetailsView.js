@@ -68,7 +68,7 @@ define(function(require, exports, module) {
 			// this.renderContent();
 			this.el.style.display = 'block';
 			var width = window.innerWidth;
-			this.el.style.webkitTransform = 'translateX(' + -width + 'px) translateZ(0)';
+			this.el.style.webkitTransform = 'translateX(' + -width + 'px) translateZ(0px)';
 			// this.el.setAttribute('POS', 'PREVIOUS');
 		},
 		
@@ -76,7 +76,7 @@ define(function(require, exports, module) {
 			// this.renderContent();
 			this.el.style.display = 'block';
 			var width = window.innerWidth;
-			this.el.style.webkitTransform = 'translateX(' + width + 'px) translateZ(0)';
+			this.el.style.webkitTransform = 'translateX(' + width + 'px) translateZ(0px)';
 			// this.el.setAttribute('POS', 'NEXT');
 		},
 		
