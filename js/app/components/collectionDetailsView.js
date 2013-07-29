@@ -31,6 +31,7 @@ define(function(require, exports, module) {
 		gestureStarted: false,
 		swiping: false,
 		inView: false,
+		isRestoring: false,
 		
 		events: {
 		    'pointerdown': 'pointerDown',
@@ -103,6 +104,7 @@ define(function(require, exports, module) {
                 this.setCurrentItem( this.currentItem );
                 this.transitionIn();
             }
+            this.isRestoring = false;
   		},
 		
 		removeTransitionClasses: function() {
@@ -116,8 +118,14 @@ define(function(require, exports, module) {
 		transitionIn: function() {
 		    var _this = this;
 		    var el = this.el;
+		    
 		    // Start from side
             el.style.display = 'block';
+		    if( this.isRestoring ) {
+		        el.style.webkitTransform = 'none';
+		        return;
+		    }
+		    
 		    el.style.webkitTransform = 'translateX(' + this.itemWidth + 'px) translateZ(0px)';
 		    // el.style.overflow = 'hidden';
 		    setTimeout( function() {
@@ -161,6 +169,9 @@ define(function(require, exports, module) {
 		navigateTo: function(itemId) {
             // appView.setCurrentView(this);
 			var item = this.collection.get(itemId);
+			if( this.currentItem == item ) {
+			    this.isRestoring = true;
+			}
 			this.currentItem = item;
 			this.render();
 		},
