@@ -346,12 +346,18 @@ define(function(require, exports, module) {
             this.listEl = this.$el.find('.js-item-view-container')[0];
             // var viewType = this.options.type;
             
-            var filteredSet = this.collection.filter(this.options.filter);
-            _.each(filteredSet, function(model) {
-                this.addItem(model);
+            if( this.options.filter ) {
+                var filteredModels = this.collection.filter(this.options.filter);
+                this.subCollection = new Backbone.Collection(filteredModels);
+            } else {
+                this.subCollection = this.collection;
+            }
+            
+            this.subCollection.each(function(itemModel) {
+                this.addItem(itemModel);
             }, this);
 		    
-		    if( filteredSet.length == 0 ) {
+		    if( this.subCollection.length == 0 ) {
 		        this.showEmptyPage();
 		        this.transitionIn();
 		        return;
@@ -363,6 +369,9 @@ define(function(require, exports, module) {
 			this.positionOverlay();
 			
 			this.transitionIn();
+			if( this.checkTime ) {
+			    this.checkTime.call(this);
+			}
         },
         
         destroy: function() {

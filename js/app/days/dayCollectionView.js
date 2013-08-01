@@ -37,20 +37,27 @@ define(function(require, exports, module) {
                 type: 'starred',
                 filter: function(model) {
                     return model.get('starred');
-                }
+                },
+                returnRouteId: 'sessionCollection/' + this.collection.first().id
             });
 
             this.setView(sessionCollectionStarredView, true);
             
 		    this.collection.each(function(dayModel) {
+		        var dateFilter = function(model) {
+                    var sessionDate = model.get('instances')[0].date;
+                    return (sessionDate == dayModel.get('date'));
+                };
+		    
 		        var sessionCollectionView = new SessionCollectionView({
 		            collection: sessionCollection,
-		            filter: function(model) {
-		                var sessionDate = model.get('instances')[0].date;
-		                return (sessionDate == dayModel.get('date'));
-		            }
+		            filter: dateFilter
 		        });
-                var sessionCollectionDetailsView = new SessionCollectionDetailsView({collection: sessionCollection});
+                var sessionCollectionDetailsView = new SessionCollectionDetailsView({
+                    collection: sessionCollection,
+                    filter: dateFilter,
+                    viewId: dayModel.get('id')
+                });
 
 		        this.setView(sessionCollectionView, true);
 		        this.setView(sessionCollectionDetailsView, true);

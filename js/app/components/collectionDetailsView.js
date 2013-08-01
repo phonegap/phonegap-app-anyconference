@@ -44,10 +44,16 @@ define(function(require, exports, module) {
 		    var _this = this;
 		    this.itemWidth = window.innerWidth;
 		    
-		    appRouter.on('route', function(route, itemId) {
-		        if( route == this.routeId ) {
-		            this.inView = true;
-		            this.navigateTo(itemId);
+		    appRouter.on('route', function(route, args) {
+		        var viewId;
+		        if( args.length == 2 ) {
+		            viewId = args[0];
+		        }
+		        var subId = args[args.length - 1];
+		        var matchesView = !viewId || viewId && viewId == this.options.viewId;
+		        if( route == this.routeId && matchesView ) {
+                    this.inView = true;
+                    this.navigateTo(subId);
 		        } else {
 		            if( this.inView ) {
 		                this.leave();
@@ -96,7 +102,23 @@ define(function(require, exports, module) {
 		        this.insertView(view);
 		        this.viewPointers[itemModel.cid] = view;
 		    }, this);
-		},
+        
+            if( this.options.filter ) {
+                var filteredModels = this.collection.filter(this.options.filter);
+                this.subCollection = new Backbone.Collection(filteredModels);
+            } else {
+                this.subCollection = this.collection;
+            }
+        
+            this.subCollection.each(function(itemModel) {
+                var view = new this.DetailsView({
+                    model: itemModel
+                });
+                view.hide(); // Hide by default
+                this.insertView(view);
+                this.viewPointers[itemModel.cid] = view;
+            }, this);
+        },
 		
 		afterRender: function() {
 		    this.el.style.display = 'block';
@@ -191,7 +213,7 @@ define(function(require, exports, module) {
 		},
 		
 		setupAdjacent: function() {
-			var collection = this.collection;
+			var collection = this.subCollection;
 			var itemIndex = collection.indexOf(this.currentItem);
 			var prevView;
 			var nextView;

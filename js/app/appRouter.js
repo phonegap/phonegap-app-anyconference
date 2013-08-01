@@ -23,12 +23,8 @@ define(function(require, exports, module) {
             'schedule': 'schedule',
 
             'sessionCollection/:dayId': 'sessionCollection',
-            'sessionDetails/:sessionId': 'sessionDetails',
+            'sessionDetails/:dayId/:sessionId': 'sessionDetails',
             'speakerDetails/:speakerId': 'speakerDetails'
-        },
-        
-        schedule: function() {
-            this.navigate('sessionCollection/' + this.scheduleId, {trigger: true});
         },
         
         // These probably aren't necessary if we just use .on(route:*)
@@ -44,16 +40,12 @@ define(function(require, exports, module) {
         
         },
         
-        sessionDetails: function(sessionId) {
+        sessionDetails: function(dayId, sessionId) {
 
         },
         
         speakerDetails: function(speakerId) {
         
-        },
-        
-        setScheduleId: function(id) {
-            this.scheduleId = id;
         }
     });
     

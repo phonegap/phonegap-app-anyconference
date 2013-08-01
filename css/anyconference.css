@@ -31,6 +31,12 @@ body {
 .top {
     top: 0
 }
+.fifth {
+  width: 20%;
+}
+.three-fifths {
+  width: 60%;
+}
 .quarter {
   width: 25%;
 }
@@ -796,7 +802,6 @@ body {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  overflow: auto;
   -webkit-overflow-scrolling: touch;
   border-top: none;
   border-bottom: 1px solid #eff1f1;
@@ -1290,6 +1295,9 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
   background-position: center;
   background-image: url("../img/link.svg");
 }
+.anyconf-list-link {
+    width: 100%;
+}
 .topcoat-icon.topcoat-checkbox-label {
   vertical-align: middle;
 }
@@ -1368,6 +1376,10 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
 
 .anyconf-list__item .topcoat-icon--star {
     background-image: url("../img/starmenu.svg");
+}
+
+.anyconf-session-speakers {
+    margin-bottom: 10px;
 }
 
 .anyconf-session-speakers h5 {
@@ -1503,15 +1515,17 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
 
 .anyconf-event-logo {
     position: absolute;
-    bottom: 2em;
-    width: 100%;
-    height: 180px;
-    margin: 0 auto;
+    bottom: 0;
+    left: 20%;
+    right: 20%;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 5px;
 
     background-image: url('../img/event-logo.png');
     background-size: contain;
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: bottom;
 }
 
 .topcoat-card {

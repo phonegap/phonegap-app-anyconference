@@ -14,7 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 <header class="topcoat-navigation-bar fixed full">
-    <div class="topcoat-navigation-bar__item left quarter">
+    <div class="topcoat-navigation-bar__item left fifth">
         <a class="topcoat-icon-button--quiet js-menu-button">
           <span class="topcoat-icon topcoat-icon--menu-stack"></span>
         </a>
@@ -22,10 +22,10 @@ limitations under the License.
           <span class="topcoat-icon topcoat-icon--left-arrow"></span>
         </a>
     </div>
-    <div class="topcoat-navigation-bar__item center half js-section-title">
+    <div class="topcoat-navigation-bar__item center three-fifths js-section-title">
       <h1 class="topcoat-navigation-bar__title js-navbar-title"><%= name || "" %></h1>
     </div>
-    <div class="topcoat-navigation-bar__item topcoat-navigation-bar__day-container center half js-day-titles">
+    <div class="topcoat-navigation-bar__item topcoat-navigation-bar__day-container center three-fifths js-day-titles">
       <div class="anyconf-page-indicator">
         <% _.each(dates, function(day) { %> 
             <div class="anyconf-day-symbol js-day-symbol" data-day-id="<%- day.id %>"></div>

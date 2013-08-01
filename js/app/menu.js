@@ -259,6 +259,15 @@ define(function(require, exports, module) {
                 htmlContent += _.template(dayEntryTemplate, {day: day, dayId: date.id});
             }
             $header.after(htmlContent);
+            this.fitLogo();
+        },
+        
+        // TODO: Find CSS-only solution
+        fitLogo: function() {
+            var lastItem = $('.js-last-item')[0];
+            var itemBottom = lastItem.offsetTop + lastItem.offsetHeight;
+            var logo = $('.js-logo');
+            logo.css('top', itemBottom + 'px');
         },
         
         serialize: function() {

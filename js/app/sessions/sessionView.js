@@ -79,7 +79,8 @@ define(function(require, exports, module) {
 		        return;
 		    }
             var id = this.model.id;
-            appRouter.navigate('sessionDetails/' + id, {trigger: true});
+            var dayId = this.model.get('instances')[0].date;
+            appRouter.navigate('sessionDetails/' + dayId + '/' + id, {trigger: true});
 		},
 		
 		onStarUp: function(evt) {

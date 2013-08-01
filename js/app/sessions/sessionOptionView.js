@@ -57,7 +57,7 @@ define(function(require, exports, module) {
         },
         
         update: function() {
-            if( this.checkbox ) {
+            if( this.checkbox && this.currentModel ) { // necessary?
                 this.checkbox.checked = this.currentModel.get( this.flag );
             }
         },

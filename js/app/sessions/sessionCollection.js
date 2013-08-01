@@ -44,7 +44,9 @@ define(function(require, exports, module) {
 				sessionData.endTime = sessionData.startTime.clone().add('m', firstInstance.duration);
 				sessionData.title = sessionData.name;
 				sessionData.details = sessionData.description;
-				
+				sessionData.room = firstInstance.room_id;
+				sessionData.dayId = firstInstance.date;
+								
 				if( sessionData.speaker_ids.length ) {
 					// this.setSpeakers(sessionData);
 				}

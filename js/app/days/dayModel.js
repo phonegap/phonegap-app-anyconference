@@ -24,6 +24,7 @@ define(function(require, exports, module) {
 
         initialize: function() {
             var dateStr = this.get('date');
+            this.id = dateStr;
             this.setDayOfWeek(dateStr);
         },
         

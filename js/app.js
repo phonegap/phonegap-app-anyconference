@@ -32,6 +32,13 @@ define(function(require, exports, module) {
         defaults: {
             'name': 'AnyConference',
             'title': 'Today'
+        },
+        parse: function(data) {
+            // replace day id string with date
+            _.each(data.dates, function(dayData) {
+                dayData.id = dayData.date;
+            });
+            return data;
         }
     });
 
@@ -59,8 +66,7 @@ define(function(require, exports, module) {
 
     var speakerCollection = new SpeakerCollection();
     var speakerCollectionView = new SpeakerCollectionView({
-        collection: speakerCollection,
-        filter: function() { return true }
+        collection: speakerCollection
     });
     
     var speakerCollectionDetailsView = new SpeakerCollectionDetailsView({
@@ -148,10 +154,8 @@ define(function(require, exports, module) {
             // TODO: Something better than this
             // dayCollectionView.navigateTo(this.model.get('dates')[0].id);
             var firstId = this.model.get('dates')[0].id;
-            appRouter.setScheduleId(firstId);
             
             menuView.render();
-            this.checkTime();
             Backbone.history.start();
             
             sessionCollection.on('sync', function(evt) {
@@ -206,41 +210,7 @@ define(function(require, exports, module) {
             }
             
             console.log('route', arguments);
-		},
-		
-		checkTime: function() {
-			var viewMode = 1;
-			// check if we're in the right mode
-			if( viewMode !== 1 ) {
-				return;
-			}
-			var now = moment();
-			// TODO: For each track, if track is today...
-			var timeOfNext = null;
-			
-			// TODO: Fix this
-			return;
-			sessionCollection.each(function(session) {
-				var start = session.get('startTime');
-				var end = session.get('endTime');
-				
-				// check if session should be first "up next"
-				if( !timeOfNext && now.isBefore( start ) ) {
-					session.setAsNextUp();
-					timeOfNext = start;
-				// check if session is also "up next"
-				} else if( timeOfNext && start.isSame(timeOfNext) ) {
-					session.setAsNextUp();
-				// check if session is happening now
-				} else if( now.isAfter( start ) && now.isBefore( end ) ) {
-					session.setAsCurrent();
-				} else {
-					session.clearTimeFlag();
-				}
-			});
-			 
-			setTimeout(this.checkTime, 60 * 1000);
-		},
+		}
 		
     });
     
