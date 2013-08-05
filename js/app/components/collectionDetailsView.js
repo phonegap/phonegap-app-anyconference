@@ -217,7 +217,10 @@ define(function(require, exports, module) {
 			var itemIndex = collection.indexOf(this.currentItem);
 			var prevView;
 			var nextView;
-			if( collection.length == 2 ) {
+			if( collection.length == 1 ) {
+			    this.prevItem = null;
+			    this.nextItem = null;
+			} else if( collection.length == 2 ) {
 			    if( itemIndex == 0 ) {
 			        this.prevItem = null;
 			        this.nextItem = collection.last();

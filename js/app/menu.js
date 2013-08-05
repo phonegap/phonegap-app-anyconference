@@ -40,7 +40,9 @@ define(function(require, exports, module) {
 		    'pointerup .js-speakerlist-link': 'linkUp',
 		    'click .js-speakerlist-link': 'linkUp',
 		    'pointerup .js-starredlist-link': 'linkUp',
-		    'click .js-starredlist-link': 'linkUp'
+		    'click .js-starredlist-link': 'linkUp',
+		    
+		    'click .js-toggle-submenu': 'toggleSubMenu'
 		},
 		
 		template: _.template(menuTemplate),
@@ -103,6 +105,11 @@ define(function(require, exports, module) {
 		    } else {
 		        _this.hide();
 		    }
+		},
+		
+		toggleSubMenu: function() {
+		    $('.js-submenu-icon')[0].classList.toggle('js-submenu-opened');
+    		$('.js-submenu-child').toggleClass('js-submenu-child--hidden');
 		},
 		
 		resetGestures: function() {
@@ -259,6 +266,12 @@ define(function(require, exports, module) {
                 htmlContent += _.template(dayEntryTemplate, {day: day, dayId: date.id});
             }
             $header.after(htmlContent);
+            
+            if( dates.length > 3 ) {
+                // Start with submenu closed
+                this.toggleSubMenu();
+            }
+            $('.js-submenu-icon')[0].classList.add('js-submenu-transition');
             this.fitLogo();
         },
         
