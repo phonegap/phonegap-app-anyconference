@@ -16,6 +16,7 @@ limitations under the License.
 define(function(require, exports, module) {
 
     var appRouter = require('app/appRouter');
+    var utils = require('app/utils');
     var ItemPageView = require('app/components/itemPageView');
     var collectionTemplate = require('text!app/templates/itemCollectionTemplate.html');
 
@@ -259,7 +260,7 @@ define(function(require, exports, module) {
 			var offsetY = currentPoint.y - this.startPoint.y;
 			if( offsetY < 0 ) {
 				// drag current page up
-				targetEl.style.webkitTransform = 'translateY(' + offsetY + 'px) translateZ(0)';
+				utils.setTransform(targetEl, 'translateY(' + offsetY + 'px) translateZ(0)');
 				var amount = -(offsetY / this.pageHeight);
 				this.pageOverlay.style.opacity = (1 - amount).toFixed(2);
 				
@@ -267,7 +268,7 @@ define(function(require, exports, module) {
 			} else if( prevEl ) {
 				// drag previous page down
 				offsetY = Math.min( -this.pageHeight + offsetY * 1.5, 0 );
-				prevEl.style.webkitTransform = 'translateY(' + offsetY + 'px) translateZ(0)';
+				utils.setTransform(prevEl, 'translateY(' + offsetY + 'px) translateZ(0)');
 				this.pendingPage = this.prevPage;
 			}
             var hasIn = targetEl.classList.contains('js-page-transition-in');
@@ -383,12 +384,12 @@ define(function(require, exports, module) {
 		    var el = this.el;
 		    // Start from side
 		    el.style.display = 'block';
-		    el.style.webkitTransform = 'translateX(-' + window.innerWidth + 'px) translateZ(0)';
+		    utils.setTransform(el, 'translateX(-' + window.innerWidth + 'px) translateZ(0)');
 		    // el.style.overflow = 'hidden';
 		    setTimeout( function() {
     		    el.style.display = 'block';
 		        _this.transitionFromClass('js-enter-view-transition');
-		        el.style.webkitTransform = null; // 'none';
+		        utils.setTransform(el, null); // 'none';
 		    }, 1);
 		    
 			var onTransitionEnd = function(evt) {
@@ -404,11 +405,11 @@ define(function(require, exports, module) {
 		    var _this = this;
 		    var el = this.el;
 		    // Move to left side
-            el.style.webkitTransform = 'none';
+            utils.setTransform(el, 'none');
 		    el.style.overflow = 'hidden';
 		    setTimeout( function() {
 		        _this.transitionFromClass('js-leave-view-transition');
-    		    el.style.webkitTransform = 'translateX(-' + window.innerWidth + 'px) translateZ(0)';
+    		    utils.setTransform(el, 'translateX(-' + window.innerWidth + 'px) translateZ(0)');
 		    }, 1);
 		    
 			var onTransitionEnd = function(evt) {

@@ -16,6 +16,7 @@ limitations under the License.
 define(function(require, exports, module) {
     
     var appRouter = require('app/appRouter');
+    var utils = require('app/utils');
     var CollectionDetailsView = require('app/components/collectionDetailsView');
     var Strings = {
         PULL_UP_TO_CLOSE: 'Pull up to close',
@@ -58,7 +59,7 @@ define(function(require, exports, module) {
 		
 		setupAsCurrent: function() {
 			this.el.style.display = 'block';
-			this.el.style.webkitTransform = 'none';
+			utils.setTransform(this.el, 'none');
 			if( !this.ptaReady ) {
 			    this.setupPTA();
 			}
@@ -68,7 +69,7 @@ define(function(require, exports, module) {
 			// this.renderContent();
 			this.el.style.display = 'block';
 			var width = window.innerWidth;
-			this.el.style.webkitTransform = 'translateX(' + -width + 'px) translateZ(0px)';
+			utils.setTransform(this.el, 'translateX(' + -width + 'px) translateZ(0px)');
 			// this.el.setAttribute('POS', 'PREVIOUS');
 		},
 		
@@ -76,7 +77,7 @@ define(function(require, exports, module) {
 			// this.renderContent();
 			this.el.style.display = 'block';
 			var width = window.innerWidth;
-			this.el.style.webkitTransform = 'translateX(' + width + 'px) translateZ(0px)';
+			utils.setTransform(this.el, 'translateX(' + width + 'px) translateZ(0px)');
 			// this.el.setAttribute('POS', 'NEXT');
 		},
 		

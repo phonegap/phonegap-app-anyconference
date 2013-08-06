@@ -16,6 +16,7 @@ limitations under the License.
 define(function(require, exports, module) {
 
     var appRouter = require('app/appRouter');
+    var utils = require('app/utils');
 
 	var CollectionDetailsView = Backbone.View.extend({
         manage: true,
@@ -144,15 +145,15 @@ define(function(require, exports, module) {
 		    // Start from side
             el.style.display = 'block';
 		    if( this.isRestoring ) {
-		        el.style.webkitTransform = 'none';
-		        return;
+		        utils.setTransform(el, 'none');
+                return;
 		    }
 		    
-		    el.style.webkitTransform = 'translateX(' + this.itemWidth + 'px) translateZ(0px)';
+		    utils.setTransform(el, 'translateX(' + this.itemWidth + 'px) translateZ(0px)');
 		    // el.style.overflow = 'hidden';
 		    setTimeout( function() {
 		        _this.transitionFromClass('js-enter-view-transition');
-		        el.style.webkitTransform = 'none';
+		        utils.setTransform(el, 'none');
 		    }, 1);
 		    
 			var onTransitionEnd = function(evt) {
@@ -170,11 +171,11 @@ define(function(require, exports, module) {
 		    var _this = this;
 		    var el = this.el;
 		    // Move to right side
-            el.style.webkitTransform = 'none';
+            utils.setTransform(el, 'none');
 		    // el.style.overflow = 'hidden';
 		    setTimeout( function() {
 		        _this.transitionFromClass('js-leave-view-transition');
-    		    el.style.webkitTransform = 'translateX(' + this.itemWidth + 'px) translateZ(0px)';
+    		    utils.setTransform(el, 'translateX(' + this.itemWidth + 'px) translateZ(0px)');
 		    }, 1);
 		    
 			var onTransitionEnd = function(evt) {
@@ -209,7 +210,7 @@ define(function(require, exports, module) {
 			if( currentView.itemWidth ) {
 			    this.itemWidth = currentView.itemWidth;
 			}
-			this.el.style.webkitTransform = null;
+			utils.setTransform(this.el, null);
 		},
 		
 		setupAdjacent: function() {
@@ -279,7 +280,7 @@ define(function(require, exports, module) {
     			console.log('...done animating');
 			};
 			this.transitionFromClass('js-details-transition');
-			this.el.style.webkitTransform = 'translateX(' + -offsetX  + 'px) translateZ(0px)';
+			utils.setTransform(this.el, 'translateX(' + -offsetX  + 'px) translateZ(0px)');
 			this.el.addEventListener('webkitTransitionEnd', onTransitionEnd);
 		},
 		
@@ -350,7 +351,7 @@ define(function(require, exports, module) {
                     allowChange = false;
                 }
                 
-				this.el.style.webkitTransform = 'translateX(' + startOffset.x + 'px) translateZ(0px)';
+				utils.setTransform(this.el, 'translateX(' + startOffset.x + 'px) translateZ(0px)');
 				if( !allowChange ) {
 				    this.pendingItem = this.currentItem;
 				    return;

@@ -16,6 +16,7 @@ limitations under the License.
 define(function(require, exports, module) {
 
     var appRouter = require('app/appRouter');
+    var utils = require('app/utils');
     var dayEntryTemplate = require('text!app/templates/dayEntryTemplate.html');
     var menuTemplate = require('text!app/templates/menuTemplate.html');
 
@@ -65,7 +66,7 @@ define(function(require, exports, module) {
             
 		    this.el.classList.remove('js-menu-offscreen');
 		    this.el.classList.add('js-menu-transition-in');
-		    this.el.style.webkitTransform = 'none';
+		    utils.setTransform(this.el, 'none');
 		    this.el.addEventListener('webkitTransitionEnd', onTransitionEnd);
 
 			this.$el.before( this.overlay );
@@ -90,7 +91,7 @@ define(function(require, exports, module) {
 
 		    this.el.classList.add('js-menu-offscreen');
 		    this.el.classList.add('js-menu-transition-out');
-		    this.el.style.webkitTransform = 'translateX(' + -window.innerWidth + 'px)';
+		    utils.setTransform(this.el, 'translateX(' + -window.innerWidth + 'px)');
 		    this.el.addEventListener('webkitTransitionEnd', onTransitionEnd);
 		    this.isShown = false;
 		},
@@ -210,7 +211,7 @@ define(function(require, exports, module) {
             
             if( this.isShown ) {
                 var translateX = Math.min(startOffset.x, 0);
-                this.el.style.webkitTransform = 'translateX(' + translateX + 'px)';
+                utils.setTransform(this.el, 'translateX(' + translateX + 'px)');
             } else {
                 if( currentPoint.x > this.lastPoint.x ) {
                     this.show();
@@ -321,7 +322,7 @@ define(function(require, exports, module) {
 		    
 		    document.body.appendChild( this.el );
 		    this.el.classList.add('js-menu-offscreen');
-		    this.el.style.webkitTransform = 'translateX(' + -window.innerWidth + 'px)';
+		    utils.setTransform(this.el, 'translateX(' + -window.innerWidth + 'px)');
 		    // this.el.innerHTML = this.template(templateValues);
 		    // $('body').on("pointerdown",this.pointerDown);
 		}

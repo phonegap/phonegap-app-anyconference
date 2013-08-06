@@ -16,6 +16,7 @@ limitations under the License.
 define(function(require, exports, module) {
 
     var DayModel = require('app/days/dayModel');
+    var utils = require('app/utils');
     var appRouter = require('app/appRouter');
     
     var DayHeaderView = Backbone.View.extend({
@@ -40,7 +41,7 @@ define(function(require, exports, module) {
 		
 		setupAsCurrent: function() {
 			this.el.style.display = 'block';
-			this.el.style.webkitTransform = 'none';
+			utils.setTransform(this.el, 'none');
 			this.render();
 			var id = this.model.get('id');
 			appRouter.navigate('sessionCollection/' + id, {trigger: true});
@@ -53,14 +54,14 @@ define(function(require, exports, module) {
 			this.el.style.display = 'block';
 			this.render();
 			this.el.style.left = -this.itemWidth + 'px';
-			// this.el.style.webkitTransform = 'translateX(' + -this.itemWidth + 'px) translateZ(0px)';
+			// utils.setTransform(this.el, 'translateX(' + -this.itemWidth + 'px) translateZ(0px)');
 		},
 		
 		setupAsNext: function() {
 			this.el.style.display = 'block';
 			this.render();
 			this.el.style.left = this.itemWidth + 'px';
-			// this.el.style.webkitTransform = 'translateX(' + this.itemWidth + 'px) translateZ(0px)';
+			// utils.setTransform(this.el, 'translateX(' + this.itemWidth + 'px) translateZ(0px)');
 		},
     });
     

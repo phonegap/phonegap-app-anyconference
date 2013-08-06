@@ -15,6 +15,8 @@ limitations under the License.
 */
 define(function(require, exports, module) {
 
+    var utils = require('app/utils');
+
 	var PageView = Backbone.View.extend({
 		tagName: 'ul',
 		className: 'topcoat-list item-page',
@@ -51,24 +53,24 @@ define(function(require, exports, module) {
 		transitionIn: function(callback) {
             this.transitionCallback = callback;
             this.transitionFromClass('js-page-transition-in');
-			this.el.style.webkitTransform = 'none';
+			utils.setTransform(this.el, 'none');
 		},
 		
 		transitionOut: function(callback) {
 			this.transitionCallback = callback;
 			this.transitionFromClass('js-page-transition-out');
-			this.el.style.webkitTransform = 'translateY(' + -this.options.pageHeight + 'px) translateZ(0)';
+			utils.setTransform(this.el, 'translateY(' + -this.options.pageHeight + 'px) translateZ(0)');
 		},
 		
 		render: function() {
 			this.el.style.display = 'block';
-			this.el.style.webkitTransform = 'none';
+			utils.setTransform(this.el, 'none');
 		},
 		
 		renderAsPrevious: function() {
 			this.render();
 			var offsetY = -this.options.pageHeight;
-			this.el.style.webkitTransform = 'translateY(' + offsetY + 'px) translateZ(0)';
+			utils.setTransform(this.el, 'translateY(' + offsetY + 'px) translateZ(0)');
 		},
         
         initialize: function() {
