@@ -1441,10 +1441,6 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
     box-sizing: border-box;
 }
 
-.anyconf-menu-title {
-    margin-top: 2rem;
-}
-
 .anyconf-menu {
     position: fixed;
     top: 0;
@@ -1457,15 +1453,20 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
     -webkit-overflow-scrolling: touch;
 }
 
-.anyconf-event-logo {
-    position: absolute;
-    bottom: 0;
-    left: 20%;
-    right: 20%;
-    margin: auto;
-    margin-top: 10px;
-    margin-bottom: 5px;
+.anyconf-menu__container {
+    min-height: 100%;
+    padding-top: 1px;
+    margin-top: -1px;    
+    margin-bottom: -10px; /* Not sure why */
+}
 
+.anyconf-event-logo {
+    min-height: 150px;
+    max-height: 20%;
+    width: 60%;
+
+    margin: 100px auto 0;
+    
     background-image: url('../img/event-logo.png');
     background-size: contain;
     background-repeat: no-repeat;

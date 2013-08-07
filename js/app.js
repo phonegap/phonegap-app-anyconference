@@ -225,9 +225,10 @@ define(function(require, exports, module) {
 
     //Handler for phonegap deviceready event
     var deviceReadyHandeler = function() {
-            //Hide the splashscreen as soon as the device is ready
-            navigator.splashscreen.hide();
-        };
+        //Hide the splashscreen as soon as the device is ready
+        navigator.splashscreen.hide();
+        document.addEventListener("menubutton", appView.showMenu, true);
+    };
 
     //Add event listener for phonegap device ready event
     window.document.addEventListener("deviceready", deviceReadyHandeler, false);});

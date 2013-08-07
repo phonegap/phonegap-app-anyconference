@@ -152,7 +152,7 @@ define(function(require, exports, module) {
                 if( evt.target == this.overlay ) {
                     this.hide();
                 } else {
-                    evt.preventDefault();
+                    // evt.preventDefault();
                     this.pointerStarted = true;
                     // window.addEventListener('pointermove', this.pointerMove, false);
                     // window.addEventListener('pointerend', this.pointerUp, false);
@@ -273,15 +273,6 @@ define(function(require, exports, module) {
                 this.toggleSubMenu();
             }
             $('.js-submenu-icon')[0].classList.add('js-submenu-transition');
-            this.fitLogo();
-        },
-        
-        // TODO: Find CSS-only solution
-        fitLogo: function() {
-            var lastItem = $('.js-last-item')[0];
-            var itemBottom = lastItem.offsetTop + lastItem.offsetHeight;
-            var logo = $('.js-logo');
-            logo.css('top', itemBottom + 'px');
         },
         
         serialize: function() {
