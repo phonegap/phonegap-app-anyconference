@@ -60,8 +60,6 @@ define(function(require, exports, module) {
     //Session
     var SessionCollection = require('app/sessions/sessionCollection'); // day of sessions or starred sessions
     
-    var SessionCollectionView = require('app/sessions/sessionCollectionView');
-    var SessionCollectionDetailsView = require('app/sessions/sessionCollectionDetailsView');
     var SessionOptionView = require('app/sessions/sessionOptionView');
 
     var speakerCollection = new SpeakerCollection();
@@ -170,17 +168,17 @@ define(function(require, exports, module) {
             menuView.show();
         },
         
-		goBack: function(evt) {
-		    window.history.go(-1);
-		},
-		
-		setHeading: function(route) {
-		    var headingText;
-		    var showBackButton = false;
-		    if( route === 'sessionCollection' ) {
+        goBack: function(evt) {
+            window.history.go(-1);
+        },
+        
+        setHeading: function(route) {
+            var headingText;
+            var showBackButton = false;
+            if( route === 'sessionCollection' ) {
                 $('.js-day-titles').show();
                 $('.js-section-title').hide();
-		    } else {
+            } else {
                 $('.js-day-titles').hide();
                 $('.js-section-title').show();
                 switch( route ) {
@@ -210,11 +208,10 @@ define(function(require, exports, module) {
             }
             
             console.log('route', arguments);
-		}
-		
+        }
     });
     
-    //Indtantiate app view
+    //Instantiate app view
     var appView = new AppView({
         'model': appModel
     });

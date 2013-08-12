@@ -1442,7 +1442,7 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
 }
 
 .anyconf-menu {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     width: 80%;
@@ -1450,6 +1450,7 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
     z-index: 30;
     background: #fff;
     overflow: auto;
+    -webkit-transform: translateZ(0px);
     -webkit-overflow-scrolling: touch;
 }
 
@@ -1519,7 +1520,9 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
     background-color: #454545;
 }
 
-
+/*
+  Interactivity classes
+*/
 .js-page-overlay,
 .js-menu-overlay {
   position: absolute;
@@ -1554,6 +1557,9 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
   -webkit-transition: all 0.2s;
   -webkit-transform: translateY(-100%) translateZ(0);
 }
+.js-menu-offscreen {
+  display: none;
+}
 .js-menu-transition-in {
   -webkit-transition: all 0.2s;
   -webkit-transform: none;
@@ -1572,7 +1578,7 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
   -webkit-transition: -webkit-transform 0.3s;
 }
 .js-submenu-opened {
-  -webkit-transform: rotateZ(-90deg) translateZ(0);
+  -webkit-transform: rotateZ(-90deg); // translateZ(0);
 }
 .js-submenu-transition {
   -webkit-transition: -webkit-transform 0.3s;

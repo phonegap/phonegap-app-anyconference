@@ -55,21 +55,26 @@ define(function(require, exports, module) {
 			var onTransitionEnd = function(evt) {
 				_this.el.classList.remove('js-menu-transition-in');
 				evt.target.removeEventListener('webkitTransitionEnd', onTransitionEnd);
+				utils.setTransform(_this.el, '');
 				_this.animating = false;
 			};
 
-            this.overlay.style.display = 'block';
-            setTimeout( function() {
-                _this.overlay.classList.remove('js-menu-overlay-hidden');
-                _this.overlay.classList.add('js-menu-overlay-shown');
-            }, 1);
+			setTimeout( function() {
+				_this.overlay.style.display = 'block';
+	            setTimeout( function() {
+	                _this.overlay.classList.remove('js-menu-overlay-hidden');
+	                _this.overlay.classList.add('js-menu-overlay-shown');
+	            }, 1);
+			}, 1);
             
 		    this.el.classList.remove('js-menu-offscreen');
-		    this.el.classList.add('js-menu-transition-in');
-		    utils.setTransform(this.el, 'none');
-		    this.el.addEventListener('webkitTransitionEnd', onTransitionEnd);
+		    setTimeout(function() {
+                _this.el.classList.add('js-menu-transition-in');
+                utils.setTransform(_this.el, 'none');
+                _this.el.addEventListener('webkitTransitionEnd', onTransitionEnd);
+    			_this.$el.before( _this.overlay );
+		    }, 1);
 
-			this.$el.before( this.overlay );
 		    
 		    this.isShown = true;
 		},
@@ -82,6 +87,7 @@ define(function(require, exports, module) {
 			var onTransitionEnd = function(evt) {
 				_this.el.classList.remove('js-menu-transition-out');
                 _this.overlay.style.display = 'none';
+    		    _this.el.classList.add('js-menu-offscreen');
 				evt.target.removeEventListener('webkitTransitionEnd', onTransitionEnd);
 				_this.animating = false;
 			};
@@ -89,7 +95,6 @@ define(function(require, exports, module) {
             this.overlay.classList.add('js-menu-overlay-hidden');
             this.overlay.classList.remove('js-menu-overlay-shown');
 
-		    this.el.classList.add('js-menu-offscreen');
 		    this.el.classList.add('js-menu-transition-out');
 		    utils.setTransform(this.el, 'translateX(' + -window.innerWidth + 'px)');
 		    this.el.addEventListener('webkitTransitionEnd', onTransitionEnd);
@@ -108,7 +113,7 @@ define(function(require, exports, module) {
 		    }
 		},
 		
-		toggleSubMenu: function() {
+		toggleSubMenu: function(evt) {
 		    $('.js-submenu-icon')[0].classList.toggle('js-submenu-opened');
     		$('.js-submenu-child').toggleClass('js-submenu-child--hidden');
 		},
@@ -261,17 +266,29 @@ define(function(require, exports, module) {
             var dates = this.model.get('dates');
             var $header = this.$el.find('.js-schedule-header');
             var htmlContent = '';
-            for( var i = 0; i < dates.length; i++ ) {
-                var day = moment(dates[i].date).format('dddd, MMM D');
-                var date = dates[i];
-                htmlContent += _.template(dayEntryTemplate, {day: day, dayId: date.id});
-            }
+            var addContent = function() {
+                for( var i = 0; i < dates.length; i++ ) {
+                    var day = moment(dates[i].date).format('dddd, MMM D');
+                    var date = dates[i];
+                    htmlContent += _.template(dayEntryTemplate, {day: day, dayId: date.id});
+                }
+            };
+            addContent();
+
+            this.overlay.classList.add('js-menu-overlay-hidden');
+            /*
+            addContent();
+            addContent();
+            addContent();
+            */
             $header.after(htmlContent);
             
+            /*
             if( dates.length > 3 ) {
                 // Start with submenu closed
                 this.toggleSubMenu();
             }
+            */
             $('.js-submenu-icon')[0].classList.add('js-submenu-transition');
         },
         
