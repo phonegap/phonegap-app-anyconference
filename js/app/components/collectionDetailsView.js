@@ -197,6 +197,7 @@ define(function(require, exports, module) {
 			}
 			this.currentItem = item;
 			this.render();
+			appRouter.setSubRoute(itemId);
 		},
 		
 		setCurrentItem: function(item) {
@@ -211,6 +212,7 @@ define(function(require, exports, module) {
 			    this.itemWidth = currentView.itemWidth;
 			}
 			utils.setTransform(this.el, null);
+			appRouter.setSubRoute(item.id);
 		},
 		
 		setupAdjacent: function() {

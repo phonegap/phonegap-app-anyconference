@@ -26,6 +26,16 @@ define(function(require, exports, module) {
             'sessionDetails/:dayId/:sessionId': 'sessionDetails',
             'speakerDetails/:speakerId': 'speakerDetails'
         },
+
+        lastItemId: null,
+
+        setSubRoute: function(itemId) {
+            this.lastItemId = itemId;
+        },
+
+        getSubRoute: function() {
+            return this.lastItemId;
+        },
         
         // These probably aren't necessary if we just use .on(route:*)
         sessionCollection: function() {

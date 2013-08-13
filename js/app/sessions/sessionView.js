@@ -79,8 +79,8 @@ define(function(require, exports, module) {
 		        return;
 		    }
             var id = this.model.id;
-            var dayId = this.model.get('instances')[0].date;
-            appRouter.navigate('sessionDetails/' + dayId + '/' + id, {trigger: true});
+            var parentId = this.options.parentView.id;
+            appRouter.navigate('sessionDetails/' + parentId + '/' + id, {trigger: true});
 		},
 		
 		onStarUp: function(evt) {

@@ -28,6 +28,7 @@ define(function(require, exports, module) {
 		template: _.template(collectionTemplate),
 		
 		pages: [],
+		pagesByItemId: {},
 		
 		pageHeight: null,
 		prevPage: null,
@@ -124,21 +125,29 @@ define(function(require, exports, module) {
 			this.pages.push(this.currentPage);
 			this.listEl.insertBefore( this.currentPage.el, this.listEl.firstChild );
 		},
+
+		addElToPage: function(itemView) {
+			this.currentPage.el.appendChild( itemView.el );
+			this.pagesByItemId[ itemView.model.id ] = this.currentPage;
+		},
 		
 		addItem: function(model) {
 			if( !this.currentPage ) {
 				this.addToNewPage();
 			}
-			var itemView = new this.ItemView({model: model}).render();
+			var itemView = new this.ItemView({
+				model: model,
+				parentView: this
+			}).render();
 			
 			// See if it fits on the page
-			this.currentPage.el.appendChild( itemView.el );
+			this.addElToPage( itemView );
 			var viewBottom = itemView.el.offsetTop + itemView.el.offsetHeight;
 			var pageBottom = this.currentPage.el.offsetTop + this.currentPage.el.offsetHeight;
 
 			if( viewBottom > pageBottom ) {
 				this.addToNewPage();
-				this.currentPage.el.appendChild( itemView.el );
+				this.addElToPage( itemView );
 			}
             // Fix the page's height
             var pageHeight = this.currentPage.el.offsetHeight;
@@ -339,6 +348,7 @@ define(function(require, exports, module) {
             this.currentPage = null;
             this.nextPage = null;
             this.pages = [];
+            this.pagesByItemId = {};
 		},
 		
         afterRender: function() {
@@ -363,9 +373,12 @@ define(function(require, exports, module) {
 		        this.transitionIn();
 		        return;
 		    }
-		
+			
+			var itemId = appRouter.getSubRoute();
+		    var page = this.pagesByItemId[ itemId ] || this.pages[0];
+
             // appView.setCurrentView(this);
-			this.setCurrentPage( this.pages[0] );
+			this.setCurrentPage( page );
 			
 			this.positionOverlay();
 			
@@ -433,6 +446,11 @@ define(function(require, exports, module) {
 		
 		initialize: function() {
 			var _this = this;
+
+			if( this.options.id ) {
+				this.id = this.options.id;
+			}
+
 			// this.listenTo(this.collection, 'add', this.addSession);
 			var documentPointerUp = function(jqEvt) {
                 if( _this.el.parentNode ) {

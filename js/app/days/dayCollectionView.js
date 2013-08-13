@@ -31,18 +31,26 @@ define(function(require, exports, module) {
 		},
 		afterRender: function() {
             var sessionCollection = this.sessionCollection;
-
+            var starredFilter = function(model) {
+                return model.get('starred');
+            };
             var sessionCollectionStarredView = new SessionCollectionView({
                 collection: sessionCollection,
+                id: 'starred',
                 type: 'starred',
-                filter: function(model) {
-                    return model.get('starred');
-                },
+                filter: starredFilter,
                 returnRouteId: 'sessionCollection/' + this.collection.first().id
             });
 
+            var sessionCollectionStarredDetailsView = new SessionCollectionDetailsView({
+                collection: sessionCollection,
+                filter: starredFilter,
+                viewId: 'starred'
+            });
+
             this.setView(sessionCollectionStarredView, true);
-            
+            this.setView(sessionCollectionStarredDetailsView, true);
+
 		    this.collection.each(function(dayModel) {
 		        var dateFilter = function(model) {
                     var sessionDate = model.get('instances')[0].date;
@@ -64,7 +72,6 @@ define(function(require, exports, module) {
 
 		        sessionCollectionView.listenTo(sessionCollection, 'sync', function(evt) {
 		            sessionCollectionView.id = dayModel.id;
-                    // sessionCollectionView.render();
                 });
 		    }, this);
             
