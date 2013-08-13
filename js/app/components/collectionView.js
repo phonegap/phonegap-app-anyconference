@@ -196,6 +196,7 @@ define(function(require, exports, module) {
 		
 		pointerDown: function(jqEvt) {
 		    var evt = jqEvt.originalEvent;
+		    var _this = this;
 			console.log('pointerdown');
 			if( this.animating || !this.currentPage ) {
 			    evt.preventDefault();
@@ -216,7 +217,14 @@ define(function(require, exports, module) {
 				x: 0,
 				y: 0
 			}
+			this.targetEl = this.currentPage.el;
+			this.pageOffsetY = 0;
+			this.overlayOpacity = 0;
+
 			this.pointerStarted = true;
+			this.rAFIndex = requestAnimationFrame(function() {
+				_this.draw();
+			});
             this.currentPage.el.classList.remove('js-page-transition-in');
             this.currentPage.el.classList.remove('js-page-transition-out');
 		},
@@ -269,17 +277,26 @@ define(function(require, exports, module) {
 			var offsetY = currentPoint.y - this.startPoint.y;
 			if( offsetY < 0 ) {
 				// drag current page up
-				utils.setTransform(targetEl, 'translateY(' + offsetY + 'px) translateZ(0)');
+				this.targetEl = targetEl;
+				this.pageOffsetY = offsetY;
+
+				// utils.setTransform(targetEl, 'translateY(' + offsetY + 'px) translateZ(0)');
 				var amount = -(offsetY / this.pageHeight);
-				this.pageOverlay.style.opacity = (1 - amount).toFixed(2);
+				this.overlayOpacity = (1 - amount).toFixed(2);
+
+				// this.pageOverlay.style.opacity = (1 - amount).toFixed(2);
 				
 				this.pendingPage = this.nextPage;
 			} else if( prevEl ) {
 				// drag previous page down
 				offsetY = Math.min( -this.pageHeight + offsetY * 1.5, 0 );
-				utils.setTransform(prevEl, 'translateY(' + offsetY + 'px) translateZ(0)');
+				this.pageOffsetY = offsetY;
+				this.targetEl = prevEl;
+
+				// utils.setTransform(prevEl, 'translateY(' + offsetY + 'px) translateZ(0)');
 				this.pendingPage = this.prevPage;
 			}
+			/*
             var hasIn = targetEl.classList.contains('js-page-transition-in');
             var hasOut = targetEl.classList.contains('js-page-transition-out');
             console.log('has trans class in: ' + hasIn );
@@ -287,6 +304,7 @@ define(function(require, exports, module) {
             if( hasIn || hasOut ) {
                 console.error('HAS TRANS');
             }
+            */
 		},
 		
 		handleEmptyPointerUp: function(jqEvt) {
@@ -300,6 +318,7 @@ define(function(require, exports, module) {
 		pointerUp: function(jqEvt) {
 		    console.log('pointerup');
 		    var evt = jqEvt.originalEvent;
+		    cancelAnimationFrame(this.rAFIndex);
 		    
 		    if( !this.currentPage ) {
 		        this.handleEmptyPointerUp(jqEvt);
@@ -342,7 +361,20 @@ define(function(require, exports, module) {
 			}
             this.pointerStarted = false;
 		},
-		
+
+		draw: function() {
+			var _this = this;
+			if( this.pointerStarted ) {
+				this.rAFIndex = requestAnimationFrame(function() {
+					_this.draw();
+				});
+			}
+
+			console.log('DRAW', this.pageOffsetY);
+			utils.setTransform(this.targetEl, 'translateY(' + this.pageOffsetY + 'px) translateZ(0)');	
+			this.pageOverlay.style.opacity = this.overlayOpacity;
+		},
+
 		beforeRender: function() {
             this.prevPage = null;
             this.currentPage = null;
