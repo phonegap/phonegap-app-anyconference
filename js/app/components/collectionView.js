@@ -422,6 +422,7 @@ define(function(require, exports, module) {
         
         destroy: function() {
             this.$el.remove();
+            this.inView = false;
         }, 
 
         transitionIn: function() {
@@ -463,6 +464,7 @@ define(function(require, exports, module) {
     		    el.style.display = 'none';
 				el.classList.remove('js-leave-view-transition');
 				el.removeEventListener('webkitTransitionEnd', onTransitionEnd);
+				_this.destroy();
 			};
 			el.addEventListener('webkitTransitionEnd', onTransitionEnd);
         },
@@ -511,7 +513,8 @@ define(function(require, exports, module) {
 		            }
 		        } else {
 		            if( this.inView ) {
-		                this.destroy();
+		                // this.destroy();
+		                this.transitionOut();
 		            }
 		            this.inView = false;
 		        }

@@ -23,9 +23,11 @@ define(function(require, exports, module) {
         DetailsView: DayHeaderView,
         routeId: 'sessionCollection',
         className: 'topcoat-titles-wrap',
+        allowRestore: true,
 		initialize: function() {
 		    // call super
-		    CollectionDetailsView.prototype.initialize.apply(this, arguments);
+		    // CollectionDetailsView.prototype.initialize.apply(this, arguments);
+		    var _this = this;
 		    
 		    appRouter.on('route', function(route, itemId) {
 		        if( route == this.routeId ) {
@@ -34,6 +36,17 @@ define(function(require, exports, module) {
 		            this.navigateTo(dayId);
 		        }
 		    }, this);
+
+			var documentPointerUp = function(jqEvt) {
+                if( _this.el.parentNode ) {
+                    _this.pointerUp.call(_this, jqEvt);
+                }
+            };
+		    
+			$(document).on({
+			    pointerleave: documentPointerUp,
+			    pointerup: documentPointerUp
+			});
 		}
     });
     

@@ -57,7 +57,7 @@ define(function(require, exports, module) {
                     this.navigateTo(subId);
 		        } else {
 		            if( this.inView ) {
-		                this.leave();
+		                this.transitionOut();
 		            }
 		            this.inView = false;
 		        }
@@ -86,11 +86,6 @@ define(function(require, exports, module) {
 			    classList.add(className);
 			}
         },
-		
-		leave: function() {
-    		// this.transitionOut();
-		    this.el.style.display = 'none';
-		},
 		
 		beforeRender: function() {
 		    this.$el.empty();
@@ -127,6 +122,7 @@ define(function(require, exports, module) {
                 this.setCurrentItem( this.currentItem );
                 this.transitionIn();
             }
+            this.inView = true;
             this.isRestoring = false;
   		},
 		
@@ -170,12 +166,17 @@ define(function(require, exports, module) {
         transitionOut: function() {
 		    var _this = this;
 		    var el = this.el;
+		    if( this.isRestoring ) {
+		        utils.setTransform(el, 'translateX(' + _this.itemWidth + 'px)');
+                return;
+		    }
+
 		    // Move to right side
             utils.setTransform(el, 'none');
-		    // el.style.overflow = 'hidden';
+
 		    setTimeout( function() {
 		        _this.transitionFromClass('js-leave-view-transition');
-    		    utils.setTransform(el, 'translateX(' + this.itemWidth + 'px) translateZ(0px)');
+    		    utils.setTransform(el, 'translateX(' + _this.itemWidth + 'px) translateZ(0px)');
 		    }, 1);
 		    
 			var onTransitionEnd = function(evt) {
@@ -192,7 +193,7 @@ define(function(require, exports, module) {
 		navigateTo: function(itemId) {
             // appView.setCurrentView(this);
 			var item = this.collection.get(itemId);
-			if( this.currentItem == item ) {
+			if( this.currentItem == item && this.allowRestore ) {
 			    this.isRestoring = true;
 			}
 			this.currentItem = item;

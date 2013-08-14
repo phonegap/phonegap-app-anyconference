@@ -45,12 +45,14 @@ define(function(require, exports, module) {
                     time: attrs.endTime.format('h:mm'),
                     suffix: attrs.endTime.format('A')
                 };
+                var dayId = attrs.startTime.format('YYYY-MM-DD');
+                var route = 'sessionDetails/' + dayId + '/' + sessionModel.id;
 			    return {
 			        title: attrs.title,
 			        startTime: startTime,
 			        endTime: endTime,
 			        day: day,
-			        id: sessionModel.id
+                    route: route
 			    };
 			});
 			

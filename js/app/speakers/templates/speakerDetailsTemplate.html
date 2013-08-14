@@ -31,7 +31,7 @@ limitations under the License.
         <h4 class="anyconf-label-title anyconf-condensed"><!-- confname --> SESSIONS:</h4>
         <% _.each(sessions, function(data) { %> 
             <div>
-                <h5><a href="sessionDetails/<%- data.id %>" class="anyconf-link anyconf-session-title-link js-link"><%- data.title %></a></h5>
+                <h5><a href="<%- data.route %>" class="anyconf-link anyconf-session-title-link js-link"><%- data.title %></a></h5>
                 <div class="anyconf-label-time">
                     <%- data.startTime.time %><small><%- data.startTime.suffix %></small>&nbsp;–&nbsp;<%- data.endTime.time %><small><%- data.endTime.suffix %></small> <span class="anyconf-day"><%- data.day %>
                 </div>
