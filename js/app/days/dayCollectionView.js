@@ -29,28 +29,21 @@ define(function(require, exports, module) {
 		initialize: function(args) {
 		    this.sessionCollection = args.sessionCollection;
 		},
+        setDefaultDayId: function(dayId) {
+            this.defaultDayId = dayId;
+        },
 		afterRender: function() {
             var sessionCollection = this.sessionCollection;
             var starredFilter = function(model) {
                 return model.get('starred');
             };
 
-            // Get today or first day as default day
-            var defaultDayId = this.collection.first().id;
-            this.collection.some(function(model) {
-                var dayOfWeek = model.get('dayOfWeek');
-                if( dayOfWeek.toLowerCase() === 'today' ) {
-                    defaultDayId = model.id;
-                    return true;
-                }
-            });
-
             var sessionCollectionStarredView = new SessionCollectionView({
                 collection: sessionCollection,
                 id: 'starred',
                 type: 'starred',
                 filter: starredFilter,
-                returnRouteId: 'sessionCollection/' + defaultDayId
+                returnRouteId: 'sessionCollection/' + this.defaultDayId
             });
 
             var sessionCollectionStarredDetailsView = new SessionCollectionDetailsView({

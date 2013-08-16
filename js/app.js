@@ -135,6 +135,7 @@ define(function(require, exports, module) {
             });
 
             this.setView('.js-app-content', dayCollectionView, true);
+            dayCollectionView.setDefaultDayId(this.defaultDayId);
             dayCollectionView.render();
             
             var dayCollectionHeadersView = new DayCollectionHeadersView({
