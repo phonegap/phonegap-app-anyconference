@@ -20,7 +20,35 @@ define(function(require, exports, module) {
     
     var SpeakerCollectionDetailsView = CollectionDetailsView.extend({
         DetailsView: SpeakerDetailsView,
-        routeId: 'speakerDetails'
+        routeId: 'speakerDetails',
+        handleRouteIn: function(speakerId, transitionId) {
+        	debugger;
+            this.inView = true;
+	        this.navigateTo(speakerId);
+			/*
+			var viewId;
+	        if( args.length == 2 ) {
+	            viewId = args[0];
+	        }
+	        var subId = args[args.length - 1];
+	        var matchesView = !viewId || viewId && viewId == this.options.viewId;
+	        if( route == this.routeId && matchesView ) {
+                this.inView = true;
+                this.navigateTo(subId);
+	        } else {
+	            if( this.inView ) {
+	                this.transitionOut();
+	            }
+	            this.inView = false;
+	        }
+	        */
+        },
+        handleRouteOut: function() {
+            if( this.inView ) {
+	            this.transitionOut();
+	        }
+	        this.inView = false;
+        }
     });
     
     return SpeakerCollectionDetailsView;

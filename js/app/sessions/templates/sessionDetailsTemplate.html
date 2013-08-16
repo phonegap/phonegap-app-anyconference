@@ -26,9 +26,9 @@ limitations under the License.
             <h4 class="anyconf-label-title anyconf-condensed">Presented By:</h4>
             <% _.each(speakers, function(data) { %> 
                 <div class="anyconf-session-speakers">
-                    <img src="<%- data.attributes.profile_url %>" width="80px">
+                    <img src="<%- data.profile_url %>" width="80px">
                     <ul class="anyconf-link-list">
-                        <b><a class="anyconf-link js-link" href="speakerDetails/<%- data.id %>"><%= data.attributes.full_name %></a></b>
+                        <b><a class="anyconf-link js-link" href="<%- data.route %>"><%= data.full_name %></a></b>
                         <li><a class="anyconf-link anyconf-link--twitter js-link" href="http://twitter.com/twitter">@twitter</a></li>
                         <li><a class="anyconf-link anyconf-link--url js-link" href="http://example.com">example.com</a></li>
                     </ul>

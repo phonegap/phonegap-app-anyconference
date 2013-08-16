@@ -45,24 +45,6 @@ define(function(require, exports, module) {
 		    var _this = this;
 		    this.itemWidth = window.innerWidth;
 		    
-		    appRouter.on('route', function(route, args) {
-		        var viewId;
-		        if( args.length == 2 ) {
-		            viewId = args[0];
-		        }
-		        var subId = args[args.length - 1];
-		        var matchesView = !viewId || viewId && viewId == this.options.viewId;
-		        if( route == this.routeId && matchesView ) {
-                    this.inView = true;
-                    this.navigateTo(subId);
-		        } else {
-		            if( this.inView ) {
-		                this.transitionOut();
-		            }
-		            this.inView = false;
-		        }
-		    }, this);
-		    
 			var documentPointerUp = function(jqEvt) {
                 if( _this.el.parentNode ) {
                     _this.pointerUp.call(_this, jqEvt);
@@ -73,7 +55,48 @@ define(function(require, exports, module) {
 			    pointerleave: documentPointerUp,
 			    pointerup: documentPointerUp
 			});
+			appRouter.on('route', function(route, args) {
+				if( route == this.routeId ) {
+					this.handleRouteIn.apply(this, args);
+				} else {
+					this.handleRouteOut.apply(this, args);
+				}
+		    }, this);
+
+			/*
+			var viewId;
+	        if( args.length == 2 ) {
+	            viewId = args[0];
+	        }
+	        var subId = args[args.length - 1];
+	        var matchesView = !viewId || viewId && viewId == this.options.viewId;
+	        if( route == this.routeId && matchesView ) {
+                this.inView = true;
+                this.navigateTo(subId);
+	        } else {
+	            if( this.inView ) {
+	                this.transitionOut();
+	            }
+	            this.inView = false;
+	        }
+*/
 		},
+
+        handleRouteIn: function(instanceId, itemId, transitionId) {
+        	if( this.options.viewId == instanceId ) {
+	        	this.inView = true;
+		        this.navigateTo(itemId, transitionId);
+        	} else {
+        		this.handleRouteOut(transitionId);
+        	}
+        },
+
+        handleRouteOut: function(transitionId) {
+            if( this.inView ) {
+	            this.transitionOut(transitionId);
+	        }
+	        this.inView = false;
+        },
 		
         transitionFromClass: function(className) {
             var classList = this.el.classList;
@@ -160,6 +183,7 @@ define(function(require, exports, module) {
 				_this.removeTransitionClasses();
 				el.removeEventListener('webkitTransitionEnd', onTransitionEnd);
 			};
+
 			el.addEventListener('webkitTransitionEnd', onTransitionEnd);
 		},
 		
@@ -186,12 +210,15 @@ define(function(require, exports, module) {
 				// el.classList.remove('js-leave-view-transition');
 				_this.removeTransitionClasses();
 				el.removeEventListener('webkitTransitionEnd', onTransitionEnd);
+				console.log('transitionOutEnd', _this.cid);
 			};
 			el.addEventListener('webkitTransitionEnd', onTransitionEnd);
+			console.log('transitionOut', this.cid);
         },
 		
-		navigateTo: function(itemId) {
+		navigateTo: function(itemId, transitionId) {
             // appView.setCurrentView(this);
+            this.transitionId = transitionId;
 			var item = this.collection.get(itemId);
 			if( this.currentItem == item && this.allowRestore ) {
 			    this.isRestoring = true;

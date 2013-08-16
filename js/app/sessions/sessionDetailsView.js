@@ -87,11 +87,14 @@ define(function(require, exports, module) {
                 suffix: modelData.endTime.format('A')
             };
 
+            var transitionId = 'scaleFromCenter';
 			var sessionSpeakers = [];
 			// TODO: Do this in model?
 			for( var i = 0; i < modelData.speaker_ids.length; i++ ) {
 			    var speakerId = modelData.speaker_ids[i];
-			    sessionSpeakers.push( speakerCollection.get( speakerId ) );
+                var speakerData = speakerCollection.get( speakerId ).toJSON();
+                speakerData.route = 'speakerDetails/' + speakerData.id + '/' + transitionId;
+			    sessionSpeakers.push( speakerData );
 			}
 			
 			var templateValues = {

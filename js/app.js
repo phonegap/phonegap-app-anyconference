@@ -176,10 +176,8 @@ define(function(require, exports, module) {
             var headingText;
             var showBackButton = false;
             if( route === 'sessionCollection' ) {
-                $('.js-day-titles').show();
                 $('.js-section-title').hide();
             } else {
-                $('.js-day-titles').hide();
                 $('.js-section-title').show();
                 switch( route ) {
                     case 'starredSessionCollection':

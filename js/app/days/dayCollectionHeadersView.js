@@ -24,30 +24,16 @@ define(function(require, exports, module) {
         routeId: 'sessionCollection',
         className: 'topcoat-titles-wrap',
         allowRestore: true,
-		initialize: function() {
-		    // call super
-		    // CollectionDetailsView.prototype.initialize.apply(this, arguments);
-		    var _this = this;
-		    
-		    appRouter.on('route', function(route, itemId) {
-		        if( route == this.routeId ) {
-		            var dayId = itemId[0];
-		            //this.currentItem;
-		            this.navigateTo(dayId);
-		        }
-		    }, this);
-
-			var documentPointerUp = function(jqEvt) {
-                if( _this.el.parentNode ) {
-                    _this.pointerUp.call(_this, jqEvt);
-                }
-            };
-		    
-			$(document).on({
-			    pointerleave: documentPointerUp,
-			    pointerup: documentPointerUp
-			});
-		}
+        handleRouteIn: function(collectionId, viewId, transitionId) {
+        	this.$el.show();
+        	this.inView = true;
+	        this.navigateTo(collectionId);
+        },
+        handleRouteOut: function(transitionId) {
+            // Do nothing (handled by app.js)
+            this.$el.hide();
+	        this.inView = false;
+        }
     });
     
     return DayCollectionHeadersView;
