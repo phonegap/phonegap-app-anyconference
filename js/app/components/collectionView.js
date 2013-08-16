@@ -168,6 +168,9 @@ define(function(require, exports, module) {
 		
 		transitionToPrevious: function() {
 			var _this = this;
+			if( !this.prevPage ) {
+				return;
+			}
 			// pull previous from top
 			this.prevPage.transitionIn(function() {
 				_this.setCurrentPage(_this.prevPage);

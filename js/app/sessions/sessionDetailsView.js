@@ -54,7 +54,7 @@ define(function(require, exports, module) {
 
             setTimeout( function() {
                 $verificationEl.addClass('js-overlay-transition-out');
-            }, 1500);
+            }, 1000);
         },
         
         handleStarredChange: function() {

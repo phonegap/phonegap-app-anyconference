@@ -21,6 +21,7 @@ define(function(require, exports, module) {
     var DayModel = Backbone.Model.extend({
 
         selected: false,
+        isToday: false,
 
         initialize: function() {
             var dateStr = this.get('date');
@@ -34,6 +35,7 @@ define(function(require, exports, module) {
             var curDate = moment().format("YYYY-MM-DD");
             var dayDate = day.format("YYYY-MM-DD");
             if( dayDate == curDate ) {
+                this.isToday = true;
                 dayOfWeek = 'TODAY';
             } else {
                 dayOfWeek = day.format('dddd').toUpperCase();

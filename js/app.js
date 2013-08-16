@@ -86,6 +86,7 @@ define(function(require, exports, module) {
         el: '#main',
         //Define the template to use
         template: _.template(appTemplate),
+        defaultDayId: '',
         
         events: {
             'pointerup .js-menu-button': 'showMenu',
@@ -108,11 +109,23 @@ define(function(require, exports, module) {
             var modelProps = this.model.toJSON();
             return modelProps;
         },
+
+        findDefaultDayId: function(dayCollection) {
+            // Get today or first day as default day
+            this.defaultDayId = dayCollection.first().id;
+            dayCollection.some(function(model) {
+                if( model.isToday ) {
+                    this.defaultDayId = model.id;
+                    return true;
+                }
+            }, this);
+        },
         
         afterRender: function() {
             var dayCollection = new DayCollection();
             dayCollection.setSpeakers(speakerCollection);
             dayCollection.add( this.model.get('dates') );
+            this.findDefaultDayId( dayCollection );
             
             sessionCollection.fetch();
             
@@ -149,19 +162,16 @@ define(function(require, exports, module) {
             //this.setView('.js-day-titles', dayCollectionView, true);
             this.setView(menuView, true);
             
-            // TODO: Something better than this
-            // dayCollectionView.navigateTo(this.model.get('dates')[0].id);
-            var firstId = this.model.get('dates')[0].id;
-            
-            menuView.render();
             Backbone.history.start();
-            
-            sessionCollection.on('sync', function(evt) {
+
+            menuView.setDefaultDayId(this.defaultDayId);
+            menuView.render();
+            sessionCollection.on('sync', function() {
                 if( !Backbone.history.fragment.length ) {
                     // Go to first day by default
-                    appRouter.navigate('sessionCollection/' + firstId, {trigger: true});
+                    appRouter.navigate('sessionCollection/' + this.defaultDayId, {trigger: true});
                 }
-            });
+            }, this);
         },
 
         showMenu: function() {

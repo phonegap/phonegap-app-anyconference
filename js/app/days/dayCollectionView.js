@@ -34,12 +34,23 @@ define(function(require, exports, module) {
             var starredFilter = function(model) {
                 return model.get('starred');
             };
+
+            // Get today or first day as default day
+            var defaultDayId = this.collection.first().id;
+            this.collection.some(function(model) {
+                var dayOfWeek = model.get('dayOfWeek');
+                if( dayOfWeek.toLowerCase() === 'today' ) {
+                    defaultDayId = model.id;
+                    return true;
+                }
+            });
+
             var sessionCollectionStarredView = new SessionCollectionView({
                 collection: sessionCollection,
                 id: 'starred',
                 type: 'starred',
                 filter: starredFilter,
-                returnRouteId: 'sessionCollection/' + this.collection.first().id
+                returnRouteId: 'sessionCollection/' + defaultDayId
             });
 
             var sessionCollectionStarredDetailsView = new SessionCollectionDetailsView({

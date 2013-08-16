@@ -100,6 +100,10 @@ define(function(require, exports, module) {
 		    this.el.addEventListener('webkitTransitionEnd', onTransitionEnd);
 		    this.isShown = false;
 		},
+
+		setDefaultDayId: function(dayId) {
+			this.defaultDayId = dayId;
+		},
 		
 		toggleMenu: function(evt) {
 		    var _this = menuView;
@@ -295,9 +299,12 @@ define(function(require, exports, module) {
         serialize: function() {
             var eventData = this.model.toJSON();
 		    var templateValues = {
+		    	/*
 		        title: eventData.name,
 		        date: eventData.dates[0].date,
-		        location: eventData.location
+		        location: eventData.location,
+		        */
+		        defaultScheduleLink: 'sessionList/' + this.defaultDayId
 		    };
             return templateValues;
         },
