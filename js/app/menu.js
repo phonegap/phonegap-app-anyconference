@@ -304,7 +304,7 @@ define(function(require, exports, module) {
 		        date: eventData.dates[0].date,
 		        location: eventData.location,
 		        */
-		        defaultScheduleLink: 'sessionList/' + this.defaultDayId
+		        defaultScheduleLink: 'sessionCollection/' + this.defaultDayId
 		    };
             return templateValues;
         },
