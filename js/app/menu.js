@@ -43,7 +43,7 @@ define(function(require, exports, module) {
 		    'pointerup .js-starredlist-link': 'linkUp',
 		    'click .js-starredlist-link': 'linkUp',
 		    
-		    'click .js-toggle-submenu': 'toggleSubMenu'
+            'pointerup .js-toggle-submenu': 'toggleSubMenu'
 		},
 		
 		template: _.template(menuTemplate),

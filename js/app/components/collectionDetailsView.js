@@ -169,7 +169,9 @@ define(function(require, exports, module) {
 		    }
 		    
 		    utils.setTransform(el, 'translateX(' + this.itemWidth + 'px) translateZ(0px)');
-		    // el.style.overflow = 'hidden';
+            
+            // Hide to allow other view to be visible on sides
+		    el.style.overflow = 'hidden';
 		    setTimeout( function() {
 		        _this.transitionFromClass('js-enter-view-transition');
 		        utils.setTransform(el, 'none');

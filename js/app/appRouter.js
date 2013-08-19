@@ -24,7 +24,7 @@ define(function(require, exports, module) {
 
             'sessionCollection/:dayId': 'sessionCollection',
             'sessionDetails/:dayId/:sessionId': 'sessionDetails',
-            'speakerDetails/:speakerId/:transitionId': 'speakerDetails'
+            'speakerDetails/:speakerId(/:transitionId)': 'speakerDetails'
         },
 
         lastItemId: null,

@@ -51,7 +51,75 @@ define(function(require, exports, module) {
 		    'pointercancel': 'pointerUp',
 		    'pointerleave': 'pointerUp'
 		},
-		
+        
+		initialize: function() {
+			var _this = this;
+
+			if( this.options.id ) {
+				this.id = this.options.id;
+			}
+
+			var documentPointerUp = function(jqEvt) {
+                if( _this.el.parentNode ) {
+                    _this.pointerUp.call(_this, jqEvt);
+                }
+            };
+			$(document).on({
+			    pointerleave: documentPointerUp,
+			    pointerup: documentPointerUp
+			});
+		    
+			this.pageHeight = window.innerHeight;
+			this.pageOverlay = document.createElement('div');
+			this.pageOverlay.className = 'js-page-overlay';
+			
+            appRouter.on('route', function(route, args) {
+				if( route == this.routeId ) {
+					this.handleRouteIn.apply(this, args);
+				} else {
+					this.handleRouteOut.apply(this, args);
+				}
+		    }, this);
+            
+            /*
+		    appRouter.on('route', function(route, itemId) {
+		        if( route == this.routeId ) {
+		            if( itemId && itemId.length == 1) {
+		                if( itemId[0] == this.id ) {
+        		            this.render();
+		                } else {
+		                    this.destroy();
+		                }
+		            } else {
+                        this.render();
+		            }
+		        } else {
+		            if( this.inView ) {
+		                // this.destroy();
+		                this.transitionOut();
+		            }
+		            this.inView = false;
+		        }
+		    }, this);
+            */
+		},
+
+        handleRouteIn: function(instanceId, itemId, transitionId) {
+        	if( instanceId == this.id ) {
+	        	this.inView = true;
+		        this.render();
+        	} else {
+        		this.handleRouteOut(transitionId);
+        	}
+        },
+
+        handleRouteOut: function(transitionId) {
+            if( this.inView ) {
+	            this.transitionOut(transitionId);
+	        }
+	        this.inView = false;
+        },
+        
 		leave: function() {
 			// this.el.style.display = 'none';
 			this.transitionOut();
@@ -434,7 +502,7 @@ define(function(require, exports, module) {
 		    // Start from side
 		    el.style.display = 'block';
 		    utils.setTransform(el, 'translateX(-' + window.innerWidth + 'px) translateZ(0)');
-		    // el.style.overflow = 'hidden';
+		    el.style.overflow = 'hidden';
 		    setTimeout( function() {
     		    el.style.display = 'block';
 		        _this.transitionFromClass('js-enter-view-transition');
@@ -443,7 +511,7 @@ define(function(require, exports, module) {
 		    
 			var onTransitionEnd = function(evt) {
 				_this.animating = false;
-                // el.style.overflow = null;
+                el.style.overflow = null;
 				el.classList.remove('js-enter-view-transition');
 				el.removeEventListener('webkitTransitionEnd', onTransitionEnd);
 			};
@@ -479,49 +547,6 @@ define(function(require, exports, module) {
 			// this.el.removeEventListener('pointerdown', this.pointerDown);
 			this.pointerStarted = false;
 			this.el.style.display = 'none';
-		},
-		
-		initialize: function() {
-			var _this = this;
-
-			if( this.options.id ) {
-				this.id = this.options.id;
-			}
-
-			// this.listenTo(this.collection, 'add', this.addSession);
-			var documentPointerUp = function(jqEvt) {
-                if( _this.el.parentNode ) {
-                    _this.pointerUp.call(_this, jqEvt);
-                }
-            };
-			$(document).on({
-			    pointerleave: documentPointerUp,
-			    pointerup: documentPointerUp
-			});
-		    
-			this.pageHeight = window.innerHeight;
-			this.pageOverlay = document.createElement('div');
-			this.pageOverlay.className = 'js-page-overlay';
-			
-		    appRouter.on('route', function(route, itemId) {
-		        if( route == this.routeId ) {
-		            if( itemId && itemId.length == 1) {
-		                if( itemId[0] == this.id ) {
-        		            this.render();
-		                } else {
-		                    this.destroy();
-		                }
-		            } else {
-                        this.render();
-		            }
-		        } else {
-		            if( this.inView ) {
-		                // this.destroy();
-		                this.transitionOut();
-		            }
-		            this.inView = false;
-		        }
-		    }, this);
 		}
 	});
 
