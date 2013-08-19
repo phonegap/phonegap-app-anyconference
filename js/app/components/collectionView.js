@@ -434,6 +434,7 @@ define(function(require, exports, module) {
 		},
 
 		draw: function() {
+            
 			var _this = this;
 			if( this.pointerStarted ) {
 				this.rAFIndex = requestAnimationFrame(function() {
@@ -502,7 +503,7 @@ define(function(require, exports, module) {
 		    // Start from side
 		    el.style.display = 'block';
 		    utils.setTransform(el, 'translateX(-' + window.innerWidth + 'px) translateZ(0)');
-		    el.style.overflow = 'hidden';
+		    // el.style.overflow = 'hidden';
 		    setTimeout( function() {
     		    el.style.display = 'block';
 		        _this.transitionFromClass('js-enter-view-transition');

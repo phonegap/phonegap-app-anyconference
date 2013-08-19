@@ -199,6 +199,9 @@ define(function(require, exports, module) {
 
 		    // Move to right side
             utils.setTransform(el, 'none');
+            
+            // Hide to allow other view to be visible on sides
+            el.style.overflow = 'hidden';
 
 		    setTimeout( function() {
 		        _this.transitionFromClass('js-leave-view-transition');

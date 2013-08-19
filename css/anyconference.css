@@ -121,6 +121,7 @@ body {
 
 .item-page {
     background: #f2f3f3;
+    z-index: 1;
 }
 
 .item-details-wrap {
@@ -759,6 +760,7 @@ body {
   border-top: none;
   border-bottom: 1px solid #eff1f1;
   background-color: #f2f3f3;
+  overflow: hidden;
 }
 .topcoat-list__header {
   margin: 0;
