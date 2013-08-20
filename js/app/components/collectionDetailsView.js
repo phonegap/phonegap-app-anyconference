@@ -17,6 +17,7 @@ define(function(require, exports, module) {
 
     var appRouter = require('app/appRouter');
     var utils = require('app/utils');
+    var effects = require('app/effects');
 
 	var CollectionDetailsView = Backbone.View.extend({
         manage: true,
@@ -196,29 +197,23 @@ define(function(require, exports, module) {
 		        utils.setTransform(el, 'translateX(' + _this.itemWidth + 'px)');
                 return;
 		    }
-
-		    // Move to right side
-            utils.setTransform(el, 'none');
             
-            // Hide to allow other view to be visible on sides
-            el.style.overflow = 'hidden';
-
-		    setTimeout( function() {
-		        _this.transitionFromClass('js-leave-view-transition');
-    		    utils.setTransform(el, 'translateX(' + _this.itemWidth + 'px) translateZ(0px)');
-		    }, 1);
-		    
 			var onTransitionEnd = function(evt) {
 				_this.animating = false;
                 el.style.overflow = null;
                 el.style.display = 'none';
-				// el.classList.remove('js-leave-view-transition');
 				_this.removeTransitionClasses();
-				el.removeEventListener('webkitTransitionEnd', onTransitionEnd);
 				console.log('transitionOutEnd', _this.cid);
 			};
-			el.addEventListener('webkitTransitionEnd', onTransitionEnd);
-			console.log('transitionOut', this.cid);
+            
+            effects.startTransition({
+                type: 'toRight',
+                el: el,
+                onEnd: onTransitionEnd
+            });
+
+            // Hide to allow other view to be visible on sides
+            el.style.overflow = 'hidden';
         },
 		
 		navigateTo: function(itemId, transitionId) {
