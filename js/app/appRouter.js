@@ -20,16 +20,6 @@ define(function(require, exports, module) {
         
         history: [],
         
-        // This creates the "back" route based on the transition for the latest route
-        updateLastRoute: function(newRoute) {
-            var prevFragment = Backbone.history.fragment;
-            var lastPartRegExp = /[^\/]*$/;
-            var origTransition = newRoute.match(lastPartRegExp)[0];
-            var newTransition = effects.getReverseTransition(origTransition);
-            this.backRoute = prevFragment.replace(lastPartRegExp, newTransition);
-            console.log('back route:', this.backRoute );
-        },
- 
         routes: {
             'starredSessionCollection': 'starredSessionCollection',
             'speakerCollection': 'speakerCollection',
@@ -44,12 +34,18 @@ define(function(require, exports, module) {
         backRoute: null,
         
         goTo: function( currentView, newRoute, transitionId ) {
-            if( currentView ) {
-                currentView.transitionOut(transitionId);
+            var currentRoute = Backbone.history.fragment;
+            if( newRoute == currentRoute ) {
+                return;
             }
+            var oldView = currentView || this.currentView;
+            if( oldView ) {
+                oldView.transitionOut(transitionId);
+            }
+            
             this.transitionId = transitionId || null;
             this.history.push({
-                sourceRoute: Backbone.history.fragment,
+                sourceRoute: currentRoute,
                 destRoute: newRoute,
                 transition: transitionId
             });

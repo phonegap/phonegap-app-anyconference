@@ -33,7 +33,6 @@ define(function(require, exports, module) {
         gestureStarted: false,
         swiping: false,
         inView: false,
-        isRestoring: false,
         
         events: {
             'pointerdown': 'pointerDown',
@@ -118,7 +117,6 @@ define(function(require, exports, module) {
                 this.transitionIn();
             }
             this.inView = true;
-            this.isRestoring = false;
         },
         
         removeTransitionClasses: function() {
@@ -133,12 +131,6 @@ define(function(require, exports, module) {
             var _this = this;
             var transitionId = appRouter.transitionId || 'none';
             var el = this.el;
-            /*
-            if( this.isRestoring ) {
-                utils.setTransform(el, 'none');
-                return;
-            }
-            */
             
             var onTransitionEnd = function(evt) {
                 _this.animating = false;
@@ -162,11 +154,7 @@ define(function(require, exports, module) {
         transitionOut: function(transitionId) {
             var _this = this;
             var el = this.el;
-            if( this.isRestoring ) {
-                utils.setTransform(el, 'translateX(' + _this.itemWidth + 'px)');
-                return;
-            }
-            
+        
             var onTransitionEnd = function(evt) {
                 _this.animating = false;
                 el.style.overflow = null;
@@ -189,9 +177,6 @@ define(function(require, exports, module) {
         navigateTo: function(itemId) {
             // appView.setCurrentView(this);
             var item = this.collection.get(itemId);
-            if( this.currentItem == item && this.allowRestore ) {
-                this.isRestoring = true;
-            }
             this.currentItem = item;
             this.render();
             appRouter.setSubRoute(itemId);

@@ -495,12 +495,6 @@ define(function(require, exports, module) {
             var _this = this;
             var transitionId = appRouter.transitionId || 'none';
             var el = this.el;
-            /*
-            if( this.isRestoring ) {
-                utils.setTransform(el, 'none');
-                return;
-            }
-            */
             
             var onTransitionEnd = function(evt) {
                 _this.animating = false;
@@ -572,17 +566,11 @@ define(function(require, exports, module) {
         transitionOut: function(transitionId) {
             var _this = this;
             var el = this.el;
-            /*
-            if( this.isRestoring ) {
-                utils.setTransform(el, 'none');
-                return;
-            }
-            */
             
             var onTransitionEnd = function(evt) {
                 _this.animating = false;
                 el.style.overflow = null;
-                el.style.display = 'block';
+                el.style.display = 'none';
                 console.log('transitionInEnd', _this.cid);
             };
             

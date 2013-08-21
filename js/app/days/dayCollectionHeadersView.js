@@ -23,7 +23,6 @@ define(function(require, exports, module) {
         DetailsView: DayHeaderView,
         routeId: 'sessionCollection',
         className: 'topcoat-titles-wrap',
-        allowRestore: true,
         handleRouteIn: function(collectionId, viewId, transitionId) {
         	this.$el.show();
         	this.inView = true;
