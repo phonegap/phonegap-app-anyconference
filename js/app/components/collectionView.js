@@ -59,6 +59,10 @@ define(function(require, exports, module) {
             if( this.options.id ) {
                 this.id = this.options.id;
             }
+            
+            if( this.options.routeInHandler ) {
+                this.handleRouteIn = this.options.routeInHandler;
+            }
 
             var documentPointerUp = function(jqEvt) {
                 if( _this.el.parentNode ) {

@@ -43,7 +43,11 @@ define(function(require, exports, module) {
                 id: 'starred',
                 type: 'starred',
                 filter: starredFilter,
-                returnRouteId: 'sessionCollection/' + this.defaultDayId
+                returnRouteId: 'sessionCollection/' + this.defaultDayId,
+                routeInHandler: function() {
+                    appRouter.setCurrentView(this);
+                    this.render();
+                }
             });
 
             var sessionCollectionStarredDetailsView = new SessionCollectionDetailsView({

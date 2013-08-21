@@ -52,7 +52,7 @@ define(function(require, exports, module) {
 		        return;
 		    }
             var id = this.model.id;
-            var transition = moveLeft;
+            var transition = 'moveLeft';
             appRouter.goTo(this.parentView, 'speakerDetails/' + id, transition);
 		},
     	

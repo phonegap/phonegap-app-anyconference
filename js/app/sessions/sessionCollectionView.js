@@ -44,8 +44,6 @@ define(function(require, exports, module) {
 		    this.$el.append(page);
 		},
 		initialize: function() {
-		    // call super
-		    CollectionView.prototype.initialize.apply(this, arguments);
 			switch( this.options.type ) {
 			    case 'starred':
     			    this.routeId = 'starredSessionCollection';
@@ -53,6 +51,9 @@ define(function(require, exports, module) {
     			default:
     			    this.routeId = 'sessionCollection';
 			}
+            
+            // call super
+		    CollectionView.prototype.initialize.apply(this, arguments);
 		},
 		
 		// TODO: Refactor this, shouldn't need to run for each day
