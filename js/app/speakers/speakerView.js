@@ -52,7 +52,8 @@ define(function(require, exports, module) {
 		        return;
 		    }
             var id = this.model.id;
-            appRouter.goTo('speakerDetails/' + id);
+            var transition = moveLeft;
+            appRouter.goTo(this.parentView, 'speakerDetails/' + id, transition);
 		},
     	
     	initialize: function() {

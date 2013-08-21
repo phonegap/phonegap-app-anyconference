@@ -38,6 +38,9 @@ define(function(require, exports, module) {
         
         initialize: function() {
             this.parentView = this.options.parentView;
+            if( !this.parentView ) {
+                throw Error();   
+            }
         },
 		
 		onPointerDown: function(jqEvt) {

@@ -35,6 +35,7 @@ define(function(require, exports, module) {
         this.onEnd = options.onEnd;
         this.context = options.context;
         this.animating = false;
+        this.type = options.type;
         this.id = transitionMap[options.id][options.type];
                 
         this.transitionFromClass = function(className) {
@@ -58,6 +59,7 @@ define(function(require, exports, module) {
 
                 if( _this.onEnd ) {
                     var context = _this.context || _this;
+                    _this.el.style.zIndex = null;
                     _this.onEnd.call(context, evt);
                 }
             };
@@ -72,12 +74,14 @@ define(function(require, exports, module) {
                     break;
                 case 'scaleFromCenter':
                     startTransform = 'scale(0.1)';
+                    _this.el.style.zIndex = 1;
                     break;
                 case 'scaleToCenter':
                     startTransform = 'none';
+                    _this.el.style.zIndex = 1;
                     break;
                 case 'stay':
-                    startTransform = 'none';
+                    startTransform = 'scale(1)';
                     break;
                 case 'none':
                     onTransitionEnd();

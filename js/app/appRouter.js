@@ -23,11 +23,10 @@ define(function(require, exports, module) {
         routes: {
             'starredSessionCollection': 'starredSessionCollection',
             'speakerCollection': 'speakerCollection',
-            'schedule': 'schedule',
 
             'sessionCollection/:dayId': 'sessionCollection',
-            'sessionDetails/:dayId/:sessionId(/:transitionId)': 'sessionDetails',
-            'speakerDetails/:speakerId(/:transitionId)': 'speakerDetails'
+            'sessionDetails/:dayId/:sessionId': 'sessionDetails',
+            'speakerDetails/:speakerId': 'speakerDetails'
         },
 
         lastItemId: null,
