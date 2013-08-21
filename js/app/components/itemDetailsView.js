@@ -37,8 +37,7 @@ define(function(require, exports, module) {
 		},
         
         initialize: function() {
-            debugger;
-            this.parentView;
+            this.parentView = this.options.parentView;
         },
 		
 		onPointerDown: function(jqEvt) {

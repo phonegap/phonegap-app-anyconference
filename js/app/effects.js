@@ -22,7 +22,8 @@ define(function(require, exports, module) {
         none: {'out': 'none', 'in': 'none', reverse: 'none'},
         moveRight: {'out':'toRight', 'in':'fromLeft', reverse: 'moveLeft'},
         moveLeft: {'out':'toLeft', 'in':'fromRight', reverse: 'moveRight'},
-        scaleFromCenter: {'out':'none', 'in':'scaleFromCenter', reverse: 'none'}
+        scaleFromCenter: {'out':'stay', 'in':'scaleFromCenter', reverse: 'scaleToCenter'},
+        scaleToCenter: {'out':'scaleToCenter', 'in':'stay', reverse: 'scaleFromCenter'}
     };
 
     var getReverseTransition = function(origId) {
@@ -72,8 +73,13 @@ define(function(require, exports, module) {
                 case 'scaleFromCenter':
                     startTransform = 'scale(0.1)';
                     break;
-                case 'none':
+                case 'scaleToCenter':
                     startTransform = 'none';
+                    break;
+                case 'stay':
+                    startTransform = 'none';
+                    break;
+                case 'none':
                     onTransitionEnd();
                     return;
                 default: {
@@ -103,6 +109,10 @@ define(function(require, exports, module) {
                     className = 'js-leave-view-transition';
                     endTransform = 'translateX(100%) translateZ(0px)';
                     break;
+                case 'stay':
+                    className = 'js-leave-view-transition';
+                    endTransform = 'none';
+                    break;
                 case 'fromLeft':
                     className = 'js-enter-view-transition';
                     endTransform = 'none';
@@ -114,6 +124,10 @@ define(function(require, exports, module) {
                 case 'scaleFromCenter':
                     className = 'js-enter-view-transition';
                     endTransform = 'none';
+                    break;
+                case 'scaleToCenter':
+                    className = 'js-enter-view-transition';
+                    endTransform = 'scale(0.1)';
                     break;
                 default: {
                     throw Error('unknown transition type');

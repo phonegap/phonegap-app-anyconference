@@ -86,7 +86,8 @@ define(function(require, exports, module) {
             this.viewPointers = {};
             this.collection.each(function(itemModel) {
                 var view = new this.DetailsView({
-                    model: itemModel
+                    model: itemModel,
+                    parentView: this
                 });
                 view.hide(); // Hide by default
                 this.insertView(view);

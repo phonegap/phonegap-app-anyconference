@@ -43,7 +43,7 @@ define(function(require, exports, module) {
                 id: 'starred',
                 type: 'starred',
                 filter: starredFilter,
-                returnRouteId: 'sessionCollection/' + this.defaultDayId + '/none'
+                returnRouteId: 'sessionCollection/' + this.defaultDayId
             });
 
             var sessionCollectionStarredDetailsView = new SessionCollectionDetailsView({

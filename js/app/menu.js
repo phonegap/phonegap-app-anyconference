@@ -133,7 +133,7 @@ define(function(require, exports, module) {
 		    jqEvt.stopPropagation();
 		    var target = jqEvt.currentTarget;
 		    var href = target.getAttribute('href');
-		    appRouter.goTo(href);
+		    appRouter.goTo(null, href, 'none');
 		    this.hide();
 		},
 		

@@ -22,16 +22,10 @@ define(function(require, exports, module) {
     var DayCollectionHeadersView = CollectionDetailsView.extend({
         DetailsView: DayHeaderView,
         routeId: 'sessionCollection',
-        className: 'topcoat-titles-wrap',
+        className: 'topcoat-titles-wrap  js-day-headers',
         handleRouteIn: function(collectionId, viewId, transitionId) {
-        	this.$el.show();
         	this.inView = true;
 	        this.navigateTo(collectionId);
-        },
-        handleRouteOut: function(transitionId) {
-            // Do nothing (handled by app.js)
-            this.$el.hide();
-	        this.inView = false;
         }
     });
     

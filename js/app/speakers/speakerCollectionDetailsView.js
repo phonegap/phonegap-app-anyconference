@@ -17,37 +17,15 @@ define(function(require, exports, module) {
 
     var SpeakerDetailsView = require('app/speakers/speakerDetailsView');
     var CollectionDetailsView = require('app/components/collectionDetailsView');
+    var appRouter = require('app/appRouter');
     
     var SpeakerCollectionDetailsView = CollectionDetailsView.extend({
         DetailsView: SpeakerDetailsView,
         routeId: 'speakerDetails',
-        handleRouteIn: function(speakerId, transitionId) {
-        	debugger;
+        handleRouteIn: function(speakerId) {
             this.inView = true;
+            appRouter.setCurrentView(this);
 	        this.navigateTo(speakerId);
-			/*
-			var viewId;
-	        if( args.length == 2 ) {
-	            viewId = args[0];
-	        }
-	        var subId = args[args.length - 1];
-	        var matchesView = !viewId || viewId && viewId == this.options.viewId;
-	        if( route == this.routeId && matchesView ) {
-                this.inView = true;
-                this.navigateTo(subId);
-	        } else {
-	            if( this.inView ) {
-	                this.transitionOut();
-	            }
-	            this.inView = false;
-	        }
-	        */
-        },
-        handleRouteOut: function() {
-            if( this.inView ) {
-	            this.transitionOut();
-	        }
-	        this.inView = false;
         }
     });
     

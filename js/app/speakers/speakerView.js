@@ -52,7 +52,7 @@ define(function(require, exports, module) {
 		        return;
 		    }
             var id = this.model.id;
-            appRouter.goTo('speakerDetails/' + id + '/none');
+            appRouter.goTo('speakerDetails/' + id);
 		},
     	
     	initialize: function() {
