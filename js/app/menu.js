@@ -133,7 +133,7 @@ define(function(require, exports, module) {
 		    jqEvt.stopPropagation();
 		    var target = jqEvt.currentTarget;
 		    var href = target.getAttribute('href');
-		    appRouter.navigate(href, {trigger: true});
+		    appRouter.goTo(href);
 		    this.hide();
 		},
 		
@@ -304,7 +304,7 @@ define(function(require, exports, module) {
 		        date: eventData.dates[0].date,
 		        location: eventData.location,
 		        */
-		        defaultScheduleLink: 'sessionCollection/' + this.defaultDayId
+		        defaultScheduleLink: 'sessionCollection/' + this.defaultDayId + '/none'
 		    };
             return templateValues;
         },

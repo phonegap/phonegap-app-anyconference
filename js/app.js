@@ -170,7 +170,7 @@ define(function(require, exports, module) {
             sessionCollection.on('sync', function() {
                 if( !Backbone.history.fragment.length ) {
                     // Go to first day by default
-                    appRouter.navigate('sessionCollection/' + this.defaultDayId, {trigger: true});
+                    appRouter.goTo(null, 'sessionCollection/' + this.defaultDayId, 'none');
                 }
             }, this);
         },
@@ -180,7 +180,7 @@ define(function(require, exports, module) {
         },
         
         goBack: function(evt) {
-            window.history.go(-1);
+            appRouter.goBack();
         },
         
         setHeading: function(route) {

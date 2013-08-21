@@ -14,8 +14,21 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 define(function(require, exports, module) {
+    var effects = require('app/effects');
 
     var AppRouter = Backbone.Router.extend({
+        
+        history: [],
+        
+        // This creates the "back" route based on the transition for the latest route
+        updateLastRoute: function(newRoute) {
+            var prevFragment = Backbone.history.fragment;
+            var lastPartRegExp = /[^\/]*$/;
+            var origTransition = newRoute.match(lastPartRegExp)[0];
+            var newTransition = effects.getReverseTransition(origTransition);
+            this.backRoute = prevFragment.replace(lastPartRegExp, newTransition);
+            console.log('back route:', this.backRoute );
+        },
  
         routes: {
             'starredSessionCollection': 'starredSessionCollection',
@@ -23,11 +36,36 @@ define(function(require, exports, module) {
             'schedule': 'schedule',
 
             'sessionCollection/:dayId': 'sessionCollection',
-            'sessionDetails/:dayId/:sessionId': 'sessionDetails',
+            'sessionDetails/:dayId/:sessionId(/:transitionId)': 'sessionDetails',
             'speakerDetails/:speakerId(/:transitionId)': 'speakerDetails'
         },
 
         lastItemId: null,
+        backRoute: null,
+        
+        goTo: function( currentView, newRoute, transitionId ) {
+            if( currentView ) {
+                currentView.transitionOut(transitionId);
+            }
+            this.transitionId = transitionId || null;
+            this.history.push({
+                sourceRoute: Backbone.history.fragment,
+                destRoute: newRoute,
+                transition: transitionId
+            });
+            this.navigate(newRoute, {trigger: true});
+        },
+
+        goBack: function() {
+            var last = this.history.pop();
+            this.transitionId = last.transition ? effects.getReverseTransition( last.transition ) : null;
+            this.currentView.transitionOut(this.transitionId);
+            this.navigate(last.sourceRoute, {trigger: true});
+        },
+        
+        setCurrentView: function(view) {
+            this.currentView = view;
+        },
 
         setSubRoute: function(itemId) {
             this.lastItemId = itemId;

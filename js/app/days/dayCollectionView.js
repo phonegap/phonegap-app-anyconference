@@ -43,7 +43,7 @@ define(function(require, exports, module) {
                 id: 'starred',
                 type: 'starred',
                 filter: starredFilter,
-                returnRouteId: 'sessionCollection/' + this.defaultDayId
+                returnRouteId: 'sessionCollection/' + this.defaultDayId + '/none'
             });
 
             var sessionCollectionStarredDetailsView = new SessionCollectionDetailsView({
@@ -63,8 +63,10 @@ define(function(require, exports, module) {
 		    
 		        var sessionCollectionView = new SessionCollectionView({
 		            collection: sessionCollection,
-		            filter: dateFilter
+		            filter: dateFilter,
+                    id: dayModel.get('id')
 		        });
+                
                 var sessionCollectionDetailsView = new SessionCollectionDetailsView({
                     collection: sessionCollection,
                     filter: dateFilter,

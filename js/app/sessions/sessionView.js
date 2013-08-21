@@ -40,6 +40,7 @@ define(function(require, exports, module) {
 		
 		initialize: function() {
 		    var _this = this;
+            this.parentView = this.options.parentView;
 			this.listenTo(this.model, 'change:timeFlag', this.updateTimeFlag);
 			this.on('change:timeFlag', this.updateTimeFlag);
 			
@@ -79,8 +80,9 @@ define(function(require, exports, module) {
 		        return;
 		    }
             var id = this.model.id;
-            var parentId = this.options.parentView.id;
-            appRouter.navigate('sessionDetails/' + parentId + '/' + id, {trigger: true});
+            var parentId = this.parentView.id;
+            var transition = 'moveLeft';
+            appRouter.goTo(this.parentView, 'sessionDetails/' + parentId + '/' + id, transition);
 		},
 		
 		onStarUp: function(evt) {

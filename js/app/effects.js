@@ -17,13 +17,25 @@ define(function(require, exports, module) {
     
     var utils = require('app/utils');
     
+    // map Ids to "out" and "in" transitions
+    var transitionMap = {
+        none: {'out': 'none', 'in': 'none', reverse: 'none'},
+        moveRight: {'out':'toRight', 'in':'fromLeft', reverse: 'moveLeft'},
+        moveLeft: {'out':'toLeft', 'in':'fromRight', reverse: 'moveRight'},
+        scaleFromCenter: {'out':'none', 'in':'scaleFromCenter', reverse: 'none'}
+    };
+
+    var getReverseTransition = function(origId) {
+        return transitionMap[origId].reverse;
+    };
+    
     var Transition = function(options) {
         this.el = options.el;
         this.onEnd = options.onEnd;
-        this.type = options.type;
         this.context = options.context;
         this.animating = false;
-        
+        this.id = transitionMap[options.id][options.type];
+                
         this.transitionFromClass = function(className) {
             var classList = this.el.classList;
             if( classList.contains(className) ) {
@@ -39,35 +51,6 @@ define(function(require, exports, module) {
         this.start = function() {
             var _this = this;
             
-            setTimeout( function() {
-                var className = '';
-                var endTransform = '';
-                
-                switch( _this.type ) {
-                    case 'toLeft':
-                        className = 'js-leave-view-transition';
-                        endTransform = 'translateX(-100%) translateZ(0px)';
-                        break;
-                    case 'toRight':
-                        className = 'js-leave-view-transition';
-                        endTransform = 'translateX(100%) translateZ(0px)';
-                        break;
-                    case 'fromLeft':
-                        className = 'js-enter-view-transition';
-                        endTransform = 'none';
-                        break;
-                    case 'fromRight':
-                        className = 'js-enter-view-transition';
-                        endTransform = 'none';
-                        break;
-                    default: {
-                        throw Error('unknown transition type');
-                    }
-                }
-                _this.transitionFromClass(className);
-                utils.setTransform(_this.el, endTransform);
-            }, 1);
-            
             var onTransitionEnd = function(evt) {
                 _this.animating = false;
                 _this.el.removeEventListener('webkitTransitionEnd', onTransitionEnd);
@@ -78,8 +61,68 @@ define(function(require, exports, module) {
                 }
             };
             
+            var startTransform;
+            switch( _this.id ) {
+                case 'fromLeft':
+                    startTransform = 'translateX(-100%) translateZ(0px)';
+                    break;
+                case 'fromRight':
+                    startTransform = 'translateX(100%) translateZ(0px)';
+                    break;
+                case 'scaleFromCenter':
+                    startTransform = 'scale(0.1)';
+                    break;
+                case 'none':
+                    startTransform = 'none';
+                    onTransitionEnd();
+                    return;
+                default: {
+                    startTransform = 'none';
+                    break;
+                }
+            }
+            utils.setTransform(_this.el, startTransform);
+            
+            setTimeout( function() {
+                _this.startActual.call(_this);
+            }, 1 );
+            
             this.el.addEventListener('webkitTransitionEnd', onTransitionEnd);
         };
+
+        this.startActual = function() {
+            var className = '';
+            var endTransform = '';
+            
+            switch( this.id ) {
+                case 'toLeft':
+                    className = 'js-leave-view-transition';
+                    endTransform = 'translateX(-100%) translateZ(0px)';
+                    break;
+                case 'toRight':
+                    className = 'js-leave-view-transition';
+                    endTransform = 'translateX(100%) translateZ(0px)';
+                    break;
+                case 'fromLeft':
+                    className = 'js-enter-view-transition';
+                    endTransform = 'none';
+                    break;
+                case 'fromRight':
+                    className = 'js-enter-view-transition';
+                    endTransform = 'none';
+                    break;
+                case 'scaleFromCenter':
+                    className = 'js-enter-view-transition';
+                    endTransform = 'none';
+                    break;
+                default: {
+                    throw Error('unknown transition type');
+                }
+            }
+            this.transitionFromClass(className);
+            utils.setTransform(this.el, endTransform);
+        };
+        
     };
 
     var startTransition = function(options) {
@@ -87,6 +130,7 @@ define(function(require, exports, module) {
         transition.start();
     };
     return {
-        startTransition: startTransition
-    }
+        startTransition: startTransition,
+        getReverseTransition: getReverseTransition
+    };
 });

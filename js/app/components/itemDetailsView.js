@@ -35,6 +35,11 @@ define(function(require, exports, module) {
             'click .js-link': 'onLinkUp',
             'pointerdown': 'onPointerDown'
 		},
+        
+        initialize: function() {
+            debugger;
+            this.parentView;
+        },
 		
 		onPointerDown: function(jqEvt) {
 		    console.log('prevent default from details view');
@@ -49,7 +54,7 @@ define(function(require, exports, module) {
 		    jqEvt.preventDefault();
 		    var target = jqEvt.target;
 		    var href = target.getAttribute('href'); // 'speakerDetails/' + id
-            appRouter.navigate(href, {trigger: true});
+            appRouter.goTo(this.parentView, href, 'scaleFromCenter');
 		},
 		
 		hide: function() {
@@ -102,7 +107,7 @@ define(function(require, exports, module) {
                   When the release occurs, onAction is called.
                 */
                 onAction: function(){
-                    appRouter.navigate(_this.parentRoute, {trigger: true});
+                    appRouter.goTo(_this.parentRoute);
                 }
             }
 

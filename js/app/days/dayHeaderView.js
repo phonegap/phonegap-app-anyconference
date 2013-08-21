@@ -44,7 +44,7 @@ define(function(require, exports, module) {
 			utils.setTransform(this.el, 'none');
 			this.render();
 			var id = this.model.get('id');
-			appRouter.navigate('sessionCollection/' + id, {trigger: true});
+			appRouter.goTo(null, 'sessionCollection/' + id, 'none');
 			var selectedClass = 'anyconf-day-symbol--selected';
 			$('.js-day-symbol').removeClass(selectedClass);
 			$('.js-day-symbol[data-day-id=' + id + ']').addClass(selectedClass);
