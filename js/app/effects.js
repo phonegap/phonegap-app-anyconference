@@ -73,7 +73,7 @@ define(function(require, exports, module) {
                     startTransform = 'translateX(100%) translateZ(0px)';
                     break;
                 case 'scaleFromCenter':
-                    startTransform = 'scale(0.1)';
+                    startTransform = 'scale(0.01)';
                     _this.el.style.zIndex = 1;
                     break;
                 case 'scaleToCenter':
@@ -131,7 +131,7 @@ define(function(require, exports, module) {
                     break;
                 case 'scaleToCenter':
                     className = 'js-enter-view-transition';
-                    endTransform = 'scale(0.1)';
+                    endTransform = 'scale(0.01)';
                     break;
                 default: {
                     throw Error('unknown transition type');
