@@ -337,15 +337,6 @@ define(function(require, exports, module) {
                 // utils.setTransform(prevEl, 'translateY(' + offsetY + 'px) translateZ(0)');
                 this.pendingPage = this.prevPage;
             }
-            /*
-            var hasIn = targetEl.classList.contains('js-page-transition-in');
-            var hasOut = targetEl.classList.contains('js-page-transition-out');
-            console.log('has trans class in: ' + hasIn );
-            console.log('has trans class out: ' + hasOut );
-            if( hasIn || hasOut ) {
-                console.error('HAS TRANS');
-            }
-            */
         },
         
         handleEmptyPointerUp: function(jqEvt) {

@@ -46,20 +46,10 @@ define(function(require, exports, module) {
 				sessionData.details = sessionData.description;
 				sessionData.room = firstInstance.room_id;
 				sessionData.dayId = firstInstance.date;
-								
-				if( sessionData.speaker_ids.length ) {
-					// this.setSpeakers(sessionData);
-				}
-				// var session = new Session(sessionData);
-				// sessionListDetailsView.listenTo(session, 'change:selected', sessionListDetailsView.navigateTo);
+				
 				sessionArr.push( sessionData );
-				// sessionList.add( session );
 			}
-			/*
-			this.currentTrack = new Track({
-				collection: sessionList
-			});            debugger;
-			*/
+            
             return sessionArr;
         }
     });

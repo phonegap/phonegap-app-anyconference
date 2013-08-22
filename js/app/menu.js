@@ -161,17 +161,12 @@ define(function(require, exports, module) {
                 if( evt.target == this.overlay ) {
                     this.hide();
                 } else {
-                    // evt.preventDefault();
                     this.pointerStarted = true;
-                    // window.addEventListener('pointermove', this.pointerMove, false);
-                    // window.addEventListener('pointerend', this.pointerUp, false);
                 }
             } else {
                 if( this.startPoint.x < 50 ) {
                     this.gestureStarted = true;
                     this.pointerStarted = true;
-                    // window.addEventListener('pointermove', this.pointerMove, false);
-                    // window.addEventListener('pointerend', this.pointerUp, false);
                 }
             }
         },
@@ -280,45 +275,21 @@ define(function(require, exports, module) {
             addContent();
 
             this.overlay.classList.add('js-menu-overlay-hidden');
-            /*
-            addContent();
-            addContent();
-            addContent();
-            */
             $header.after(htmlContent);
             
-            /*
-            if( dates.length > 3 ) {
-                // Start with submenu closed
-                this.toggleSubMenu();
-            }
-            */
             $('.js-submenu-icon')[0].classList.add('js-submenu-transition');
         },
         
         serialize: function() {
             var eventData = this.model.toJSON();
             var templateValues = {
-                /*
-                title: eventData.name,
-                date: eventData.dates[0].date,
-                location: eventData.location,
-                */
-                defaultScheduleLink: 'sessionCollection/' + this.defaultDayId + '/none'
+                defaultScheduleLink: 'sessionCollection/' + this.defaultDayId
             };
             return templateValues;
         },
         
         initialize: function() {
             var _this = this;
-            /*
-            this.model.on('change', function() {
-                this.addDates();
-            }, this);
-            */
-            
-            // var menuButton = $('.js-menu-button')[0];
-            // menuButton.addEventListener('pointerup', _this.toggleMenu, false);
 
             this.overlay = document.createElement('div');
             this.overlay.className = 'js-menu-overlay';
@@ -338,8 +309,6 @@ define(function(require, exports, module) {
             document.body.appendChild( this.el );
             this.el.classList.add('js-menu-offscreen');
             utils.setTransform(this.el, 'translateX(' + -window.innerWidth + 'px)');
-            // this.el.innerHTML = this.template(templateValues);
-            // $('body').on("pointerdown",this.pointerDown);
         }
     });
     
