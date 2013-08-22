@@ -31,5 +31,5 @@ define(function(require, exports, module) {
     
     return {
         setTransform: setTransform
-    }
+    };
 });

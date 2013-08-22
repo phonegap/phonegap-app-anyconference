@@ -26,13 +26,13 @@ define(function(require, exports, module) {
     var DayCollectionView = Backbone.View.extend({
         manage: true,
         className: 'anyconf-day-list-collection',
-		initialize: function(args) {
-		    this.sessionCollection = args.sessionCollection;
-		},
+        initialize: function(args) {
+            this.sessionCollection = args.sessionCollection;
+        },
         setDefaultDayId: function(dayId) {
             this.defaultDayId = dayId;
         },
-		afterRender: function() {
+        afterRender: function() {
             var sessionCollection = this.sessionCollection;
             var starredFilter = function(model) {
                 return model.get('starred');
@@ -59,17 +59,17 @@ define(function(require, exports, module) {
             this.setView(sessionCollectionStarredView, true);
             this.setView(sessionCollectionStarredDetailsView, true);
 
-		    this.collection.each(function(dayModel) {
-		        var dateFilter = function(model) {
+            this.collection.each(function(dayModel) {
+                var dateFilter = function(model) {
                     var sessionDate = model.get('instances')[0].date;
                     return (sessionDate == dayModel.get('date'));
                 };
-		    
-		        var sessionCollectionView = new SessionCollectionView({
-		            collection: sessionCollection,
-		            filter: dateFilter,
+            
+                var sessionCollectionView = new SessionCollectionView({
+                    collection: sessionCollection,
+                    filter: dateFilter,
                     id: dayModel.get('id')
-		        });
+                });
                 
                 var sessionCollectionDetailsView = new SessionCollectionDetailsView({
                     collection: sessionCollection,
@@ -77,15 +77,15 @@ define(function(require, exports, module) {
                     viewId: dayModel.get('id')
                 });
 
-		        this.setView(sessionCollectionView, true);
-		        this.setView(sessionCollectionDetailsView, true);
+                this.setView(sessionCollectionView, true);
+                this.setView(sessionCollectionDetailsView, true);
 
-		        sessionCollectionView.listenTo(sessionCollection, 'sync', function(evt) {
-		            sessionCollectionView.id = dayModel.id;
+                sessionCollectionView.listenTo(sessionCollection, 'sync', function(evt) {
+                    sessionCollectionView.id = dayModel.id;
                 });
-		    }, this);
+            }, this);
             
-		}
+        }
     });
     
     return DayCollectionView;

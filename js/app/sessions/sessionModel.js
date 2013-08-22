@@ -35,7 +35,7 @@ define(function(require, exports, module) {
                 timeFlag: timeFlag.NONE,
                 starred: false,
                 loved: false
-            }
+            };
         },
         
         storageId: 'session',
@@ -81,11 +81,11 @@ define(function(require, exports, module) {
         initialize: function() {
             this.retrieveData();
             this.on('change:starred', function() {
-                this.storeData('starred', this.get('starred'))
+                this.storeData('starred', this.get('starred'));
             }, this);
             
             this.on('change:loved', function() {
-                this.storeData('loved', this.get('loved'))
+                this.storeData('loved', this.get('loved'));
             }, this);
             
             if (!this.get("title")) {

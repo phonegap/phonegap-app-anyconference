@@ -28,41 +28,44 @@ define(function(require, exports, module) {
         parentRoute: 'dayCollection',
         
         initialize: function() {
+            console.log('header init');
         },
         
-		afterRender: function() {
-			this.el.innerHTML = this.model.get('dayOfWeek');
+        afterRender: function() {
+            console.log('set header content:' + this.model.get('dayOfWeek') );
+            this.el.innerHTML = this.model.get('dayOfWeek');
             this.itemWidth = this.el.offsetWidth;
-		},
-		
-		hide: function() {
-		    this.el.style.display = 'none';
-		},
-		
-		setupAsCurrent: function() {
-			this.el.style.display = 'block';
-			utils.setTransform(this.el, 'none');
-			this.render();
-			var id = this.model.get('id');
-			appRouter.goTo(null, 'sessionCollection/' + id, 'none');
-			var selectedClass = 'anyconf-day-symbol--selected';
-			$('.js-day-symbol').removeClass(selectedClass);
-			$('.js-day-symbol[data-day-id=' + id + ']').addClass(selectedClass);
-		},
-		
-		setupAsPrevious: function() {
-			this.el.style.display = 'block';
-			this.render();
-			this.el.style.left = -this.itemWidth + 'px';
-			// utils.setTransform(this.el, 'translateX(' + -this.itemWidth + 'px) translateZ(0px)');
-		},
-		
-		setupAsNext: function() {
-			this.el.style.display = 'block';
-			this.render();
-			this.el.style.left = this.itemWidth + 'px';
-			// utils.setTransform(this.el, 'translateX(' + this.itemWidth + 'px) translateZ(0px)');
-		},
+        },
+        
+        hide: function() {
+            this.el.style.display = 'none';
+        },
+        
+        setupAsCurrent: function() {
+            this.el.style.display = 'block';
+            utils.setTransform(this.el, 'none');
+            // this.render();
+            var id = this.model.get('id');
+            appRouter.goTo(null, 'sessionCollection/' + id, 'none');
+            var selectedClass = 'anyconf-day-symbol--selected';
+            $('.js-day-symbol').removeClass(selectedClass);
+            $('.js-day-symbol[data-day-id=' + id + ']').addClass(selectedClass);
+        },
+        
+        setupAsPrevious: function() {
+            this.el.style.display = 'block';
+            this.el.setAttribute('PREV');
+            // this.render();
+            // this.el.style.left = -this.itemWidth + 'px';
+            utils.setTransform(this.el, 'translateX(-100%px) translateZ(0px)');
+        },
+        
+        setupAsNext: function() {
+            this.el.style.display = 'block';
+            // this.render();
+            // this.el.style.left = this.itemWidth + 'px';
+            utils.setTransform(this.el, 'translateX(100%) translateZ(0px)');
+        },
     });
     
     return DayHeaderView;

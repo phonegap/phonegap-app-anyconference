@@ -23,9 +23,20 @@ define(function(require, exports, module) {
         DetailsView: DayHeaderView,
         routeId: 'sessionCollection',
         className: 'topcoat-titles-wrap  js-day-headers',
-        handleRouteIn: function(collectionId, viewId, transitionId) {
-        	this.inView = true;
-	        this.navigateTo(collectionId);
+        handleRouteIn: function(collectionId, viewId) {
+            this.inView = true;
+            this.navigateTo(collectionId);
+        },
+        navigateTo: function(itemId) {
+            var item = this.collection.get(itemId);
+            this.currentItem = item;
+            if( !this.isRendered ) {
+                this.render();
+                this.isRendered = true;
+            } else {
+                this.setCurrentItem(item);
+            }
+            appRouter.setSubRoute(itemId);
         }
     });
     

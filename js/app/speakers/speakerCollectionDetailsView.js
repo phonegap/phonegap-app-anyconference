@@ -25,7 +25,7 @@ define(function(require, exports, module) {
         handleRouteIn: function(speakerId) {
             this.inView = true;
             appRouter.setCurrentView(this);
-	        this.navigateTo(speakerId);
+            this.navigateTo(speakerId);
         }
     });
     

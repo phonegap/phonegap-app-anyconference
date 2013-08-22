@@ -72,12 +72,12 @@ define(function(require, exports, module) {
             this.showVerification(text, className);
         },
         
-		serialize: function() {
-			var modelData = this.model.toJSON();
+        serialize: function() {
+            var modelData = this.model.toJSON();
             var speakerCollection = this.model.collection.speakerCollection;
 
-			var subtitle = '';
-			
+            var subtitle = '';
+            
             var startTime = {
                 time: modelData.startTime.format('h:mm'),
                 suffix: modelData.startTime.format('A')
@@ -88,26 +88,26 @@ define(function(require, exports, module) {
                 suffix: modelData.endTime.format('A')
             };
 
-			var sessionSpeakers = [];
-			// TODO: Do this in model?
-			for( var i = 0; i < modelData.speaker_ids.length; i++ ) {
-			    var speakerId = modelData.speaker_ids[i];
+            var sessionSpeakers = [];
+            // TODO: Do this in model?
+            for( var i = 0; i < modelData.speaker_ids.length; i++ ) {
+                var speakerId = modelData.speaker_ids[i];
                 var speakerData = speakerCollection.get( speakerId ).toJSON();
                 speakerData.route = 'speakerDetails/' + speakerData.id;
-			    sessionSpeakers.push( speakerData );
-			}
-			
-			var templateValues = {
-				title: modelData.title,
-				subtitle: subtitle,
-				startTime: startTime,
-				endTime: endTime,
-				details: modelData.details,
-				speakers: sessionSpeakers
-			};
-			
-			return templateValues;
-		}
+                sessionSpeakers.push( speakerData );
+            }
+            
+            var templateValues = {
+                title: modelData.title,
+                subtitle: subtitle,
+                startTime: startTime,
+                endTime: endTime,
+                details: modelData.details,
+                speakers: sessionSpeakers
+            };
+            
+            return templateValues;
+        }
     });
     
     return SessionDetailsView;

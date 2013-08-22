@@ -84,15 +84,6 @@ define(function(require, exports, module) {
         beforeRender: function() {
             this.$el.empty();
             this.viewPointers = {};
-            this.collection.each(function(itemModel) {
-                var view = new this.DetailsView({
-                    model: itemModel,
-                    parentView: this
-                });
-                view.hide(); // Hide by default
-                this.insertView(view);
-                this.viewPointers[itemModel.cid] = view;
-            }, this);
         
             if( this.options.filter ) {
                 var filteredModels = this.collection.filter(this.options.filter);
@@ -177,7 +168,6 @@ define(function(require, exports, module) {
         },
         
         navigateTo: function(itemId) {
-            // appView.setCurrentView(this);
             var item = this.collection.get(itemId);
             this.currentItem = item;
             this.render();

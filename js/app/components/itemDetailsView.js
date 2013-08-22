@@ -23,18 +23,18 @@ define(function(require, exports, module) {
         RELEASE_TO_CLOSE: 'Release to close'
     };
 
-	var ItemDetailsView = Backbone.View.extend({
-	    manage: true,
-		
-		tagName: 'div',
-		className: 'item-details-wrap',
-		
-		events: {
+    var ItemDetailsView = Backbone.View.extend({
+        manage: true,
+        
+        tagName: 'div',
+        className: 'item-details-wrap',
+        
+        events: {
             'pointerdown .js-link': 'onLinkDown',
             'pointerup .js-link': 'onLinkUp',
             'click .js-link': 'onLinkUp',
             'pointerdown': 'onPointerDown'
-		},
+        },
         
         initialize: function() {
             this.parentView = this.options.parentView;
@@ -42,55 +42,55 @@ define(function(require, exports, module) {
                 throw Error();   
             }
         },
-		
-		onPointerDown: function(jqEvt) {
-		    console.log('prevent default from details view');
-		    // jqEvt.preventDefault();
-		},
-		
-		onLinkDown: function(jqEvt) {
-		    
-		},
-		
-		onLinkUp: function(jqEvt) {
-		    jqEvt.preventDefault();
-		    var target = jqEvt.target;
-		    var href = target.getAttribute('href'); // 'speakerDetails/' + id
+        
+        onPointerDown: function(jqEvt) {
+            console.log('prevent default from details view');
+            // jqEvt.preventDefault();
+        },
+        
+        onLinkDown: function(jqEvt) {
+            
+        },
+        
+        onLinkUp: function(jqEvt) {
+            jqEvt.preventDefault();
+            var target = jqEvt.target;
+            var href = target.getAttribute('href'); // 'speakerDetails/' + id
             appRouter.goTo(this.parentView, href, 'scaleFromCenter');
-		},
-		
-		hide: function() {
-			// this.el.parentNode.removeChild( this.el );
-			this.el.style.display = 'none';
-		},
-		
-		setupAsCurrent: function() {
-			this.el.style.display = 'block';
-			utils.setTransform(this.el, 'none');
-			if( !this.ptaReady ) {
-			    this.setupPTA();
-			}
-		},
-		
-		setupAsPrevious: function() {
-			// this.renderContent();
-			this.el.style.display = 'block';
-			var width = window.innerWidth;
-			utils.setTransform(this.el, 'translateX(' + -width + 'px) translateZ(0px)');
-			// this.el.setAttribute('POS', 'PREVIOUS');
-		},
-		
-		setupAsNext: function() {
-			// this.renderContent();
-			this.el.style.display = 'block';
-			var width = window.innerWidth;
-			utils.setTransform(this.el, 'translateX(' + width + 'px) translateZ(0px)');
-			// this.el.setAttribute('POS', 'NEXT');
-		},
-		
-		setupPTA: function() {
-		    var _this = this;
-		    var messageEl = this.el.querySelector('.pta-message');		    
+        },
+        
+        hide: function() {
+            // this.el.parentNode.removeChild( this.el );
+            this.el.style.display = 'none';
+        },
+        
+        setupAsCurrent: function() {
+            this.el.style.display = 'block';
+            utils.setTransform(this.el, 'none');
+            if( !this.ptaReady ) {
+                this.setupPTA();
+            }
+        },
+        
+        setupAsPrevious: function() {
+            // this.renderContent();
+            this.el.style.display = 'block';
+            var width = window.innerWidth;
+            utils.setTransform(this.el, 'translateX(' + -width + 'px) translateZ(0px)');
+            // this.el.setAttribute('POS', 'PREVIOUS');
+        },
+        
+        setupAsNext: function() {
+            // this.renderContent();
+            this.el.style.display = 'block';
+            var width = window.innerWidth;
+            utils.setTransform(this.el, 'translateX(' + width + 'px) translateZ(0px)');
+            // this.el.setAttribute('POS', 'NEXT');
+        },
+        
+        setupPTA: function() {
+            var _this = this;
+            var messageEl = this.el.querySelector('.pta-message');
             var options = {
                 wrapperEl: this.el,
                 scrollerEl: this.el.firstElementChild,
@@ -111,12 +111,12 @@ define(function(require, exports, module) {
                 onAction: function(){
                     appRouter.goTo(_this.parentRoute);
                 }
-            }
+            };
 
             PullToAction(options);
             this.ptaReady = true;
-		}
-	});
+        }
+    });
 
     return ItemDetailsView;
 });
