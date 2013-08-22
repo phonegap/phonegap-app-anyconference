@@ -78,36 +78,9 @@ define(function(require, exports, module) {
             this.pageOverlay = document.createElement('div');
             this.pageOverlay.className = 'js-page-overlay';
             
-            // var viewId = this.routeId + '_' + this.id;
-            
-            // appRouter.route(this.routeId + '/:sessionId', viewId, this.handleRouteIn);
-            
-            
             appRouter.on('route:' + this.routeId, function() {
                 _this.handleRouteIn.apply(_this, arguments);
             });
-            
-            /*
-            appRouter.on('route', function(route, itemId) {
-                if( route == this.routeId ) {
-                    if( itemId && itemId.length == 1) {
-                        if( itemId[0] == this.id ) {
-                            this.render();
-                        } else {
-                            this.destroy();
-                        }
-                    } else {
-                        this.render();
-                    }
-                } else {
-                    if( this.inView ) {
-                        // this.destroy();
-                        this.transitionOut();
-                    }
-                    this.inView = false;
-                }
-            }, this);
-            */
         },
 
         handleRouteIn: function(instanceId, itemId) {
@@ -379,7 +352,10 @@ define(function(require, exports, module) {
             jqEvt.preventDefault();
             if( jqEvt.target.tagName === 'A' ) {
                 var href = jqEvt.target.getAttribute('href');
-                appRouter.goTo(href);
+                console.log('appRouter goto: ' + href);
+                appRouter.goTo(this, href, 'none');
+            } else {
+                debugger;   
             }
         },
         
@@ -390,7 +366,7 @@ define(function(require, exports, module) {
             
             if( !this.currentPage ) {
                 this.handleEmptyPointerUp(jqEvt);
-                return;
+                return false;
             }
             
             var targetEl = this.currentPage.el;
@@ -517,55 +493,6 @@ define(function(require, exports, module) {
             // Hide to allow other view to be visible on sides
             el.style.overflow = 'hidden'; // disable this?
         },
-        
-    
- /*
-        transitionIn: function() {
-            var _this = this;
-            var el = this.el;
-            // Start from side
-            el.style.display = 'block';
-            utils.setTransform(el, 'translateX(-' + window.innerWidth + 'px) translateZ(0)');
-            // el.style.overflow = 'hidden';
-            setTimeout( function() {
-                el.style.display = 'block';
-                _this.transitionFromClass('js-enter-view-transition');
-                utils.setTransform(el, null); // 'none';
-            }, 1);
-            
-            var onTransitionEnd = function(evt) {
-                _this.animating = false;
-                el.style.overflow = null;
-                el.classList.remove('js-enter-view-transition');
-                el.removeEventListener('webkitTransitionEnd', onTransitionEnd);
-            };
-            el.addEventListener('webkitTransitionEnd', onTransitionEnd);
-        },
-            */
-        /*        
-        transitionOut: function() {
-            var _this = this;
-            var el = this.el;
-            // Move to left side
-            utils.setTransform(el, 'none');
-            el.style.overflow = 'hidden';
-            setTimeout( function() {
-                _this.transitionFromClass('js-leave-view-transition');
-                utils.setTransform(el, 'translateX(-' + window.innerWidth + 'px) translateZ(0)');
-            }, 1);
-            
-            var onTransitionEnd = function(evt) {
-                _this.animating = false;
-                el.style.overflow = null;
-                el.style.display = 'none';
-                el.classList.remove('js-leave-view-transition');
-                el.removeEventListener('webkitTransitionEnd', onTransitionEnd);
-                _this.destroy();
-            };
-            el.addEventListener('webkitTransitionEnd', onTransitionEnd);
-        },
-        */
-        
 
         transitionOut: function(transitionId) {
             var _this = this;

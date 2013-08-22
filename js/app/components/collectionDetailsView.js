@@ -130,18 +130,20 @@ define(function(require, exports, module) {
                 el.style.overflow = null;
                 el.style.display = 'block';
                 _this.removeTransitionClasses();
+                console.log('unhide overflow:', el.className);
                 console.log('transitionInEnd', _this.cid);
             };
             
+            // Hide to allow other view to be visible on sides
+            el.style.overflow = 'hidden';
+            console.log('hide overflow:', el.className);
+
             effects.startTransition({
                 id: transitionId,
                 type: 'in',
                 el: el,
                 onEnd: onTransitionEnd
             });
-
-            // Hide to allow other view to be visible on sides
-            el.style.overflow = 'hidden';
         },
         
         transitionOut: function(transitionId) {

@@ -29,6 +29,7 @@ define(function(require, exports, module) {
         
         initialize: function() {
             console.log('header init');
+            
         },
         
         afterRender: function() {
@@ -43,6 +44,8 @@ define(function(require, exports, module) {
         
         setupAsCurrent: function() {
             this.el.style.display = 'block';
+            this.el.style.left = '0';
+            this.itemWidth = this.el.offsetWidth;
             utils.setTransform(this.el, 'none');
             // this.render();
             var id = this.model.get('id');
@@ -54,17 +57,17 @@ define(function(require, exports, module) {
         
         setupAsPrevious: function() {
             this.el.style.display = 'block';
-            this.el.setAttribute('PREV');
             // this.render();
-            // this.el.style.left = -this.itemWidth + 'px';
-            utils.setTransform(this.el, 'translateX(-100%px) translateZ(0px)');
+            this.el.style.left = '-100%';
+            // utils.setTransform(this.el, 'translateX(-100%px) translateZ(0px)');
         },
         
         setupAsNext: function() {
             this.el.style.display = 'block';
+            
             // this.render();
-            // this.el.style.left = this.itemWidth + 'px';
-            utils.setTransform(this.el, 'translateX(100%) translateZ(0px)');
+            this.el.style.left = '100%';
+            // utils.setTransform(this.el, 'translateX(100%) translateZ(0px)');
         },
     });
     
