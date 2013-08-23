@@ -175,8 +175,10 @@ define(function(require, exports, module) {
             }, this);
         },
 
-        showMenu: function() {
+        showMenu: function(evt) {
             menuView.show();
+            evt.preventDefault();
+            evt.stopImmediatePropagation();
         },
         
         goBack: function(evt) {
@@ -234,9 +236,10 @@ define(function(require, exports, module) {
     //Handler for phonegap deviceready event
     var deviceReadyHandeler = function() {
         //Hide the splashscreen as soon as the device is ready
-        navigator.splashscreen.hide();
+        // navigator.splashscreen.hide();
         document.addEventListener("menubutton", appView.showMenu, true);
     };
 
     //Add event listener for phonegap device ready event
-    window.document.addEventListener("deviceready", deviceReadyHandeler, false);});
+    window.document.addEventListener("deviceready", deviceReadyHandeler, false);
+});

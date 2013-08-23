@@ -33,6 +33,7 @@ define(function(require, exports, module) {
         backRoute: null,
         
         goTo: function( currentView, newRoute, transitionId ) {
+            console.log('GOTO: ' + newRoute);
             var currentRoute = Backbone.history.fragment;
             if( newRoute == currentRoute ) {
                 return;

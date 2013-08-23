@@ -17,13 +17,17 @@ define(function(require, exports, module) {
     
     var utils = require('app/utils');
     
+    var DEFAULT_ENTER_CLASS = 'js-enter-view-transition';
+    var DEFAULT_LEAVE_CLASS = 'js-leave-view-transition';
+    
     // map Ids to "out" and "in" transitions
     var transitionMap = {
         none: {'out': 'none', 'in': 'none', reverse: 'none'},
         moveRight: {'out':'toRight', 'in':'fromLeft', reverse: 'moveLeft'},
         moveLeft: {'out':'toLeft', 'in':'fromRight', reverse: 'moveRight'},
         scaleFromCenter: {'out':'stay', 'in':'scaleFromCenter', reverse: 'scaleToCenter'},
-        scaleToCenter: {'out':'scaleToCenter', 'in':'stay', reverse: 'scaleFromCenter'}
+        scaleToCenter: {'out':'scaleToCenter', 'in':'stay', reverse: 'scaleFromCenter'},
+        fade: {'out':'fadeOut', 'in':'fadeIn', reverse: 'fade'}
     };
 
     var getReverseTransition = function(origId) {
@@ -37,6 +41,7 @@ define(function(require, exports, module) {
         this.animating = false;
         this.type = options.type;
         this.id = transitionMap[options.id][options.type];
+        this.skipStartStyle = options.skipStartStyle;
                 
         this.transitionFromClass = function(className) {
             var classList = this.el.classList;
@@ -48,24 +53,20 @@ define(function(require, exports, module) {
                 console.log('Start animating...', className);
                 classList.add(className);
             }
+            this.transitionClass = className;
         };
         
-        this.start = function() {
-            var _this = this;
-            
-            var onTransitionEnd = function(evt) {
-                _this.animating = false;
-                _this.el.removeEventListener('webkitTransitionEnd', onTransitionEnd);
-
-                if( _this.onEnd ) {
-                    var context = _this.context || _this;
-                    _this.el.style.zIndex = null;
-                    _this.onEnd.call(context, evt);
-                }
-            };
-            
+        this.setInitialStyles = function() {
             var startTransform;
-            switch( _this.id ) {
+            var style = this.el.style;
+            
+            switch( this.id ) {
+                case 'fadeIn':
+                    style.opacity = 0;
+                    break;
+                case 'fadeOut':
+                    style.opacity = 1;
+                    break;
                 case 'fromLeft':
                     startTransform = 'translateX(-100%) translateZ(0px)';
                     break;
@@ -74,24 +75,48 @@ define(function(require, exports, module) {
                     break;
                 case 'scaleFromCenter':
                     startTransform = 'scale(0.01)';
-                    _this.el.style.zIndex = 1;
+                    style.zIndex = 1;
                     break;
                 case 'scaleToCenter':
                     startTransform = 'none';
-                    _this.el.style.zIndex = 1;
+                    style.zIndex = 1;
                     break;
                 case 'stay':
                     startTransform = 'scale(1)';
                     break;
-                case 'none':
-                    onTransitionEnd();
-                    return;
                 default: {
                     startTransform = 'none';
                     break;
                 }
             }
-            utils.setTransform(_this.el, startTransform);
+            utils.setTransform(this.el, startTransform);
+        };
+        
+        this.start = function() {
+            var _this = this;
+            var el = _this.el;
+            
+            var onTransitionEnd = function(evt) {
+                _this.animating = false;
+                el.removeEventListener('webkitTransitionEnd', onTransitionEnd);
+
+                el.classList.remove(_this.transitionClass);
+                el.style.zIndex = null;
+                el.style.opacity = null;
+                if( _this.onEnd ) {
+                    var context = _this.context || _this;
+                    _this.onEnd.call(context, evt);
+                }
+            };
+            
+            if( this.id == 'none' ) {
+                onTransitionEnd(); 
+                return;
+            }
+            
+            if( !this.skipStartStyle ) {
+                this.setInitialStyles();
+            }
             
             setTimeout( function() {
                 _this.startActual.call(_this);
@@ -103,34 +128,43 @@ define(function(require, exports, module) {
         this.startActual = function() {
             var className = '';
             var endTransform = '';
+            var style = this.el.style;
             
             switch( this.id ) {
+                case 'fadeIn':
+                    className = DEFAULT_ENTER_CLASS;
+                    style.opacity = 1;
+                    break;
+                case 'fadeOut':
+                    className = DEFAULT_LEAVE_CLASS;
+                    style.opacity = 0;
+                    break;
                 case 'toLeft':
-                    className = 'js-leave-view-transition';
+                    className = DEFAULT_LEAVE_CLASS;
                     endTransform = 'translateX(-100%) translateZ(0px)';
                     break;
                 case 'toRight':
-                    className = 'js-leave-view-transition';
+                    className = DEFAULT_LEAVE_CLASS;
                     endTransform = 'translateX(100%) translateZ(0px)';
                     break;
                 case 'stay':
-                    className = 'js-leave-view-transition';
+                    className = DEFAULT_LEAVE_CLASS;
                     endTransform = 'none';
                     break;
                 case 'fromLeft':
-                    className = 'js-enter-view-transition';
+                    className = DEFAULT_ENTER_CLASS;
                     endTransform = 'none';
                     break;
                 case 'fromRight':
-                    className = 'js-enter-view-transition';
+                    className = DEFAULT_ENTER_CLASS;
                     endTransform = 'none';
                     break;
                 case 'scaleFromCenter':
-                    className = 'js-enter-view-transition';
+                    className = DEFAULT_ENTER_CLASS;
                     endTransform = 'none';
                     break;
                 case 'scaleToCenter':
-                    className = 'js-enter-view-transition';
+                    className = DEFAULT_ENTER_CLASS;
                     endTransform = 'scale(0.01)';
                     break;
                 default: {

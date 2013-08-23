@@ -19,6 +19,7 @@ define(function(require, exports, module) {
     var utils = require('app/utils');
     var dayEntryTemplate = require('text!app/templates/dayEntryTemplate.html');
     var menuTemplate = require('text!app/templates/menuTemplate.html');
+    var effects = require('app/effects');
 
     var MenuView = Backbone.View.extend({
         manage: true,
@@ -50,54 +51,82 @@ define(function(require, exports, module) {
         
         show: function() {
             var _this = this;
+            var el = this.el;
+            if( this.animating ) {
+                console.log('Not showing, already animating');
+                return;   
+            }
+            
             _this.animating = true;
 
-            var onTransitionEnd = function(evt) {
-                _this.el.classList.remove('js-menu-transition-in');
-                evt.target.removeEventListener('webkitTransitionEnd', onTransitionEnd);
-                utils.setTransform(_this.el, '');
-                _this.animating = false;
-            };
-
-            setTimeout( function() {
-                _this.overlay.style.display = 'block';
-                setTimeout( function() {
-                    _this.overlay.classList.remove('js-menu-overlay-hidden');
-                    _this.overlay.classList.add('js-menu-overlay-shown');
-                }, 1);
-            }, 1);
+            // If using touch, don't set initial transform
+            var skipStartStyle = this.pointerStarted;
             
-            this.el.classList.remove('js-menu-offscreen');
+            // Timeout to prevent flash bug
             setTimeout(function() {
-                _this.el.classList.add('js-menu-transition-in');
-                utils.setTransform(_this.el, 'none');
-                _this.el.addEventListener('webkitTransitionEnd', onTransitionEnd);
-                _this.$el.before( _this.overlay );
-            }, 1);
-
-            
+                el.style.display = 'block';
+                _this.overlay.style.display = 'block';
+                
+                effects.startTransition({
+                    id: 'moveRight',
+                    type: 'in',
+                    el: el,
+                    skipStartStyle: skipStartStyle,
+                    onEnd: function(evt) {
+                        _this.animating = false;
+                    }
+                });
+                
+                setTimeout( function() {
+                    _this.$el.before( _this.overlay );
+                    effects.startTransition({
+                        id: 'fade',
+                        type: 'in',
+                        skipStartStyle: skipStartStyle,
+                        el: _this.overlay
+                    });
+                }, 10);
+            }, 50);
+                       
             this.isShown = true;
         },
         
         hide: function() {
+            console.log('HIDE menu');
             var _this = this;
-
-            _this.animating = true;
-
-            var onTransitionEnd = function(evt) {
-                _this.el.classList.remove('js-menu-transition-out');
-                _this.overlay.style.display = 'none';
-                _this.el.classList.add('js-menu-offscreen');
-                evt.target.removeEventListener('webkitTransitionEnd', onTransitionEnd);
-                _this.animating = false;
-            };
+            var el = this.el;
             
-            this.overlay.classList.add('js-menu-overlay-hidden');
-            this.overlay.classList.remove('js-menu-overlay-shown');
-
-            this.el.classList.add('js-menu-transition-out');
-            utils.setTransform(this.el, 'translateX(' + -window.innerWidth + 'px)');
-            this.el.addEventListener('webkitTransitionEnd', onTransitionEnd);
+            if( this.animating ) {
+                console.log('Not hiding, already animating');
+                return;   
+            }
+            
+            // If using touch, don't set initial transform
+            var skipStartStyle = this.pointerStarted;
+            
+            _this.animating = true;
+            
+            effects.startTransition({
+                id: 'moveLeft',
+                type: 'out',
+                el: el,
+                skipStartStyle: skipStartStyle,
+                onEnd: function(evt) {
+                    _this.animating = false;
+                    el.style.display = 'none';
+                    _this.overlay.style.display = 'none';
+                }
+            });
+            
+            setTimeout( function() {
+                effects.startTransition({
+                    id: 'fade',
+                    type: 'out',
+                    el: _this.overlay,
+                    skipStartStyle: skipStartStyle
+                });
+            }, 10);
+            
             this.isShown = false;
         },
 
@@ -133,6 +162,7 @@ define(function(require, exports, module) {
             jqEvt.stopPropagation();
             var target = jqEvt.currentTarget;
             var href = target.getAttribute('href');
+            console.log('menu link href: ' + href);
             appRouter.goTo(null, href, 'none');
             this.hide();
         },
@@ -274,7 +304,7 @@ define(function(require, exports, module) {
             };
             addContent();
 
-            this.overlay.classList.add('js-menu-overlay-hidden');
+            // this.overlay.classList.add('js-menu-overlay-hidden');
             $header.after(htmlContent);
             
             $('.js-submenu-icon')[0].classList.add('js-submenu-transition');
@@ -307,8 +337,8 @@ define(function(require, exports, module) {
             });
             
             document.body.appendChild( this.el );
-            this.el.classList.add('js-menu-offscreen');
-            utils.setTransform(this.el, 'translateX(' + -window.innerWidth + 'px)');
+            this.el.style.display = 'none';
+            this.overlay.style.display = 'none';
         }
     });
     

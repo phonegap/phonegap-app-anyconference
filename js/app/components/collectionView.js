@@ -345,8 +345,6 @@ define(function(require, exports, module) {
                 var href = jqEvt.target.getAttribute('href');
                 console.log('appRouter goto: ' + href);
                 appRouter.goTo(this, href, 'none');
-            } else {
-                debugger;   
             }
         },
         
