@@ -15,6 +15,14 @@
     <div id="main"></div>
     
     <!--<script src="cordova-2.7.0.js"></script>-->
+	<script>
+		document.addEventListener("deviceready", function() {
+			setTimeout(function() {
+				navigator.splashscreen.hide();
+				alert('hidden!');
+			}, 3000);	
+		}, false);
+	</script>
     <script src="js/third-party/jquery-2.0.1.js"></script>
     <script src="js/third-party/raf.polyfill.js"></script>
     <script src="js/third-party/underscore.js"></script>

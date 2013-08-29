@@ -1547,17 +1547,13 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
 }
 .js-menu-overlay {
     z-index: 25;
+     -webkit-transition: opacity 0.5s;
 }
 .js-details-transition {
   -webkit-transition: all 0.3s;
 }
-.js-overlay-transition-out {
-  -webkit-transition: opacity 0.5s;
-  opacity: 0;
-}
-.js-page-overlay-removed {
-  opacity: 0;
-  -webkit-transition: opacity 0.3s;
+.js-page-overlay-transition {
+  -webkit-transition: all 0.3s;
 }
 .js-page-transition-in {
   -webkit-transition: all 0.2s;
@@ -1585,7 +1581,7 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
 }
 .js-enter-view-transition,
 .js-leave-view-transition {
-  -webkit-transition: -webkit-transform 0.3s;
+  -webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
 }
 .js-submenu-opened {
   -webkit-transform: rotateZ(-90deg); // translateZ(0);

@@ -53,6 +53,7 @@ define(function(require, exports, module) {
             var sessionCollectionStarredDetailsView = new SessionCollectionDetailsView({
                 collection: sessionCollection,
                 filter: starredFilter,
+                routeId: 'starredSessionCollection',
                 viewId: 'starred'
             });
 

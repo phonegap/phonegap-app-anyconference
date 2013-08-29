@@ -234,12 +234,18 @@ define(function(require, exports, module) {
     var menuView = new MenuView({model: appModel});
 
     //Handler for phonegap deviceready event
-    var deviceReadyHandeler = function() {
+    var handleDeviceReady = function() {
         //Hide the splashscreen as soon as the device is ready
-        // navigator.splashscreen.hide();
+		setTimeout(function() {
+			navigator.splashscreen.hide();
+		}, 10000);
+		
         document.addEventListener("menubutton", appView.showMenu, true);
     };
 
+	
+
+	
     //Add event listener for phonegap device ready event
-    window.document.addEventListener("deviceready", deviceReadyHandeler, false);
+	document.addEventListener("deviceready", handleDeviceReady, false);
 });

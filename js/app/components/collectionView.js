@@ -491,6 +491,7 @@ define(function(require, exports, module) {
                 _this.animating = false;
                 el.style.overflow = null;
                 el.style.display = 'none';
+                utils.setTransform(el, 'none');
                 console.log('transitionInEnd', _this.cid);
             };
             
