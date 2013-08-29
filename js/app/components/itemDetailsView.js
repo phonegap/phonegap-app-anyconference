@@ -95,6 +95,7 @@ define(function(require, exports, module) {
                 wrapperEl: this.el,
                 scrollerEl: this.el.firstElementChild,
                 messageEl: messageEl,
+                forceIScroll: true,
                 
                 onPull: function() {
                     messageEl.classList.remove('anyconf-return-ready');

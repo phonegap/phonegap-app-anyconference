@@ -169,6 +169,9 @@ limitations under the License.
         // Shameless check for user agent. 
         var ua = window.navigator.userAgent;
         var driver = (/\s?iPhone|iPad\s?/.test(ua)) ? nativeScrollDriver : iScrollDriver;
+        if( options.forceIScroll ) {
+            driver = iScrollDriver;
+        }
         
         return new PTA(options, driver)
     }
