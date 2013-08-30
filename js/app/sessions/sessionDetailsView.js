@@ -74,7 +74,6 @@ define(function(require, exports, module) {
         
         serialize: function() {
             var modelData = this.model.toJSON();
-            var speakerCollection = this.model.collection.speakerCollection;
 
             var subtitle = '';
             
@@ -88,18 +87,14 @@ define(function(require, exports, module) {
                 suffix: modelData.endTime.format('A')
             };
 
-            var sessionSpeakers = [];
-            // TODO: Do this in model?
-            for( var i = 0; i < modelData.speaker_ids.length; i++ ) {
-                var speakerId = modelData.speaker_ids[i];
-                var speakerData = speakerCollection.get( speakerId ).toJSON();
+            var sessionSpeakers = _.map(modelData.sessionSpeakers, function(speaker) {
+                var speakerData = speaker.toJSON();
                 speakerData.route = 'speakerDetails/' + speakerData.id;
-                sessionSpeakers.push( speakerData );
-            }
+                return speakerData;
+            });
             
             var templateValues = {
                 title: modelData.title,
-                subtitle: subtitle,
                 startTime: startTime,
                 endTime: endTime,
                 details: modelData.details,

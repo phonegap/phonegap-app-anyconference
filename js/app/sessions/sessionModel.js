@@ -88,11 +88,17 @@ define(function(require, exports, module) {
                 this.storeData('loved', this.get('loved'));
             }, this);
             
-            if (!this.get("title")) {
-                this.set({
-                    "title": this.defaults().title
-                });
+            /*
+            var sessionSpeakers = [];
+            var speakerCollection = this.model.collection.speakerCollection;
+            
+            // TODO: Do this in model?
+            for( var i = 0; i < modelData.speaker_ids.length; i++ ) {
+                var speakerId = modelData.speaker_ids[i];
+                sessionSpeakers.push( speakerCollection.get( speakerId ) );
             }
+            */
+
         }
     });
 

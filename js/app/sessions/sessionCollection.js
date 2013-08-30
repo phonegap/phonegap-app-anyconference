@@ -9,6 +9,20 @@ define(function(require, exports, module) {
         initialize: function() {
             _.bindAll(this, 'selectionChangeHandler');
             this.on('change:selected', this.selectionChangeHandler);
+            this.on('sync', this.setSpeakerData, this);
+        },
+        
+        setSpeakerData: function() {
+            this.each(function(model) {
+                var sessionSpeakers = [];
+                var allSpeakers = this.speakerCollection;
+                
+                var speaker_ids = model.get('speaker_ids');
+                _.forEach(speaker_ids, function( speakerId ) {
+                    sessionSpeakers.push( allSpeakers.get( speakerId ) );
+                });
+                model.set('sessionSpeakers', sessionSpeakers);
+            }, this);
         },
         
         setSpeakers: function(speakers) {

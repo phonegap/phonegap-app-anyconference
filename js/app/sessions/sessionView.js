@@ -100,33 +100,22 @@ define(function(require, exports, module) {
         
         render: function() {
             var modelData = this.model.toJSON();
-            var subtitle = '';
-            var _this = this;
-            var sessionSpeakers = [];
-            var speakerCollection = this.model.collection.speakerCollection;
             
-            // TODO: Do this in model?
-            for( var i = 0; i < modelData.speaker_ids.length; i++ ) {
-                var speakerId = modelData.speaker_ids[i];
-                sessionSpeakers.push( speakerCollection.get( speakerId ) );
-            }
-
-            var len = sessionSpeakers.length;
-
-            if( len ) {
-                for( var i = 0; i < len; i++ ) {
-                    var speaker = sessionSpeakers[i];
-                    var speakerName = speaker.get('full_name');
-                    if( i === 0 ) {
-                        subtitle += speakerName;
-                    } else if( i === len - 1 ) {
-                        subtitle += ' & ' + speakerName;
-                    } else {
-                        subtitle += ', ' + speakerName;
-                    }
+            var _this = this;
+            
+            var speakersText = '';
+            
+            _.each(modelData.sessionSpeakers, function(speaker, i, speakers) {
+                var speakerName = speaker.get('full_name');
+                if( i === 0 ) {
+                    speakersText += speakerName;
+                } else if( speaker === _.last(speakers) ) {
+                    speakersText += ' & ' + speakerName;
+                } else {
+                    speakersText += ', ' + speakerName;
                 }
-            }
-
+            });
+            
             var startTime = {
                 time: modelData.startTime.format('h:mm'),
                 suffix: modelData.startTime.format('A')
@@ -138,7 +127,7 @@ define(function(require, exports, module) {
 
             var templateValues = {
                 title: modelData.title,
-                subtitle: subtitle,
+                subtitle: speakersText,
                 startTime: startTime,
                 endTime: endTime
             };
