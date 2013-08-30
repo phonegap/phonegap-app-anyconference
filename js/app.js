@@ -123,6 +123,7 @@ define(function(require, exports, module) {
         },
         
         afterRender: function() {
+            var _this = this;
             var dayCollection = new DayCollection();
             dayCollection.setSpeakers(speakerCollection);
             dayCollection.add( this.model.get('dates') );
@@ -172,8 +173,44 @@ define(function(require, exports, module) {
                 if( !Backbone.history.fragment.length ) {
                     // Go to first day by default
                     appRouter.goTo(null, 'sessionCollection/' + this.defaultDayId, 'none');
+                    _this.checkTime();
                 }
             }, this);
+        },
+        
+        checkTime: function() {
+
+            var _this = this;
+            
+            var curDate = moment().format("YYYY-MM-DD");
+            
+            var now = moment();
+            
+            // TODO: For each track
+            var timeOfNext = null;
+            
+            sessionCollection.each(function(session) {
+                var start = session.get('startTime');
+                var end = session.get('endTime');
+                
+                // check if session should be first "up next"
+                if( !timeOfNext && now.isBefore( start ) ) {
+                    session.setAsNextUp();
+                    timeOfNext = start;
+                // check if session is also "up next"
+                } else if( timeOfNext && start.isSame(timeOfNext) ) {
+                    session.setAsNextUp();
+                // check if session is happening now
+                } else if( now.isAfter( start ) && now.isBefore( end ) ) {
+                    session.setAsCurrent();
+                } else {
+                    session.clearTimeFlag();
+                }
+            });
+             
+            setTimeout(function() {
+                _this.checkTime.call(_this);
+            }, 60 * 1000);
         },
 
         showMenu: function(evt) {
