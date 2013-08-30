@@ -110,16 +110,7 @@ define(function(require, exports, module) {
                   When the release occurs, onAction is called.
                 */
                 onAction: function(){
-                    var route = _this.parentRoute;
-                    if( _this.parentView.options.routeId ) {
-                        route = _this.parentView.options.routeId;
-                    } else {
-                        var viewId = _this.parentView.options.viewId;
-                        if( viewId ) {
-                            route += '/' + viewId;
-                        }
-                    }
-                        
+                    var route = _this.parentView.getParentRoute();
                     appRouter.goTo(_this.parentView, route, 'none');
                 }
             };

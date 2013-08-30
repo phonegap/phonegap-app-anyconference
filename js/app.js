@@ -68,7 +68,8 @@ define(function(require, exports, module) {
     });
     
     var speakerCollectionDetailsView = new SpeakerCollectionDetailsView({
-        collection: speakerCollection
+        collection: speakerCollection,
+        parentRoute: 'speakerCollection'
     });
     
     

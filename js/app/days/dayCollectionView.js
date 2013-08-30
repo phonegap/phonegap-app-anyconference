@@ -53,7 +53,7 @@ define(function(require, exports, module) {
             var sessionCollectionStarredDetailsView = new SessionCollectionDetailsView({
                 collection: sessionCollection,
                 filter: starredFilter,
-                routeId: 'starredSessionCollection',
+                parentRoute: 'starredSessionCollection',
                 viewId: 'starred'
             });
 
@@ -65,17 +65,20 @@ define(function(require, exports, module) {
                     var sessionDate = model.get('instances')[0].date;
                     return (sessionDate == dayModel.get('date'));
                 };
+                
+                var dayId = dayModel.get('id');
             
                 var sessionCollectionView = new SessionCollectionView({
                     collection: sessionCollection,
                     filter: dateFilter,
-                    id: dayModel.get('id')
+                    id: dayId
                 });
                 
                 var sessionCollectionDetailsView = new SessionCollectionDetailsView({
                     collection: sessionCollection,
                     filter: dateFilter,
-                    viewId: dayModel.get('id')
+                    viewId: dayId,
+                    parentRoute: 'sessionCollection/' + dayId
                 });
 
                 this.setView(sessionCollectionView, true);

@@ -223,6 +223,10 @@ define(function(require, exports, module) {
             }
         },
         
+        getParentRoute: function() {
+            return this.options.parentRoute;
+        },
+        
         transitionTo: function(relativeIndex) {
             var _this = this;
             var offsetX = this.itemWidth * relativeIndex;
