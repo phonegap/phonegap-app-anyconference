@@ -26,15 +26,15 @@ define(function(require, exports, module) {
         },
 
         parse: function(speakerDataArr) {
-            var speakerArr = [];
-            for( var i = 0; i < speakerDataArr.length; i++ ) { 
-                var speakerData = speakerDataArr[i];
-                speakerData.full_name = speakerData.first_name + ' ' + speakerData.last_name;
-                speakerArr.push( speakerData );
-            }
-            speakerArr.sort(function(a, b) {
-                return a.last_name > b.last_name ? 1 : -1;
-            });
+			var speakerArr = [];
+			for( var i = 0; i < speakerDataArr.length; i++ ) { 
+				var speakerData = speakerDataArr[i];
+				speakerData.full_name = speakerData.first_name + ' ' + speakerData.last_name;
+				speakerArr.push( speakerData );
+			}
+			speakerArr.sort(function(a, b) {
+			    return a.last_name > b.last_name ? 1 : -1;
+			});
             return speakerArr;
         },
         

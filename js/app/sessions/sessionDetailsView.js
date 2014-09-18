@@ -34,7 +34,6 @@ define(function(require, exports, module) {
         parentRoute: 'sessionCollection',
         
         initialize: function() {
-            this.parentView = this.options.parentView;
             this.model.on('change:starred', this.handleStarredChange, this);
             this.model.on('change:loved', this.handleLovedChange, this);
         },
@@ -55,7 +54,7 @@ define(function(require, exports, module) {
 
             setTimeout( function() {
                 $verificationEl.addClass('js-overlay-transition-out');
-            }, 1000);
+            }, 1500);
         },
         
         handleStarredChange: function() {
@@ -72,11 +71,12 @@ define(function(require, exports, module) {
             this.showVerification(text, className);
         },
         
-        serialize: function() {
-            var modelData = this.model.toJSON();
+		serialize: function() {
+			var modelData = this.model.toJSON();
+            var speakerCollection = this.model.collection.speakerCollection;
 
-            var subtitle = '';
-            
+			var subtitle = '';
+			
             var startTime = {
                 time: modelData.startTime.format('h:mm'),
                 suffix: modelData.startTime.format('A')
@@ -87,22 +87,24 @@ define(function(require, exports, module) {
                 suffix: modelData.endTime.format('A')
             };
 
-            var sessionSpeakers = _.map(modelData.sessionSpeakers, function(speaker) {
-                var speakerData = speaker.toJSON();
-                speakerData.route = 'speakerDetails/' + speakerData.id;
-                return speakerData;
-            });
-            
-            var templateValues = {
-                title: modelData.title,
-                startTime: startTime,
-                endTime: endTime,
-                details: modelData.details,
-                speakers: sessionSpeakers
-            };
-            
-            return templateValues;
-        }
+			var sessionSpeakers = [];
+			// TODO: Do this in model?
+			for( var i = 0; i < modelData.speaker_ids.length; i++ ) {
+			    var speakerId = modelData.speaker_ids[i];
+			    sessionSpeakers.push( speakerCollection.get( speakerId ) );
+			}
+			
+			var templateValues = {
+				title: modelData.title,
+				subtitle: subtitle,
+				startTime: startTime,
+				endTime: endTime,
+				details: modelData.details,
+				speakers: sessionSpeakers
+			};
+			
+			return templateValues;
+		}
     });
     
     return SessionDetailsView;

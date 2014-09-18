@@ -16,221 +16,181 @@ limitations under the License.
 define(function(require, exports, module) {
 
     var appRouter = require('app/appRouter');
-    var utils = require('app/utils');
     var dayEntryTemplate = require('text!app/templates/dayEntryTemplate.html');
     var menuTemplate = require('text!app/templates/menuTemplate.html');
-    var effects = require('app/effects');
 
-    var MenuView = Backbone.View.extend({
-        manage: true,
-        tagName: 'div',
-        className: 'anyconf-menu',
-        overlay: null,
-        
-        animating: false,
-        isShown: false,
-        swiping: false,
-        swipeChecked: false,
-        gestureStarted: false,
-        
-        events: {
-            'pointerdown': 'pointerDown',
-            'pointermove': 'pointerMove',
-            'pointerup': 'pointerUp',
-            'pointerup .js-schedule-link': 'linkUp',
-            'click .js-schedule-link': 'linkUp',
-            'pointerup .js-speakerlist-link': 'linkUp',
-            'click .js-speakerlist-link': 'linkUp',
-            'pointerup .js-starredlist-link': 'linkUp',
-            'click .js-starredlist-link': 'linkUp',
-            
-            'pointerup .js-toggle-submenu': 'toggleSubMenu'
-        },
-        
-        template: _.template(menuTemplate),
-        
-        show: function() {
-            var _this = this;
-            var el = this.el;
-            if( this.animating ) {
-                console.log('Not showing, already animating');
-                return;   
-            }
-            
+	var MenuView = Backbone.View.extend({
+	    manage: true,
+		tagName: 'div',
+		className: 'anyconf-menu',
+		overlay: null,
+		
+		animating: false,
+		isShown: false,
+		swiping: false,
+		swipeChecked: false,
+		gestureStarted: false,
+		
+		events: {
+		    'pointerdown': 'pointerDown',
+		    'pointermove': 'pointerMove',
+		    'pointerup': 'pointerUp',
+		    'pointerup .js-schedule-link': 'linkUp',
+		    'click .js-schedule-link': 'linkUp',
+		    'pointerup .js-speakerlist-link': 'linkUp',
+		    'click .js-speakerlist-link': 'linkUp',
+		    'pointerup .js-starredlist-link': 'linkUp',
+		    'click .js-starredlist-link': 'linkUp',
+		    'pointerup .js-aboutevent-link': 'linkUp',
+		    'click .js-aboutevent-link': 'linkUp'
+		},
+		
+		template: _.template(menuTemplate),
+		
+		show: function() {
+		    var _this = this;
             _this.animating = true;
 
-            // If using touch, don't set initial transform
-            var skipStartStyle = this.pointerStarted;
-            
-            // Timeout to prevent flash bug
-            setTimeout(function() {
-                el.style.display = 'block';
-                _this.overlay.style.display = 'block';
-                
-                effects.startTransition({
-                    id: 'moveRight',
-                    type: 'in',
-                    el: el,
-                    skipStartStyle: skipStartStyle,
-                    onEnd: function(evt) {
-                        _this.animating = false;
-                    }
-                });
-                
-                setTimeout( function() {
-                    _this.$el.before( _this.overlay );
-                    effects.startTransition({
-                        id: 'fade',
-                        type: 'in',
-                        skipStartStyle: skipStartStyle,
-                        el: _this.overlay
-                    });
-                }, 10);
-            }, 50);
-                       
-            this.isShown = true;
-        },
-        
-        hide: function() {
-            console.log('HIDE menu');
-            var _this = this;
-            var el = this.el;
-            
-            if( this.animating ) {
-                console.log('Not hiding, already animating');
-                return;   
-            }
-            
-            // If using touch, don't set initial transform
-            var skipStartStyle = this.pointerStarted;
-            
-            _this.animating = true;
-            
-            effects.startTransition({
-                id: 'moveLeft',
-                type: 'out',
-                el: el,
-                skipStartStyle: skipStartStyle,
-                onEnd: function(evt) {
-                    _this.animating = false;
-                    el.style.display = 'none';
-                    _this.overlay.style.display = 'none';
-                }
-            });
-            
+			var onTransitionEnd = function(evt) {
+				_this.el.classList.remove('js-menu-transition-in');
+				evt.target.removeEventListener('webkitTransitionEnd', onTransitionEnd);
+				_this.animating = false;
+			};
+
+            this.overlay.style.display = 'block';
             setTimeout( function() {
-                effects.startTransition({
-                    id: 'fade',
-                    type: 'out',
-                    el: _this.overlay,
-                    skipStartStyle: skipStartStyle
-                });
-            }, 10);
+                _this.overlay.classList.remove('js-menu-overlay-hidden');
+                _this.overlay.classList.add('js-menu-overlay-shown');
+            }, 1);
             
-            this.isShown = false;
-        },
+		    this.el.classList.remove('js-menu-offscreen');
+		    this.el.classList.add('js-menu-transition-in');
+		    this.el.style.webkitTransform = 'none';
+		    this.el.addEventListener('webkitTransitionEnd', onTransitionEnd);
 
-        setDefaultDayId: function(dayId) {
-            this.defaultDayId = dayId;
-        },
-        
-        toggleMenu: function(evt) {
-            var _this = menuView;
-            if( _this.animating ) {
-                return;
-            }
-            if( !_this.isShown ) {
-                _this.show();
-            } else {
-                _this.hide();
-            }
-        },
-        
-        toggleSubMenu: function(evt) {
-            $('.js-submenu-icon')[0].classList.toggle('js-submenu-opened');
-            $('.js-submenu-child').toggleClass('js-submenu-child--hidden');
-        },
-        
-        resetGestures: function() {
+			this.$el.before( this.overlay );
+		    
+		    this.isShown = true;
+		},
+		
+		hide: function() {
+		    var _this = this;
+
+            _this.animating = true;
+
+			var onTransitionEnd = function(evt) {
+				_this.el.classList.remove('js-menu-transition-out');
+                _this.overlay.style.display = 'none';
+				evt.target.removeEventListener('webkitTransitionEnd', onTransitionEnd);
+				_this.animating = false;
+			};
+			
+            this.overlay.classList.add('js-menu-overlay-hidden');
+            this.overlay.classList.remove('js-menu-overlay-shown');
+
+		    this.el.classList.add('js-menu-offscreen');
+		    this.el.classList.add('js-menu-transition-out');
+		    this.el.style.webkitTransform = 'translateX(' + -window.innerWidth + 'px)';
+		    this.el.addEventListener('webkitTransitionEnd', onTransitionEnd);
+		    this.isShown = false;
+		},
+		
+		toggleMenu: function(evt) {
+		    var _this = menuView;
+		    if( _this.animating ) {
+		        return;
+		    }
+		    if( !_this.isShown ) {
+		        _this.show();
+		    } else {
+		        _this.hide();
+		    }
+		},
+		
+		resetGestures: function() {
             this.swiping = false;
             this.swipeChecked = false;
             this.gestureStarted = false;
-        },
-        
-        linkUp: function(jqEvt) {
-            jqEvt.preventDefault();
-            jqEvt.stopPropagation();
-            var target = jqEvt.currentTarget;
-            var href = target.getAttribute('href');
-            console.log('menu link href: ' + href);
-            appRouter.goTo(null, href, 'none');
-            this.hide();
-        },
-        
-        pointerDown: function(jqEvt) {
-            console.log( 'pointerDown');
-            var evt = jqEvt.originalEvent;
-            if( this.animating ) {
-                return;
-            }
-            
-            this.startPoint = {
-                x: evt.clientX,
-                y: evt.clientY
-            };
-            this.lastPoint = {
-                x: this.startPoint.x,
-                y: this.startPoint.y
-            };
-            this.lastDiff = {
-                x: 0,
-                y: 0
-            };
-            
+		},
+		
+		linkUp: function(jqEvt) {
+		    jqEvt.preventDefault();
+		    jqEvt.stopPropagation();
+		    var target = jqEvt.currentTarget;
+		    var href = target.getAttribute('href');
+		    appRouter.navigate(href, {trigger: true});
+		    this.hide();
+		},
+		
+		pointerDown: function(jqEvt) {
+		    console.log( 'pointerDown');
+		    var evt = jqEvt.originalEvent;
+		    if( this.animating ) {
+		        return;
+		    }
+		    
+			this.startPoint = {
+				x: evt.clientX,
+				y: evt.clientY
+			};
+			this.lastPoint = {
+				x: this.startPoint.x,
+				y: this.startPoint.y
+			};
+			this.lastDiff = {
+				x: 0,
+				y: 0
+			};
+			
             if( this.isShown ) {
                 if( evt.target == this.overlay ) {
                     this.hide();
                 } else {
+                    evt.preventDefault();
                     this.pointerStarted = true;
+                    // window.addEventListener('pointermove', this.pointerMove, false);
+                    // window.addEventListener('pointerend', this.pointerUp, false);
                 }
             } else {
                 if( this.startPoint.x < 50 ) {
                     this.gestureStarted = true;
                     this.pointerStarted = true;
+                    // window.addEventListener('pointermove', this.pointerMove, false);
+                    // window.addEventListener('pointerend', this.pointerUp, false);
                 }
             }
-        },
-        
-        pointerMove: function(jqEvt) {
-            if( !this.pointerStarted ) {
-                return;
-            }
-            var evt = jqEvt.originalEvent;
-            console.log('menu pointermove');
-            var currentPoint = {
+		},
+		
+		pointerMove: function(jqEvt) {
+		    if( !this.pointerStarted ) {
+		        return;
+		    }
+    		var evt = jqEvt.originalEvent;
+    		console.log('menu pointermove');
+		    var currentPoint = {
                 x: evt.clientX,
                 y: evt.clientY,
             };
             
-            var startOffset = {
-                x: currentPoint.x - this.startPoint.x,
-                y: currentPoint.y - this.startPoint.y
-            };
+			var startOffset = {
+				x: currentPoint.x - this.startPoint.x,
+				y: currentPoint.y - this.startPoint.y
+			};
             
             this.lastDiff = {
                 x: currentPoint.x - this.lastPoint.x,
                 y: currentPoint.y - this.lastPoint.y
             };
             
-            if( !this.swipeChecked ) {
+			if( !this.swipeChecked ) {
                 // determine if scrolling or page swiping
                 var absX = Math.abs( this.lastDiff.x );
                 var absY = Math.abs( this.lastDiff.y );
                 
-                // More horizontal than vertical = swiping
-                this.swiping = (absX > absY);
+				// More horizontal than vertical = swiping
+				this.swiping = (absX > absY);
 
-                this.swipeChecked = true;
+				this.swipeChecked = true;
             }
 
             // Not horizontally swiping, end all further actions
@@ -245,7 +205,7 @@ define(function(require, exports, module) {
             
             if( this.isShown ) {
                 var translateX = Math.min(startOffset.x, 0);
-                utils.setTransform(this.el, 'translateX(' + translateX + 'px)');
+                this.el.style.webkitTransform = 'translateX(' + translateX + 'px)';
             } else {
                 if( currentPoint.x > this.lastPoint.x ) {
                     this.show();
@@ -256,36 +216,36 @@ define(function(require, exports, module) {
             }
             
             this.lastPoint = currentPoint;
-        },
+		},
         
         pointerUp: function(jqEvt) {
-            if( !this.pointerStarted ) {
-                return;
-            }
-            var evt = jqEvt.originalEvent;
-            // Prevent default if we moved
+		    if( !this.pointerStarted ) {
+		        return;
+		    }
+    		var evt = jqEvt.originalEvent;
+		    // Prevent default if we moved
             if( this.swipeChecked ) {
                 evt.preventDefault();
             } else {
                 // Check if this is a link
-                evt.preventDefault();
+    		    evt.preventDefault();
                 this.resetGestures();
                 return;
             }
             
-            if( !this.isShown ) {
+		    if( !this.isShown ) {
                 if( this.lastDiff.x > 0 ) {
                     this.show();
                 } else {
                     this.hide();
                 }
-            } else {
+			} else {
                 if( this.lastDiff.x < 0 ) {
                     this.hide();
                 } else {
                     this.show();
                 }
-            }
+			}
             
             this.resetGestures();
             this.pointerStarted = false;
@@ -294,53 +254,57 @@ define(function(require, exports, module) {
         afterRender: function() {
             var dates = this.model.get('dates');
             var $header = this.$el.find('.js-schedule-header');
-            var htmlContent = '';
-            var addContent = function() {
-                for( var i = 0; i < dates.length; i++ ) {
-                    var day = moment(dates[i].date).format('dddd, MMM D');
-                    var date = dates[i];
-                    htmlContent += _.template(dayEntryTemplate, {day: day, dayId: date.id});
-                }
-            };
-            addContent();
-
-            // this.overlay.classList.add('js-menu-overlay-hidden');
-            $header.after(htmlContent);
-            
-            $('.js-submenu-icon')[0].classList.add('js-submenu-transition');
+            for( var i = 0; i < dates.length; i++ ) {
+                var day = moment(dates[i].date).format('dddd, MMM D');
+                var html = _.template(dayEntryTemplate, {day: day});
+                var elem = $(html);
+                $header.after(elem);
+            }
         },
         
         serialize: function() {
             var eventData = this.model.toJSON();
-            var templateValues = {
-                defaultScheduleLink: 'sessionCollection/' + this.defaultDayId
-            };
+		    var templateValues = {
+		        title: eventData.name,
+		        date: eventData.dates[0].date,
+		        location: eventData.location
+		    };
             return templateValues;
         },
         
-        initialize: function() {
-            var _this = this;
+		initialize: function() {
+		    var _this = this;
+		    /*
+		    this.model.on('change', function() {
+		        this.addDates();
+		    }, this);
+		    */
+		    
+		    // var menuButton = $('.js-menu-button')[0];
+		    // menuButton.addEventListener('pointerup', _this.toggleMenu, false);
 
-            this.overlay = document.createElement('div');
-            this.overlay.className = 'js-menu-overlay';
-            
-            // Not a child of this.el, so can't use backbone events
-            $(this.overlay).on('pointerup', function() {
-                _this.hide();
-            });
-            
-            // Close on any navigation
-            appRouter.on('route', function() {
-                if( _this.isShown ) {
-                    _this.hide();
-                }
-            });
-            
-            document.body.appendChild( this.el );
-            this.el.style.display = 'none';
-            this.overlay.style.display = 'none';
-        }
-    });
-    
+			this.overlay = document.createElement('div');
+			this.overlay.className = 'js-menu-overlay';
+			
+			// Not a child of this.el, so can't use backbone events
+			$(this.overlay).on('pointerup', function() {
+			    _this.hide();
+			});
+			
+			// Close on any navigation
+			appRouter.on('route', function() {
+			    if( _this.isShown ) {
+			        _this.hide();
+			    }
+			});
+		    
+		    document.body.appendChild( this.el );
+		    this.el.classList.add('js-menu-offscreen');
+		    this.el.style.webkitTransform = 'translateX(' + -window.innerWidth + 'px)';
+		    // this.el.innerHTML = this.template(templateValues);
+		    // $('body').on("pointerdown",this.pointerDown);
+		}
+	});
+	
     return MenuView;
 });

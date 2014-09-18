@@ -1,3 +1,18 @@
+/*
+Copyright (c) 2013 Adobe Systems Incorporated. All rights reserved.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
 define(function(require, exports, module) {
     var config = require('app/config');
     var SessionModel = require('app/sessions/sessionModel');
@@ -5,28 +20,13 @@ define(function(require, exports, module) {
     var SessionCollection = Backbone.Collection.extend({
         url: config.url + 'sessions.json',
         model: SessionModel,
+        // localStorage: new Backbone.LocalStorage("todos-backbone"),
         
-        initialize: function() {
+        initialize: function(args) {
+            this.speakerCollection = args.speakerCollection;
+            this.fetch();
             _.bindAll(this, 'selectionChangeHandler');
             this.on('change:selected', this.selectionChangeHandler);
-            this.on('sync', this.setSpeakerData, this);
-        },
-        
-        setSpeakerData: function() {
-            this.each(function(model) {
-                var sessionSpeakers = [];
-                var allSpeakers = this.speakerCollection;
-                
-                var speaker_ids = model.get('speaker_ids');
-                _.forEach(speaker_ids, function( speakerId ) {
-                    sessionSpeakers.push( allSpeakers.get( speakerId ) );
-                });
-                model.set('sessionSpeakers', sessionSpeakers);
-            }, this);
-        },
-        
-        setSpeakers: function(speakers) {
-            this.speakerCollection = speakers;
         },
         
         selectionChangeHandler: function(model) {
@@ -57,12 +57,20 @@ define(function(require, exports, module) {
 				sessionData.endTime = sessionData.startTime.clone().add('m', firstInstance.duration);
 				sessionData.title = sessionData.name;
 				sessionData.details = sessionData.description;
-				sessionData.room = firstInstance.room_id;
-				sessionData.dayId = firstInstance.date;
 				
+				if( sessionData.speaker_ids.length ) {
+					// this.setSpeakers(sessionData);
+				}
+				// var session = new Session(sessionData);
+				// sessionListDetailsView.listenTo(session, 'change:selected', sessionListDetailsView.navigateTo);
 				sessionArr.push( sessionData );
+				// sessionList.add( session );
 			}
-            
+			/*
+			this.currentTrack = new Track({
+				collection: sessionList
+			});            debugger;
+			*/
             return sessionArr;
         }
     });
