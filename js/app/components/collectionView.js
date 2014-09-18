@@ -282,6 +282,7 @@ define(function(require, exports, module) {
 		
 		handleEmptyPointerUp: function(jqEvt) {
 		    jqEvt.preventDefault();
+		    console.log('handleEmptyPointerUp ' + jqEvt.target.tagName);
 		    if( jqEvt.target.tagName === 'A' ) {
 		        var href = jqEvt.target.getAttribute('href');
 		        appRouter.navigate(href, {trigger: true});
