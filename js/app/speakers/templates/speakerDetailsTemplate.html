@@ -13,17 +13,17 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 -->
-<div class="anyconf-view__container anyconf-scroll-content anyconf-speaker-details">
+<div class="anyconf-view__container anyconf-scroll-content">
     <div class="topcoat-navigation-bar__item left anyconf-view--bordered anyconf-label-speaker-heading">
-        <img class="anyconf-speaker-details__img" src="<%- profile_url %>">
-        <div class="anyconf-speaker-details__name">
+        <img class="anyconf-speaker-details-img" src="<%- profile_url %>">
+        <div class="anyconf-speaker-details-name">
             <%- full_name %>
         </div>
     </div>
     <div class="anyconf-view anyconf-view--bordered">
         <ul class="anyconf-link-list">
-            <li><a class="anyconf-link anyconf-link--twitter js-speaker-link" href="http://twitter.com/twitter">@twitter</a></li>
-            <li><a class="anyconf-link anyconf-link--url js-speaker-link" href="http://example.com">example.com</a></li>
+            <li><a class="anyconf-link anyconf-link--twitter js-speaker-link" href="http://twitter.com/twitter/<%- twitter %>">@<%- twitter %></a></li>
+            <li><a class="anyconf-link anyconf-link--url js-speaker-link" href="<%- website %>"><%- website %></a></li>
         </ul>
         <p><%- bio %></p>
     </div>
@@ -31,9 +31,9 @@ limitations under the License.
         <h4 class="anyconf-label-title anyconf-condensed"><!-- confname --> SESSIONS:</h4>
         <% _.each(sessions, function(data) { %> 
             <div>
-                <h5><a href="<%- data.route %>" class="anyconf-link anyconf-session-title-link js-link"><%- data.title %></a></h5>
+                <h5><a href="sessionDetails/<%- data.id %>" class="anyconf-link anyconf-session-title-link js-link"><%- data.title %></a></h5>
                 <div class="anyconf-label-time">
-                    <%- data.startTime.time %><small><%- data.startTime.suffix %></small>&nbsp;–&nbsp;<%- data.endTime.time %><small><%- data.endTime.suffix %></small> <span class="anyconf-day"><%- data.day %>
+                    <%- data.startTime.time %><small><%- data.startTime.suffix %></small>&nbsp;–&nbsp;<%- data.endTime.time %><small><%- data.endTime.suffix %></small> <span class="anyconf-day"><%- data.day %></span>
                 </div>
                 
             </div>

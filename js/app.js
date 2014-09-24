@@ -26,41 +26,10 @@ define(function(require, exports, module) {
 
     var appRouter = require('app/appRouter');
 
-    //Define app model
-    var AppModel = Backbone.Model.extend({
-        url: config.url + 'event.json',
-        defaults: {
-            'name': 'AnyConference',
-            'title': 'Today'
-        },
-        parse: function(data) {
-            // replace day id string with date
-            _.each(data.dates, function(dayData) {
-                dayData.id = dayData.date;
-            });
-            return data;
-        }
-    });
-
-    //Instantiate app model
-    var appModel = new AppModel();
-
-    //Day
-    var DayCollection = require('app/days/dayCollection');
-    
-    var DayCollectionView = require('app/days/dayCollectionView');
-    var DayCollectionHeadersView = require('app/days/dayCollectionHeadersView');
-    
     //Speaker
     var SpeakerCollection = require('app/speakers/speakerCollection');
-    
     var SpeakerCollectionView = require('app/speakers/speakerCollectionView');
     var SpeakerCollectionDetailsView = require('app/speakers/speakerCollectionDetailsView');
-    
-    //Session
-    var SessionCollection = require('app/sessions/sessionCollection'); // day of sessions or starred sessions
-    
-    var SessionOptionView = require('app/sessions/sessionOptionView');
 
     var speakerCollection = new SpeakerCollection();
     var speakerCollectionView = new SpeakerCollectionView({
@@ -68,15 +37,44 @@ define(function(require, exports, module) {
     });
     
     var speakerCollectionDetailsView = new SpeakerCollectionDetailsView({
-        collection: speakerCollection,
-        parentRoute: 'speakerCollection'
+        collection: speakerCollection
     });
     
-    
-    var sessionCollection = new SessionCollection();
-    sessionCollection.setSpeakers(speakerCollection);
-    speakerCollection.setSessions(sessionCollection);
+    //Session
+    var SessionCollection = require('app/sessions/sessionCollection');
+    var SessionCollectionView = require('app/sessions/sessionCollectionView');
+    var SessionCollectionDetailsView = require('app/sessions/sessionCollectionDetailsView');
+    var SessionOptionView = require('app/sessions/sessionOptionView');
 
+    var sessionCollection = new SessionCollection({
+        speakerCollection: speakerCollection
+    });
+    var sessionCollectionView = new SessionCollectionView({
+        collection: sessionCollection
+    });
+    speakerCollection.setSessions( sessionCollection );
+    
+    var sessionCollectionStarredView = new SessionCollectionView({
+        collection: sessionCollection,
+        type: 'starred'
+    });
+    
+    var sessionCollectionDetailsView = new SessionCollectionDetailsView({
+        collection: sessionCollection
+    });
+    
+    var starredOptionView = new SessionOptionView({
+        sessionCollection: sessionCollection,
+        flag: 'starred',
+        template: require('text!app/templates/starButtonTemplate.html')
+    });
+
+    var lovedOptionView = new SessionOptionView({
+        sessionCollection: sessionCollection,
+        flag: 'loved',
+        template: require('text!app/templates/loveButtonTemplate.html')
+    });
+  
     //Load html template
     var appTemplate = require("text!app/templates/main.html");
 
@@ -87,7 +85,6 @@ define(function(require, exports, module) {
         el: '#main',
         //Define the template to use
         template: _.template(appTemplate),
-        defaultDayId: '',
         
         events: {
             'pointerup .js-menu-button': 'showMenu',
@@ -107,147 +104,63 @@ define(function(require, exports, module) {
         },
         
         serialize: function() {
-            var modelProps = this.model.toJSON();
-            return modelProps;
-        },
-
-        findDefaultDayId: function(dayCollection) {
-            // Get today or first day as default day
-            this.defaultDayId = dayCollection.first().id;
-            dayCollection.some(function(model) {
-                if( model.isToday ) {
-                    this.defaultDayId = model.id;
-                    return true;
-                }
-            }, this);
+            return this.model.attributes;
         },
         
         afterRender: function() {
-            var _this = this;
-            var dayCollection = new DayCollection();
-            dayCollection.setSpeakers(speakerCollection);
-            dayCollection.add( this.model.get('dates') );
-            this.findDefaultDayId( dayCollection );
-            
-            sessionCollection.fetch();
-            
-            var dayCollectionView = new DayCollectionView({
-                collection: dayCollection,
-                sessionCollection: sessionCollection
-            });
-
-            this.setView('.js-app-content', dayCollectionView, true);
-            dayCollectionView.setDefaultDayId(this.defaultDayId);
-            dayCollectionView.render();
-            
-            var dayCollectionHeadersView = new DayCollectionHeadersView({
-                collection: dayCollection
-            });
-            this.setView('.js-day-titles', dayCollectionHeadersView, true);
-
-            var starredOptionView = new SessionOptionView({
-                sessionCollection: sessionCollection,
-                flag: 'starred',
-                template: require('text!app/templates/starButtonTemplate.html')
-            });
-
-            var lovedOptionView = new SessionOptionView({
-                sessionCollection: sessionCollection,
-                flag: 'loved',
-                template: require('text!app/templates/loveButtonTemplate.html')
-            });
-
+            this.setView('#content', sessionCollectionView, true);
+            this.setView('#content', sessionCollectionStarredView, true);
+            this.setView('#content', sessionCollectionDetailsView, true);
+            this.setView('#content', speakerCollectionView, true);
+            this.setView('#content', speakerCollectionDetailsView, true);
+            this.setView(menuView, true);
             this.setView('.js-button-container', starredOptionView, true);
             this.setView('.js-button-container', lovedOptionView, true);
-
-            this.setView('.js-app-content', speakerCollectionView, true);
-            this.setView('.js-app-content', speakerCollectionDetailsView, true);
-            //this.setView('.js-day-titles', dayCollectionView, true);
-            this.setView(menuView, true);
-            
-            Backbone.history.start();
-
-            menuView.setDefaultDayId(this.defaultDayId);
             menuView.render();
-            sessionCollection.on('sync', function() {
-                if( !Backbone.history.fragment.length ) {
-                    // Go to first day by default
-                    appRouter.goTo(null, 'sessionCollection/' + this.defaultDayId, 'none');
-                    _this.checkTime();
-                }
-            }, this);
-        },
-        
-        checkTime: function() {
-
-            var _this = this;
-            
-            var curDate = moment().format("YYYY-MM-DD");
-            
-            var now = moment();
-            
-            // TODO: For each track
-            var timeOfNext = null;
-            
-            sessionCollection.each(function(session) {
-                var start = session.get('startTime');
-                var end = session.get('endTime');
-                
-                // check if session should be first "up next"
-                if( !timeOfNext && now.isBefore( start ) ) {
-                    session.setAsNextUp();
-                    timeOfNext = start;
-                // check if session is also "up next"
-                } else if( timeOfNext && start.isSame(timeOfNext) ) {
-                    session.setAsNextUp();
-                // check if session is happening now
-                } else if( now.isAfter( start ) && now.isBefore( end ) ) {
-                    session.setAsCurrent();
-                } else {
-                    session.clearTimeFlag();
-                }
-            });
-             
-            setTimeout(function() {
-                _this.checkTime.call(_this);
-            }, 60 * 1000);
+            this.checkTime();
+            Backbone.history.start();
         },
 
-        showMenu: function(evt) {
+        showMenu: function() {
             menuView.show();
-            evt.preventDefault();
-            evt.stopImmediatePropagation();
         },
         
-        goBack: function(evt) {
-            appRouter.goBack();
-        },
-        
-        setHeading: function(route) {
-            var headingText;
-            var showBackButton = false;
-            if( route === 'sessionCollection' ) {
-                $('.js-section-title').hide();
-                $('.js-day-headers').show();
-            } else {
-                $('.js-section-title').show();
-                $('.js-day-headers').hide();
-                switch( route ) {
-                    case 'starredSessionCollection':
-                        headingText = 'STARRED';
-                        break;
-                    case 'speakerCollection':
-                        headingText = 'SPEAKERS';
-                        break;
-                    case 'sessionDetails':
-                        headingText = 'SESSION';
-                        showBackButton = true;
-                        break;
-                    case 'speakerDetails':
-                        headingText = 'SPEAKER';
-                        showBackButton = true;
-                        break;
-                }
+		goBack: function(evt) {
+		    window.history.go(-1);
+		},
+		
+		setHeading: function(route) {
+		    var headingText;
+		    var showBackButton = false;
+            switch( route ) {
+                case 'sessionCollection':
+                    // TODO: This needs to change for multiple dates
+                    var dayStr = this.model.get('dates')[0].date;
+                    var day = moment(dayStr);
+                    var curDate = moment().format("YYYY-MM-DD");
+                    var dayDate = day.format("YYYY-MM-DD");
+                    var dayOfWeek;
+                    if( dayDate == curDate ) {
+                        dayOfWeek = 'TODAY';
+                    } else {
+                        dayOfWeek = day.format('dddd').toUpperCase();
+                    }
+                    headingText = dayOfWeek;
+                    break;
+                case 'starredSessionCollection':
+                    headingText = 'STARRED';
+                    break;
+                case 'speakerCollection':
+                    headingText = 'SPEAKERS';
+                    break;
+                case 'sessionDetails':
+                    headingText = 'SESSION';
+                    showBackButton = true;
+                    break;
+                case 'speakerDetails':
+                    headingText = 'SPEAKER';
+                    showBackButton = true;
+                    break;
             }
             $('.js-navbar-title').text( headingText );
             if( showBackButton ) {
@@ -259,10 +172,55 @@ define(function(require, exports, module) {
             }
             
             console.log('route', arguments);
+		},
+		
+		checkTime: function() {
+			var viewMode = 1;
+			// check if we're in the right mode
+			if( viewMode !== 1 ) {
+				return;
+			}
+			var now = moment();
+			// TODO: For each track, if track is today...
+			var timeOfNext = null;
+			
+			sessionCollection.each(function(session) {
+				var start = session.get('startTime');
+				var end = session.get('endTime');
+				
+				// check if session should be first "up next"
+				if( !timeOfNext && now.isBefore( start ) ) {
+					session.setAsNextUp();
+					timeOfNext = start;
+				// check if session is also "up next"
+				} else if( timeOfNext && start.isSame(timeOfNext) ) {
+					session.setAsNextUp();
+				// check if session is happening now
+				} else if( now.isAfter( start ) && now.isBefore( end ) ) {
+					session.setAsCurrent();
+				} else {
+					session.clearTimeFlag();
+				}
+			});
+			 
+			setTimeout(this.checkTime, 60 * 1000);
+		},
+		
+    });
+
+    //Define app model
+    var AppModel = Backbone.Model.extend({
+        url: config.url + 'event.json',
+        defaults: {
+            'name': 'AnyConference',
+            'title': 'Today'
         }
     });
-    
-    //Instantiate app view
+
+    //Instantiate app model
+    var appModel = new AppModel();
+
+    //Indtantiate app view
     var appView = new AppView({
         'model': appModel
     });
@@ -272,18 +230,10 @@ define(function(require, exports, module) {
     var menuView = new MenuView({model: appModel});
 
     //Handler for phonegap deviceready event
-    var handleDeviceReady = function() {
-        //Hide the splashscreen as soon as the device is ready
-		setTimeout(function() {
-			navigator.splashscreen.hide();
-		}, 10000);
-		
-        document.addEventListener("menubutton", appView.showMenu, true);
-    };
+    var deviceReadyHandeler = function() {
+            //Hide the splashscreen as soon as the device is ready
+            navigator.splashscreen.hide();
+        };
 
-	
-
-	
     //Add event listener for phonegap device ready event
-	document.addEventListener("deviceready", handleDeviceReady, false);
-});
+    window.document.addEventListener("deviceready", deviceReadyHandeler, false);});

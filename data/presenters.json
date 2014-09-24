@@ -1,121 +1,61 @@
 [{
-    "id": "519e5fd8ecdcc4217c000011",
-    "first_name": "Dean",
-    "last_name": "Ashworth",
-    "company": "",
-    "title": "",
-    "profile_url": "https://attendease.com/assets/user-placeholder-80x80.png",
-    "bio": "Dean Ashworth is formerly referred to as a \"UI Engineer\" but really he gets paid to design, troubleshoot, think, play with devices, and collaborate with lots of super talented folks. He is a native Californian, lover of forests, and proud father of 3 boys."
+    "id": "sp1",
+    "first_name": "Steve",
+    "last_name": "Jones",
+    "company": "Red Gate Software",
+    "title": "SQL Server MVP",
+    "profile_url": "img/stevejones.jpg",
+    "bio": "Steve Jones is a Microsoft SQL Server MVP and has been working with SQL Server since version 4.2 on OS/2. After working as a DBA and developer for a variety of companies, Steve co-founded the community website SQLServerCentral.com in 2001. Since 2004, Steve has been the full-time editor of the site, ensuring it continues to be a great resource for SQL Server professionals. Over the last decade, Steve has written hundreds of articles about SQL Server for SQLServerCentral.com, SQL Server Standard magazine, SQL Server Magazine, and Database Journal",
+	"twitter": "way0utwest",
+	"website": "http://www.sqlservercentral.com/"
+	}, {
+    "id": "sp2",
+    "first_name": "Grant",
+    "last_name": "Fritchey",
+    "company": "Red Gate Software",
+    "title": "SQL Server MVP",
+    "profile_url": "img/grant.jpg",
+    "bio": "Grant Fritchey is a SQL Server MVP with over 20 years experience in IT including time spent in support and development. Grant has worked with SQL Server since version 6.0 back in 1995. He has developed in VB, VB.Net, C# and Java. Grant volunteers at PASS with the Editorial Committee and is president of the Southern New England SQL Server Users Group (SNESSUG). He has authored books for Apress and Simple-Talk, and joined Red Gate as a Product Evangelist in January 2011.",
+	"twitter": "Gfritchey",
+	"website": "http://www.scarydba.com/"
 }, {
-    "id": "519e600eecdcc4942c000001",
-    "first_name": "Jeff",
-    "last_name": "Burtoft",
-    "company": "",
+    "id": "sp3",
+    "first_name": "John",
+    "last_name": "Theron",
+    "company": "Red Gate Software",
     "title": "",
-    "profile_url": "https://attendease.com/assets/user-placeholder-80x80.png",
-    "bio": "Jeff Burtoft is as an HTML5 Evangelist for Microsoft and an avid supporter of the JavaScript/HTML5 community. Being in the Web Development community for over 10 years, his job title has morphed from the likes of \"Web Master\" to “Front End Engineer” and everything in-between.\n\nJeff is a huge proponent of web standards, and loves all programing languages, as long as they are JavaScript. Additionally, Jeff is co-author of HTML5 Hacks (O’Reilly Media) and is a founding blogger of html5hacks.com. Jeff lives in Bellevue, WA with his wife and three children."
+    "profile_url": "img/johntheron.jpg",
+    "bio": "John has a slightly unusual accent",
+	"twitter": "",
+	"website": "http://www.red-gate.com"
 }, {
-    "id": "519e6119ecdcc4942c000002",
-    "first_name": "Nat",
-    "last_name": "Duca",
-    "company": "",
+    "id": "sp4",
+    "first_name": "David",
+    "last_name": "Atkinson",
+    "company": "Red Gate Software",
     "title": "",
-    "profile_url": "https://attendease.com/assets/user-placeholder-80x80.png",
-    "bio": "Nat Duca works as an engineer on the Chrome team to make browsing the web as jank-free and smooth as possible. He wants to give you (and everyone else!) a faster, more fluid web."
+    "profile_url": "img/davidatkinson.jpg",
+    "bio": "Enjoys kittens.",
+	"twitter": "dtabase",
+	"website": "http://www.red-gate.com"
 }, {
-    "id": "519e6147ecdcc4942c000003",
-    "first_name": "Tom",
-    "last_name": "Wiltzius",
-    "company": "",
-    "title": "",
-    "profile_url": "https://attendease.com/assets/user-placeholder-80x80.png",
-    "bio": "Tom Wiltzius is a product manager on Chrome, running interference for Chrome's GPU acceleration efforts. He wants to give you (and everyone else!) a faster, more fluid web."
+    "id": "sp5",
+    "first_name": "Ike",
+    "last_name": "Ellis",
+    "company": "The Monastery",
+    "title": "Microsoft MVP",
+    "profile_url": "img/ikeellis.jpg",
+    "bio": "With over 17 years of experience in databases and a current Microsoft MVP,  Ike has been Microsoft certified since the beginning, currently holding an MCDBA, MCSE, MCSD, and MCT. Ike is currently partner at The Monastery, a software studio with a location in Phoenix. He speaks, writes, and thinks about data all day long.",
+	"twitter": "ike_ellis",
+	"website": "http://www.ikeellis.com/"
 }, {
-    "id": "519e6183ecdcc4b293000003",
-    "first_name": "Pamela",
-    "last_name": "Fox",
+    "id": "sp20",
+    "first_name": "TEST",
+    "last_name": "TEST",
     "company": "",
     "title": "",
-    "profile_url": "https://attendease.com/assets/user-placeholder-80x80.png",
-    "bio": "Pamela Fox loves to learn, teach, create, and every combination of those. During the day, she works as a frontend engineer at Coursera, working to improve the future of online education. At night and on the weekends, she teaches web development classes for the GirlDevelopIt San Francisco chapter. Before that, she worked in Google Developer Relations, and graduated from USC's Computer Science Department (Go Trojans!)."
-}, {
-    "id": "519e61a7ecdcc4b293000004",
-    "first_name": "Nicolas",
-    "last_name": "Gallagher",
-    "company": "",
-    "title": "",
-    "profile_url": "https://attendease.com/assets/user-placeholder-80x80.png",
-    "bio": "Nicolas Gallagher is a front-end engineer at Twitter, and the lead developer of HTML5 Boilerplate and Normalize.css. He studied Anthropology before beginning to learn how to code."
-}, {
-    "id": "519e61fdecdcc4b293000005",
-    "first_name": "Val",
-    "last_name": "Head",
-    "company": "",
-    "title": "",
-    "profile_url": "https://attendease.com/assets/user-placeholder-80x80.png",
-    "bio": "Val Head is a designer and consultant based in Pittsburgh, PA. She works with agencies and small businesses to make fun, effective and responsive web sites. She speaks internationally at conferences and leads workshops on web design and creative coding. Val tweets too much, occasionally dribbbles, and blogs somewhat inconsistently."
-}, {
-    "id": "519e6229ecdcc4b293000006",
-    "first_name": "Tim",
-    "last_name": "Hettler",
-    "company": "",
-    "title": "",
-    "profile_url": "https://attendease.com/assets/user-placeholder-80x80.png",
-    "bio": "Tim Hettler is a web developer living and working in New York City. He cut his teeth at About.com, where he developed one of the first homepages to embrace the Responsive Web Design movement. Today, he continues to advocate for cutting-edge design & development practices at R/GA.\n\nWhen not behind a computer screen, Tim enjoys cycling, bird watching, and staring wistfully at large bodies of water."
-}, {
-    "id": "519e624decdcc4b293000007",
-    "first_name": "Kristofer",
-    "last_name": "Joseph",
-    "company": "",
-    "title": "",
-    "profile_url": "https://attendease.com/assets/user-placeholder-80x80.png",
-    "bio": "Kristofer Joseph is a maker at Adobe focusing on web standards and open source libraries. He is obsessed with lowering the friction between ideas and creation. Kristofer's latest contributions include being an inventor of Reflow and lead on TopCoat."
-}, {
-    "id": "519e62ceecdcc4b293000008",
-    "first_name": "Guillermo",
-    "last_name": "Torres",
-    "company": "",
-    "title": "",
-    "profile_url": "https://attendease.com/assets/user-placeholder-80x80.png",
-    "bio": "Guillermo Torres is a design manager at Adobe. He leads a team of designers to create Edge tools and services a new suite of products for modern web design and development. Prior to joining Adobe, Guillermo navigated between design and development at AKQA and Method. Always bringing a mix of both left and right brain to everything he does, creating engaging interactive experiences for global brands such as Nike, Microsoft, Autodesk, Gucci, Visa and Target. With over 10 years in the industry Guillermo's work has been recognized by The One Show, Communication Arts, FWA, Cannes Cyber Lyons, among others."
-}, {
-    "id": "519e6770ecdcc4d667000001",
-    "first_name": "Thomas",
-    "last_name": "Reynolds",
-    "company": "",
-    "title": "",
-    "profile_url": "https://attendease.com/assets/user-placeholder-80x80.png",
-    "bio": "Thomas Reynolds is the Technical Lead at Instrument and works on cutting-edge front-end experiments. He is also the creator of Middleman, a static web development tool."
-}, {
-    "id": "519e682fecdcc4d667000002",
-    "first_name": "Ryan",
-    "last_name": "Seddon",
-    "company": "",
-    "title": "",
-    "profile_url": "https://attendease.com/assets/user-placeholder-80x80.png",
-    "bio": "Ryan Seddon loves front-end dev and the ever changing fast pace nature of it. He's always exploring new ways to do silly things in CSS and JavaScript. Ryan is a front-end dev by day and an open source hacker by night."
-}, {
-    "id": "519e684fecdcc4d667000003",
-    "first_name": "Alex",
-    "last_name": "Sexton",
-    "company": "",
-    "title": "",
-    "profile_url": "https://attendease.com/assets/user-placeholder-80x80.png",
-    "bio": "Alex Sexton is a Senior UI Engineer at Bazaarvoice in Austin, TX. He is on the Modernizr team and is passionate about large applications and the challenges that they represent. He loves whiskey and working in the middle of the night. He blogs at alexsexton.com."
-}, {
-    "id": "519e694aecdcc48b64000001",
-    "first_name": "Mike",
-    "last_name": "Stamm",
-    "company": "",
-    "title": "",
-    "profile_url": "https://attendease.com/assets/user-placeholder-80x80.png",
-    "bio": "Mike Stamm is the lead Mobile Design Technologist at DowJones, currently overseeing the mobile and responsive websites for WSJ.com. He has been developing HTML professionally since 1996, and mobile-optimized HTML since the Palm V."
-}, {
-    "id": "519e697fecdcc48b64000002",
-    "first_name": "Lea",
-    "last_name": "Verou",
-    "company": "",
-    "title": "",
-    "profile_url": "https://attendease.com/assets/user-placeholder-80x80.png",
-    "bio": "Lea Verou works as a Developer Advocate for W3C. She has a long-standing passion for open web standards, which she fulfills by researching new ways to use them, blogging, speaking, writing, and coding popular open source projects to help fellow developers. She is a member of the CSS Working Group, which architects the language itself. Lea studied Computer Science in Athens University of Economics and Business, where she co-organized and occasionally lectured a cutting edge Web development course for 4th year undergrads. She is one of the few misfits who love code and design equally."
+    "profile_url": "",
+    "bio": "With over 17 years of experience in databases and a current Microsoft MVP,  Ike has been Microsoft certified since the beginning, currently holding an MCDBA, MCSE, MCSD, and MCT. Ike is currently partner at The Monastery, a software studio with a location in Phoenix. He speaks, writes, and thinks about data all day long.",
+	"twitter": "",
+	"website": ""
 }]

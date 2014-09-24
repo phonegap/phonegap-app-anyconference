@@ -1,39 +1,41 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<widget xmlns     = "http://www.w3.org/ns/widgets"
-        xmlns:gap = "http://phonegap.com/ns/1.0"
-        id        = "com.phonegap.anyconference"
-        version   = "1.0">
-    <name>AnyConference</name>
-
-    <description>
-       AnyConference application
-    </description>
-
-    <author href="http://phonegap.com" email="support@phonegap.com">
-        PhoneGap Team
-    </author>
-
-    <access origin="*" />
-    
-    <icon src="res/icon/icon.png" />
-    <gap:splash gap:platform="ios" src="res/screen/ios-splash.png" />
-    <gap:splash src="res/screen/android-splash.png" gap:platform="android" gap:density="ldpi" />
-    <gap:splash src="res/screen/android-splash.png" gap:platform="android" gap:density="mdpi" />
-    <gap:splash src="res/screen/android-splash.png" gap:platform="android" gap:density="hdpi" />
-    <gap:splash src="res/screen/android-splash.png" gap:platform="android" gap:density="xhdpi" />
-    
-    <feature name="http://api.phonegap.com/1.0/device" />
-    <feature name="http://api.phonegap.com/1.0/network"/>
-
-    <preference name="prerendered-icon" value="true" />
-    <preference name="phonegap-version" value="2.9.0" />
-    <preference name="orientation"      value="portrait" />
-    <preference name="target-device"    value="handset" />
-    <preference name="fullscreen"       value="false" />
-    
-    <preference name="webviewbounce" value="false" />
-    <preference name="load-url-timeout" value="5000" />
-    <preference name="splash-screen-duration" value="5000" />
-    <preference name="auto-hide-splash-screen" value="true" />
-
+<?xml version="1.0" encoding="utf-8"?>
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.redgate.sitc" version="1.0.0">
+  <name>SQL in the City</name>
+  <description>
+  </description>
+  <!--<feature name="http://api.phonegap.com/1.0/device" />
+    <feature name="http://api.phonegap.com/1.0/network"/>-->
+  <!--<gap:plugin name="org.apache.cordova.battery-status" />
+  <gap:plugin name="org.apache.cordova.camera" />
+  <gap:plugin name="org.apache.cordova.media-capture" />-->
+  <!--<gap:plugin name="org.apache.cordova.splashscreen" />-->
+  <icon src="/icons/android/icon-hdpi.png" gap:density="hdpi" gap:platform="android" />
+  <icon src="/icons/android/icon-ldpi.png" gap:density="ldpi" gap:platform="android" />
+  <icon src="/icons/android/icon-mdpi.png" gap:density="mdpi" gap:platform="android" />
+  <icon src="/icons/android/icon-xhdpi.png" gap:density="xhdpi" gap:platform="android" />
+  <icon src="/icons/ios/icon.png" width="57" height="57" gap:platform="ios" />
+  <icon src="/icons/ios/icon@2x.png" width="114" height="114" gap:platform="ios" />
+  <icon src="/icons/ios/icon-72.png" width="72" height="72" gap:platform="ios" />
+  <icon src="/icons/ios/icon-72@2x.png" width="144" height="144" gap:platform="ios" />
+  <icon src="/res/icon/icon.png" width="57" height="57" gap:platform="ios" />
+  <author email="james.m.billings@gmail.com">james.m.billings@gmail.com</author>
+  <access origin="*" />
+  <preference name="phonegap-version" value="3.3.0" />
+  <preference name="prerendered-icon" value="true" />
+  <preference name="orientation" value="portrait" />
+  <preference name="target-device" value="handset" />
+  <preference name="fullscreen" value="false" />
+  <preference name="webviewbounce" value="false" />
+  <preference name="load-url-timeout" value="5000" />
+  <preference name="splash-screen-duration" value="5000" />
+  <preference name="auto-hide-splash-screen" value="true" />
+  <gap:plugin name="org.apache.cordova.console" />
+  <gap:plugin name="org.apache.cordova.device" />
+  <gap:plugin name="org.apache.cordova.device-orientation" />
+  <gap:plugin name="org.apache.cordova.file" />
+  <gap:plugin name="org.apache.cordova.file-transfer" />
+  <gap:plugin name="org.apache.cordova.globalization" />
+  <gap:plugin name="org.apache.cordova.inappbrowser" />
+  <gap:plugin name="org.apache.cordova.network-information" />
+  <gap:plugin name="org.apache.cordova.dialogs" />
 </widget>

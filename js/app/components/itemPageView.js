@@ -15,28 +15,26 @@ limitations under the License.
 */
 define(function(require, exports, module) {
 
-    var utils = require('app/utils');
-
-    var PageView = Backbone.View.extend({
-        tagName: 'ul',
-        className: 'topcoat-list item-page',
+	var PageView = Backbone.View.extend({
+		tagName: 'ul',
+		className: 'topcoat-list item-page',
         transitionCallback: null,
         parentView: null,
         
-        hide: function() {
-            this.el.style.display = 'none';
-        },
+		hide: function() {
+			this.el.style.display = 'none';
+		},
 
         transitionFromClass: function(className) {
             var classList = this.el.classList;
-            if( classList.contains(className) ) {
-                console.error('unexpected classlist re-add');
-                this.parentView.animating = false;
-            } else {
+			if( classList.contains(className) ) {
+			    console.error('unexpected classlist re-add');
+			    this.parentView.animating = false;
+			} else {
                 this.parentView.animating = true;
                 console.log('Start animating...');
-                classList.add(className);
-            }
+			    classList.add(className);
+			}
         },
         
         onTransitionEnd: function(evt) {
@@ -49,29 +47,29 @@ define(function(require, exports, module) {
             }
             console.log('...animation ended');
         },
-        
-        transitionIn: function(callback) {
+		
+		transitionIn: function(callback) {
             this.transitionCallback = callback;
             this.transitionFromClass('js-page-transition-in');
-            utils.setTransform(this.el, 'none');
-        },
-        
-        transitionOut: function(callback) {
-            this.transitionCallback = callback;
-            this.transitionFromClass('js-page-transition-out');
-            utils.setTransform(this.el, 'translateY(' + -this.options.pageHeight + 'px) translateZ(0)');
-        },
-        
-        render: function() {
-            this.el.style.display = 'block';
-            utils.setTransform(this.el, 'none');
-        },
-        
-        renderAsPrevious: function() {
-            this.render();
-            var offsetY = -this.options.pageHeight;
-            utils.setTransform(this.el, 'translateY(' + offsetY + 'px) translateZ(0)');
-        },
+			this.el.style.webkitTransform = 'none';
+		},
+		
+		transitionOut: function(callback) {
+			this.transitionCallback = callback;
+			this.transitionFromClass('js-page-transition-out');
+			this.el.style.webkitTransform = 'translateY(' + -this.options.pageHeight + 'px) translateZ(0)';
+		},
+		
+		render: function() {
+			this.el.style.display = 'block';
+			this.el.style.webkitTransform = 'none';
+		},
+		
+		renderAsPrevious: function() {
+			this.render();
+			var offsetY = -this.options.pageHeight;
+			this.el.style.webkitTransform = 'translateY(' + offsetY + 'px) translateZ(0)';
+		},
         
         initialize: function() {
             this.parentView = this.options.parentView;
@@ -79,7 +77,7 @@ define(function(require, exports, module) {
                 'webkitTransitionEnd': this.onTransitionEnd
             });
         }
-    });
+	});
 
     return PageView;
 });

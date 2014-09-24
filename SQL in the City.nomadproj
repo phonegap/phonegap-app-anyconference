@@ -1,0 +1,394 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <CompiledOutputPath>distrib</CompiledOutputPath>
+    <OutputPath>bin\$(Configuration)</OutputPath>
+    <CordovaVersion>3.3</CordovaVersion>
+    <BuildCloudVersion>2.0</BuildCloudVersion>
+    <Name>SQL in the City</Name>
+    <RootNamespace>Conference</RootNamespace>
+    <ProjectGuid>{8f6de111-4dd5-4beb-933b-d364a078e7a3}</ProjectGuid>
+    <LastBuildVersion>1.0.0.80</LastBuildVersion>
+    <Version>1.0.0.*</Version>
+    <BundleID>com.redgate.sitc</BundleID>
+    <Description />
+    <ProjectName>SQL in the City</ProjectName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="config.xml">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="data\event.json">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="data\presenters.json">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="data\sessions.json">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="font\SourceSansPro-Regular.ttf">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="icons\android\icon-hdpi.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="icons\android\icon-ldpi.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="icons\android\icon-mdpi.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="icons\android\icon-xhdpi.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="icons\ios\icon%402x.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="icons\ios\icon-72%402x.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="icons\ios\icon-72.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="icons\ios\icon.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="img\arrowdown.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="img\arrowleft.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="img\arrowright.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="img\ballons_420.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="img\davidatkinson.jpg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="img\event-logo.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="img\footer_720.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="img\grant.jpg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="img\hamburger_bw.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="img\hamburger_dark.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="img\hamburger_light.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="img\heartoff.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="img\hearton.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="img\ikeellis.jpg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="img\johntheron.jpg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="img\link.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="img\no-heart.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="img\no-star.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="img\search-bg.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="img\search-bg2x.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="img\search.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="img\search_bw.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="img\search_dark.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="img\search_light.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="img\star.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="img\starmenu.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="img\staroff.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="img\staron.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="img\stevejones.jpg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="img\twitter.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="index.html" />
+    <Content Include="img\choosephoto.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\app.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\app\appRouter.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\app\components\collectionDetailsView.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\app\components\collectionView.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\app\components\itemDetailsView.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\app\components\itemPageView.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\app\components\pull-to-action.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\app\config.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\app\menu.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\app\sessions\sessionCollection.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\app\sessions\sessionCollectionDetailsView.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\app\sessions\sessionCollectionView.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\app\sessions\sessionDetailsView.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\app\sessions\sessionModel.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\app\sessions\sessionOptionView.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\app\sessions\sessionPageView.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\app\sessions\sessionView.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\app\sessions\templates\emptyPageTemplate.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\app\sessions\templates\sessionCollectionDetailsTemplate.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\app\sessions\templates\sessionDetailsTemplate.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\app\sessions\templates\sessionTemplate.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\app\speakers\speakerCollection.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\app\speakers\speakerCollectionDetailsView.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\app\speakers\speakerCollectionView.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\app\speakers\speakerDetailsView.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\app\speakers\speakerModel.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\app\speakers\speakerView.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\app\speakers\templates\speakerCollectionDetailsTemplate.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\app\speakers\templates\speakerDetailsTemplate.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\app\speakers\templates\speakerTemplate.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\app\templates\actionVerification.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\app\templates\dayEntryTemplate.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\app\templates\itemCollectionTemplate.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\app\templates\loveButtonTemplate.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\app\templates\main.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\app\templates\menuTemplate.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\app\templates\sessionCollectionViewTemplate.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\app\templates\sessions.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\app\templates\singledaytrack-list-future.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\app\templates\singledaytrack-menu-expand.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\app\templates\starButtonTemplate.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\third-party\backbone.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\third-party\backbone.layoutmanager.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\third-party\iscroll.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\third-party\jquery-2.0.1.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\third-party\moment.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\third-party\Points.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\third-party\require.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\third-party\text.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\third-party\underscore.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="res\icon\android\icon-36-ldpi.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="res\icon\android\icon-48-mdpi.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="res\icon\android\icon-72-hdpi.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="res\icon\android\icon-96-xhdpi.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="res\icon\icon.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="res\screen\android-splash.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="res\screen\android\screen-hdpi-landscape.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="res\screen\android\screen-hdpi-portrait.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="res\screen\android\screen-ldpi-landscape.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="res\screen\android\screen-ldpi-portrait.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="res\screen\android\screen-mdpi-landscape.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="res\screen\android\screen-mdpi-portrait.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="res\screen\android\screen-xhdpi-landscape.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="res\screen\android\screen-xhdpi-portrait.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="res\screen\ios-splash.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\anyconference.css">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\pull-to-action.css">
+      <SubType>Content</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="icons\" />
+    <Folder Include="icons\android\" />
+    <Folder Include="icons\ios\" />
+    <Folder Include="img" />
+    <Folder Include="js\app" />
+    <Folder Include="js\app\components" />
+    <Folder Include="js\app\sessions\templates" />
+    <Folder Include="js\app\speakers\templates" />
+    <Folder Include="js\app\templates" />
+    <Folder Include="js\app\speakers" />
+    <Folder Include="js\app\sessions" />
+    <Folder Include="js\third-party" />
+    <Folder Include="font" />
+    <Folder Include="data" />
+    <Folder Include="res" />
+    <Folder Include="res\icon" />
+    <Folder Include="res\icon\android" />
+    <Folder Include="res\screen" />
+    <Folder Include="res\screen\android" />
+    <Folder Include="css" />
+    <Folder Include="js" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.Common.targets" />
+  <Target Name="ResolveReferences" />
+  <Target Name="CoreCompile" />
+  <Target Name="CreateManifestResourceNames" />
+  <Target Name="CopyFilesToOutputDirectory">
+    <ItemGroup>
+      <AbsoluteContentDestinations Include="$(OutputPath)%(Content.Identity)" />
+    </ItemGroup>
+    <Copy SourceFiles="@(Content)" DestinationFiles="@(AbsoluteContentDestinations)" />
+  </Target>
+</Project>
