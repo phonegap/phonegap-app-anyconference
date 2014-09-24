@@ -8,6 +8,7 @@
   <!--<gap:plugin name="org.apache.cordova.battery-status" />
   <gap:plugin name="org.apache.cordova.camera" />
   <gap:plugin name="org.apache.cordova.media-capture" />-->
+  <!--<gap:plugin name="org.apache.cordova.splashscreen" />-->
   <icon src="/icons/android/icon-hdpi.png" gap:density="hdpi" gap:platform="android" />
   <icon src="/icons/android/icon-ldpi.png" gap:density="ldpi" gap:platform="android" />
   <icon src="/icons/android/icon-mdpi.png" gap:density="mdpi" gap:platform="android" />
@@ -37,5 +38,4 @@
   <gap:plugin name="org.apache.cordova.inappbrowser" />
   <gap:plugin name="org.apache.cordova.network-information" />
   <gap:plugin name="org.apache.cordova.dialogs" />
-  <!--<gap:plugin name="org.apache.cordova.splashscreen" />-->
 </widget>

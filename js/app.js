@@ -74,13 +74,7 @@ define(function(require, exports, module) {
         flag: 'loved',
         template: require('text!app/templates/loveButtonTemplate.html')
     });
-
-    //About
-    var AboutView = require('app/aboutpage/aboutView');
-    var aboutView = new AboutView({
-        template: require('text!app/aboutpage/templates/aboutTemplate.html')
-    });
-
+  
     //Load html template
     var appTemplate = require("text!app/templates/main.html");
 
@@ -119,7 +113,6 @@ define(function(require, exports, module) {
             this.setView('#content', sessionCollectionDetailsView, true);
             this.setView('#content', speakerCollectionView, true);
             this.setView('#content', speakerCollectionDetailsView, true);
-            this.setView('#content', aboutView, true);
             this.setView(menuView, true);
             this.setView('.js-button-container', starredOptionView, true);
             this.setView('.js-button-container', lovedOptionView, true);
@@ -166,10 +159,6 @@ define(function(require, exports, module) {
                     break;
                 case 'speakerDetails':
                     headingText = 'SPEAKER';
-                    showBackButton = true;
-                    break;
-                case 'aboutView':
-                    headingText = 'ABOUT';
                     showBackButton = true;
                     break;
             }

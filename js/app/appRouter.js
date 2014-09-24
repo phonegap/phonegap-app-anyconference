@@ -38,10 +38,6 @@ define(function(require, exports, module) {
         speakerCollection: function() {
         
         },
-
-        aboutView: function() {
-            
-        },
         
         sessionDetails: function(sessionId) {
 
