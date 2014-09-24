@@ -40,9 +40,7 @@ define(function(require, exports, module) {
 		    'pointerup .js-speakerlist-link': 'linkUp',
 		    'click .js-speakerlist-link': 'linkUp',
 		    'pointerup .js-starredlist-link': 'linkUp',
-		    'click .js-starredlist-link': 'linkUp',
-		    'pointerup .js-aboutevent-link': 'linkUp',
-		    'click .js-aboutevent-link': 'linkUp'
+		    'click .js-starredlist-link': 'linkUp'
 		},
 		
 		template: _.template(menuTemplate),
@@ -113,11 +111,13 @@ define(function(require, exports, module) {
             this.gestureStarted = false;
 		},
 		
-		linkUp: function(jqEvt) {
+		linkUp: function (jqEvt) {
+            console.log('linkUp called');
 		    jqEvt.preventDefault();
 		    jqEvt.stopPropagation();
 		    var target = jqEvt.currentTarget;
 		    var href = target.getAttribute('href');
+		    console.log('href=' + href);
 		    appRouter.navigate(href, {trigger: true});
 		    this.hide();
 		},

@@ -22,7 +22,6 @@ define(function(require, exports, module) {
             'sessionCollection': 'sessionCollection',
             'starredSessionCollection': 'starredSessionCollection',
             'speakerCollection': 'speakerCollection',
-            'aboutEvent': 'aboutEvent',
             'sessionDetails/:sessionId': 'sessionDetails',
             'speakerDetails/:speakerId': 'speakerDetails'
         },
@@ -40,7 +39,7 @@ define(function(require, exports, module) {
         
         },
 
-        aboutEvent: function() {
+        aboutView: function() {
             
         },
         

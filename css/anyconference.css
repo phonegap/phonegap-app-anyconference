@@ -832,6 +832,17 @@ limitations under the License.
   border-bottom: 1px solid #eff1f1;
   background-color: #f2f3f3;
 }
+
+.imageWrapper { 
+    position: relative;
+}
+
+.bottomImage { 
+    position: absolute; 
+    bottom: 0;
+    max-width: 100%;
+}
+
 .topcoat-list__header {
   margin: 0;
   padding: 4px 20px;
@@ -1759,7 +1770,7 @@ input[type="checkbox"]:checked + .topcoat-checkbox-label-heart.topcoat-checkbox-
     height: 180px;
     margin: 0 auto;
 
-    background-image: url('../img/event-logo.png');
+    background-image: url('../img/ballons_420.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;

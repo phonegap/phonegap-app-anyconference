@@ -10,7 +10,7 @@
     <Name>SQL in the City</Name>
     <RootNamespace>Conference</RootNamespace>
     <ProjectGuid>{8f6de111-4dd5-4beb-933b-d364a078e7a3}</ProjectGuid>
-    <LastBuildVersion>1.0.0.69</LastBuildVersion>
+    <LastBuildVersion>1.0.0.80</LastBuildVersion>
     <Version>1.0.0.*</Version>
     <BundleID>com.redgate.sitc</BundleID>
     <Description />
@@ -38,6 +38,30 @@
     <Content Include="font\SourceSansPro-Regular.ttf">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="icons\android\icon-hdpi.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="icons\android\icon-ldpi.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="icons\android\icon-mdpi.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="icons\android\icon-xhdpi.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="icons\ios\icon%402x.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="icons\ios\icon-72%402x.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="icons\ios\icon-72.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="icons\ios\icon.png">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="img\arrowdown.svg">
       <SubType>Content</SubType>
     </Content>
@@ -47,10 +71,16 @@
     <Content Include="img\arrowright.svg">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="img\ballons_420.png">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="img\davidatkinson.jpg">
       <SubType>Content</SubType>
     </Content>
     <Content Include="img\event-logo.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="img\footer_720.png">
       <SubType>Content</SubType>
     </Content>
     <Content Include="img\grant.jpg">
@@ -329,10 +359,12 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="icons\" />
+    <Folder Include="icons\android\" />
+    <Folder Include="icons\ios\" />
     <Folder Include="img" />
     <Folder Include="js\app" />
     <Folder Include="js\app\components" />
-    <Folder Include="js\app\aboutpage" />
     <Folder Include="js\app\sessions\templates" />
     <Folder Include="js\app\speakers\templates" />
     <Folder Include="js\app\templates" />

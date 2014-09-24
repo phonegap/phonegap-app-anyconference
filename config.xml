@@ -8,6 +8,14 @@
   <!--<gap:plugin name="org.apache.cordova.battery-status" />
   <gap:plugin name="org.apache.cordova.camera" />
   <gap:plugin name="org.apache.cordova.media-capture" />-->
+  <icon src="/icons/android/icon-hdpi.png" gap:density="hdpi" gap:platform="android" />
+  <icon src="/icons/android/icon-ldpi.png" gap:density="ldpi" gap:platform="android" />
+  <icon src="/icons/android/icon-mdpi.png" gap:density="mdpi" gap:platform="android" />
+  <icon src="/icons/android/icon-xhdpi.png" gap:density="xhdpi" gap:platform="android" />
+  <icon src="/icons/ios/icon.png" width="57" height="57" gap:platform="ios" />
+  <icon src="/icons/ios/icon@2x.png" width="114" height="114" gap:platform="ios" />
+  <icon src="/icons/ios/icon-72.png" width="72" height="72" gap:platform="ios" />
+  <icon src="/icons/ios/icon-72@2x.png" width="144" height="144" gap:platform="ios" />
   <icon src="/res/icon/icon.png" width="57" height="57" gap:platform="ios" />
   <author email="james.m.billings@gmail.com">james.m.billings@gmail.com</author>
   <access origin="*" />
